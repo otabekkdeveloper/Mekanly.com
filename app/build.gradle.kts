@@ -7,6 +7,15 @@ android {
     namespace = "com.mekanly"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
+    dataBinding {
+        true
+    }
+
     defaultConfig {
         applicationId = "com.mekanly"
         minSdk = 24
@@ -21,8 +30,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -47,11 +55,20 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //navigation
-    implementation (libs.androidx.navigation.fragment.ktx)
-    implementation (libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     //roundedImageView
-    implementation ("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.makeramen:roundedimageview:2.3.0")
+
+    //viewPager
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+
 
 
 }

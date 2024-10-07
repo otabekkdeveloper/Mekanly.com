@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color_app"
+    android:orientation="vertical"
+    android:paddingTop="11dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:orientation="horizontal"
+        tools:ignore="RtlSymmetry">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText"
+            android:inputType="text"
+            android:textColorHint="@color/text_color_grey"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/bg_search_fragment"
+            android:hint="Gözleg"
+            android:paddingStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/outlinedButton"
+            style="@style/Widget.MaterialComponents.TimePicker.ImageButton"
+            android:layout_width="36dp"
+            app:iconTint="@color/white"
+            android:layout_height="36dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="#029FFE"
+            app:icon="@drawable/filter_icon"
+            app:elevation="0dp"
+            app:cornerRadius="1000dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintTop_toTopOf="@+id/editText"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/TabTextAppearanceTwo"
+        android:id="@+id/tabLayout"
+        app:tabTextColor="@color/text_color_white"
+        app:tabIconTint="@color/white"
+        android:background="@color/color_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

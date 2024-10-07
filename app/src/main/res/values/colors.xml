@@ -5,4 +5,13 @@
     <color name="bg_app">#00A3FF</color>
     <color name="color_transparent">#00000000</color>
     <color name="bg_app_two">#208BD4</color>
+    <color name="bg_blue_one">#2669FF</color>
+    <color name="bg_blue_two">#457EFE</color>
+    <color name="bg_blue_three">#8DB0FE</color>
+    <color name="bg_blue_four">#D3E0FE</color>
+    <color name="text_color">#384CFF</color>
+    <color name="text_color_white">#E4E4E4</color>
+    <color name="text_color_grey">#717171</color>
+    <color name="color_bg_search_fragment">#4D8BBF</color>
+
 </resources>

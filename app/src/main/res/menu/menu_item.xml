@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/house"
+        android:icon="@drawable/house_logo"
         android:title="Baş sahypa"
 
         />

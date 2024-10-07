@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">8sp</item> <!-- Задайте нужный размер текста -->
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">#FFFFFF</item> <!-- Цвет текста -->
+    </style>
+    
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="TabTextAppearanceTwo" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

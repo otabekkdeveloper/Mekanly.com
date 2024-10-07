@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Mekanly" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Mekanly" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="android:statusBarColor">@color/bg_blue_one</item>
+        <item name="colorControlActivated">@color/bg_blue_one</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
