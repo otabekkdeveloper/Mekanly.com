@@ -1,0 +1,382 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="Mümkinçilikler"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Чекбокс -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <CheckBox
+            android:id="@+id/cbHemmesi"
+            android:layoutDirection="rtl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hemmesi" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:icon="@drawable/wi_fi_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wi-Fi"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/kitchen_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aşhana"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:icon="@drawable/tv_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telewizor"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/sowadyjy_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sowadyjy"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:icon="@drawable/kir_mashyn_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kir maşyn"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/kondisioner_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kondisioner"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:icon="@drawable/bedroom_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spalny"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/mebel_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mebel-şkaf"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/dush_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duş"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:layout_marginStart="6dp"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:icon="@drawable/yyladysh_ulgamy_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ýyladyş ulgamy"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/pech_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peç"/>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/mangal_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mangal"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:icon="@drawable/gyzgyn_suw_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gyzgyn suw"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/ish_stoly_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iş stoly"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:icon="@drawable/ashhana_mebel_ic"
+            app:iconTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aşhana-mebel"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/basseyn_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basseýn"/>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="2dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            android:textSize="12sp"
+            app:strokeWidth="1dp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/balkon_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balkon"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            android:textSize="12sp"
+            app:iconTint="@color/black"
+            app:icon="@drawable/lift_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lift"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:textColor="@color/black"
+            android:id="@+id/btnGoybolsun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:text="GOÝBOLSUN" />
+
+        <Button
+            android:textColor="@color/black"
+            android:id="@+id/btnKabulEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:text="KABUL ET" />
+    </LinearLayout>
+
+</LinearLayout>

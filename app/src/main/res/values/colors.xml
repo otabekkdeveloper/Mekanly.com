@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_app">#00A3FF</color>
+    <color name="background">#5A8FBB</color>
     <color name="color_transparent">#00000000</color>
     <color name="bg_app_two">#208BD4</color>
     <color name="bg_blue_one">#2669FF</color>
@@ -13,5 +14,8 @@
     <color name="text_color_white">#E4E4E4</color>
     <color name="text_color_grey">#717171</color>
     <color name="color_bg_search_fragment">#4D8BBF</color>
+    <color name="line_divider">#DDDDDD</color>
+    <color name="white_bg">#F3F8FF</color>
+    <color name="grey">#DDDDDD</color>
 
 </resources>

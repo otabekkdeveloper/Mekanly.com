@@ -1,10 +1,16 @@
 package com.mekanly
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.adapters.SearchViewAdapter
 import com.mekanly.databinding.FragmentSearchBinding
@@ -19,11 +25,9 @@ class SearchFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-
 
 
         // Настраиваем ViewPager2 с адаптером
@@ -36,20 +40,29 @@ class SearchFragment : Fragment() {
                 0 -> {
                     tab.text = "EMLÄKLER"
                 }
+
                 1 -> {
                     tab.text = "EMLÄK GÖZLEÝÄNLER"
                 }
             }
         }.attach()
 
+        binding.outlinedButton.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
+        }
 
 
-
-
-
+        disableSwipe(binding.viewPager)
 
         return binding.root
     }
 
-            }
+    private fun disableSwipe(viewPager: ViewPager2) {
+        viewPager.isUserInputEnabled = false // Полное отключение свайпов
+    }
+
+
+
+
+}
 

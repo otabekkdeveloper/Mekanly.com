@@ -34,9 +34,6 @@
             android:textColor="@color/black" />
 
 
-
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="6dp"
+            android:maxLines="1"
             android:text="Howlugyň satlyk jaý!!! Bahasyny ylalaşarys almakçy ba ...."
             android:textColor="@color/text_color_grey"
             android:textSize="14sp" />

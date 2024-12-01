@@ -1,16 +1,38 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_marginVertical="5dp"
     android:layout_marginStart="3.5dp">
 
+    <!-- Rounded ImageView with match_parent width -->
     <com.makeramen.roundedimageview.RoundedImageView
-        app:riv_corner_radius="10dp"
+        android:id="@+id/imageViewHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="@drawable/image1"
-        android:id="@+id/imageView"
-        android:layout_width="136dp"
-        android:layout_height="179dp"
-        android:scaleType="centerCrop" />
+        app:riv_corner_radius="10dp" />
+
+    <!-- ImageView with specific size -->
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rowach_mebel_logo" />
+
+    <!-- TextView for advertising label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#729AF4"
+        android:paddingHorizontal="2dp"
+        android:text="reklama"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
 
 </FrameLayout>

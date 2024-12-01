@@ -12,6 +12,5 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        window.statusBarColor = ContextCompat.getColor(this, R.color.bg_blue_one)
         }
     }

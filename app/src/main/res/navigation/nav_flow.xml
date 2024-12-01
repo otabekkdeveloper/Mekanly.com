@@ -3,10 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_flow"
-    app:startDestination="@id/flowFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/flowFragment"
-        android:name="com.mekanly.FlowFragment"
-        android:label="fragment_flow"
-        tools:layout="@layout/fragment_flow" />
+        android:id="@+id/homeFragment"
+        android:name="com.mekanly.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_jayGoshmakFragment"
+            app:destination="@id/jayGoshmakFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_bildirishlerimFragment"
+            app:destination="@id/bildirishlerimFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/jayGoshmakFragment"
+        android:name="com.mekanly.ProfilePage.JayGoshmakFragment"
+        android:label="fragment_jay_goshmak"
+        tools:layout="@layout/fragment_jay_goshmak" />
+    <fragment
+        android:id="@+id/bildirishlerimFragment"
+        android:name="com.mekanly.BildirishlerimFragment"
+        android:label="fragment_bildirishlerim"
+        tools:layout="@layout/fragment_bildirishlerim" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.mekanly.FilterFragment"
+        android:label="FilterFragment" />
 </navigation>

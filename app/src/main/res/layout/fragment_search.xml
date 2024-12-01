@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_color_app"
+    android:background="@color/background"
     android:orientation="vertical"
     android:paddingTop="11dp">
 
@@ -39,7 +39,7 @@
             app:iconTint="@color/white"
             android:layout_height="36dp"
             android:layout_margin="16dp"
-            app:backgroundTint="#029FFE"
+            app:backgroundTint="@color/background"
             app:icon="@drawable/filter_icon"
             app:elevation="0dp"
             app:cornerRadius="1000dp"

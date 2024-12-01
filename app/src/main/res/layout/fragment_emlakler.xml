@@ -9,11 +9,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTwo"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:paddingHorizontal="5dp"
         android:paddingTop="10dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:layout_height="wrap_content" />
 
 
 

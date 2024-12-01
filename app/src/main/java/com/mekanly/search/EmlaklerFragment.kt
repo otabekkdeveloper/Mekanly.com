@@ -1,15 +1,16 @@
 package com.mekanly.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.R
-import com.mekanly.adapters.ImageAdapter
-import com.mekanly.adapters.PostAdapter
 import com.mekanly.adapters.SearchImageAdapter
+import com.mekanly.adapters.SearchImageAdapter.Companion.LISTED_POST
+import com.mekanly.adapters.SearchImageAdapter.Companion.SIMPLE_POST
+import com.mekanly.data.DataPost
 import com.mekanly.databinding.FragmentEmlaklerBinding
 
 
@@ -19,34 +20,83 @@ class EmlaklerFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEmlaklerBinding.inflate(inflater, container, false)
 
+        // Пример данных
 
-        val imagesTwo = listOf(
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,
-            R.drawable.search_house_image,)
+        val innerList:MutableList<DataPost> = mutableListOf()
+        val simplePostInHorizontal1 = DataPost(R.drawable.image1,SIMPLE_POST)
+        val simplePostInHorizontal2 = DataPost(R.drawable.search_house_image,SIMPLE_POST)
+        innerList.add(simplePostInHorizontal1)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
+        innerList.add(simplePostInHorizontal2)
 
-            // Устанавливаем адаптер
-            binding.recyclerViewTwo.adapter = SearchImageAdapter(imagesTwo)
 
-                    // Устанавливаем горизонтальный LayoutManager
-                    binding . recyclerViewTwo . layoutManager = LinearLayoutManager (requireContext(),
-            LinearLayoutManager.VERTICAL,
-            false
-        )
+        val posts:MutableList<DataPost> = mutableListOf()
+        val simplePost1 = DataPost(R.drawable.image1,SIMPLE_POST)
+        val simplePost2 = DataPost(R.drawable.search_house_image,SIMPLE_POST)
+        val listedPost1 = DataPost(type=LISTED_POST, inner = innerList)
+        
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(listedPost1)
+
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(listedPost1)
+
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(listedPost1)
+
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(simplePost2)
+        posts.add(listedPost1)
+
+        binding.recyclerViewTwo.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+        binding.recyclerViewTwo.adapter = SearchImageAdapter(posts)
+
 
 
 
