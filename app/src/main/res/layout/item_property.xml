@@ -1,79 +1,41 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="8dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <!-- Заменяем RecyclerView на ViewPager2 -->
-        <androidx.viewpager2.widget.ViewPager2
-            android:paddingHorizontal="5dp"
-            android:id="@+id/imageSliderViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/propertyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/propertyPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/categoryName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:text="Satlyk jaý"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/propertyLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
 
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="6dp"
-                android:text="Aşgabat/ mkr1 şu gün 16:00"
-                android:textColor="@color/text_color_grey"
-                android:textSize="14sp" />
-
-
-            <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="6dp"
-                android:text="Howlugyň satlyk jaý!!! Bahasyny ylalaşarys almakçy ba ...."
-                android:textColor="@color/text_color_grey"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/priceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:paddingStart="8dp"
-                android:text=" 1000000 TMT"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-
-
+        <ImageView
+            android:id="@+id/propertyImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
 
-
-</androidx.cardview.widget.CardView>
+</androidx.core.widget.NestedScrollView>

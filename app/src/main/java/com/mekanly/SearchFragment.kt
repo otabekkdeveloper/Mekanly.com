@@ -1,18 +1,14 @@
 package com.mekanly
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mekanly.adapters.SearchViewAdapter
+import com.mekanly.adapters.pagerAdapters.SearchViewAdapter
 import com.mekanly.databinding.FragmentSearchBinding
 
 

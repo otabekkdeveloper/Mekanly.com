@@ -1,27 +1,24 @@
-package com.mekanly.adapters
-
-
+package com.mekanly.adapters.pagerAdapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.BildirshlerimOneFragment
-import com.mekanly.BildirshlerimTwoFragment
 import com.mekanly.FlowFragment
 import com.mekanly.ProfilePage.BildirishlerProfileFragment
+import com.mekanly.ProfilePage.MaglumatProfileFragment
 import com.mekanly.ProfilePage.SuratlarProfileFragment
 
-class BildirishlerimTabLayout (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class ProfileTabLayoutAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
-        return 2 // Количество вкладок
+        return 3 // Количество вкладок
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> BildirshlerimOneFragment()
-            1 -> BildirshlerimTwoFragment()
-
+            0 -> BildirishlerProfileFragment()
+            1 -> SuratlarProfileFragment()
+            2 -> MaglumatProfileFragment()
 
             else -> FlowFragment()
         }

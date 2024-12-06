@@ -1,41 +1,46 @@
 package com.mekanly.adapters
 
-import ImageSliderPagerAdapter
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mekanly.R
 import com.mekanly.data.responseLocation.House
-import com.mekanly.databinding.ItemPropertyBinding
 
-class PropertyAdapter(private val items: List<House>) : RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
+class PropertyAdapter(private val properties: List<House>) :
+    RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
 
-    class PropertyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val binding = ItemPropertyBinding.bind(itemView)
-        fun bind(item: House) = with(binding) {
-            priceTextView.text = item.price
-
-            Log.e("RESPONSE", "bind: "+item.price)
-            categoryName.text = item.category_name
-            name.text = item.name
-
-            // Настраиваем ViewPager2 для слайдера изображений
-            val imageSliderAdapter = ImageSliderPagerAdapter(item.images)
-            imageSliderViewPager.adapter = imageSliderAdapter
-        }
+    inner class PropertyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val propertyName: TextView = view.findViewById(R.id.propertyName)
+        val propertyPrice: TextView = view.findViewById(R.id.propertyPrice)
+        val propertyLocation: TextView = view.findViewById(R.id.propertyLocation)
+        val propertyImage: ImageView = view.findViewById(R.id.propertyImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_property, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_property, parent, false)
         return PropertyViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PropertyViewHolder, position: Int) {
-        holder.bind(items[position])
+        val property = properties[position]
+        holder.propertyName.text = property.name
+        holder.propertyPrice.text = "Price: ${property.price} TMT"
+        holder.propertyLocation.text = "Location: ${property.location.name}, ${property.location.parent_name}"
+
+        // Загрузка изображения
+        if (property.images.isNotEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(property.images[0].url)
+                .into(holder.propertyImage)
+        }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount() = properties.size
 }
