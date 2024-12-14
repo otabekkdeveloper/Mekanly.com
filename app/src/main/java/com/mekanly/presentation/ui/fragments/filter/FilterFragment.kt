@@ -1,4 +1,4 @@
-package com.mekanly
+package com.mekanly.presentation.ui.fragments.filter
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -12,7 +12,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.mekanly.R
 import com.mekanly.databinding.FragmentFilterBinding
+import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 
 
 class FilterFragment : Fragment() {
@@ -58,7 +60,7 @@ class FilterFragment : Fragment() {
 
 
         binding.buttonBolum.setOnClickListener {
-            val bottomSheet = BottomSheetFragment()
+            val bottomSheet = SectionSelectionBottomSheet()
 
             bottomSheet.setOnCitySelectedListener { selectedCity ->
                 binding.bolumTextView.text = selectedCity

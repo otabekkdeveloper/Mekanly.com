@@ -1,13 +1,10 @@
-package com.mekanly.ProfilePage
+package com.mekanly.presentation.ui.fragments.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.mekanly.R
 import com.mekanly.databinding.FragmentProfileBinding
@@ -24,8 +21,6 @@ class ProfileFragment : Fragment() {
         binding.profileImage.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_jayGoshmakFragment)
         }
-
-
         return binding.root
     }
 }

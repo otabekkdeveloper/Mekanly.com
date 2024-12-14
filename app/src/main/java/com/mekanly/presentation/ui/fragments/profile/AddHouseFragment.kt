@@ -1,4 +1,4 @@
-package com.mekanly.ProfilePage
+package com.mekanly.presentation.ui.fragments.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,24 +11,15 @@ import com.mekanly.adapters.pagerAdapters.ProfileTabLayoutAdapter
 import com.mekanly.databinding.FragmentJayGoshmakBinding
 
 
-class JayGoshmakFragment : Fragment() {
+class AddHouseFragment : Fragment() {
     private lateinit var b : FragmentJayGoshmakBinding
     private lateinit var viewPagerAdapter : ProfileTabLayoutAdapter
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         b = FragmentJayGoshmakBinding.inflate(inflater, container, false)
-
-
-
 
         viewPagerAdapter = ProfileTabLayoutAdapter(requireActivity())
         b.viewPager.adapter = viewPagerAdapter
@@ -55,7 +46,4 @@ class JayGoshmakFragment : Fragment() {
     private fun disableSwipe(viewPager2: ViewPager2){
         viewPager2.isUserInputEnabled = false
     }
-
-
-
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.mekanly.MainActivity
+import com.mekanly.presentation.ui.activities.main.MainActivity
 import com.mekanly.R
 import com.mekanly.databinding.FragmentSignUpBinding
 

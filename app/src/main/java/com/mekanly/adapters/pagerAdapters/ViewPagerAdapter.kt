@@ -3,10 +3,10 @@ package com.mekanly.adapters.pagerAdapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.FlowFragment
+import com.mekanly.presentation.ui.fragments.flow.FlowFragment
 import com.mekanly.FourthFragment
-import com.mekanly.ProfilePage.ProfileFragment
-import com.mekanly.SearchFragment
+import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
+import com.mekanly.presentation.ui.fragments.search.SearchFragment
 import com.mekanly.SatyjylarFragment
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {

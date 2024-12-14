@@ -1,4 +1,4 @@
-package com.mekanly
+package com.mekanly.presentation.ui.bottomSheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mekanly.R
 import com.mekanly.adapters.BottomSheetAdapter
 import com.mekanly.adapters.BottomSheetItem
 
-class BottomSheetFragment : BottomSheetDialogFragment() {
+class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
 
     private var onCitySelected: ((String) -> Unit)? = null
 
@@ -25,7 +26,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.bottomSheetRecyclerView)
 
-        // Список городов
         val cities = listOf(
             BottomSheetItem(R.drawable.satlyk_jaylar_icon, "Satlyk jaýlar"),
             BottomSheetItem(R.drawable.kireyne_jaylar, "Kireýne jaýlar"),

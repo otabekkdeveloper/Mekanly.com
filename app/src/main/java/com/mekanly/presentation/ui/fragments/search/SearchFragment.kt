@@ -1,4 +1,4 @@
-package com.mekanly
+package com.mekanly.presentation.ui.fragments.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.mekanly.R
 import com.mekanly.adapters.pagerAdapters.SearchViewAdapter
 import com.mekanly.databinding.FragmentSearchBinding
 

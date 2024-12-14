@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.mekanly.HomeFragment"
+        android:name="com.mekanly.presentation.ui.fragments.home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_jayGoshmakFragment"
@@ -32,16 +32,16 @@
     </fragment>
     <fragment
         android:id="@+id/jayGoshmakFragment"
-        android:name="com.mekanly.ProfilePage.JayGoshmakFragment"
+        android:name="com.mekanly.presentation.ui.fragments.profile.AddHouseFragment"
         android:label="fragment_jay_goshmak"
         tools:layout="@layout/fragment_jay_goshmak" />
     <fragment
         android:id="@+id/bildirishlerimFragment"
-        android:name="com.mekanly.BildirishlerimFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfiles.BusinessProfilesFragment"
         android:label="fragment_bildirishlerim"
         tools:layout="@layout/fragment_bildirishlerim" />
     <fragment
         android:id="@+id/filterFragment"
-        android:name="com.mekanly.FilterFragment"
+        android:name="com.mekanly.presentation.ui.fragments.filter.FilterFragment"
         android:label="FilterFragment" />
 </navigation>

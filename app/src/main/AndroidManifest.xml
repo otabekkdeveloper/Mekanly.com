@@ -25,7 +25,7 @@
         </activity> <!-- MainActivity без intent-filter -->
         <activity
             android:theme="@style/Base.Theme.Mekanly"
-            android:name=".MainActivity"
+            android:name=".presentation.ui.activities.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

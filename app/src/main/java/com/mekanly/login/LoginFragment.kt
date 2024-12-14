@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.mekanly.MainActivity
+import com.mekanly.presentation.ui.activities.main.MainActivity
 import com.mekanly.R
 import com.mekanly.databinding.FragmentLoginBinding
-import com.mekanly.databinding.FragmentSignUpBinding
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding

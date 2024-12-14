@@ -1,4 +1,4 @@
-package com.mekanly.search
+package com.mekanly.presentation.ui.fragments.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import com.mekanly.data.DataPost
 import com.mekanly.databinding.FragmentEmlaklerBinding
 
 
-class EmlaklerFragment : Fragment() {
+class SearchSubFragment : Fragment() {
     private lateinit var binding: FragmentEmlaklerBinding
 
 

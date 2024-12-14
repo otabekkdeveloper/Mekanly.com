@@ -1,10 +1,11 @@
-package com.mekanly
+package com.mekanly.presentation.ui.activities.main
 
 import com.mekanly.adapters.pagerAdapters.ViewPagerAdapter
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.mekanly.R
 import com.mekanly.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
