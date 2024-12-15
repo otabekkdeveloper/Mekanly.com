@@ -1,4 +1,4 @@
-package com.mekanly.adapters
+package com.mekanly.presentation.ui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.responseLocation.House
+import com.mekanly.data.responseBody.House
 
 class PropertyAdapter(private val properties: List<House>) :
     RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {

@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
-import com.mekanly.adapters.pagerAdapters.ViewPagerAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
 import com.mekanly.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

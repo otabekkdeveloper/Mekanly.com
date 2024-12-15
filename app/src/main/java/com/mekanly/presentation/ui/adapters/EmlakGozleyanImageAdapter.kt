@@ -1,4 +1,4 @@
-package com.mekanly.adapters
+package com.mekanly.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +7,14 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 
-class PostAdapter(private val images: List<Int>) : RecyclerView.Adapter<PostAdapter.ImageViewHolder>() {
+class EmlakGozleyanImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<EmlakGozleyanImageAdapter.ImageViewHolder>() {
 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val imageView: ImageView = itemView.findViewById(R.id.imageViewTwo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rv_vertical, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_emlak_gozleyan, parent, false)
         return ImageViewHolder(view)
     }
 

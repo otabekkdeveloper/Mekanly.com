@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.R
-import com.mekanly.adapters.SearchImageAdapter
-import com.mekanly.adapters.SearchImageAdapter.Companion.LISTED_POST
-import com.mekanly.adapters.SearchImageAdapter.Companion.SIMPLE_POST
+import com.mekanly.presentation.ui.adapters.SearchImageAdapter
+import com.mekanly.presentation.ui.adapters.SearchImageAdapter.Companion.LISTED_POST
+import com.mekanly.presentation.ui.adapters.SearchImageAdapter.Companion.SIMPLE_POST
 import com.mekanly.data.DataPost
 import com.mekanly.databinding.FragmentEmlaklerBinding
 

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mekanly.adapters.pagerAdapters.ProfileTabLayoutAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.ProfileTabLayoutAdapter
 import com.mekanly.databinding.FragmentJayGoshmakBinding
 
 

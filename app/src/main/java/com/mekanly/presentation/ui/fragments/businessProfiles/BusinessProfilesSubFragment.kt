@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
-import com.mekanly.adapters.Bildirishlerim1
+import com.mekanly.presentation.ui.adapters.Bildirishlerim1
 import com.mekanly.data.BildirishlerimData
 import com.mekanly.databinding.FragmentBildirshlerimOneBinding
 

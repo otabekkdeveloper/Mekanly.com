@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mekanly.adapters.AdapterSatyjylar
+import com.mekanly.presentation.ui.adapters.AdapterSatyjylar
 import com.mekanly.databinding.FragmentSatyjylarBinding
 
 

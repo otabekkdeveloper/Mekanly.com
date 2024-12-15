@@ -1,6 +1,6 @@
 package com.mekanly.presentation.ui.activities.main
 
-import com.mekanly.adapters.pagerAdapters.ViewPagerAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

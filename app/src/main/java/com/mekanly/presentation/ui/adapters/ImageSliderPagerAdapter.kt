@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.responseLocation.Image
+import com.mekanly.data.responseBody.Image
 
 class ImageSliderPagerAdapter(private val imageUrls: List<Image>) : RecyclerView.Adapter<ImageSliderPagerAdapter.SliderViewHolder>() {
 

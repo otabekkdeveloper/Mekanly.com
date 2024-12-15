@@ -1,4 +1,4 @@
-package com.mekanly.adapters.pagerAdapters
+package com.mekanly.presentation.ui.adapters.pagerAdapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

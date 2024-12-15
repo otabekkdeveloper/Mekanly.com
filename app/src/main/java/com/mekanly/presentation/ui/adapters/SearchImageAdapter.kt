@@ -1,4 +1,4 @@
-package com.mekanly.adapters
+package com.mekanly.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View

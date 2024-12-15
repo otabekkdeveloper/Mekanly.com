@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
-import com.mekanly.adapters.pagerAdapters.SearchViewAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.SearchViewAdapter
 import com.mekanly.databinding.FragmentSearchBinding
 
 
