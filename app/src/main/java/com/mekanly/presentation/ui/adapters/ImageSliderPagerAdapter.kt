@@ -5,9 +5,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.responseBody.Image
+import com.mekanly.data.dataModels.DataImage
 
-class ImageSliderPagerAdapter(private val imageUrls: List<Image>) : RecyclerView.Adapter<ImageSliderPagerAdapter.SliderViewHolder>() {
+class ImageSliderPagerAdapter(private val imageUrls: List<DataImage>) : RecyclerView.Adapter<ImageSliderPagerAdapter.SliderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)

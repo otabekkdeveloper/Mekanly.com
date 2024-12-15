@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.responseBody.House
+import com.mekanly.data.dataModels.DataHouse
 
-class PropertyAdapter(private val properties: List<House>) :
+class PropertyAdapter(private val properties: List<DataHouse>) :
     RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

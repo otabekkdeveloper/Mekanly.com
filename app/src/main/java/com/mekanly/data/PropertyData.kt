@@ -1,9 +1,8 @@
 package com.mekanly.data
 
 import android.annotation.SuppressLint
-import com.google.firebase.firestore.auth.User
-import com.mekanly.data.responseBody.Image
-import com.mekanly.data.responseBody.Location
+import com.mekanly.data.dataModels.DataImage
+import com.mekanly.data.dataModels.DataLocation
 import com.mekanly.data.dataModels.DataPossibility
 import org.w3c.dom.Comment
 
@@ -11,7 +10,7 @@ data class PropertyData @SuppressLint("RestrictedApi") constructor(
     val id: Int,
     val category_id: Int,
     val category_name: String,
-    val location: Location,
+    val location: DataLocation,
     val enter_time: String?,
     val leave_time: String?,
     val day_enter_time: String?,
@@ -29,10 +28,10 @@ data class PropertyData @SuppressLint("RestrictedApi") constructor(
     val luxe: Int,
     val bron_number: String?,
     val bron_status: Int,
-    val user: User,
-    val images: List<Image>,
+    val user: Any,
+    val images: List<DataImage>,
     val possibilities: List<DataPossibility>,
-    val comments: List<Comment>, // Если поле пустое, можно заменить на `Any` или `List<String>`.
+    val comments: List<Comment>,
     val updated_at: String,
     val created_at: String,
     val is_comment: Int
