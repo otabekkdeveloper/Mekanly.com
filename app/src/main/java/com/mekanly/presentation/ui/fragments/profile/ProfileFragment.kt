@@ -21,6 +21,18 @@ class ProfileFragment : Fragment() {
         binding.profileImage.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_jayGoshmakFragment)
         }
+
+
+
+        binding.btnLanguage.setOnClickListener{
+            findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
+        }
+
+
+
+
+
+
         return binding.root
     }
 }

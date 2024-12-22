@@ -101,6 +101,12 @@ class HomeFragment : Fragment() {
             showMenu(view)
         }
 
+
+
+
+
+
+
         return binding.root
     }
 

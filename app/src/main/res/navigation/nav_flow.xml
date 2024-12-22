@@ -29,6 +29,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/jayGoshmakFragment"
@@ -44,4 +47,8 @@
         android:id="@+id/filterFragment"
         android:name="com.mekanly.presentation.ui.fragments.filter.FilterFragment"
         android:label="FilterFragment" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.mekanly.presentation.ui.fragments.language.LanguageFragment"
+        android:label="LanguageFragment" />
 </navigation>
