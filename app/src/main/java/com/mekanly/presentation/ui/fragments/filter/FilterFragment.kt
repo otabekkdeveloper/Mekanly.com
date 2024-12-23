@@ -21,17 +21,11 @@ class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFilterBinding.inflate(inflater, container, false)
-
 
 
         val chipGroup = binding.chipGroup
@@ -48,14 +42,18 @@ class FilterFragment : Fragment() {
         }
 
         // Проходим по всем Chip в ChipGroup
-        for (i in 0 until chipGroupTwo.childCount) {
-            val chip = chipGroupTwo.getChildAt(i) as Chip
+        for (i in 0 until chipGroup.childCount) {
+            val chip = chipGroup.getChildAt(i) as Chip
 
             // Обрабатываем нажатие на каждый Chip
             chip.setOnClickListener {
-                updateChipStyles(chipGroupTwo, chip)
-            }
-        }
+                if (!chip.isChecked) {
+                    updateChipStyles(chipGroupTwo, chip) // Сброс всех чипов
+                    chip.isChecked = true // Выделяем текущий чип
+                } else {
+                    chip.isChecked = false // Сбрасываем состояние текущего чипа
+                }
+            }}
 
 
 
@@ -65,7 +63,7 @@ class FilterFragment : Fragment() {
             bottomSheet.setOnCitySelectedListener { selectedCity ->
                 binding.bolumTextView.text = selectedCity
 
-}
+            }
 
 
             bottomSheet.show(childFragmentManager, "CustomBottomSheet")
@@ -77,21 +75,32 @@ class FilterFragment : Fragment() {
 
 
         binding.exampleBtn.setOnClickListener {
-            showCustomDialog()}
+            showCustomDialog()
+        }
 
         binding.remont.setOnClickListener {
-            RemontDialog()}
+            RemontDialog()
+        }
 
         binding.mumkinchilikler.setOnClickListener {
-            MumkinchiliklerDialog()}
+            MumkinchiliklerDialog()
+        }
 
-        binding.location.setOnClickListener{
+        binding.location.setOnClickListener {
             LocationDialog()
         }
 
-
-
-
+//        for (i in 0 until binding.chipGroup.childCount){
+//            val chip = binding.chipGroup.getChildAt(i) as Chip
+//            var isDoubleTap = false
+//
+//            chip.setOnClickListener{
+//                chip.isChecked = !isDoubleTap
+//
+//
+//                }
+//
+//        }
 
 
         return binding.root
@@ -100,12 +109,11 @@ class FilterFragment : Fragment() {
 
     private fun showCustomDialog() {
         // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_emlakler, null)
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_emlakler, null)
 
         // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
         // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
@@ -132,12 +140,11 @@ class FilterFragment : Fragment() {
 
     private fun RemontDialog() {
         // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_remont, null)
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_remont, null)
 
         // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
         // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
@@ -166,12 +173,11 @@ class FilterFragment : Fragment() {
 
     private fun MumkinchiliklerDialog() {
         // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_mumkinchilikler, null)
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
 
         // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
         // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
@@ -198,7 +204,8 @@ class FilterFragment : Fragment() {
 
     private fun LocationDialog() {
         // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_location_dialog, null)
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_location_dialog, null)
 
         // Инициализируем чекбоксы
         val checkBoxCity1 = dialogView.findViewById<CheckBox>(R.id.checkbox_city1)
@@ -212,9 +219,7 @@ class FilterFragment : Fragment() {
 
 
         // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
         // Логика для кнопок
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
@@ -264,12 +269,12 @@ class FilterFragment : Fragment() {
 
     // Метод для обновления стилей
     private fun updateChipStyles(chipGroup: ChipGroup, selectedChip: Chip) {
-//        // Сбрасываем стили для всех Chip
-//        for (i in 0 until chipGroup.childCount) {
-//            val chip = chipGroup.getChildAt(i) as Chip
-//        }
+        // Сбрасываем стили для всех Chip
+        for (i in 0 until chipGroup.childCount) {
+            val chip = chipGroup.getChildAt(i) as Chip
+        }
 
-        // Изменяем стиль выбранного Chip
+//         Изменяем стиль выбранного Chip
         selectedChip.setTextColor(resources.getColor(R.color.white, null))
         selectedChip.setChipBackgroundColorResource(R.color.black)
         selectedChip.setChipStrokeColorResource(R.color.white)

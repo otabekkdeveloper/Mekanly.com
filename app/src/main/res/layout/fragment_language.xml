@@ -55,6 +55,7 @@
             android:background="@drawable/language_bg"
             android:layout_width="match_parent"
             android:drawablePadding="10dp"
+            android:checked="true"
             android:layout_height="wrap_content"
             android:text="Türkmençe"
             android:drawableLeft="@drawable/tm"
