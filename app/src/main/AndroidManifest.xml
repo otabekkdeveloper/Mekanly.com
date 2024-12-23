@@ -13,25 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Mekanly"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".ProfilePage.ProfileActivity"-->
-<!--            android:exported="false" />-->
-<!--        &lt;!&ndash; LoginActivity с MAIN/LAUNCHER intent-filter &ndash;&gt;-->
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <!-- <activity -->
+        <!-- android:name=".ProfilePage.ProfileActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- &lt;!&ndash; LoginActivity с MAIN/LAUNCHER intent-filter &ndash;&gt; -->
         <activity
             android:name=".login.LoginActivity"
             android:exported="true">
 
         </activity> <!-- MainActivity без intent-filter -->
         <activity
-            android:theme="@style/Base.Theme.Mekanly"
             android:name=".presentation.ui.activities.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"
+            android:theme="@style/Base.Theme.Mekanly" />
     </application>
 
 </manifest>

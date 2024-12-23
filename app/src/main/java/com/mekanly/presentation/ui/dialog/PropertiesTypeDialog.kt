@@ -27,21 +27,26 @@ class PropertiesTypeDialog : Fragment() {
 
         buttons.forEach { button ->
             button.setOnClickListener {
-                // Если текущая кнопка еще не выбрана
-                if (selectedButton != button) {
-                    // Сбрасываем предыдущую выбранную кнопку
-                    selectedButton?.setBackgroundResource(R.drawable.emlakler_btn_bg)
-
-                    // Устанавливаем новую выбранную кнопку
-                    selectedButton = button
-                    button.setBackgroundResource(R.drawable.selected_emlakler_btn_bg)
-                }
-
-
+                handleButtonClick(button)
             }
         }
 
         return binding.root
+    }
+
+    private fun handleButtonClick(button: View) {
+        if (selectedButton == button) {
+            // Если нажали на ту же кнопку дважды, сбрасываем фон
+            button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+            selectedButton = null
+        } else {
+            // Сбрасываем предыдущий выбранный фон
+            selectedButton?.setBackgroundResource(R.drawable.emlakler_btn_bg)
+
+            // Устанавливаем фон для новой выбранной кнопки
+            button.setBackgroundResource(R.drawable.selected_emlakler_btn_bg)
+            selectedButton = button
+        }
     }
 }
 
