@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mekanly.presentation.ui.fragments.businessProfiles.BusinessProfilesSubFragment
-import com.mekanly.presentation.ui.fragments.flow.FlowFragment
+import com.mekanly.presentation.ui.fragments.flow.FragmentHome
 
 class BildirishlerimTabLayout (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
@@ -17,7 +17,7 @@ class BildirishlerimTabLayout (fragmentActivity: FragmentActivity) : FragmentSta
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> BusinessProfilesSubFragment()
-            else -> FlowFragment()
+            else -> FragmentHome()
         }
     }
 }

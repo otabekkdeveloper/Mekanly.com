@@ -3,7 +3,7 @@ package com.mekanly.presentation.ui.adapters.pagerAdapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.presentation.ui.fragments.flow.FlowFragment
+import com.mekanly.presentation.ui.fragments.flow.FragmentHome
 import com.mekanly.FourthFragment
 import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
@@ -17,12 +17,12 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> FlowFragment()
+            0 -> FragmentHome()
             1 -> SearchFragment()
             2 -> SatyjylarFragment()
             3 -> FourthFragment()
             4 -> ProfileFragment()
-            else -> FlowFragment()
+            else -> FragmentHome()
         }
     }
 }

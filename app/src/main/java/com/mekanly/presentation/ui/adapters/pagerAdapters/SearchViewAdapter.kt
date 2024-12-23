@@ -3,7 +3,7 @@ package com.mekanly.presentation.ui.adapters.pagerAdapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.presentation.ui.fragments.flow.FlowFragment
+import com.mekanly.presentation.ui.fragments.flow.FragmentHome
 import com.mekanly.presentation.ui.fragments.search.SearchSubFragment
 
 class SearchViewAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
@@ -17,7 +17,7 @@ class SearchViewAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdap
             0 -> SearchSubFragment()
             1 -> SearchSubFragment()
 
-            else -> FlowFragment()
+            else -> FragmentHome()
         }
     }
 }

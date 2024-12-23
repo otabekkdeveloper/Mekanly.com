@@ -8,36 +8,33 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
 import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
 import com.mekanly.databinding.FragmentHomeBinding
+import com.mekanly.presentation.ui.fragments.flow.VMHome
 
-class HomeFragment : Fragment() {
+class FragmentFlow : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        // Настраиваем ViewPager2 с адаптером
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
 
-        // Связываем TabLayout с ViewPager2 и добавляем текст и иконки для каждой вкладки
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> {
                     tab.text = "Baş sahypa"
-                    tab.setIcon(R.drawable.house_logo) // Обычная иконка
+                    tab.setIcon(R.drawable.house_logo)
                 }
                 1 -> {
                     tab.text = "Emläkler"

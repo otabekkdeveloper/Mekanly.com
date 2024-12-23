@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 object ApiClient {
-    private const val BASE_URL = "https://mekanly.com.tm/api/" // базовый URL API
+    private const val BASE_URL = "https://mekanly.com.tm/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
