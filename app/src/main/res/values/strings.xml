@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Mekanly</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_no_content">Maglumat ýok</string>
+    <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
+    <string name="error_no_internet">Internet elýeter däl</string>
 </resources>

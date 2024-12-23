@@ -18,6 +18,11 @@
     </style>
 
 
+    <style name="TextRegular14" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
 
 
 
