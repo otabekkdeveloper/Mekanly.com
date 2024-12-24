@@ -27,16 +27,20 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true">
+
+        </activity> <!-- MainActivity без intent-filter -->
+        <activity
+            android:name=".presentation.ui.activities.main.MainActivity"
+            android:exported="true"
+            android:theme="@style/Base.Theme.Mekanly" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity без intent-filter -->
-        <activity
-            android:name=".presentation.ui.activities.main.MainActivity"
-            android:exported="false"
-            android:theme="@style/Base.Theme.Mekanly" />
+
+        </activity>
     </application>
 
 </manifest>
