@@ -9,6 +9,7 @@
     <color name="bg_blue_one">#2669FF</color>
     <color name="bg_blue_two">#457EFE</color>
     <color name="bg_blue_three">#8DB0FE</color>
+    <color name="grey_text_color">#6A6A6A</color>
     <color name="bg_blue_four">#D3E0FE</color>
     <color name="text_color">#384CFF</color>
     <color name="text_color_white">#E4E4E4</color>

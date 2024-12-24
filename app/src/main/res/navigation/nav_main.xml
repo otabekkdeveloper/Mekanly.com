@@ -5,22 +5,16 @@
     android:id="@+id/nav_main"
     app:startDestination="@id/signUpFragment">
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.mekanly.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/signUpFragment"
         android:name="com.mekanly.login.SignUpFragment"
         android:label="SignUpFragment" >
         <action
-            android:id="@+id/action_signUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_signUpFragment_to_fragmentConfirmation"
+            app:destination="@id/fragmentConfirmation" />
     </fragment>
-
+    <fragment
+        android:id="@+id/fragmentConfirmation"
+        android:name="com.mekanly.login.FragmentConfirmation"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
 </navigation>

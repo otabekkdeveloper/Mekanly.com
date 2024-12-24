@@ -36,26 +36,17 @@ class SignUpFragment : Fragment() {
 
     private fun initListeners() {
         binding.agzaBol.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+//            findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
-        binding.btnLogin.setOnClickListener {
-            if (binding.inputPhone.text.isEmpty() || binding.inputPhone.text.length < 4) {
-                binding.inputPhone.error = "Please write your phone number"
-                return@setOnClickListener
-            }
 
-            if (binding.inputPassword.text.isEmpty() || binding.inputPassword.text.length < 4) {
-                binding.inputPassword.error = "Please write your password"
-                return@setOnClickListener
-            }
 
-            binding.btnLogin.setOnClickListener {
-                val intent = Intent(activity, MainActivity::class.java)
-                startActivity(intent)
+
+            binding.btnConfimation.setOnClickListener {
+                findNavController().navigate(R.id.action_signUpFragment_to_fragmentConfirmation)
 
             }
         }
     }
 
 
-}
+
