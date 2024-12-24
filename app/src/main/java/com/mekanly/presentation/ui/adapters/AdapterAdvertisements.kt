@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.BildirishlerimData
 
-class Bildirishlerim1(private val items: List<BildirishlerimData>) : RecyclerView.Adapter<Bildirishlerim1.CategoryViewHolder>() {
+class AdapterAdvertisements(private val items: List<BildirishlerimData>) : RecyclerView.Adapter<AdapterAdvertisements.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val button: Button = view.findViewById(R.id.btn_like) // Настроить кнопку здесь

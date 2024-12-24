@@ -18,7 +18,7 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageViewSatyjylar"
-            android:src="@drawable/image_house_post"
+            android:src="@drawable/placeholder"
             android:layout_width="match_parent"
             app:riv_corner_radius="4dp"
             android:layout_height="150dp"

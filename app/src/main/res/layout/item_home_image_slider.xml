@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/image1"
+        android:src="@drawable/placeholder"
         app:riv_corner_radius="10dp" />
 
     <!-- ImageView with specific size -->
@@ -20,7 +20,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/rowach_mebel_logo" />
+        android:background="@drawable/placeholder" />
 
     <!-- TextView for advertising label -->
     <TextView

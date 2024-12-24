@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
-import com.mekanly.presentation.ui.adapters.Bildirishlerim1
+import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.data.BildirishlerimData
 import com.mekanly.databinding.FragmentBildirshlerimOneBinding
 
@@ -23,108 +23,108 @@ class BusinessProfilesSubFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         val categories = listOf(
             BildirishlerimData(
-                R.drawable.satyjylar_one,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_two,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_three,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_four,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_one,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_two,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_three,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_four,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_one,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_two,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_three,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_four,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_one,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_two,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_three,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_four,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_one,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_two,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_three,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
             BildirishlerimData(
-                R.drawable.satyjylar_four,
+                R.drawable.placeholder,
                 "Emlak",
                 "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"
             ),
         )
 
-        binding.recyclerView.adapter = Bildirishlerim1(categories)
+        binding.recyclerView.adapter = AdapterAdvertisements(categories)
         return binding.root
     }
 

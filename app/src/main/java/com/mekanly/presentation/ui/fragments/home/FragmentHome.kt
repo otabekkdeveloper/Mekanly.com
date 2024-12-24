@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mekanly.data.constants.Constants
+import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentFlowBinding
@@ -38,7 +40,7 @@ class FragmentHome : Fragment() {
                 when(it){
                     is ResponseBodyState.Error ->{
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), it.error as String, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getErrorMessageUpToType(requireContext(),it.error as Int), Toast.LENGTH_SHORT).show()
                     }
                     ResponseBodyState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

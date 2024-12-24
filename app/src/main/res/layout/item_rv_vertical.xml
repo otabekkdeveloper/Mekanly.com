@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:minHeight="230dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/rv_vertical_home_page"
+            android:src="@drawable/placeholder"
             app:riv_corner_radius="10dp" />
 
 
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
-                android:src="@drawable/image_post_page" />
+                android:src="@drawable/placeholder" />
 
             <TextView
                 android:layout_width="wrap_content"

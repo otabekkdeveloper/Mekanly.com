@@ -26,8 +26,8 @@ class SearchSubFragment : Fragment() {
         // Пример данных
 
         val innerList:MutableList<DataPost> = mutableListOf()
-        val simplePostInHorizontal1 = DataPost(R.drawable.image1,SIMPLE_POST)
-        val simplePostInHorizontal2 = DataPost(R.drawable.search_house_image,SIMPLE_POST)
+        val simplePostInHorizontal1 = DataPost(R.drawable.placeholder,SIMPLE_POST)
+        val simplePostInHorizontal2 = DataPost(R.drawable.placeholder,SIMPLE_POST)
         innerList.add(simplePostInHorizontal1)
         innerList.add(simplePostInHorizontal2)
         innerList.add(simplePostInHorizontal2)
@@ -62,8 +62,8 @@ class SearchSubFragment : Fragment() {
 
 
         val posts:MutableList<DataPost> = mutableListOf()
-        val simplePost1 = DataPost(R.drawable.image1,SIMPLE_POST)
-        val simplePost2 = DataPost(R.drawable.search_house_image,SIMPLE_POST)
+        val simplePost1 = DataPost(R.drawable.placeholder,SIMPLE_POST)
+        val simplePost2 = DataPost(R.drawable.placeholder,SIMPLE_POST)
         val listedPost1 = DataPost(type=LISTED_POST, inner = innerList)
         
         posts.add(simplePost2)
