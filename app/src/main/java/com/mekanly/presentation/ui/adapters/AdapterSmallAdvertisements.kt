@@ -5,25 +5,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
-import com.mekanly.databinding.ItemPropertyBinding
+import com.mekanly.databinding.ItemAdvSmallBinding
 
-class PropertyAdapter(private val properties: List<DataHouse>) :
-    RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
+class AdapterSmallAdvertisements(private val properties: List<DataHouse>) :
+    RecyclerView.Adapter<AdapterSmallAdvertisements.PropertyViewHolder>() {
 
-    inner class PropertyViewHolder(private val binding: ItemPropertyBinding) :
+    inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
         fun bind(property: DataHouse) {
             binding.apply {
-                propertyName.text = property.name
-                propertyPrice.text = "Price: ${property.price} TMT"
-                propertyLocation.text = "Location: ${property.location.name}, ${property.location.parent_name}"
-
+                tvMainTitle.text = property.name
+                tvPrice.text = "${property.price} TMT"
+                tvAddressTime.text =
+                    "Location: ${property.location.name}, ${property.location.parent_name}"
+                tvDescription.text = property.description
                 if (property.images.isNotEmpty()) {
                     Glide.with(itemView.context)
                         .load(property.images[0].url)
+                        .placeholder(R.drawable.placeholder)
                         .into(propertyImage)
                 }
             }
@@ -31,7 +34,7 @@ class PropertyAdapter(private val properties: List<DataHouse>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
-        val binding = ItemPropertyBinding.inflate(
+        val binding = ItemAdvSmallBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

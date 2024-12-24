@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentFlowBinding
-import com.mekanly.presentation.ui.adapters.PropertyAdapter
+import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
 class FragmentHome : Fragment() {
     private lateinit var binding: FragmentFlowBinding
-    private lateinit var propertyAdapter: PropertyAdapter
+    private lateinit var propertyAdapter: AdapterSmallAdvertisements
 
     private val viewModel: VMHome by viewModels()
 
@@ -55,7 +55,7 @@ class FragmentHome : Fragment() {
     }
 
     private fun setAdapter(dataResponse: List<DataHouse>) {
-        propertyAdapter = PropertyAdapter(dataResponse)
+        propertyAdapter = AdapterSmallAdvertisements(dataResponse)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.adapter = propertyAdapter
     }

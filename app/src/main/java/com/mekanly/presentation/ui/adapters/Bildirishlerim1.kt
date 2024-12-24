@@ -13,14 +13,14 @@ import com.mekanly.data.BildirishlerimData
 class Bildirishlerim1(private val items: List<BildirishlerimData>) : RecyclerView.Adapter<Bildirishlerim1.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val button: Button = view.findViewById(R.id.button) // Настроить кнопку здесь
+        val button: Button = view.findViewById(R.id.btn_like) // Настроить кнопку здесь
         val imageView: ImageView = view.findViewById(R.id.imageViewBildirishlerim)
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)
         val subtitleTextView: TextView = view.findViewById(R.id.subtitleTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_bildirshlerim, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_adv_big, parent, false)
         return CategoryViewHolder(view)
     }
 
