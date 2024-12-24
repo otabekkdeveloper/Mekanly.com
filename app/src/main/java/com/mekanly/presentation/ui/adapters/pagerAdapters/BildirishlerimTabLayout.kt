@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mekanly.presentation.ui.fragments.businessProfiles.BusinessProfilesSubFragment
-import com.mekanly.presentation.ui.fragments.flow.FragmentHome
+import com.mekanly.presentation.ui.fragments.home.FragmentHome
 
 class BildirishlerimTabLayout (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 

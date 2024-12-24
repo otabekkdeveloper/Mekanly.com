@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.home
+package com.mekanly.presentation.ui.fragments.flow
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,14 +8,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
 import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
 import com.mekanly.databinding.FragmentHomeBinding
-import com.mekanly.presentation.ui.fragments.flow.VMHome
 
 class FragmentFlow : Fragment() {
     private lateinit var binding: FragmentHomeBinding

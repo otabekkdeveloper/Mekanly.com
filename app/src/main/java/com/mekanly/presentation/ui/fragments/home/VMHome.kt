@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.flow
+package com.mekanly.presentation.ui.fragments.home
 
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.responseBody.ResponseBodyState
