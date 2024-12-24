@@ -56,19 +56,17 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_phone"
-
                     android:layout_width="match_parent"
                     android:textColorHint="@color/text_color_grey"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:hint="Telefon belgiňiz"
+                    android:hint="Elektron poçtaňyz"
                     android:inputType="text"
                     android:textSize="16sp" />
 
 
                 <CheckBox
                     android:id="@+id/cbHemmesi"
-                    android:buttonTint="@color/text_color_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -80,7 +78,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_confimation"
+                    android:id="@+id/btnConfirmation"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginHorizontal="33dp"
@@ -124,7 +122,7 @@
                 </LinearLayout>
 
                 <FrameLayout
-                    android:id="@+id/fragmentMail"
+                    android:id="@+id/signUp"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/ripple_button_gradient"
@@ -134,7 +132,7 @@
                     android:layout_marginTop="17dp">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="Elektron poçta"
+                        android:text="Telefon nomer"
                         android:textColor="@color/text_color"
                         android:textSize="16sp"
                         android:textStyle="bold"

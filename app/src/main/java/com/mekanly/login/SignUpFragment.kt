@@ -35,18 +35,20 @@ class SignUpFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.agzaBol.setOnClickListener {
-//            findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+        binding.fragmentMail.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_fragmentMail)
         }
 
 
 
-            binding.btnConfimation.setOnClickListener {
-                findNavController().navigate(R.id.action_signUpFragment_to_fragmentConfirmation)
+        binding.btnConfimation.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_fragmentConfirmation)
 
-            }
         }
+
+
     }
+}
 
 
 
