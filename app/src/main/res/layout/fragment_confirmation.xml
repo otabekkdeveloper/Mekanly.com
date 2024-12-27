@@ -22,6 +22,7 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_bold"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Tassyklama"
@@ -56,6 +57,7 @@
             android:layout_width="match_parent"
             android:textColor="@color/text_color_grey"
             android:layout_marginTop="25dp"
+            android:fontFamily="@font/manrope_regular"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Telefon belgiňizi tassyklamak üçin +99364652712 \n belgiden +993 61733733 belgä boş sms ugradyň. \n Ugradanyňyzdan soň biraz wagt garaşyň."
@@ -67,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
+            android:fontFamily="@font/manrope_bold"
             android:background="@drawable/bg_color_app"
             android:text="boş sms Ugratmak"
             android:textColor="@color/white" />
@@ -77,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/manrope_bold"
             android:text="Täzeden synanyşmak"
             android:textColor="@color/text_color_grey"
             android:gravity="center"/>

@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/manrope_bold"
         android:layout_marginBottom="8dp"
         android:background="#729AF4"
         android:paddingHorizontal="2dp"

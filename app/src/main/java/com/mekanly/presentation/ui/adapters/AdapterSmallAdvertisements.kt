@@ -9,7 +9,7 @@ import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.databinding.ItemAdvSmallBinding
 
-class AdapterSmallAdvertisements(private val properties: List<DataHouse>) :
+class   AdapterSmallAdvertisements(private val properties: List<DataHouse>) :
     RecyclerView.Adapter<AdapterSmallAdvertisements.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :

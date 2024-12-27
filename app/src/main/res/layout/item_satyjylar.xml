@@ -28,6 +28,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_marginStart="6dp"
+            android:fontFamily="@font/manrope_bold"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@color/text_color_grey"
@@ -37,6 +38,7 @@
         <TextView
             android:id="@+id/subtitleTextView"
             android:layout_width="match_parent"
+            android:fontFamily="@font/manrope_regular"
             android:layout_marginStart="6dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"

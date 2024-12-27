@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/manrope_bold"
                 android:text="Ulgama girmek"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -56,7 +57,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_phone"
-
+                    android:fontFamily="@font/manrope_bold"
                     android:layout_width="match_parent"
                     android:textColorHint="@color/text_color_grey"
                     android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
                     android:id="@+id/cbHemmesi"
                     android:buttonTint="@color/text_color_grey"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/text_color_grey"
@@ -83,6 +85,7 @@
                     android:id="@+id/btn_confimation"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:fontFamily="@font/manrope_bold"
                     android:layout_marginHorizontal="33dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/bg_color_app"
@@ -137,6 +140,7 @@
                         android:text="Elektron poçta"
                         android:textColor="@color/text_color"
                         android:textSize="16sp"
+                        android:fontFamily="@font/manrope_bold"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:layout_height="wrap_content"/>

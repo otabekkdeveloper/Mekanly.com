@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/manrope_bold"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:text="Remont görnüşi"
@@ -28,6 +29,7 @@
             android:id="@+id/cbHemmesi"
             android:layoutDirection="rtl"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
             android:layout_height="wrap_content"
             android:text="Hemmesi" />
 
@@ -45,6 +47,7 @@
             android:textColor="@color/black"
             app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
+            android:fontFamily="@font/manrope_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ýewro remont"/>
@@ -55,6 +58,7 @@
             android:textColor="@color/black"
             app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
+            android:fontFamily="@font/manrope_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kosmetiçeskiý"/>
@@ -76,6 +80,7 @@
             app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
             android:layout_height="wrap_content"
             android:text="Dizaýneriskiý"/>
 
@@ -85,6 +90,7 @@
             android:textColor="@color/black"
             app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
+            android:fontFamily="@font/manrope_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gos. remont"/>
@@ -105,6 +111,7 @@
             android:textColor="@color/black"
             app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
+            android:fontFamily="@font/manrope_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Orta"/>
@@ -114,6 +121,7 @@
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
             app:strokeColor="@color/grey"
+            android:fontFamily="@font/manrope_regular"
             app:strokeWidth="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,12 +153,14 @@
             android:id="@+id/btnGoybolsun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
             android:background="@color/color_transparent"
             android:text="GOÝBOLSUN" />
 
         <Button
             android:textColor="@color/black"
             android:id="@+id/btnKabulEt"
+            android:fontFamily="@font/manrope_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/color_transparent"

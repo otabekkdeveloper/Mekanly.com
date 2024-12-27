@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/manrope_bold"
         android:text="Rowaç mebel"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/status"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="@+id/profile_image" />
@@ -35,6 +35,7 @@
     <!-- Статус пользователя -->
     <TextView
         android:id="@+id/status"
+        android:fontFamily="@font/manrope_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gysgaça ady: 12xdg23h3"
@@ -71,6 +72,7 @@
 
         <TextView
             android:id="@+id/textView4"
+            android:fontFamily="@font/manrope_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jaýyňyzy şu ýerden goşuň!"
@@ -84,6 +86,8 @@
             android:id="@+id/textView6"
             android:layout_width="150dp"
             android:layout_height="49dp"
+
+            android:fontFamily="@font/manrope_regular"
             android:layout_marginTop="16dp"
             android:text="Emligiňiz bilen mahabatlandyryň we girdeji gazanyň. Bu aňsat."
             android:textColor="#808080"
@@ -122,6 +126,7 @@
         <!-- Пункты меню -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_language"
+            android:fontFamily="@font/manrope_bold"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,6 +146,7 @@
             android:id="@+id/btn_favorites"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
+            android:fontFamily="@font/manrope_bold"
             android:layout_height="wrap_content"
             android:gravity="start|center"
             android:text="Halanlarym"
@@ -158,6 +164,7 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
             android:gravity="start|center"
             android:text="Teswirler"
             android:textColor="@color/black"
@@ -176,6 +183,7 @@
             android:layout_height="wrap_content"
             android:gravity="start|center"
             android:text="Düzgünnama"
+            android:fontFamily="@font/manrope_bold"
             android:textColor="@color/black"
             app:icon="@drawable/ic_duzgunnama"
             app:iconTint="@color/black" />
@@ -193,6 +201,7 @@
             android:gravity="start|center"
             android:text="Habarlaşmak"
             android:textColor="@color/black"
+            android:fontFamily="@font/manrope_bold"
             app:icon="@drawable/ic_habarlashmak"
             app:iconTint="@color/black" />
 
@@ -209,6 +218,7 @@
             android:gravity="start|center"
             android:text="Kömekçi"
             android:textColor="@color/black"
+            android:fontFamily="@font/manrope_bold"
             app:icon="@drawable/ic_help_octagon"
             app:iconTint="@color/black" />
 
@@ -224,6 +234,7 @@
             android:layout_height="wrap_content"
             android:gravity="start|center"
             android:text="Ulgamdan çykmak"
+            android:fontFamily="@font/manrope_bold"
             android:textColor="@color/black"
             app:icon="@drawable/ic_log_out"
             app:iconTint="@color/black" />
