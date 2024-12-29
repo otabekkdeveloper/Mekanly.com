@@ -4,6 +4,7 @@ package com.mekanly.data.retrofit
 import com.mekanly.data.dataModels.DataUser
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
+import com.mekanly.data.responseBody.ResponseBanners
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.data.responseBody.ResponseHouses
 import com.mekanly.data.responseBody.ResponseRegister
@@ -33,5 +34,8 @@ interface ApiService {
     fun login(
 @Body requestBody:RequestBodyLogin
     ):Call<ResponseBody>
+
+    @GET("/api/v1/banners")
+    fun getBanners():Call<ResponseBanners>
 }
 

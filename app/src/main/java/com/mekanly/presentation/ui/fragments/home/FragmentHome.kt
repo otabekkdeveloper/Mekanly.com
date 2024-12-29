@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.data.constants.Constants
+import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
@@ -39,8 +40,14 @@ class FragmentHome : Fragment() {
             viewModel.homeState.collectLatest {
                 when(it){
                     is ResponseBodyState.Error ->{
-                        binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), getErrorMessageUpToType(requireContext(),it.error as Int), Toast.LENGTH_SHORT).show()
+                        if (it.error==4){
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(requireContext(), getErrorMessageUpToType(requireContext(), UNSUCCESSFUL_RESPONSE),Toast.LENGTH_SHORT).show()
+                        }else{
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(requireContext(), getErrorMessageUpToType(requireContext(),it.error as Int), Toast.LENGTH_SHORT).show()
+
+                        }
                     }
                     ResponseBodyState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
