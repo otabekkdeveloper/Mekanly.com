@@ -23,8 +23,6 @@ class LanguageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLanguageBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_language, container, false)
 
         // Инициализация PreferencesHelper
         preferencesHelper = PreferencesHelper(requireContext())
@@ -33,10 +31,10 @@ class LanguageFragment : Fragment() {
         val currentLanguage = preferencesHelper.getLanguage() ?: "tk" // Язык по умолчанию
 
         // Установить выбранную радиокнопку
-        val radioGroup = view.findViewById<RadioGroup>(R.id.languageRadioGroup)
+        val radioGroup = binding.languageRadioGroup
         when (currentLanguage) {
-            "ru" -> view.findViewById<RadioButton>(R.id.radioRussian).isChecked = true
-            "tk" -> view.findViewById<RadioButton>(R.id.radioTurkmen).isChecked = true
+            "ru" -> binding.radioRussian.isChecked = true
+            "tk" -> binding.radioTurkmen.isChecked = true
         }
 
         // Обработчик выбора языка
