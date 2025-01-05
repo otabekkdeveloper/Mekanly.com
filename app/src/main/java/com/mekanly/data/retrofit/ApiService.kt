@@ -32,10 +32,10 @@ interface ApiService {
 
     @POST("/api/login")
     fun login(
-@Body requestBody:RequestBodyLogin
-    ):Call<ResponseBody>
+        @Body requestBody: RequestBodyLogin
+    ): Call<ResponseBody>
 
     @GET("/api/v1/banners")
-    fun getBanners():Call<ResponseBanners>
+    fun getBanners(): Call<ResponseBanners>
 }
 

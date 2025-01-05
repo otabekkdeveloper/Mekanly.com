@@ -44,7 +44,7 @@ class PropertiesTypeDialog : Fragment() {
             selectedButton?.setBackgroundResource(R.drawable.emlakler_btn_bg)
 
             // Устанавливаем фон для новой выбранной кнопки
-            button.setBackgroundResource(R.drawable.selected_emlakler_btn_bg)
+            button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
             selectedButton = button
         }
     }

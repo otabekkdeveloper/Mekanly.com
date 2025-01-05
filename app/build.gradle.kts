@@ -81,5 +81,8 @@ dependencies {
 
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
 
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+
+
 
 }

@@ -22,7 +22,7 @@
         android:backgroundTint="@color/background"
         android:layout_marginBottom="60dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/plus_circle"
+        android:background="@drawable/ic_plus_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -16,13 +16,14 @@ import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentFlowBinding
+import com.mekanly.databinding.FragmentHomeBinding
 import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
 class FragmentHome : Fragment() {
-    private lateinit var binding: FragmentFlowBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var propertyAdapter: AdapterSmallAdvertisements
 
     private val viewModel: VMHome by viewModels()
@@ -30,7 +31,7 @@ class FragmentHome : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFlowBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         observeViewModel()
         return binding.root
     }

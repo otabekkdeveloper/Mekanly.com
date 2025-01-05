@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         app:navGraph="@navigation/nav_flow"
         app:defaultNavHost="true"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_flow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

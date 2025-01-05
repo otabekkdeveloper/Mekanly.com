@@ -24,7 +24,7 @@
                 android:id="@+id/back_btn"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/back_icon" />
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:id="@+id/toolbarTitle"

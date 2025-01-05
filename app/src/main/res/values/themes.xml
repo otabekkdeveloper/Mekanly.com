@@ -31,7 +31,7 @@
 
 
     <style name="CustomPopupMenu" parent="Widget.Material3.PopupMenu">
-        <item name="android:popupBackground">@drawable/rounded_popup_background</item>
+        <item name="android:popupBackground">@drawable/bg_rounded_popup</item>
     </style>
 
     <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
@@ -39,10 +39,9 @@
     </style>
 
 
-    <style name="AppTheme" parent="Theme.Material3.DayNight">
-        <!-- Прочие атрибуты -->
-        <item name="switchStyle">@style/Widget.Material3.CompoundButton.Switch</item>
-    </style>
+
+
+
 
 
 

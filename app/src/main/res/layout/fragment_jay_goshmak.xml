@@ -20,7 +20,7 @@
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/camera_profile_bg"
-        app:icon="@drawable/camera"
+        app:icon="@drawable/ic_camera"
         app:iconGravity="textStart"
         app:iconTint="@color/black"
         android:layout_alignBottom="@+id/imageView2"
@@ -101,7 +101,7 @@
         android:layout_below="@+id/imageView2"
         android:text="Habarlaşmak"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/profile_habarlashmak_bg"
+        android:background="@drawable/bg_contact_profile"
         app:icon="@drawable/ic_teswirler" />
 
 

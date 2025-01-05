@@ -1,9 +1,25 @@
 <resources>
     <string name="app_name">Mekanly</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="error_no_content">Maglumat ýok</string>
     <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
     <string name="error_no_internet">Internet elýeter däl</string>
-    <string name="Dil_saylan">Выберите язык:</string>
-    <string name="kireyne_ofisler">Kireýne ofisler</string>
+    <string name="select_language">Dil saylan:</string>
+    <string name="rent_offices">Kireýne ofisler</string>
+    <string name="splash_gif">splash_gif</string>
+    <string name="language">Dil</string>
+    <string name="favorites">Halanlarym</string>
+    <string name="reviews">Teswirler</string>
+    <string name="rules">Düzgünnama</string>
+    <string name="contact">Habarlaşmak</string>
+    <string name="help">Kömekçi</string>
+    <string name="logout">Ulgamdan çykmak</string>
+    <string name="info_profile">Emligiňiz bilen mahabatlandyryň we girdeji gazanyň. Bu aňsat.</string>
+    <string name="title_profile">Jaýyňyzy şu ýerden goşuň!</string>
+    <string name="add_home">Jaý goşmak</string>
+    <string name="add_a_business_profile">Biznes profile goşmak</string>
+    <string name="home_page">Baş sahypa</string>
+    <string name="properties">Emläkler</string>
+    <string name="business_profile">Biznes profil</string>
+    <string name="menu">Menu</string>
 </resources>

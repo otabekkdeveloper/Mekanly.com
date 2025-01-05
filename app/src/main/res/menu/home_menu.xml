@@ -5,11 +5,11 @@
     <item
         android:id="@+id/menu_item_1"
         android:icon="@drawable/jay_goshmakk"
-        android:title="Jaý goşmak" />
+        android:title="@string/add_home" />
     <item
         android:id="@+id/menu_item_2"
-        android:icon="@drawable/biznes_goshmak"
-        android:title="Biznes profile goşmak"
+        android:icon="@drawable/ic_add_business"
+        android:title="@string/add_a_business_profile"
         />
 
 </menu>

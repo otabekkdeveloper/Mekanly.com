@@ -12,18 +12,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
+import com.mekanly.databinding.FragmentFlowBinding
 import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
-import com.mekanly.databinding.FragmentHomeBinding
 
 class FragmentFlow : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentFlowBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentFlowBinding.inflate(inflater, container, false)
 
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
@@ -31,23 +31,23 @@ class FragmentFlow : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Baş sahypa"
+                    tab.text = getString(R.string.home_page)
                     tab.setIcon(R.drawable.house_logo)
                 }
                 1 -> {
-                    tab.text = "Emläkler"
+                    tab.text = getString(R.string.properties)
                     tab.setIcon(R.drawable.search)
                 }
                 2 -> {
-                    tab.text = "Satyjylar"
-                    tab.setIcon(R.drawable.shop_svgrepo_com)
+                    tab.text = getString(R.string.business_profile)
+                    tab.setIcon(R.drawable.ic_shop)
                 }
                 3 -> {
-                    tab.text = "Halanlarym"
+                    tab.text = getString(R.string.favorites)
                     tab.setIcon(R.drawable.heart_icon)
                 }
                 4 -> {
-                    tab.text = "Menýu"
+                    tab.text = getString(R.string.menu)
                     tab.setIcon(R.drawable.menu_ic)
                 }
             }
@@ -63,7 +63,7 @@ class FragmentFlow : Fragment() {
                 when (tab.position) {
                     0 -> tab.setIcon(R.drawable.house)
                     1 -> tab.setIcon(R.drawable.emlak_bold)
-                    2 -> tab.setIcon(R.drawable.shopping_bold)
+                    2 -> tab.setIcon(R.drawable.ic_shopping_bold)
                     3 -> tab.setIcon(R.drawable.heart_bold)
                     4 -> tab.setIcon(R.drawable.menu_ic)
                 }
@@ -77,7 +77,7 @@ class FragmentFlow : Fragment() {
                 when (tab.position) {
                     0 -> tab.setIcon(R.drawable.house_logo)
                     1 -> tab.setIcon(R.drawable.search)
-                    2 -> tab.setIcon(R.drawable.shop_svgrepo_com)
+                    2 -> tab.setIcon(R.drawable.ic_shop)
                     3 -> tab.setIcon(R.drawable.heart_icon)
                     4 -> tab.setIcon(R.drawable.menu_ic)
                 }

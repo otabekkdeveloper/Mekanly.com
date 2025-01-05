@@ -5,15 +5,26 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.mekanly.LanguageManager
+import com.mekanly.PreferencesHelper
 import com.mekanly.R
 import com.mekanly.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private lateinit var preferencesHelper: PreferencesHelper
+
+
+
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
+        preferencesHelper = PreferencesHelper(this)
+
+        // Установить язык
+        LanguageManager.setLocale(this, preferencesHelper.getLanguage())
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

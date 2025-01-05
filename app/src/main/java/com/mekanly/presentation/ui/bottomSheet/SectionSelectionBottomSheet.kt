@@ -27,13 +27,13 @@ class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.bottomSheetRecyclerView)
 
         val cities = listOf(
-            BottomSheetItem(R.drawable.satlyk_jaylar_icon, "Satlyk jaýlar"),
+            BottomSheetItem(R.drawable.ic_houses_for_sale, "Satlyk jaýlar"),
             BottomSheetItem(R.drawable.kireyne_jaylar, "Kireýne jaýlar"),
             BottomSheetItem(R.drawable.kireyne_otaglar, "Kireýne otaglar"),
             BottomSheetItem(R.drawable.ofis, "Kireýne ofisler"),
-            BottomSheetItem(R.drawable.sowda_emlakler, "Kireýne söwda emläkler"),
-            BottomSheetItem(R.drawable.satlyk_jaylar_icon, "Satlyk söwda emläkler"),
-            BottomSheetItem(R.drawable.beyleki_emlakler, "Beýleki emläkler")
+            BottomSheetItem(R.drawable.ic_commercial_properties, "Kireýne söwda emläkler"),
+            BottomSheetItem(R.drawable.ic_houses_for_sale, "Satlyk söwda emläkler"),
+            BottomSheetItem(R.drawable.ic_other_properties, "Beýleki emläkler")
         )
 
         // Настройка адаптера

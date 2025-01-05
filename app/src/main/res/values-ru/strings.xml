@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mekanly</string>
+    <string name="error_no_content">Maglumat ýok</string>
+    <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
+    <string name="error_no_internet">Internet elýeter däl</string>
+    <string name="select_language">Выберите язык:</string>
+    <string name="rent_offices">Офисы в аренду</string>
+    <string name="splash_gif">splash_gif</string>
+    <string name="language">Язык </string>
+    <string name="favorites">Избранное</string>
+    <string name="reviews">Комментарии</string>
+    <string name="rules">Регулирование</string>
+    <string name="contact">Сообщить</string>
+    <string name="help">Помощник</string>
+    <string name="logout">Выйти </string>
+    <string name="info_profile">Продвигайте свой продукт и получайте доход. Это легко.</string>
+    <string name="title_profile">Добавьте сюда свою \n недвижимость!</string>
+    <string name="add_home">Jaý goşmak</string>
+    <string name="add_a_business_profile">Biznes profile goşmak</string>
+    <string name="home_page">Главная</string>
+    <string name="properties">Поиск</string>
+    <string name="business_profile">Бизнес</string>
+    <string name="menu">Меню</string>
+</resources>
