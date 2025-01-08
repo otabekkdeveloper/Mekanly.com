@@ -67,13 +67,10 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.8.9")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation ("com.squareup.picasso:picasso:2.8")
-    implementation ("com.google.android.material:material:1.10.0")
     //glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     //splash Screen
     implementation ("androidx.core:core-splashscreen:1.0.0")
-    implementation ("com.google.android.material:material:1.11.0")
-    implementation ("com.google.android.material:material:1.9.0")
 
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.3")
@@ -82,6 +79,10 @@ dependencies {
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
 
     implementation ("androidx.core:core-splashscreen:1.0.1")
+
+
+    //material design
+    implementation ("com.google.android.material:material:1.12.0-alpha03")
 
 
 

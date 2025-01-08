@@ -1,6 +1,8 @@
 package com.mekanly.presentation.ui.fragments.filter
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
@@ -19,7 +23,6 @@ import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 
 class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
-
 
 
     override fun onCreateView(
@@ -53,7 +56,8 @@ class FilterFragment : Fragment() {
                 } else {
                     chip.isChecked = false // Сбрасываем состояние текущего чипа
                 }
-            }}
+            }
+        }
 
 
 
@@ -83,7 +87,7 @@ class FilterFragment : Fragment() {
         }
 
         binding.mumkinchilikler.setOnClickListener {
-            MumkinchiliklerDialog()
+            OpportunityDialog()
         }
 
         binding.location.setOnClickListener {
@@ -107,17 +111,102 @@ class FilterFragment : Fragment() {
     }
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun showCustomDialog() {
-        // Инфлейтим кастомный макет диалога
         val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_emlakler, null)
+            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_properties, null)
 
-        // Создаем диалог
         val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
-        // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
+
+        // Список кнопок
+        val buttons = listOf<LinearLayout>(
+            dialogView.findViewById(R.id.btnKwartira),
+            dialogView.findViewById(R.id.btnKottej),
+            dialogView.findViewById(R.id.btnElitka),
+            dialogView.findViewById(R.id.btnPolElitka),
+            dialogView.findViewById(R.id.btnDacha),
+            dialogView.findViewById(R.id.btnPlanJay)
+        )
+
+        // Чекбокс "Выбрать все"
+        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
+
+        // Функция для выбора/отмены выбора всех кнопок
+        fun toggleAllButtons(selectAll: Boolean) {
+            buttons.forEach { button ->
+                if (selectAll) {
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                }
+                else {
+                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+                }
+            }
+        }
+
+
+        buttons.forEach { button ->
+            button.setOnClickListener {
+                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
+
+                    button.setBackgroundResource((R.drawable.emlakler_btn_bg))
+                } else {
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                }
+
+                if (buttons.all {
+                    it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = true
+                }
+
+                if (buttons.all {
+                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = false
+                }
+
+            }
+
+        }
+
+
+
+
+        // Установка обработчика для всех кнопок
+//        buttons.forEach { button ->
+//            button.setOnClickListener {
+//                // Проверяем текущее состояние кнопки
+//                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
+//                    // Если уже выбрано, возвращаем стандартный фон
+//                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+//                } else {
+//                    // Если не выбрано, устанавливаем фон "выбрано"
+//                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+//                }
+//
+//                // Если хотя бы одна кнопка не выбрана, отключаем "Выбрать все"
+//                if (buttons.any {
+//                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+//                    }) {
+//                    cbHemmesi.isChecked = false
+//                }
+//
+//                // Если все кнопки выбраны, включаем "Выбрать все"
+//                if (buttons.all {
+//                        it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+//                    }) {
+//                    cbHemmesi.isChecked = true
+//                }
+//            }
+//        }
+
+        // Обработчик для чекбокса "Выбрать все"
+        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
+            toggleAllButtons(isChecked)
+        }
 
         btnGoybolsun.setOnClickListener {
             Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
@@ -129,15 +218,28 @@ class FilterFragment : Fragment() {
             dialog.dismiss()
         }
 
-        // Пример работы с CheckBox
-        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(requireContext(), "Hemmesi: $isChecked", Toast.LENGTH_SHORT).show()
-        }
-
         dialog.show()
     }
 
+    fun countSelectedButtons(buttons: List<LinearLayout>, context: Context): Int {
+        var count = 0
+        for (button in buttons) {
+            val background = button.background
+            if (background != null) {
+                val drawableId = (background as? android.graphics.drawable.BitmapDrawable)?.bitmap
+                val selectedDrawable =
+                    context.getDrawable(R.drawable.bg_selected_properties_btn) as? android.graphics.drawable.BitmapDrawable
+
+                if (selectedDrawable?.bitmap == drawableId) {
+                    count++
+                }
+            }
+        }
+        return count
+    }
+
+
+    @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
     private fun RemontDialog() {
         // Инфлейтим кастомный макет диалога
         val dialogView =
@@ -150,6 +252,65 @@ class FilterFragment : Fragment() {
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
 
+
+        val buttons = listOf<TextView>(
+            dialogView.findViewById(R.id.euro_remont),
+            dialogView.findViewById(R.id.remont_cosmetic),
+            dialogView.findViewById(R.id.remont_designer),
+            dialogView.findViewById(R.id.gos_remont),
+            dialogView.findViewById(R.id.normal_remont),
+            dialogView.findViewById(R.id.remont_etmeli)
+        )
+
+
+        // Чекбокс "Выбрать все"
+        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
+
+        // Функция для выбора/отмены выбора всех кнопок
+        fun toggleAllButtons(selectAll: Boolean) {
+            buttons.forEach { button ->
+                if (selectAll) {
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                } else {
+                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+                }
+            }
+        }
+
+        // Установка обработчика для всех кнопок
+        buttons.forEach { button ->
+            button.setOnClickListener {
+                // Проверяем текущее состояние кнопки
+                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
+                    // Если уже выбрано, возвращаем стандартный фон
+                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+                } else {
+                    // Если не выбрано, устанавливаем фон "выбрано"
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                }
+
+                // Если хотя бы одна кнопка не выбрана, отключаем "Выбрать все"
+                if (buttons.any {
+                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = false
+                }
+
+                // Если все кнопки выбраны, включаем "Выбрать все"
+                if (buttons.all {
+                        it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = true
+                }
+            }
+        }
+
+        // Обработчик для чекбокса "Выбрать все"
+        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
+            toggleAllButtons(isChecked)
+        }
+
+
         btnGoybolsun.setOnClickListener {
             Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
@@ -160,24 +321,88 @@ class FilterFragment : Fragment() {
             dialog.dismiss()
         }
 
-        // Пример работы с CheckBox
-        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(requireContext(), "Hemmesi: $isChecked", Toast.LENGTH_SHORT).show()
-        }
-
-
 
         dialog.show()
     }
 
-    private fun MumkinchiliklerDialog() {
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun OpportunityDialog() {
         // Инфлейтим кастомный макет диалога
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
 
         // Создаем диалог
         val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
+
+
+        val buttons = listOf<Button>(
+            dialogView.findViewById(R.id.wifi),
+            dialogView.findViewById(R.id.kitchen),
+            dialogView.findViewById(R.id.tv),
+            dialogView.findViewById(R.id.refrigerator),
+            dialogView.findViewById(R.id.washing_machine),
+            dialogView.findViewById(R.id.conditioner),
+            dialogView.findViewById(R.id.bedroom),
+            dialogView.findViewById(R.id.furniture),
+            dialogView.findViewById(R.id.bathroom),
+            dialogView.findViewById(R.id.filtration_system),
+            dialogView.findViewById(R.id.oven),
+            dialogView.findViewById(R.id.grill),
+            dialogView.findViewById(R.id.hot_water),
+            dialogView.findViewById(R.id.working_table),
+            dialogView.findViewById(R.id.kitchen_furniture),
+            dialogView.findViewById(R.id.swimming_pool),
+            dialogView.findViewById(R.id.balcony),
+            dialogView.findViewById(R.id.elevator)
+        )
+
+        // Чекбокс "Выбрать все"
+        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
+
+        // Функция для выбора/отмены выбора всех кнопок
+        fun toggleAllButtons(selectAll: Boolean) {
+            buttons.forEach { button ->
+                if (selectAll) {
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                } else {
+                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+                }
+            }
+        }
+
+        // Установка обработчика для всех кнопок
+        buttons.forEach { button ->
+            button.setOnClickListener {
+                // Проверяем текущее состояние кнопки
+                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
+                    // Если уже выбрано, возвращаем стандартный фон
+                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
+                } else {
+                    // Если не выбрано, устанавливаем фон "выбрано"
+                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
+                }
+
+                // Если хотя бы одна кнопка не выбрана, отключаем "Выбрать все"
+                if (buttons.any {
+                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = false
+                }
+
+                // Если все кнопки выбраны, включаем "Выбрать все"
+                if (buttons.all {
+                        it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
+                    }) {
+                    cbHemmesi.isChecked = true
+                }
+            }
+        }
+
+        // Обработчик для чекбокса "Выбрать все"
+        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
+            toggleAllButtons(isChecked)
+        }
+
 
         // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
@@ -193,11 +418,7 @@ class FilterFragment : Fragment() {
             dialog.dismiss()
         }
 
-        // Пример работы с CheckBox
-        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-        cbHemmesi.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(requireContext(), "Hemmesi: $isChecked", Toast.LENGTH_SHORT).show()
-        }
+
 
         dialog.show()
     }

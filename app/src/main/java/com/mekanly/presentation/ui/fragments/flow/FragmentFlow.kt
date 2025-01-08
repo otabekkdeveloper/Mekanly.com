@@ -88,8 +88,8 @@ class FragmentFlow : Fragment() {
             }
         })
 
-        // Отключение свайпа для ViewPager2
-        disableSwipe(binding.viewPager)
+//        // Отключение свайпа для ViewPager2
+//        disableSwipe(binding.viewPager)
 
         // Настройка действия нажатия на логотип
         binding.logoPlus.setOnClickListener { view ->

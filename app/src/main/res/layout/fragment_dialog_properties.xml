@@ -49,7 +49,7 @@
             android:layout_height="63dp"
             android:layout_columnWeight="1"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_selected_properties_btn"
+            android:background="@drawable/emlakler_btn_bg"
             android:orientation="vertical"
             android:paddingStart="12dp">
 
@@ -74,6 +74,7 @@
         <LinearLayout
             android:id="@+id/btnKottej"
             android:layout_width="107dp"
+            android:background="@drawable/emlakler_btn_bg"
             android:layout_height="63dp"
             android:layout_marginStart="8dp"
             android:orientation="vertical"

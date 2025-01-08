@@ -39,29 +39,103 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
 
-        <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
-            android:fontFamily="@font/manrope_regular"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ýewro remont"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginStart="6dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
-            android:fontFamily="@font/manrope_regular"
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:id="@+id/euro_remont"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Ýewro remont"/>
+
+            <TextView
+                android:id="@+id/remont_cosmetic"
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Kosmetiçeskiý"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kosmetiçeskiý"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:id="@+id/remont_designer"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Dizaýneriskiý"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:id="@+id/gos_remont"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Gos. remont"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:id="@+id/normal_remont"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Orta"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:fontFamily="@font/manrope_regular"
+                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/remont_etmeli"
+                android:background="@drawable/emlakler_btn_bg"
+                android:text="Remont etmeli"/>
+
+
+
+        </LinearLayout>
+
+
 
 
 
@@ -74,27 +148,6 @@
         android:orientation="horizontal">
 
 
-        <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/manrope_regular"
-            android:layout_height="wrap_content"
-            android:text="Dizaýneriskiý"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginStart="6dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
-            android:fontFamily="@font/manrope_regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gos. remont"/>
-
 
 
 
@@ -104,28 +157,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-
-        <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
-            android:fontFamily="@font/manrope_regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Orta"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_marginStart="6dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            app:strokeColor="@color/grey"
-            android:fontFamily="@font/manrope_regular"
-            app:strokeWidth="1dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remont etmeli"/>
 
 
 
