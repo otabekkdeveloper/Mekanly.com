@@ -18,7 +18,9 @@
     <color name="color_bg_search_fragment">#4D8BBF</color>
     <color name="line_divider">#DDDDDD</color>
     <color name="white_bg">#F3F8FF</color>
-    <color name="grey">#DDDDDD</color>
+    <color name="default_grey">#DDDDDD</color>
+    <color name="selected_solid_color">#F2F2F2</color>
+    <color name="default_stroke_color">#CCCCCC</color>
 
 
 
