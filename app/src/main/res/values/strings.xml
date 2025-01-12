@@ -22,4 +22,23 @@
     <string name="properties">Emläkler</string>
     <string name="business_profile">Biznes profil</string>
     <string name="menu">Menu</string>
+    <string name="filter">Filterler</string>
+    <string name="section">Bölüm</string>
+    <string name="not_selected">Saýlanmadyk</string>
+    <string name="location_text">Ýerleşýän ýeri</string>
+    <string name="rooms_number">Otag sany</string>
+    <string name="all">Ählisi</string>
+    <string name="floor_number">Gat sany</string>
+    <string name="repair">Remont</string>
+    <string name="possibilities">Mümkinçilikler</string>
+    <string name="show_newly_added_properties">Täze goşulan emläkleri görkez</string>
+    <string name="property_type">Emläk görnüşi</string>
+    <string name="general_area">Umumy meýdany:</string>
+    <string name="at_least">iň az</string>
+    <string name="the_most">iň köp</string>
+    <string name="price">Bahа</string>
+    <string name="the_cheapest">iň arzan</string>
+    <string name="the_most_expensive">iň gymmat</string>
+    <string name="organize">Tertipleme</string>
+    <string name="search">Gözle</string>
 </resources>

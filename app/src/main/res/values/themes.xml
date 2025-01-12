@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Mekanly" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-
         <item name="colorPrimary">@color/background</item>
         <item name="colorPrimaryDark">@color/bg_blue_one</item>
         <item name="colorAccent">@color/bg_blue_two</item>

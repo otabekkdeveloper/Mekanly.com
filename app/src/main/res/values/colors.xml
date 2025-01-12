@@ -21,6 +21,12 @@
     <color name="default_grey">#DDDDDD</color>
     <color name="selected_solid_color">#F2F2F2</color>
     <color name="default_stroke_color">#CCCCCC</color>
+    <color name="unchecked_thumb">#FFFFFF</color>
+    <color name="checked_thumb">#FFFFFF</color>
+    <color name="unchecked_track">#B1B1B1</color>
+    <color name="checked_track">#302F2F</color>
+
+
 
 
 

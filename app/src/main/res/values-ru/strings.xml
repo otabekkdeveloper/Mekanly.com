@@ -22,4 +22,23 @@
     <string name="properties">Поиск</string>
     <string name="business_profile">Бизнес</string>
     <string name="menu">Меню</string>
+    <string name="filter">Фильтры</string>
+    <string name="section">Раздел</string>
+    <string name="not_selected">Не выбрано</string>
+    <string name="location_text">Расположение</string>
+    <string name="rooms_number">Количество комнат</string>
+    <string name="all">Bсе</string>
+    <string name="floor_number">Номер этажа</string>
+    <string name="repair">Ремонт</string>
+    <string name="possibilities">Возможности</string>
+    <string name="show_newly_added_properties">Показать недавно добавленные</string>
+    <string name="property_type">Тип недвижимости</string>
+    <string name="general_area">Общая площадь:</string>
+    <string name="at_least">по меньшей мере</string>
+    <string name="the_most">максимум</string>
+    <string name="price">Цена</string>
+    <string name="the_cheapest">самый дешевый</string>
+    <string name="the_most_expensive">самый дорогой</string>
+    <string name="organize">Организация</string>
+    <string name="search">Поиск</string>
 </resources>

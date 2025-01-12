@@ -1,59 +1,57 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:theme="@style/ThemeOverlay.Material3.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/back_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_back" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
 
-            <TextView
-                android:id="@+id/toolbarTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:text="Filterler"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/back"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_back"
+                    app:iconSize="30dp"
+                    app:iconGravity="textTop"
+                    app:iconTint="@color/white" />
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants"
-        android:focusableInTouchMode="true"
-        android:paddingTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/filter"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
             <!-- Dropdown for Bölüm -->
 
@@ -69,19 +67,21 @@
                     android:fontFamily="@font/manrope_bold"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
-                    android:text="Bölüm"
+                    android:text="@string/section"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:id="@+id/bolumTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/text_color_grey"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
 
@@ -106,10 +106,11 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/manrope_bold"
                     android:paddingStart="16dp"
-                    android:text="Ýerleşýän ýeri"
+                    android:text="@string/location_text"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:id="@+id/locationText"
@@ -117,9 +118,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope_regular"
                     android:paddingStart="16dp"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/text_color_grey"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
 
@@ -136,16 +138,18 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/manrope_bold"
                 android:paddingStart="16dp"
-                android:text="Otag sany"
+                android:text="@string/rooms_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
 
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:background="@color/color_transparent"
                 android:paddingTop="8dp"
                 android:scrollbars="none">
 
@@ -156,9 +160,11 @@
                     android:fadeScrollbars="false">
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/allChips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ählisi"
+                        android:text="@string/all"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp" />
@@ -168,89 +174,111 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="11"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
@@ -260,10 +288,11 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/manrope_bold"
                 android:paddingStart="16dp"
-                android:text="Gat sany"
+                android:text="@string/floor_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
 
 
             <HorizontalScrollView
@@ -281,92 +310,125 @@
 
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/allChipsTwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1"
+                        android:text="@string/all"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp" />
+
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="11"
+                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
-                        app:chipStrokeWidth="1dp" />
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
@@ -374,20 +436,14 @@
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/customSwitchOne"
                 style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:fontFamily="@font/manrope_bold"
-                android:paddingHorizontal="20dp"
-                android:text="Diňe  statusly jaýlary görkez"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track" />
 
-
-
-            <!--            <com.google.android.material.divider.MaterialDivider-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="0.5dp"-->
-            <!--                android:layout_marginTop="8dp"-->
-            <!--                app:dividerColor="@color/line_divider" />-->
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/customSwitchTwo"
@@ -396,8 +452,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/manrope_bold"
                 android:paddingHorizontal="20dp"
-                android:text="Täze goşulan emläkleri görkez"
-                android:textStyle="bold" />
+                android:text="@string/show_newly_added_properties"
+                android:textStyle="bold"
+                app:track="@drawable/switch_track" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -420,7 +477,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
-                    android:text="Emläk görnüşi"
+                    android:text="@string/property_type"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -432,7 +489,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
                     android:gravity="end"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -442,7 +499,8 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon" />
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
 
 
             </LinearLayout>
@@ -468,7 +526,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
-                    android:text="Remont"
+                    android:text="@string/repair"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -480,7 +538,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
                     android:gravity="end"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -490,7 +548,8 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon" />
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
@@ -513,7 +572,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
-                    android:text="Mümkinçilikler"
+                    android:text="@string/possibilities"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -525,7 +584,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
                     android:gravity="end"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -535,7 +594,8 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon" />
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 
@@ -550,8 +610,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingStart="16dp"
-                android:text="Umumy meýdany:"
-                android:textSize="16sp" />
+                android:text="@string/general_area"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
 
 
             <LinearLayout
@@ -565,29 +626,31 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextText"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_regular"
-                    android:hint="iň az"
+                    android:hint="@string/at_least"
                     android:textColorHint="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="NestedWeights" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="_"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    tools:ignore="HardcodedText" />
 
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTwoTwo"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_regular"
-                    android:hint="iň köp"
+                    android:hint="@string/the_most"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
 
@@ -600,8 +663,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingStart="16dp"
-                android:text="Bahа"
-                android:textSize="16sp" />
+                android:text="@string/price"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
 
 
             <LinearLayout
@@ -615,29 +679,31 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextOne"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_regular"
-                    android:hint="iň arzan"
+                    android:hint="@string/the_cheapest"
                     android:textColorHint="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="NestedWeights" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="_"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    tools:ignore="HardcodedText" />
 
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTwo"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_regular"
-                    android:hint="iň gymmat"
+                    android:hint="@string/the_most_expensive"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
 
@@ -663,7 +729,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
-                    android:text="Tertipleme"
+                    android:text="@string/organize"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -675,7 +741,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/manrope_bold"
                     android:gravity="end"
-                    android:text="Saýlanmadyk"
+                    android:text="@string/not_selected"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -685,7 +751,8 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon" />
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
 
 
             </LinearLayout>
@@ -704,11 +771,17 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/bg_gozle_btn"
-                android:text="Gözle"
-                android:textColor="@color/white" />
+                android:text="@string/search"
+                android:textColor="@color/white"
+                tools:ignore="TooManyViews" />
 
 
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
 
