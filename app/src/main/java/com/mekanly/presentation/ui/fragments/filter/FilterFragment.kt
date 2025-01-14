@@ -2,7 +2,9 @@ package com.mekanly.presentation.ui.fragments.filter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +16,16 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.mekanly.R
+import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentFilterBinding
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
+import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
 
 
 class FilterFragment : Fragment() {
@@ -28,23 +35,9 @@ class FilterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFilterBinding.inflate(inflater, container, false)
-
-
-
         initListeners()
         chipGroups()
-
-
-
-
-
-
-
-
-
-
-
-
+        switchDesign()
         return binding.root
     }
 
@@ -84,6 +77,57 @@ class FilterFragment : Fragment() {
             findNavController().navigate(R.id.action_filterFragment_to_fragmentLocation)
         }
     }
+
+
+
+    private fun switchDesign(){
+
+
+
+        // Слушатель изменений состояния
+        binding.customSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+
+                // Установить цвет для "включённого" состояния
+                binding.customSwitch.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.black)
+                binding.customSwitch.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitch.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+                binding.customSwitch.thumbIconSize = 200
+
+            } else {
+
+                // Установить цвет для "выключенного" состояния
+                binding.customSwitch.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
+                binding.customSwitch.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitch.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+
+            }
+        }
+
+
+        // Слушатель изменений состояния
+        binding.customSwitchTwo.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+
+                // Установить цвет для "включённого" состояния
+                binding.customSwitchTwo.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.black)
+                binding.customSwitchTwo.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitchTwo.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+
+
+            } else {
+
+                // Установить цвет для "выключенного" состояния
+                binding.customSwitchTwo.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
+                binding.customSwitchTwo.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitchTwo.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+
+            }
+        }}
+
+
+
+
 
 
     private fun chipGroups() {
@@ -164,74 +208,50 @@ class FilterFragment : Fragment() {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun showCustomDialog() {
-        val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_properties, null)
+        val currentContext = requireContext() // Убедитесь, что контекст доступен
+        val dialogView = LayoutInflater.from(currentContext).inflate(R.layout.fragment_dialog_properties, null)
 
-        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
+        val dialog = AlertDialog.Builder(currentContext)
+            .setView(dialogView)
+            .create()
 
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
+        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.rv_properties)
 
-        val buttons = listOf<LinearLayout>(
-            dialogView.findViewById(R.id.btnKwartira),
-            dialogView.findViewById(R.id.btnKottej),
-            dialogView.findViewById(R.id.btnElitka),
-            dialogView.findViewById(R.id.btnPolElitka),
-            dialogView.findViewById(R.id.btnDacha),
-            dialogView.findViewById(R.id.btnPlanJay)
-        )
-
-        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-
-        fun toggleAllButtons() {
-            if (cbHemmesi.isChecked) {
-                buttons.forEach { button ->
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                }
-            } else {
-                buttons.forEach { button ->
-                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
-                }
-            }
-
-        }
-
-
-        buttons.forEach { button ->
-            button.setOnClickListener {
-                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
-                    button.setBackgroundResource((R.drawable.emlakler_btn_bg))
-                } else {
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                }
-
-                if (buttons.all { it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState }) {
-                    cbHemmesi.isChecked = true
-                }
-
-                if (buttons.any {
-                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
-                    }) {
-                    cbHemmesi.isChecked = false
-                }
-
-            }
-
-        }
-
-        cbHemmesi.setOnClickListener {
-            toggleAllButtons()
-        }
-
-        btnGoybolsun.setOnClickListener {
-            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
+        btnGoybolsun?.setOnClickListener {
+            Toast.makeText(currentContext, "Отмена", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
-        btnKabulEt.setOnClickListener {
-            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
-            //
+        btnKabulEt?.setOnClickListener {
+            Toast.makeText(currentContext, "Принято", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
+        }
+
+        if (recyclerView != null) {
+            val items = listOf(
+                PropertiesDialogData("Квартира", R.drawable.kwartira),
+                PropertiesDialogData("Коттедж", R.drawable.kottej),
+                PropertiesDialogData("Элитка", R.drawable.elitka),
+                PropertiesDialogData("Полуэлитка", R.drawable.ic_floor_elite),
+                PropertiesDialogData("Дача", R.drawable.dacha),
+                PropertiesDialogData("Планировка", R.drawable.ic_flat)
+            )
+
+            val adapter = PropertiesDialogAdapter(items) { selectedItem ->
+
+
+
+
+
+                Toast.makeText(currentContext, "Вы выбрали: ${selectedItem.name}", Toast.LENGTH_SHORT).show()
+            }
+
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = GridLayoutManager(currentContext, 2)
+        } else {
+            Log.e("Dialog", "RecyclerView not found")
         }
 
         dialog.show()

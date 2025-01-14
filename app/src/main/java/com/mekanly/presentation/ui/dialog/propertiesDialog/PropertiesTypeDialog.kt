@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.dialog
+package com.mekanly.presentation.ui.dialog.propertiesDialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

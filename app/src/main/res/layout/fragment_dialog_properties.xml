@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:fontFamily="@font/manrope_bold"
-        android:text="Emläk görnüşi"
+        android:text="@string/property_type"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -30,201 +31,18 @@
             android:layoutDirection="rtl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hemmesi" />
+            android:text="@string/thats_all" />
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_properties"
+       android:orientation="horizontal"
+       android:paddingHorizontal="18dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:id="@+id/btnKwartira"
-            android:layout_width="107dp"
-            android:layout_height="63dp"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/kwartira" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:fontFamily="@font/manrope_regular"
-                android:text="Kwartira"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnKottej"
-            android:layout_width="107dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:layout_height="63dp"
-            android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/kottej" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:fontFamily="@font/manrope_regular"
-                android:text="Kottej"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnElitka"
-            android:layout_width="107dp"
-            android:layout_height="63dp"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/elitka" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="Elitka"
-                android:fontFamily="@font/manrope_regular"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnPolElitka"
-            android:layout_width="107dp"
-            android:layout_height="63dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/ic_floor_elite" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="Pol-Elitka"
-                android:fontFamily="@font/manrope_regular"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnDacha"
-            android:layout_width="107dp"
-            android:layout_height="63dp"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/dacha" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="Daça"
-                android:fontFamily="@font/manrope_regular"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnPlanJay"
-            android:layout_width="107dp"
-            android:layout_height="63dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/emlakler_btn_bg"
-            android:orientation="vertical"
-            android:paddingStart="12dp">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/ic_flat" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="Plan jaý"
-                android:fontFamily="@font/manrope_regular"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-    </LinearLayout>
 
 
     <LinearLayout
@@ -241,7 +59,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/manrope_bold"
             android:background="@color/color_transparent"
-            android:text="GOÝBOLSUN" />
+            android:text="@string/cancel"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btnKabulEt"
@@ -250,7 +69,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/manrope_bold"
             android:background="@color/color_transparent"
-            android:text="KABUL ET" />
+            android:text="@string/accept"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>

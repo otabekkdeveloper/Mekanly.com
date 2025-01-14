@@ -41,4 +41,14 @@
     <string name="the_most_expensive">iň gymmat</string>
     <string name="organize">Tertipleme</string>
     <string name="search">Gözle</string>
+    <string name="show_only_status">Diňe statusly jaýlary görkez</string>
+    <string name="thats_all">Hemmesi</string>
+    <string name="cancel">GOÝ BOLSUN</string>
+    <string name="accept">KABUL ET</string>
+    <string name="plan_house">Plan jaý</string>
+    <string name="Cottage">Daça</string>
+    <string name="Pole_elite">Pol-Elitka</string>
+    <string name="Elitka">Elitka</string>
+    <string name="cottage">Kottej</string>
+    <string name="Apartment">Kwartira</string>
 </resources>

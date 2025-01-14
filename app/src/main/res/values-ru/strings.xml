@@ -34,11 +34,22 @@
     <string name="show_newly_added_properties">Показать недавно добавленные</string>
     <string name="property_type">Тип недвижимости</string>
     <string name="general_area">Общая площадь:</string>
-    <string name="at_least">по меньшей мере</string>
+    <string name="at_least">минимум</string>
     <string name="the_most">максимум</string>
     <string name="price">Цена</string>
     <string name="the_cheapest">самый дешевый</string>
     <string name="the_most_expensive">самый дорогой</string>
     <string name="organize">Организация</string>
     <string name="search">Поиск</string>
+    <string name="show_only_status">Показать только статусные дома</string>
+    <string name="thats_all">Bсе</string>
+    <string name="cancel">ОТМЕНИТЬ</string>
+    <string name="accept">ПРИНЯТ</string>
+    <string name="plan_house">План дома</string>
+    <string name="Cottage">Дача</string>
+    <string name="Pole_elite">Пол-Элит</string>
+    <string name="Elitka">Элита</string>
+    <string name="cottage">Коттедж</string>
+    <string name="Apartment">Квартира</string>
+
 </resources>
