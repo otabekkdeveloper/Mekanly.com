@@ -53,6 +53,7 @@ class FragmentHome : Fragment() {
                     ResponseBodyState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                     }
+
                     is ResponseBodyState.SuccessList ->{
                         binding.progressBar.visibility = View.GONE
                         it.dataResponse as List<DataHouse>

@@ -14,10 +14,17 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @GET("api/v1/houses")
     fun getHouses(): Call<ResponseHouses>
+
+    @GET("api/v1/houses/{start}/{limit}")
+    fun getHousesWithPagination(
+        @Path("start") start:Long,
+        @Path("limit") limit:Long,
+    ): Call<ResponseHouses>
 
     @GET("api/v1/profile")
     fun getProfileData(
@@ -37,5 +44,6 @@ interface ApiService {
 
     @GET("/api/v1/banners")
     fun getBanners(): Call<ResponseBanners>
+
 }
 
