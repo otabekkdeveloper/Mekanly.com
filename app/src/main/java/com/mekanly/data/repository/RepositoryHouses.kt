@@ -43,7 +43,7 @@ class RepositoryHouses {
 
     fun getHousesPagination(start: Long, callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
-        apiService.getHousesWithPagination(start, LIMIT_REGULAR)
+        apiService.getHousesWithPagination(start = start, limit = LIMIT_REGULAR)
             .enqueue(object : Callback<ResponseHouses> {
                 override fun onResponse(
                     call: Call<ResponseHouses>, response: Response<ResponseHouses>

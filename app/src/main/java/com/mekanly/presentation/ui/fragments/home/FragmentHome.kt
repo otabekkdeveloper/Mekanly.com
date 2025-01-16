@@ -66,9 +66,9 @@ class FragmentHome : Fragment() {
     }
 
     private fun setAdapter(dataResponse: List<DataHouse>) {
-        propertyAdapter = AdapterSmallAdvertisements(dataResponse)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recyclerView.adapter = propertyAdapter
+//        propertyAdapter = AdapterSmallAdvertisements(dataResponse)
+//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        binding.recyclerView.adapter = propertyAdapter
     }
 
 

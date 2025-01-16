@@ -26,7 +26,7 @@ class VMHome:ViewModel() {
     }
 
     init {
-        getHouses()
+//        getHouses()
     }
 
     private fun getHouses() {

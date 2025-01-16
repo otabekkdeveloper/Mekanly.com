@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
+import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvSmallBinding
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 
-class   AdapterSmallAdvertisements(private val properties: List<DataHouse>) :
+class   AdapterSmallAdvertisements(private val properties: List<DataHouse>,private val viewModel:VMSearch) :
     RecyclerView.Adapter<AdapterSmallAdvertisements.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :
@@ -45,6 +47,15 @@ class   AdapterSmallAdvertisements(private val properties: List<DataHouse>) :
     override fun onBindViewHolder(holder: PropertyViewHolder, position: Int) {
         val property = properties[position]
         holder.bind(property)
+    }
+
+    fun updateList(){
+        val lastPageCount = if (viewModel.houses.value.size % LIMIT_REGULAR==0L){
+            LIMIT_REGULAR
+        }else{
+            viewModel.houses.value.size % LIMIT_REGULAR
+        }
+        notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
     }
 
     override fun getItemCount() = properties.size

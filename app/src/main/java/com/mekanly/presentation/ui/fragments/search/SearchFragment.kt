@@ -1,6 +1,7 @@
 package com.mekanly.presentation.ui.fragments.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
+import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
@@ -24,6 +26,9 @@ class SearchFragment : Fragment() {
     private val viewModel: VMSearch by viewModels()
 
     private var isLoading: Boolean = false
+
+    private var adapter: AdapterSmallAdvertisements?=null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -44,29 +49,55 @@ class SearchFragment : Fragment() {
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
-                if (!isLoading) {
-                    isLoading = true
+                if (!viewModel.getLoadingState()){
+                    Log.e("Pagination", "onScrolled: "+viewModel.houses.value.size)
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0 && totalItemCount >= LIMIT_REGULAR) {
-                        viewModel.getPageInfoDefault()
+                        viewModel.getPageInfoDefault(viewModel.houses.value.size)
                     }
+
                 }
+
+
             }
         })
     }
 
     private fun observeViewModel() {
+
         lifecycleScope.launch {
-            viewModel.houses.collectLatest {
-                isLoading = false
-                setAdapter()
+            viewModel.searchState.collectLatest {
+                when (it) {
+                    is ResponseBodyState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                    }
+
+                    ResponseBodyState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+
+                    is ResponseBodyState.SuccessList -> {
+                        isLoading = false
+                        binding.progressBar.visibility = View.GONE
+                        setAdapter()
+                    }
+
+                    else -> {}
+                }
             }
         }
     }
 
     private fun setAdapter() {
-        binding.rvSearch.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.rvSearch.adapter = AdapterSmallAdvertisements(viewModel.houses.value)
+        if (adapter==null){
+            adapter = AdapterSmallAdvertisements(viewModel.houses.value, viewModel)
+            binding.rvSearch.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            binding.rvSearch.adapter = adapter
+        }else{
+            adapter?.updateList()
+        }
+
+
     }
 
 
