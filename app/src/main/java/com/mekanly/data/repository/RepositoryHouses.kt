@@ -64,6 +64,29 @@ class RepositoryHouses {
             })
     }
 
+    fun searchHouses(query: String, callback: (ResponseBodyState) -> Unit) {
+        callback(ResponseBodyState.Loading)
+        apiService.search(search = query)
+            .enqueue(object : Callback<ResponseHouses> {
+                override fun onResponse(
+                    call: Call<ResponseHouses>, response: Response<ResponseHouses>
+                ) {
+                    if (response.isSuccessful) {
+                        val houses = response.body()?.data ?: emptyList()
+                        callback(ResponseBodyState.SuccessList(houses))
+                    } else {
+                        Log.e("FlowFragment", "Error: ${response.code()}")
+                        callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseHouses>, t: Throwable) {
+                    Log.e("FlowFragment", "Failure: ${t.message}")
+                    callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+                }
+            })
+    }
+
     companion object {
         const val LIMIT_REGULAR: Long = 100
     }

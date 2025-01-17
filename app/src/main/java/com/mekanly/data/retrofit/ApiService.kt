@@ -15,6 +15,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("api/v1/houses")
@@ -25,6 +26,11 @@ interface ApiService {
         @Path("start") start:Long,
         @Path("limit") limit:Long,
     ): Call<ResponseHouses>
+
+    @GET("api/v1/search")
+    fun search(
+        @Query("search") search:String
+    ):Call<ResponseHouses>
 
     @GET("api/v1/profile")
     fun getProfileData(
