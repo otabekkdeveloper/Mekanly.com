@@ -27,6 +27,7 @@ class VMHome:ViewModel() {
 
     init {
 //        getHouses()
+        getBanners()
     }
 
     private fun getHouses() {
@@ -37,6 +38,7 @@ class VMHome:ViewModel() {
 
     private fun getBanners(){
         useCaseBanners.execute {
+            _homeState.value = it
            when(it){
                is ResponseBodyState.Error -> {
                    _homeState.value = ResponseBodyState.Error(4)

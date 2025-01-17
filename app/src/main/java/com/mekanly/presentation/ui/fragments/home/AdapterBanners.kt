@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.adapters
+package com.mekanly.presentation.ui.fragments.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataBanner
 
-class ImageAdapter(private val images: List<Int>) :
-    RecyclerView.Adapter<ImageAdapter.BannerViewHolder>() {
+class AdapterBanners(private val images: List<DataBanner>) :
+    RecyclerView.Adapter<AdapterBanners.BannerViewHolder>() {
 
     inner class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.imageViewHorizontal)
@@ -21,8 +22,7 @@ class ImageAdapter(private val images: List<Int>) :
     }
 
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
-        val imageRes = images[position]
-        holder.imageView.setImageResource(imageRes)
+        val banner = images[position]
     }
 
     override fun getItemCount(): Int = images.size

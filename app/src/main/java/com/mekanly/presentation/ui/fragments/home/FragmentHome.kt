@@ -10,12 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mekanly.data.constants.Constants
 import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
+import com.mekanly.data.dataModels.DataBanner
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
-import com.mekanly.databinding.FragmentFlowBinding
 import com.mekanly.databinding.FragmentHomeBinding
 import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
 import kotlinx.coroutines.flow.collectLatest
@@ -25,6 +24,7 @@ import kotlinx.coroutines.launch
 class FragmentHome : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var propertyAdapter: AdapterSmallAdvertisements
+    private lateinit var adapterBanners: AdapterBanners
 
     private val viewModel: VMHome by viewModels()
 
@@ -56,13 +56,20 @@ class FragmentHome : Fragment() {
 
                     is ResponseBodyState.SuccessList ->{
                         binding.progressBar.visibility = View.GONE
-                        it.dataResponse as List<DataHouse>
-                        setAdapter(it.dataResponse)
+                        setBannersAdapter(it.dataResponse as List<DataBanner>)
                     }
                     else -> {}
                 }
             }
         }
+
+    }
+
+    private fun setBannersAdapter(dataBanners: List<DataBanner>) {
+        adapterBanners = AdapterBanners(dataBanners)
+        binding.rvBanner.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvBanner.adapter = adapterBanners
     }
 
     private fun setAdapter(dataResponse: List<DataHouse>) {
