@@ -29,13 +29,13 @@
 
             <TextView
                 android:id="@+id/toolbarTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_bold"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/select_language"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -60,16 +60,16 @@
             android:drawablePadding="10dp"
             android:checked="true"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/manrope_bold"
-            android:text="Türkmençe"
-            android:drawableLeft="@drawable/ic_flag_turkmenistan"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/turkmen_language"
+            android:drawableStart="@drawable/ic_flag_turkmenistan"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
 
         <RadioButton
             android:id="@+id/radioRussian"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/manrope_bold"
+            android:fontFamily="@font/roboto_medium"
             android:buttonTint="@color/black"
             android:textColor="@color/black"
             android:layout_marginHorizontal="20dp"
@@ -77,8 +77,8 @@
             android:layout_width="match_parent"
             android:drawablePadding="10dp"
             android:layout_height="wrap_content"
-            android:text="Русский"
-            android:drawableLeft="@drawable/ic_flag_russian"
+            android:text="@string/russian_language"
+            android:drawableStart="@drawable/ic_flag_russian"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
 

@@ -9,13 +9,6 @@
         android:name="com.mekanly.presentation.ui.fragments.flow.FragmentFlow"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_jayGoshmakFragment"
-            app:destination="@id/jayGoshmakFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
             android:id="@+id/action_homeFragment_to_bildirishlerimFragment"
             app:destination="@id/bildirishlerimFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -37,11 +30,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>/>
     </fragment>
-    <fragment
-        android:id="@+id/jayGoshmakFragment"
-        android:name="com.mekanly.presentation.ui.fragments.profile.AddHouseFragment"
-        android:label="fragment_jay_goshmak"
-        tools:layout="@layout/fragment_jay_goshmak" />
     <fragment
         android:id="@+id/bildirishlerimFragment"
         android:name="com.mekanly.presentation.ui.fragments.businessProfiles.BusinessProfilesFragment"

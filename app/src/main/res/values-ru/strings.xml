@@ -4,7 +4,7 @@
     <string name="error_no_content">Maglumat ýok</string>
     <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
     <string name="error_no_internet">Internet elýeter däl</string>
-    <string name="select_language">Выберите язык:</string>
+    <string name="select_language">Выберите язык</string>
     <string name="rent_offices">Офисы в аренду</string>
     <string name="splash_gif">splash_gif</string>
     <string name="language">Язык </string>
@@ -51,5 +51,7 @@
     <string name="Elitka">Элита</string>
     <string name="cottage">Коттедж</string>
     <string name="Apartment">Квартира</string>
+    <string name="turkmen_language">Türkmençe</string>
+    <string name="russian_language">Русский</string>
 
 </resources>

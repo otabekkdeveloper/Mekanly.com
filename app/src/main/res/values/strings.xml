@@ -4,7 +4,7 @@
     <string name="error_no_content">Maglumat ýok</string>
     <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
     <string name="error_no_internet">Internet elýeter däl</string>
-    <string name="select_language">Dil saylan:</string>
+    <string name="select_language">Dil saýlan</string>
     <string name="rent_offices">Kireýne ofisler</string>
     <string name="splash_gif">splash_gif</string>
     <string name="language">Dil</string>
@@ -51,4 +51,6 @@
     <string name="Elitka">Elitka</string>
     <string name="cottage">Kottej</string>
     <string name="Apartment">Kwartira</string>
+    <string name="turkmen_language">Türkmençe</string>
+    <string name="russian_language">Русский</string>
 </resources>

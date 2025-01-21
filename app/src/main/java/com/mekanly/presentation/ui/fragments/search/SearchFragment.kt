@@ -1,5 +1,6 @@
 package com.mekanly.presentation.ui.fragments.search
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
@@ -10,15 +11,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mekanly.R
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
+import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -40,9 +46,42 @@ class SearchFragment : Fragment() {
     ): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         observeViewModel()
+
+
+        setOnClickListener()
+
+
+
         initListeners()
         return binding.root
     }
+
+
+    private fun setOnClickListener(){
+
+        binding.buttonBolum.setOnClickListener {
+            val bottomSheet = SectionSelectionBottomSheet()
+            bottomSheet.show(childFragmentManager, "CustomBottomSheet")
+
+
+            binding.btnToFilter.setOnClickListener{
+                findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
+            }
+
+
+            binding.locationBtn.setOnClickListener{
+                LocationDialog()
+            }
+
+
+
+
+        }}
+
+
+
+
+
 
     private fun initListeners() {
         binding.rvSearch.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -143,6 +182,45 @@ class SearchFragment : Fragment() {
             }
         }
     }
+
+
+
+
+
+
+    private fun LocationDialog() {
+        // Инфлейтим кастомный макет диалога
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_location_dialog, null)
+
+        // Создаем диалог
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        // Настраиваем кнопки
+        val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
+        val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
+
+        btnGoybolsun.setOnClickListener {
+            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+
+        btnKabulEt.setOnClickListener {
+            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+
+
+
+
+        dialog.show()
+    }
+
+
+
+
+
 
 
 }

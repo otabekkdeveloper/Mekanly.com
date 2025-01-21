@@ -18,9 +18,6 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
 
-        binding.profileImage.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_jayGoshmakFragment)
-        }
 
 
 
