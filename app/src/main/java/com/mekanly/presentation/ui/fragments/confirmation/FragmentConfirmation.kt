@@ -1,4 +1,4 @@
-package com.mekanly.login
+package com.mekanly.presentation.ui.fragments.confirmation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ class FragmentConfirmation : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentConfirmationBinding.inflate(inflater, container, false)
 
         initListeners()
@@ -20,12 +20,10 @@ class FragmentConfirmation : Fragment() {
     }
 
     private fun initListeners() {
-
-
+        binding.btnSendEmptyMessage.setOnClickListener {
 
         }
-
-
+    }
     }
 
 

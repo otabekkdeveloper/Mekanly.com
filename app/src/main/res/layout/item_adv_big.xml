@@ -6,8 +6,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:elevation="5dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="20dp"
         app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,13 +23,35 @@
                 android:layout_marginBottom="6dp"
                 android:orientation="vertical">
 
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/imageViewBildirishlerim"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder"
-                    app:riv_corner_radius="4dp" />
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPagerImages"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@color/white"
+                        tools:background="@drawable/placeholder" />
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/worm_dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:dotsColor="@color/bg_blue_one"
+                        app:dotsStrokeColor="@color/bg_blue_four"
+                        app:dotsCornerRadius="8dp"
+                        app:dotsSize="6dp"
+                        android:layout_gravity="bottom|center"
+                        app:dotsSpacing="4dp"
+                        android:layout_marginBottom="5dp"
+                        app:dotsStrokeWidth="2dp"
+                        />
+
+
+                </FrameLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -52,21 +77,23 @@
 
 
                     <TextView
+                        android:maxLines="1"
                         android:id="@+id/tv_address_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/manrope_bold"
                         android:textColor="@color/text_color_grey"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         tools:text="Aman aman aman" />
 
                     <TextView
+                        android:maxLines="2"
                         android:id="@+id/tv_description"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/manrope_bold"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_color_grey"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         tools:text="Aman aman aman" />
 
                     <TextView

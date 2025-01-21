@@ -25,6 +25,7 @@
     <color name="checked_thumb">#FFFFFF</color>
     <color name="unchecked_track">#B1B1B1</color>
     <color name="checked_track">#302F2F</color>
+    <color name="error">#D90000</color>
 
 
 

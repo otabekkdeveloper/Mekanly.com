@@ -27,6 +27,8 @@ class FragmentFlow : Fragment() {
 
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
+        binding.viewPager.isUserInputEnabled = false
+
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
@@ -56,7 +58,6 @@ class FragmentFlow : Fragment() {
 
         binding.tabLayout.getTabAt(0)?.setIcon(R.drawable.house)
 
-        // Настройка TabLayout для смены иконок
         binding.tabLayout.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab) {
                 // Изменение на активную иконку при выборе
@@ -88,8 +89,6 @@ class FragmentFlow : Fragment() {
             }
         })
 
-//        // Отключение свайпа для ViewPager2
-//        disableSwipe(binding.viewPager)
 
         // Настройка действия нажатия на логотип
         binding.logoPlus.setOnClickListener { view ->

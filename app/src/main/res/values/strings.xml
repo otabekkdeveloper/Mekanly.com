@@ -53,4 +53,5 @@
     <string name="Apartment">Kwartira</string>
     <string name="turkmen_language">Türkmençe</string>
     <string name="russian_language">Русский</string>
+    <string name="error_message_phone">Error, please check your phone number</string>
 </resources>

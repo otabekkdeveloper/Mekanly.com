@@ -6,7 +6,7 @@
     app:startDestination="@id/signUpFragment">
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.mekanly.login.SignUpFragment"
+        android:name="com.mekanly.presentation.ui.fragments.register.FragmentRegister"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_fragmentConfirmation"
@@ -15,38 +15,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_signUpFragment_to_fragmentMail"
-            app:destination="@id/fragmentMail"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentConfirmation"
-        android:name="com.mekanly.login.FragmentConfirmation"
+        android:name="com.mekanly.presentation.ui.fragments.confirmation.FragmentConfirmation"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation" />
-    <fragment
-        android:id="@+id/fragmentMail"
-        android:name="com.mekanly.login.FragmentMail"
-        android:label="FragmentMail" >
-        <action
-            android:id="@+id/action_fragmentMail_to_fragmentOtp"
-            app:destination="@id/fragmentOtp"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_fragmentMail_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
+
     <fragment
         android:id="@+id/fragmentOtp"
         android:name="com.mekanly.login.FragmentOtp"

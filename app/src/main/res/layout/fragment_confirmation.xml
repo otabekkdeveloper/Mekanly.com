@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".login.FragmentConfirmation">
+    tools:context=".presentation.ui.fragments.confirmation.FragmentConfirmation">
 
 
 
@@ -60,12 +60,12 @@
             android:fontFamily="@font/manrope_regular"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Telefon belgiňizi tassyklamak üçin +99364652712 \n belgiden +993 61733733 belgä boş sms ugradyň. \n Ugradanyňyzdan soň biraz wagt garaşyň."
+            android:text="Telefon belgiňizi tassyklamak üçin 99360xxxxxx \n belgiden +993 61733733 belgä boş sms ugradyň. \n Ugradanyňyzdan soň biraz wagt garaşyň."
             android:textSize="14sp"/>
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_send_empty_message"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"

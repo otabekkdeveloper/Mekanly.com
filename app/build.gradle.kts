@@ -84,6 +84,9 @@ dependencies {
 
     //material design
     implementation ("com.google.android.material:material:1.12.0-alpha03")
+    implementation (libs.viewpager2)
+    implementation(libs.dotsindicator)
+
 
 
 

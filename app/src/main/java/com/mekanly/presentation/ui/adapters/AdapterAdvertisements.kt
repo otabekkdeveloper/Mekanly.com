@@ -1,40 +1,66 @@
 package com.mekanly.presentation.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.BildirishlerimData
+import com.mekanly.data.dataModels.DataHouse
+import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
+import com.mekanly.databinding.ItemAdvBigBinding
+import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 
-class AdapterAdvertisements(private val items: List<BildirishlerimData>) : RecyclerView.Adapter<AdapterAdvertisements.CategoryViewHolder>() {
+class AdapterAdvertisements(
+    private var properties: List<DataHouse>, private val viewModel: VMSearch
+) : RecyclerView.Adapter<AdapterAdvertisements.PropertyViewHolder>() {
 
-    class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val button: Button = view.findViewById(R.id.btn_like) // Настроить кнопку здесь
-        val imageView: ImageView = view.findViewById(R.id.imageViewBildirishlerim)
-        val titleTextView: TextView = view.findViewById(R.id.titleTextView)
-        val subtitleTextView: TextView = view.findViewById(R.id.subtitleTextView)
-    }
+    inner class PropertyViewHolder(private val binding: ItemAdvBigBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_adv_big, parent, false)
-        return CategoryViewHolder(view)
-    }
+        @SuppressLint("SetTextI18n")
+        fun bind(property: DataHouse) {
+            binding.apply {
+                tvMainTitle.text = property.name
+                tvPrice.text = "${property.price} TMT"
+                tvAddressTime.text =
+                    "Location: ${property.location.name}, ${property.location.parent_name}"
+                tvDescription.text = property.description
+                advType.text = property.categoryName
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val item = items[position]
-        holder.imageView.setImageResource(item.imageResId)
-        holder.titleTextView.text = item.title
-        holder.subtitleTextView.text = item.subtitle
-
-        // Добавить логику для кнопки, если нужно
-        holder.button.setOnClickListener {
-            // Добавьте действия для кнопки здесь
+                if (property.images.isNotEmpty()) {
+                    val imageUrls = property.images.map { it.url }
+                    val adapter = ImageSliderAdapter(imageUrls)
+                    viewPagerImages.adapter = adapter
+                    wormDotsIndicator.attachTo(viewPagerImages)
+                }
+            }
         }
     }
 
-    override fun getItemCount() = items.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
+        val binding = ItemAdvBigBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return PropertyViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(
+        holder: AdapterAdvertisements.PropertyViewHolder, position: Int
+    ) {
+        val property = properties[position]
+        holder.bind(property)
+    }
+
+    override fun getItemCount() = properties.size
+
+    fun updateList(){
+        val lastPageCount = if (viewModel.houses.value.size % LIMIT_REGULAR==0L){
+            LIMIT_REGULAR
+        }else{
+            viewModel.houses.value.size % LIMIT_REGULAR
+        }
+        notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
+    }
 }
