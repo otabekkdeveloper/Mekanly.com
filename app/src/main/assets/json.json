@@ -1,26 +1,64 @@
-[
-  {
-    "name": "Mekanly.com",
-    "image": "https:\/\/mekanly.com.tm\/storage\/banners\/m0xzCEi8QCGg7HPxUVrdP2wVGDc7EVdn2bP4pyxJ.gif",
-    "type": "big",
-    "description": null,
-    "url": null,
-    "address": null,
-    "phone": null,
-    "email": null,
-    "social_networks": null,
-    "logo": "https:\/\/mekanly.com.tm\/storage\/banners\/hjjAYczljUKKxpN7r0N4G4UDVyjjSG8ipnbE4GRI.webp"
-  },
-  {
-    "name": "Mekanly",
-    "image": "https:\/\/mekanly.com.tm\/storage\/banners\/z77Dp3ogC49hJnfrClBrBHNg0DOgajXcluijFQe1.jpg",
-    "type": "big",
-    "description": "Mekanly bilen mekan tutun",
-    "url": "https:\/\/mekanly.com.tm",
-    "address": null,
-    "phone": "+993737737738",
-    "email": "hshw@hshs.hh",
-    "social_networks": null,
-    "logo": "https:\/\/mekanly.com.tm\/storage\/banners\/YEXHrr1X4oBUqmN6RJh7MEUk5QuBC3hwDe9aXLMw.jpg"
-  }
-]
+{
+  "data": [
+    {
+      "title": "bildirishin ichindaki banner",
+      "type": "inside",
+      "description": "bildirishin ichindaki banner",
+      "image": "[\"banners\\/LsO2PdOPLVxNl3fumVYHvL7L1KLjYzkaqI2K1yAP.jpg\"]",
+      "logo": "banners/mq3KcO1Eaq5aroIYmscqJM9Gkweuoyq27DD9vhVw.png",
+      "url": "https://mekanly.com.tm",
+      "adress": "New York",
+      "phone": "898778",
+      "email": "hghgjggv@gmail.com",
+      "sosial_networks": "hhjghg"
+    },
+    {
+      "title": "kici banner 2",
+      "type": "small",
+      "description": null,
+      "image": "[\"banners\\/rpMNnGi5LZYKthp15JbRQKBUU7Ob3mdNQ8CwaGdK.gif\"]",
+      "logo": "banners/tfQyZ4dch3k8EJRSC77STMSrzHyp7JDpl4lFdk8e.png",
+      "url": null,
+      "adress": null,
+      "phone": null,
+      "email": null,
+      "sosial_networks": null
+    },
+    {
+      "title": "Kici banner",
+      "type": "small",
+      "description": "Animatsiyaly kici banner",
+      "image": "[\"banners\\/EgvIgkerC0gG1NIsJoomAOuh41wjCWdLCcC9AnIF.gif\"]",
+      "logo": "banners/tApBWo0FQAZczVvnAbxEoY8PhKmyxHYKd7i5OoMK.gif",
+      "url": "https://mekanly.com.tm",
+      "adress": "New York",
+      "phone": "287648726432",
+      "email": "hghgjggv@gmail.com",
+      "sosial_networks": "@mekanly"
+    },
+    {
+      "title": "Uly Banner 2",
+      "type": "big",
+      "description": "Uly banner 2 test",
+      "image": "[\"banners\\/OoCH8zU3Z96MsRnTG7MWT6S7VoZgy8gZ6wmtslx1.png\"]",
+      "logo": "banners/ILPnEAPYiSwjRcForl4xBHjFiw216IJHPTEA0wjx.jpg",
+      "url": null,
+      "adress": null,
+      "phone": null,
+      "email": null,
+      "sosial_networks": null
+    },
+    {
+      "title": "Mekanly.com.tm",
+      "type": "big",
+      "description": "Mekanly bilen mekan tutun",
+      "image": "[\"banners\\/cqdQwL71lurjBJgRp1MtpOLQcE77f0RBhpU73541.gif\"]",
+      "logo": "banners/vvMIwqbpzmjeKzI5Nk2VF8LCB23YolRGCam2DYEm.jpg",
+      "url": "https://mekanly.com.tm",
+      "adress": "Aşgabat",
+      "phone": "+993737737738",
+      "email": "hshw@hshs.hh",
+      "sosial_networks": "@mekanly"
+    }
+  ]
+}

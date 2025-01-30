@@ -11,7 +11,7 @@ class ImageAdapter(private val images: List<Int>) :
     RecyclerView.Adapter<ImageAdapter.BannerViewHolder>() {
 
     inner class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.imageViewHorizontal)
+        val imageView: ImageView = view.findViewById(R.id.riv_banner)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
