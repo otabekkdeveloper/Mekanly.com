@@ -157,7 +157,7 @@ class SearchFragment : Fragment() {
         }
         lifecycleScope.launch {
             viewModel.houses.collectLatest {
-                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel)
+                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter
@@ -167,13 +167,13 @@ class SearchFragment : Fragment() {
 
     private fun setAdapter() {
         if (adapter==null){
-            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel)
+            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel,findNavController())
             binding.rvSearch.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.rvSearch.adapter = adapter
         }else{
             if (viewModel.needToReinitialise()){
-                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel)
+                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel,findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter

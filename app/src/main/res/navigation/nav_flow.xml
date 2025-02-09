@@ -9,13 +9,6 @@
         android:name="com.mekanly.presentation.ui.fragments.flow.FragmentFlow"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_bildirishlerimFragment"
-            app:destination="@id/bildirishlerimFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
             android:id="@+id/action_homeFragment_to_filterFragment"
             app:destination="@id/filterFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -28,13 +21,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>/>
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentSingleHouse"
+            app:destination="@id/fragmentSingleHouse" />
     </fragment>
-    <fragment
-        android:id="@+id/bildirishlerimFragment"
-        android:name="com.mekanly.presentation.ui.fragments.businessProfiles.BusinessProfilesFragment"
-        android:label="fragment_bildirishlerim"
-        tools:layout="@layout/fragment_bildirishlerim" />
     <fragment
         android:id="@+id/filterFragment"
         android:name="com.mekanly.presentation.ui.fragments.filter.FilterFragment"
@@ -45,14 +36,14 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>/>
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_filterFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>/>
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/languageFragment"
@@ -63,4 +54,9 @@
         android:name="com.mekanly.presentation.ui.fragments.location.FragmentLocation"
         android:label="fragment_location"
         tools:layout="@layout/fragment_location" />
+    <fragment
+        android:id="@+id/fragmentSingleHouse"
+        android:name="com.mekanly.presentation.ui.fragments.singleHouse.FragmentSingleHouse"
+        android:label="fragment_single_house"
+        tools:layout="@layout/fragment_single_house" />
 </navigation>

@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+       <variable
+           name="item"
+           type="com.mekanly.data.dataModels.DataHouse" />
+        <variable
+            name="adapter"
+            type="com.mekanly.presentation.ui.adapters.AdapterAdvertisements" />
+    </data>
 
     <androidx.cardview.widget.CardView
+        android:onClick="@{()->adapter.onAdvClicked(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"

@@ -8,12 +8,13 @@ import com.bumptech.glide.Glide
 import com.mekanly.data.dataModels.DataBanner
 import com.mekanly.data.retrofit.ApiClient.BASE_URL
 import com.mekanly.databinding.ItemBannerBinding
+import com.mekanly.databinding.ItemBigBannerBinding
 
-class AdapterBanners(private val images: List<DataBanner>) :
-    RecyclerView.Adapter<AdapterBanners.BannerViewHolder>() {
+class AdapterBigBanners(private val images: List<DataBanner>) :
+    RecyclerView.Adapter<AdapterBigBanners.BannerViewHolder>() {
 
     inner class BannerViewHolder(
-        private val binding: ItemBannerBinding
+        private val binding: ItemBigBannerBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dataBanner: DataBanner) {
@@ -28,7 +29,7 @@ class AdapterBanners(private val images: List<DataBanner>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
-        val binding = ItemBannerBinding.inflate(
+        val binding = ItemBigBannerBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return BannerViewHolder(binding)

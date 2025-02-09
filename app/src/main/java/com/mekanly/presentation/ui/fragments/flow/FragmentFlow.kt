@@ -89,8 +89,6 @@ class FragmentFlow : Fragment() {
             }
         })
 
-
-        // Настройка действия нажатия на логотип
         binding.logoPlus.setOnClickListener { view ->
             showMenu(view)
         }
@@ -137,11 +135,11 @@ class FragmentFlow : Fragment() {
         when (menuItem.itemId) {
             R.id.menu_item_1 -> {
                 // Переход на первый фрагмент
-                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
+//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
             }
             R.id.menu_item_2 -> {
                 // Переход на второй фрагмент
-                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
+//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
             }
         }
     }

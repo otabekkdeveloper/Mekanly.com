@@ -3,6 +3,7 @@ package com.mekanly.presentation.ui.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
@@ -13,7 +14,7 @@ import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 
 class AdapterAdvertisements(
-    private var properties: List<DataHouse>, private val viewModel: VMSearch
+    private var properties: List<DataHouse>, private val viewModel: VMSearch, private val navController: NavController
 ) : RecyclerView.Adapter<AdapterAdvertisements.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(private val binding: ItemAdvBigBinding) :
@@ -21,6 +22,7 @@ class AdapterAdvertisements(
 
         @SuppressLint("SetTextI18n")
         fun bind(property: DataHouse) {
+            binding.item = property
             binding.apply {
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
@@ -43,6 +45,7 @@ class AdapterAdvertisements(
         val binding = ItemAdvBigBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
+        binding.adapter =this
         return PropertyViewHolder(binding)
     }
 
@@ -62,5 +65,9 @@ class AdapterAdvertisements(
             viewModel.houses.value.size % LIMIT_REGULAR
         }
         notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
+    }
+
+    fun onAdvClicked(item:DataHouse){
+        navController.navigate(R.id.action_homeFragment_to_fragmentSingleHouse)
     }
 }

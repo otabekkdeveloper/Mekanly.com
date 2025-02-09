@@ -48,7 +48,7 @@ interface ApiService {
         @Body requestBody: RequestBodyLogin
     ): Call<ResponseBody>
 
-    @GET("/api/v1/banners")
+    @GET("/api/v2/banners")
     fun getBanners(): Call<ResponseBanners>
 
 }
