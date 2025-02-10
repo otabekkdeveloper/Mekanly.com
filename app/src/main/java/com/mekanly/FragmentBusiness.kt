@@ -8,22 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mekanly.databinding.FragmentBusinessBinding
 import com.mekanly.presentation.ui.adapters.AdapterSatyjylar
-import com.mekanly.databinding.FragmentSatyjylarBinding
 
 
-class SatyjylarFragment : Fragment() {
-    private lateinit var binding: FragmentSatyjylarBinding
+class FragmentBusiness : Fragment() {
+    private lateinit var binding: FragmentBusinessBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSatyjylarBinding.inflate(inflater, container, false)
+        binding = FragmentBusinessBinding.inflate(inflater, container, false)
 
 
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -53,12 +52,12 @@ class SatyjylarFragment : Fragment() {
             SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
         )
 
-        binding.recyclerView.adapter = AdapterSatyjylar(categories)
+//        binding.recyclerView.adapter = AdapterSatyjylar(categories)
 
 
-        binding.location.setOnClickListener{
-            LocationDialog()
-        }
+//        binding.location.setOnClickListener{
+//            LocationDialog()
+//        }
 
 
         return binding.root

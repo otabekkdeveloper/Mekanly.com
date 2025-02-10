@@ -38,11 +38,11 @@ class FragmentFlow : Fragment() {
                 }
                 1 -> {
                     tab.text = getString(R.string.properties)
-                    tab.setIcon(R.drawable.search)
+                    tab.setIcon(R.drawable.house_search)
                 }
                 2 -> {
                     tab.text = getString(R.string.business_profile)
-                    tab.setIcon(R.drawable.ic_shop)
+                    tab.setIcon(R.drawable.ic_business_profile_unselected)
                 }
                 3 -> {
                     tab.text = getString(R.string.favorites)
@@ -63,7 +63,7 @@ class FragmentFlow : Fragment() {
                 // Изменение на активную иконку при выборе
                 when (tab.position) {
                     0 -> tab.setIcon(R.drawable.house)
-                    1 -> tab.setIcon(R.drawable.emlak_bold)
+                    1 -> tab.setIcon(R.drawable.house_search_bold)
                     2 -> tab.setIcon(R.drawable.ic_shopping_bold)
                     3 -> tab.setIcon(R.drawable.heart_bold)
                     4 -> tab.setIcon(R.drawable.menu_ic)
@@ -77,8 +77,8 @@ class FragmentFlow : Fragment() {
                 // Возврат к обычной иконке
                 when (tab.position) {
                     0 -> tab.setIcon(R.drawable.house_logo)
-                    1 -> tab.setIcon(R.drawable.search)
-                    2 -> tab.setIcon(R.drawable.ic_shop)
+                    1 -> tab.setIcon(R.drawable.house_search)
+                    2 -> tab.setIcon(R.drawable.ic_business_profile_unselected)
                     3 -> tab.setIcon(R.drawable.heart_icon)
                     4 -> tab.setIcon(R.drawable.menu_ic)
                 }
@@ -89,15 +89,9 @@ class FragmentFlow : Fragment() {
             }
         })
 
-        binding.logoPlus.setOnClickListener { view ->
-            showMenu(view)
-        }
-
-
-
-
-
-
+//        binding.logoPlus.setOnClickListener { view ->
+//            showMenu(view)
+//        }
 
         return binding.root
     }

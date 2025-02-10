@@ -8,14 +8,14 @@
     tools:context=".presentation.ui.fragments.profile.ProfileFragment">
 
 
-
-    <com.google.android.material.button.MaterialButton
+    <ImageView
         android:id="@+id/profile_image"
         android:layout_width="60dp"
-        app:backgroundTint="@color/text_color_grey"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/user_profile"
+        app:backgroundTint="@color/text_color_grey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,22 +25,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/manrope_bold"
-        android:text="Rowaç mebel"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/status"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Akkaunt"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="@+id/profile_image" />
 
     <!-- Статус пользователя -->
     <TextView
         android:id="@+id/status"
-        android:fontFamily="@font/manrope_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gysgaça ady: 12xdg23h3"
-        android:textColor="#808080"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="17dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="+99364652712"
+        android:textColor="@color/number_color"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintStart_toStartOf="@+id/profile_name"
         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
@@ -49,63 +53,12 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginHorizontal="13dp"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginTop="12dp"
         app:dividerColor="@color/line_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ad_banner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="22dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/banner_background"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:weightSum="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
-
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/manrope_bold"
-            android:text="@string/title_profile"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageView7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="150dp"
-            android:layout_height="49dp"
-            android:fontFamily="@font/manrope_regular"
-            android:layout_marginTop="16dp"
-            android:text="@string/info_profile"
-            android:textColor="#808080"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="14dp"
-            android:src="@drawable/ic_house_profile"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView4" /> <!-- Вставьте изображение дома здесь -->
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Меню -->
     <LinearLayout
@@ -118,133 +71,501 @@
         android:paddingTop="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ad_banner">
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:background="@color/bg_blue_three"
+
+            android:paddingVertical="10dp"
+            android:focusable="true">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Jaý gözleýänler"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/search_house_profile_page"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/btn_ybn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ripple_button"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
-        <!-- Пункты меню -->
-        <com.google.android.material.button.MaterialButton
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Bildiriş goşmak"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/ic_plus"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+
+            app:dividerColor="@color/line_divider" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_language"
-            android:fontFamily="@font/manrope_bold"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left|center"
-            android:text="@string/language"
-            android:textColor="@color/black"
-            app:icon="@drawable/ic_language"
-            app:iconTint="@color/black"
-            tools:ignore="RtlHardcoded" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Dil"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_language"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_favorites"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:fontFamily="@font/manrope_bold"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:text="@string/favorites"
-            android:textColor="@color/black"
-            app:icon="@drawable/heart_icon"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Halanlarym"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_favourite"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_reviews"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/manrope_bold"
-            android:gravity="start|center"
-            android:text="@string/reviews"
-            android:textColor="@color/black"
-            app:icon="@drawable/ic_teswirler"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Teswirler"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_comments"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_rules"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:text="@string/rules"
-            android:fontFamily="@font/manrope_bold"
-            android:textColor="@color/black"
-            app:icon="@drawable/ic_duzgunnama"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Düzgünnama"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_duzgunnama"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_contact"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:text="@string/contact"
-            android:textColor="@color/black"
-            android:fontFamily="@font/manrope_bold"
-            app:icon="@drawable/ic_habarlashmak"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Habarlaşmak"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_communicate"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_help"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:text="@string/help"
-            android:textColor="@color/black"
-            android:fontFamily="@font/manrope_bold"
-            app:icon="@drawable/ic_help_octagon"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Kömekçi"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView17"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_helper"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_logout"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center"
-            android:text="@string/logout"
-            android:fontFamily="@font/manrope_bold"
-            android:textColor="@color/black"
-            app:icon="@drawable/ic_log_out"
-            app:iconTint="@color/black" />
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_next_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Ulgamdan çykmak"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView19"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/imageView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_logout"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             app:dividerColor="@color/line_divider" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

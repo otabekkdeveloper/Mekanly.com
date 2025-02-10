@@ -7,7 +7,7 @@ import com.mekanly.presentation.ui.fragments.home.FragmentHome
 import com.mekanly.FourthFragment
 import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
-import com.mekanly.SatyjylarFragment
+import com.mekanly.FragmentBusiness
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
@@ -19,7 +19,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
         return when (position) {
             0 -> FragmentHome()
             1 -> SearchFragment()
-            2 -> SatyjylarFragment()
+            2 -> FragmentBusiness()
             3 -> FourthFragment()
             4 -> ProfileFragment()
             else -> FragmentHome()
