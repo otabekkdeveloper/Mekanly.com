@@ -5,6 +5,7 @@ import com.mekanly.data.constants.Constants.Companion.NO_CONTENT
 import com.mekanly.data.constants.Constants.Companion.RESPONSE_FAILURE
 import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.data.responseBody.ResponseHouseDetails
 import com.mekanly.data.responseBody.ResponseHouses
 import com.mekanly.data.retrofit.ApiClient
 import com.mekanly.data.retrofit.ApiService
@@ -81,6 +82,30 @@ class RepositoryHouses {
                 }
 
                 override fun onFailure(call: Call<ResponseHouses>, t: Throwable) {
+                    Log.e("FlowFragment", "Failure: ${t.message}")
+                    callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+                }
+            })
+    }
+
+
+    fun getHouseDetails(id:Long,callback: (ResponseBodyState) -> Unit){
+        callback(ResponseBodyState.Loading)
+        apiService.getHouseDetails(houseId = id.toString())
+            .enqueue(object : Callback<ResponseHouseDetails> {
+                override fun onResponse(
+                    call: Call<ResponseHouseDetails>, response: Response<ResponseHouseDetails>
+                ) {
+                    if (response.isSuccessful) {
+                        val house = response.body()?.data ?: ""
+                        callback(ResponseBodyState.Success(house))
+                    } else {
+                        Log.e("FlowFragment", "Error: ${response.code()}")
+                        callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseHouseDetails>, t: Throwable) {
                     Log.e("FlowFragment", "Failure: ${t.message}")
                     callback(ResponseBodyState.Error(RESPONSE_FAILURE))
                 }

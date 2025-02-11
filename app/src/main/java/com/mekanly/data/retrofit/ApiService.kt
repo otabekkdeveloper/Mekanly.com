@@ -6,6 +6,7 @@ import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
 import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.data.responseBody.ResponseHouseDetails
 import com.mekanly.data.responseBody.ResponseHouses
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.ResponseBody
@@ -50,6 +51,11 @@ interface ApiService {
 
     @GET("/api/v2/banners")
     fun getBanners(): Call<ResponseBanners>
+
+    @GET("/api/v2/house/{house_id}")
+    fun getHouseDetails(
+        @Path("house_id") houseId:String
+    ):Call<ResponseHouseDetails>
 
 }
 

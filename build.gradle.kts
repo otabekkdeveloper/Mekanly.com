@@ -6,9 +6,9 @@ buildscript {
         mavenCentral()
         jcenter()
     }
-//    dependencies {
+    dependencies {
 //        classpath (libs.androidx.navigation.safe.args.gradle.plugin)
-//    }
+    }
 }
 
 plugins {
