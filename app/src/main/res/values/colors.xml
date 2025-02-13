@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="ripple_color">#57000000</color>
+    <color name="ripple_color">#57A09E9E</color>
     <color name="white_20">#CCFFFFFF</color>
     <color name="bg_app">#00A3FF</color>
     <color name="background">#5A8FBB</color>

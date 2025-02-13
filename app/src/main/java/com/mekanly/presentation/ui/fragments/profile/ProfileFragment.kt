@@ -26,9 +26,6 @@ class ProfileFragment : Fragment() {
             findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
         }
 
-        binding.btnYbn.setOnClickListener{
-            Toast.makeText(requireContext(),"YBN",Toast.LENGTH_SHORT).show()
-        }
 
 
 
