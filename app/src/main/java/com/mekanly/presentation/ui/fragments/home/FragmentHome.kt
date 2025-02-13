@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 
 class FragmentHome : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var propertyAdapter: AdapterSmallAdvertisements
+    private lateinit var propertyAdapter: AdapterTopHouses
     private lateinit var adapterBanners: AdapterBanners
     private lateinit var adapterBigBanners: AdapterBigBanners
 
@@ -71,6 +71,14 @@ class FragmentHome : Fragment() {
                     else -> {}
                 }
             }
+
+
+        }
+
+        lifecycleScope.launch {
+            viewModel.houses.collectLatest {
+                setAdapter(it)
+            }
         }
 
     }
@@ -90,9 +98,9 @@ class FragmentHome : Fragment() {
     }
 
     private fun setAdapter(dataResponse: List<DataHouse>) {
-//        propertyAdapter = AdapterSmallAdvertisements(dataResponse)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//        binding.recyclerView.adapter = propertyAdapter
+        propertyAdapter = AdapterTopHouses(dataResponse)
+        binding.rvHouses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.rvHouses.adapter = propertyAdapter
     }
 
 

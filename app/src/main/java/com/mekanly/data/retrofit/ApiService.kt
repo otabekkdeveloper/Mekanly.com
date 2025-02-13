@@ -57,5 +57,9 @@ interface ApiService {
         @Path("house_id") houseId:String
     ):Call<ResponseHouseDetails>
 
+
+    @GET("api/v2/top")
+    fun getTopHouses():Call<ResponseHouses>
+
 }
 
