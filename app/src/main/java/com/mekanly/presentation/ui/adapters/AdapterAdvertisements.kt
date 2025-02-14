@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
@@ -14,7 +13,9 @@ import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 
 class AdapterAdvertisements(
-    private var properties: List<DataHouse>, private val viewModel: VMSearch, private val navController: NavController
+    private var properties: List<DataHouse>,
+    private val viewModel: VMSearch,
+    private val navController: NavController
 ) : RecyclerView.Adapter<AdapterAdvertisements.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(private val binding: ItemAdvBigBinding) :
@@ -45,7 +46,7 @@ class AdapterAdvertisements(
         val binding = ItemAdvBigBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        binding.adapter =this
+        binding.adapter = this
         return PropertyViewHolder(binding)
     }
 
@@ -58,16 +59,16 @@ class AdapterAdvertisements(
 
     override fun getItemCount() = properties.size
 
-    fun updateList(){
-        val lastPageCount = if (viewModel.houses.value.size % LIMIT_REGULAR==0L){
+    fun updateList() {
+        val lastPageCount = if (viewModel.houses.value.size % LIMIT_REGULAR == 0L) {
             LIMIT_REGULAR
-        }else{
+        } else {
             viewModel.houses.value.size % LIMIT_REGULAR
         }
         notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
     }
 
-    fun onAdvClicked(item:DataHouse){
+    fun onAdvClicked(item: DataHouse) {
         navController.navigate(R.id.action_homeFragment_to_fragmentSingleHouse)
     }
 }

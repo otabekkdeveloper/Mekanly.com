@@ -1,6 +1,7 @@
 package com.mekanly.data.retrofit
 
 
+import com.mekanly.data.dataModels.DataLocation
 import com.mekanly.data.dataModels.DataUser
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
@@ -56,6 +57,11 @@ interface ApiService {
     fun getHouseDetails(
         @Path("house_id") houseId:String
     ):Call<ResponseHouseDetails>
+
+
+
+    @GET("/api/v1/locations")
+    fun getLocations(): Call<List<DataLocation>>
 
 }
 
