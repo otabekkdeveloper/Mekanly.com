@@ -60,19 +60,23 @@ class SearchFragment : Fragment() {
 
     private fun setOnClickListener(){
 
+        binding.locationBtn.setOnClickListener{
+            LocationDialog()
+        }
+
+        binding.btnFilter.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
+        }
+
         binding.buttonBolum.setOnClickListener {
             val bottomSheet = SectionSelectionBottomSheet()
             bottomSheet.show(childFragmentManager, "CustomBottomSheet")
 
 
-            binding.btnToFilter.setOnClickListener{
-                findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
-            }
 
 
-            binding.locationBtn.setOnClickListener{
-                LocationDialog()
-            }
+
+
 
 
 

@@ -11,56 +11,49 @@ import com.mekanly.R
 import com.mekanly.data.PropertiesDialogData
 
 class PropertiesDialogAdapter(
-    private val items: List<PropertiesDialogData>, // Список данных
-    private val onItemClick: (PropertiesDialogData) -> Unit // Лямбда для кликов
+    private val items: List<PropertiesDialogData>,
+    private val onItemClick: (PropertiesDialogData) -> Unit
 ) : RecyclerView.Adapter<PropertiesDialogAdapter.PropertiesViewHolder>() {
 
-    // Список для отслеживания состояния выбранности элементов
     private val selectedItems = MutableList(items.size) { false }
 
-    // ViewHolder
     inner class PropertiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val buttonLayout: LinearLayout? = itemView.findViewById(R.id.btnKwartira)
-        private val textView: TextView? = itemView.findViewById(R.id.textView) // Название категории
-        private val imageView: ImageView? = itemView.findViewById(R.id.imageView) // Иконка категории
+        private val textView: TextView? = itemView.findViewById(R.id.textView)
+        private val imageView: ImageView? = itemView.findViewById(R.id.imageView)
 
         fun bind(item: PropertiesDialogData, position: Int) {
-            // Устанавливаем текст и изображение
             textView?.text = item.name
             imageView?.setBackgroundResource(item.imageResId)
 
-            // Устанавливаем фон в зависимости от состояния выбранности
-            if (selectedItems[position]) {
-                buttonLayout?.setBackgroundResource(R.drawable.bg_selected_properties_btn) // Выбранный фон
-            } else {
-                buttonLayout?.setBackgroundResource(R.drawable.emlakler_btn_bg) // Обычный фон
-            }
+            buttonLayout?.setBackgroundResource(
+                if (selectedItems[position]) R.drawable.bg_selected_properties_btn
+                else R.drawable.emlakler_btn_bg
+            )
 
-            // Обработчик клика
             buttonLayout?.setOnClickListener {
-                // Изменяем состояние выбранности
                 selectedItems[position] = !selectedItems[position]
-
-                // Обновляем элемент
                 notifyItemChanged(position)
-
-                // Вызываем лямбду клика
                 onItemClick(item)
             }
         }
     }
 
-    // Создание ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertiesViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_dialog_properties, parent, false) // Макет для элемента
+            .inflate(R.layout.item_dialog_properties, parent, false)
         return PropertiesViewHolder(view)
     }
 
-    // Привязка данных
     override fun onBindViewHolder(holder: PropertiesViewHolder, position: Int) {
         holder.bind(items[position], position)
     }
 
     override fun getItemCount(): Int = items.size
+
+    // Метод для выделения или сброса всех кнопок
+    fun setAllSelected(selected: Boolean) {
+        selectedItems.fill(selected)
+        notifyDataSetChanged()
+    }
 }

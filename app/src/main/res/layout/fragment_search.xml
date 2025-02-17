@@ -56,14 +56,13 @@
 
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_to_filter"
+                        android:id="@+id/btn_filter"
                         style="@style/Widget.MaterialComponents.TimePicker.ImageButton"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="10dp"
                         app:backgroundTint="@color/background"
-                        app:cornerRadius="1000dp"
-                        app:elevation="0dp"
+                        app:cornerRadius="50dp"
                         app:icon="@drawable/filter_icon"
                         app:iconTint="@color/white"
                         app:layout_constraintBottom_toBottomOf="@+id/editText"

@@ -82,8 +82,6 @@ class FilterFragment : Fragment() {
 
     private fun switchDesign(){
 
-
-
         // Слушатель изменений состояния
         binding.customSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -218,6 +216,7 @@ class FilterFragment : Fragment() {
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.rv_properties)
+        val checkBox = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
 
         btnGoybolsun?.setOnClickListener {
             Toast.makeText(currentContext, "Отмена", Toast.LENGTH_SHORT).show()
@@ -231,28 +230,32 @@ class FilterFragment : Fragment() {
 
         if (recyclerView != null) {
             val items = listOf(
-                PropertiesDialogData("Квартира", R.drawable.kwartira),
-                PropertiesDialogData("Коттедж", R.drawable.kottej),
-                PropertiesDialogData("Элитка", R.drawable.elitka),
-                PropertiesDialogData("Полуэлитка", R.drawable.ic_floor_elite),
-                PropertiesDialogData("Дача", R.drawable.dacha),
-                PropertiesDialogData("Планировка", R.drawable.ic_flat)
+                PropertiesDialogData("Kwartira", R.drawable.kwartira),
+                PropertiesDialogData("Kottej", R.drawable.kottej),
+                PropertiesDialogData("Elitka", R.drawable.elitka),
+                PropertiesDialogData("Polelitka", R.drawable.ic_floor_elite),
+                PropertiesDialogData("Daça", R.drawable.dacha),
+                PropertiesDialogData("Plan jaý", R.drawable.ic_flat)
             )
 
             val adapter = PropertiesDialogAdapter(items) { selectedItem ->
 
 
-
-
-
-                Toast.makeText(currentContext, "Вы выбрали: ${selectedItem.name}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(currentContext, "Maks sen ${selectedItem.name} bolümini sayladyň", Toast.LENGTH_SHORT).show()
             }
 
             recyclerView.adapter = adapter
             recyclerView.layoutManager = GridLayoutManager(currentContext, 2)
-        } else {
-            Log.e("Dialog", "RecyclerView not found")
+
+
+            checkBox.setOnCheckedChangeListener{ _, isChecked ->
+                adapter.setAllSelected(isChecked)
+            }
+
         }
+
+
+
 
         dialog.show()
     }
