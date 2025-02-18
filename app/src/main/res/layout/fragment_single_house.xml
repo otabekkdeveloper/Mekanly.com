@@ -4,299 +4,412 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.ui.fragments.singleHouse.FragmentSingleHouse">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsingToolbar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleMarginEnd="64dp"
-                app:expandedTitleMarginStart="48dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                android:fitsSystemWindows="true">
 
-
-
-
-
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager"
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:background="@drawable/home_villa_image"
+                    android:layout_height="wrap_content"
                     android:fitsSystemWindows="true"
-                    app:layout_collapseMode="parallax" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    app:layout_anchor="@id/appBarLayout">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_back"
-                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:backgroundTint="@color/white"
-                        app:icon="@drawable/ic_back"
-                        app:iconTint="@color/black" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_share"
-                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:backgroundTint="@color/white"
-                        app:icon="@drawable/ic_share"
-                        app:iconTint="@color/black" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_like"
-                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginStart="15dp"
-                        app:backgroundTint="@color/white"
-                        app:icon="@drawable/heart_icon"
-                        app:iconTint="@color/black" />
-
-
-                </LinearLayout>
-
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/logo_m" />
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleMarginEnd="64dp"
+                    app:expandedTitleMarginStart="48dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
 
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:background="@drawable/home_villa_image"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        app:layout_anchor="@id/appBarLayout">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_back"
+                            style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            app:backgroundTint="@color/white"
+                            app:icon="@drawable/ic_back"
+                            app:iconTint="@color/black" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_share"
+                            style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            app:backgroundTint="@color/white"
+                            app:icon="@drawable/ic_share"
+                            app:iconTint="@color/black" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_like"
+                            style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="15dp"
+                            app:backgroundTint="@color/white"
+                            app:icon="@drawable/heart_icon"
+                            app:iconTint="@color/black" />
+
+
+                    </LinearLayout>
+
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/logo_m" />
+
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Satlyk jaý"
-                    android:textSize="18sp" />
-
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal" >
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Satlyk jaý"
+                        android:textSize="18sp" />
 
 
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/elitka" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal" >
 
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/elitka" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Elitka"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="12sp"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/black" />
+
+
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="24dp"/>
+
+
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_calendar" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10.06.2024"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="12sp"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/black" />
+
+
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="24dp"/>
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_eye" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="12sp"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/black" />
+
+
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/location_icon"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:layout_height="wrap_content"
+                            android:text="Aşgabat/mir1"/>
+
+
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Elitka"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="12sp"
-                        android:layout_marginStart="8dp"
-                        android:textColor="@color/black" />
-                    
-                    
-                    
-                    <com.google.android.material.divider.MaterialDivider
-                        android:layout_width="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_height="24dp"/>
-
-
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_calendar" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10.06.2024"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="12sp"
-                        android:layout_marginStart="8dp"
-                        android:textColor="@color/black" />
-
-
-
-                    <com.google.android.material.divider.MaterialDivider
-                        android:layout_width="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_height="24dp"/>
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_eye" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="100"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="12sp"
-                        android:layout_marginStart="8dp"
-                        android:textColor="@color/black" />
-
-
-
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:background="@drawable/location_icon"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:layout_height="wrap_content"
-                        android:text="Aşgabat/mir1"/>
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_color"
-                    android:layout_marginTop="16dp"
-                    android:text="#Tekebazar #Kwartira #VIP #arenda"/>
-
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:iconTint="#555555"
-                    android:backgroundTint="#EEEEEE"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    app:iconGravity="textStart"
-                    app:icon="@drawable/ic_comments"
-                    app:cornerRadius="8dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:text="Teswirler (2)"/>
-
-
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_information" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Maglumatlar"
-                        android:layout_marginStart="6dp"
-                        android:layout_gravity="center"
+                        android:textSize="14sp"
                         android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="16dp"
+                        android:text="#Tekebazar #Kwartira #VIP #arenda"/>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:iconTint="#555555"
+                        android:backgroundTint="#EEEEEE"
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        app:iconGravity="textStart"
+                        app:icon="@drawable/ic_comments"
+                        app:cornerRadius="8dp"
+                        android:layout_marginHorizontal="15dp"
+                        android:text="Teswirler (2)"/>
+
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_information" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maglumatlar"
+                            android:layout_marginStart="6dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSingleHouse"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="16dp"
+                        android:text="Mümkinçilikler"/>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvOpportunity"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+
+
+                    <ImageView
+                        android:layout_marginTop="24dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/example_banner"/>
+
+
+
+                    <TextView
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/bg_announcement"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:textSize="15sp"
+                        android:text="постельное белье и полотенца можно взять напрокат за 100 крон с человека"
+                        android:textColor="@color/black"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp">
+
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_flag"/>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/grey_text_color"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Nägilelik bildirmek"/>
+
+                    </LinearLayout>
+
+
+
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/vip_avatar_example"/>
+
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:textColor="@color/black"
+                        android:text="Biznes profiller"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 </LinearLayout>
 
+            </androidx.core.widget.NestedScrollView>
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSingleHouse"
-                    android:layout_marginTop="20dp"
-                    tools:listitem="@layout/item_information_in_single_house"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 
 
+    </ScrollView>
 
 
-
-
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

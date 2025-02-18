@@ -13,12 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
+import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
+import com.mekanly.presentation.ui.adapters.OpportunityItem
 
 class FragmentSingleHouse : Fragment() {
 
     private lateinit var binding: FragmentSingleHouseBinding
     private lateinit var houseAdapter: AdapterInformationInSingleHouse
+    private lateinit var opportunityAdapter: AdapterOpportunityInSingleHouse
 
     companion object {
         fun newInstance() = FragmentSingleHouse()
@@ -56,6 +59,36 @@ class FragmentSingleHouse : Fragment() {
         houseAdapter = AdapterInformationInSingleHouse(houseList)
         binding.rvSingleHouse.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvSingleHouse.adapter = houseAdapter
+
+
+
+        val opportunityList = listOf(
+            OpportunityItem(R.drawable.ic_wifi, "Wi-Fi"),
+            OpportunityItem(R.drawable.dush_ic, "Duş"),
+            OpportunityItem(R.drawable.kitchen_ic, "Aşhana"),
+            OpportunityItem(R.drawable.pech_ic, "Peç"),
+            OpportunityItem(R.drawable.kir_mashyn_ic, "Kir maşyn"),
+            OpportunityItem(R.drawable.lift_ic, "Lift"),
+            OpportunityItem(R.drawable.ic_tv, "Telewizor"),
+            OpportunityItem(R.drawable.ic_balcony, "Balkon"),
+            OpportunityItem(R.drawable.kondisioner_ic, "Kondisioner"),
+            OpportunityItem(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
+            OpportunityItem(R.drawable.ic_refrigerator, "Sowadyjy"),
+            OpportunityItem(R.drawable.ic_swimming_pool, "Basseýn"),
+            OpportunityItem(R.drawable.ic_bedroom, "Spalny"),
+            OpportunityItem(R.drawable.ish_stoly_ic, "Iş stoly"),
+            OpportunityItem(R.drawable.mebel_ic, "Mebel şkaf"),
+            OpportunityItem(R.drawable.mangal_ic, "Mangal"),
+            OpportunityItem(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
+            OpportunityItem(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
+        )
+
+        opportunityAdapter = AdapterOpportunityInSingleHouse(opportunityList)
+        binding.rvOpportunity.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvOpportunity.adapter = opportunityAdapter
+
+
+
 
 
 
