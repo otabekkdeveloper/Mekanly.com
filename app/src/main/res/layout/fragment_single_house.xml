@@ -6,6 +6,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -25,6 +26,10 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
+
+
+
+
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/view_pager"
                     android:layout_width="match_parent"
@@ -32,6 +37,50 @@
                     android:background="@drawable/home_villa_image"
                     android:fitsSystemWindows="true"
                     app:layout_collapseMode="parallax" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    app:layout_anchor="@id/appBarLayout">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_back"
+                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:backgroundTint="@color/white"
+                        app:icon="@drawable/ic_back"
+                        app:iconTint="@color/black" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_share"
+                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:backgroundTint="@color/white"
+                        app:icon="@drawable/ic_share"
+                        app:iconTint="@color/black" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_like"
+                        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="15dp"
+                        app:backgroundTint="@color/white"
+                        app:icon="@drawable/heart_icon"
+                        app:iconTint="@color/black" />
+
+
+                </LinearLayout>
+
 
 
                 <ImageView
@@ -47,47 +96,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:layout_anchor="@id/appBarLayout">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_back"
-                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                app:backgroundTint="@color/white"
-                app:icon="@drawable/ic_back"
-                app:iconTint="@color/black" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_share"
-                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                app:backgroundTint="@color/white"
-                app:icon="@drawable/ic_share"
-                app:iconTint="@color/black" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_like"
-                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="15dp"
-                app:backgroundTint="@color/white"
-                app:icon="@drawable/heart_icon"
-                app:iconTint="@color/black" />
-
-
-        </LinearLayout>
 
 
         <androidx.core.widget.NestedScrollView
@@ -208,17 +217,77 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:layout_height="wrap_content"
                         android:text="Aşgabat/mir1"/>
 
 
+                </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="16dp"
+                    android:text="#Tekebazar #Kwartira #VIP #arenda"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:iconTint="#555555"
+                    android:backgroundTint="#EEEEEE"
+                    android:textColor="#555555"
+                    android:textSize="14sp"
+                    app:iconGravity="textStart"
+                    app:icon="@drawable/ic_comments"
+                    app:cornerRadius="8dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="Teswirler (2)"/>
+
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_information" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maglumatlar"
+                        android:layout_marginStart="6dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSingleHouse"
+                    android:layout_marginTop="20dp"
+                    tools:listitem="@layout/item_information_in_single_house"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+
+
 
 
 
