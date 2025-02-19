@@ -32,15 +32,10 @@
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-
-
-
-
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/view_pager"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
-                        android:background="@drawable/home_villa_image"
                         android:fitsSystemWindows="true"
                         app:layout_collapseMode="parallax" />
 
@@ -117,9 +112,12 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/tv_title"
+                        tools:text="Amanyn oyi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Satlyk jaý"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_medium"
                         android:textSize="18sp" />
 
 
@@ -138,9 +136,10 @@
 
 
                         <TextView
+                            android:id="@+id/tv_house_type"
+                            tools:text="HouseType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Elitka"
                             android:layout_gravity="center"
                             android:fontFamily="@font/roboto_regular"
                             android:textSize="12sp"
@@ -168,10 +167,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="10.06.2024"
+                            tools:text="Date"
                             android:layout_gravity="center"
                             android:fontFamily="@font/roboto_regular"
                             android:textSize="12sp"
+                            android:id="@+id/tv_date"
                             android:layout_marginStart="8dp"
                             android:textColor="@color/black" />
 
@@ -192,9 +192,10 @@
 
 
                         <TextView
+                            android:id="@+id/tv_view_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="100"
+                            tools:text="100"
                             android:layout_gravity="center"
                             android:fontFamily="@font/roboto_regular"
                             android:textSize="12sp"
@@ -224,37 +225,39 @@
                             android:layout_width="wrap_content"
                             android:textColor="@color/black"
                             android:textSize="16sp"
+                            android:id="@+id/tv_address"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/roboto_regular"
                             android:layout_height="wrap_content"
-                            android:text="Aşgabat/mir1"/>
+                            tools:text="Aşgabat/mir1"/>
 
 
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:textColor="@color/text_color"
                         android:layout_marginTop="16dp"
-                        android:text="#Tekebazar #Kwartira #VIP #arenda"/>
+                        tools:text=""/>
 
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
+                        android:id="@+id/btn_comments"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="20dp"
-                        app:iconTint="#555555"
                         android:backgroundTint="#EEEEEE"
+                        android:text="@string/comments"
                         android:textColor="#555555"
                         android:textSize="14sp"
-                        app:iconGravity="textStart"
-                        app:icon="@drawable/ic_comments"
                         app:cornerRadius="8dp"
-                        android:layout_marginHorizontal="15dp"
-                        android:text="Teswirler (2)"/>
-
+                        app:icon="@drawable/ic_comments"
+                        app:iconGravity="textStart"
+                        app:iconTint="#555555" />
 
                     <LinearLayout
                         android:layout_marginTop="10dp"
@@ -273,7 +276,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Maglumatlar"
+                            android:text="@string/details"
                             android:layout_marginStart="6dp"
                             android:layout_gravity="center"
                             android:textColor="@color/text_color"
@@ -300,8 +303,7 @@
                         android:layout_marginTop="20dp"
                         android:textSize="18sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="16dp"
-                        android:text="Mümkinçilikler"/>
+                        android:text="@string/opportunity"/>
 
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -322,13 +324,14 @@
 
 
                     <TextView
+                        android:id="@+id/tv_details"
                         android:padding="16dp"
                         android:layout_width="match_parent"
                         android:background="@drawable/bg_announcement"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:textSize="15sp"
-                        android:text="постельное белье и полотенца можно взять напрокат за 100 крон с человека"
+                        tools:text="постельное белье и полотенца можно взять напрокат за 100 крон с человека"
                         android:textColor="@color/black"/>
 
 
@@ -348,29 +351,22 @@
 
 
                         <TextView
+                            android:id="@+id/btn_report"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:textSize="14sp"
                             android:textColor="@color/grey_text_color"
                             android:fontFamily="@font/roboto_bold"
-                            android:text="Nägilelik bildirmek"/>
+                            android:text="@string/report"/>
 
                     </LinearLayout>
-
-
-
-
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/vip_avatar_example"/>
-
-
-
-
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -379,30 +375,15 @@
                         android:textColor="@color/black"
                         android:text="Biznes profiller"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

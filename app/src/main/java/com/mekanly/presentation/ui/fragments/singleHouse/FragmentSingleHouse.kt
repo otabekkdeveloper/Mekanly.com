@@ -1,48 +1,92 @@
 package com.mekanly.presentation.ui.fragments.singleHouse
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataHouse
+import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
+import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
 import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
 import com.mekanly.presentation.ui.adapters.OpportunityItem
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class FragmentSingleHouse : Fragment() {
 
     private lateinit var binding: FragmentSingleHouseBinding
+    private val args by navArgs<FragmentSingleHouseArgs>()
     private lateinit var houseAdapter: AdapterInformationInSingleHouse
     private lateinit var opportunityAdapter: AdapterOpportunityInSingleHouse
 
-    companion object {
-        fun newInstance() = FragmentSingleHouse()
-    }
 
     private val viewModel: VMSingleHouse by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         binding = FragmentSingleHouseBinding.inflate(inflater, container, false)
+        getHouseInfo()
+        initListeners()
+        observeViewModel()
+        setBulkyData()
+        return binding.root
+    }
 
+    private fun observeViewModel() {
+        /**To observe state changes in the viewModel**/
+        lifecycleScope.launch {
+            viewModel.singleHouseState.collectLatest {
+                when (it) {
+                    is ResponseBodyState.Error -> {
+                        showErrorSnackBar(requireContext(), binding.root, it.error.toString())
+                        binding.progressBar.visibility = View.GONE
+                    }
 
-        setOnClickListener()
+                    ResponseBodyState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
 
+                    is ResponseBodyState.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        setViewPager(it.dataResponse as DataHouse)
+                        setHouseDetails(it.dataResponse)
+                    }
 
+                    else -> {}
+                }
+            }
+        }
+    }
+
+    private fun setHouseDetails(dataHouse: DataHouse) {
+        binding.apply{
+            tvTitle.text = dataHouse.name
+            tvDetails.text = dataHouse.description
+            tvHouseType.text = dataHouse.categoryName
+            tvAddress.text =dataHouse.location.name
+        }
+
+    }
+
+    private fun setViewPager(dataHouse: DataHouse) {
+        val imageSliderAdapter = HouseImagesAdapter(dataHouse.images)
+        binding.viewPager.adapter = imageSliderAdapter
+    }
+
+    private fun setBulkyData() {
         val houseList = listOf(
             HouseItem(R.drawable.ic_houses_for_sale, "Bölümi", "Satlyk jaýlar"),
             HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", "Aşgabat/mir1"),
@@ -88,26 +132,20 @@ class FragmentSingleHouse : Fragment() {
         binding.rvOpportunity.adapter = opportunityAdapter
 
 
-
-
-
-
-        return binding.root
     }
 
-    private fun setOnClickListener() {
-
-        binding.apply {
-
-            btnBack.setOnClickListener{
-
-                findNavController().popBackStack()
-
-            }
-
+    private fun getHouseInfo() {
+        if (args.houseId == -1L) {
+            return
+        } else {
+            viewModel.getHouseDetails(args.houseId)
         }
 
+    }
 
-
+    private fun initListeners() {
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+            }
     }
 }

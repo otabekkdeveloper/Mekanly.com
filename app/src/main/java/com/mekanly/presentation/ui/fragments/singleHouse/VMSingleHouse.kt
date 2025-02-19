@@ -13,10 +13,13 @@ class VMSingleHouse : ViewModel() {
     private val useCase by lazy {
         UseCaseHouseDetails()
     }
-    private fun getSingleHouseDetails(houseId: Long)
+
+
+    fun getHouseDetails(houseId: Long)
     {
         useCase.execute(houseId) {
             _singleHouseState.value = it
         }
     }
+
 }

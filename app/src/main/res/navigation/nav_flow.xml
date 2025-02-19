@@ -73,6 +73,11 @@
         android:id="@+id/fragmentSingleHouse"
         android:name="com.mekanly.presentation.ui.fragments.singleHouse.FragmentSingleHouse"
         android:label="fragment_single_house"
-        tools:layout="@layout/fragment_single_house" />
+        tools:layout="@layout/fragment_single_house" >
+        <argument
+            android:name="houseId"
+            app:argType="long"
+            android:defaultValue="-1" />
+    </fragment>
 
 </navigation>

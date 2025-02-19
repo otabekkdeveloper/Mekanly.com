@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    id ("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs")
+
 //    id("kotlin-kapt")
 }
 
@@ -59,8 +60,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     //navigation
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
     //roundedImageView
     implementation("com.makeramen:roundedimageview:2.3.0")
     //viewPager
@@ -78,22 +79,12 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     //splash Screen
     implementation ("androidx.core:core-splashscreen:1.0.0")
-
-
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.3")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.3")
-
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
-
     implementation ("androidx.core:core-splashscreen:1.0.1")
-
-
     //material design
     implementation ("com.google.android.material:material:1.12.0-alpha03")
     implementation (libs.viewpager2)
     implementation(libs.dotsindicator)
-
-
-
-
 }
