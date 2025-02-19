@@ -10,4 +10,8 @@ class GetHousesUseCase {
      fun execute(callback: (ResponseBodyState) -> Unit){
          rep.getHouses(callback)
      }
+
+    fun executeTopHouses(callback: (ResponseBodyState) -> Unit){
+        rep.getTopHouses(callback)
+    }
 }

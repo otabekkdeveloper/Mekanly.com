@@ -2,6 +2,7 @@ package com.mekanly.presentation.ui.fragments.home
 
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.dataModels.DataBanner
+import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.domain.useCase.GetBannersUseCase
 import com.mekanly.domain.useCase.GetHousesUseCase
@@ -17,6 +18,9 @@ class VMHome:ViewModel() {
     private val _banners= MutableStateFlow(emptyList<DataBanner>().toMutableList())
     val banners: StateFlow<MutableList<DataBanner>> = _banners.asStateFlow()
 
+    private val _houses= MutableStateFlow(emptyList<DataHouse>().toMutableList())
+    val houses: StateFlow<MutableList<DataHouse>> = _houses.asStateFlow()
+
     private val useCase by lazy {
         GetHousesUseCase()
     }
@@ -28,6 +32,8 @@ class VMHome:ViewModel() {
     init {
 //        getHouses()
         getBanners()
+
+        getTopHouses()
     }
 
     private fun getHouses() {
@@ -56,6 +62,28 @@ class VMHome:ViewModel() {
 
                else -> {}
            }
+        }
+    }
+
+    private fun getTopHouses(){
+        useCase.execute {
+            _homeState.value = it
+            when(it){
+                is ResponseBodyState.Error -> {
+//                    _homeState.value = ResponseBodyState.Error(4)
+                }
+                ResponseBodyState.Loading -> {
+//                    _homeState.value = ResponseBodyState.Loading
+                }
+                is ResponseBodyState.SuccessList -> {
+                    if (it.dataResponse.isEmpty()){
+                        return@execute
+                    }else{
+                        _houses.value = it.dataResponse as MutableList<DataHouse>
+                    }
+                }
+                else -> {}
+            }
         }
     }
 }

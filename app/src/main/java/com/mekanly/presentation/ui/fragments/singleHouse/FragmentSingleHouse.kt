@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mekanly.R
+import com.mekanly.databinding.FragmentSingleHouseBinding
 
 class FragmentSingleHouse : Fragment() {
+
+    private lateinit var binding: FragmentSingleHouseBinding
 
     companion object {
         fun newInstance() = FragmentSingleHouse()
@@ -24,6 +27,12 @@ class FragmentSingleHouse : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_single_house, container, false)
+        binding  = FragmentSingleHouseBinding.inflate(inflater, container, false)
+        observeViewModel()
+        return  binding.root
+    }
+
+    private fun observeViewModel() {
+        TODO("Not yet implemented")
     }
 }
