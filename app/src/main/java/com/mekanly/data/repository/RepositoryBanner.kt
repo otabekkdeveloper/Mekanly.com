@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RepositoryBanner {
+class   RepositoryBanner {
     private val apiService = ApiClient.instance.create(ApiService::class.java)
     fun getBanners(callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
