@@ -66,24 +66,25 @@ class VMHome:ViewModel() {
     }
 
     private fun getTopHouses(){
-        useCase.execute {
-            _homeState.value = it
-            when(it){
-                is ResponseBodyState.Error -> {
-//                    _homeState.value = ResponseBodyState.Error(4)
-                }
-                ResponseBodyState.Loading -> {
-//                    _homeState.value = ResponseBodyState.Loading
-                }
-                is ResponseBodyState.SuccessList -> {
-                    if (it.dataResponse.isEmpty()){
-                        return@execute
-                    }else{
-                        _houses.value = it.dataResponse as MutableList<DataHouse>
-                    }
-                }
-                else -> {}
-            }
-        }
+
+//        useCase.execute {
+//            _homeState.value = it
+//            when(it){
+//                is ResponseBodyState.Error -> {
+////                    _homeState.value = ResponseBodyState.Error(4)
+//                }
+//                ResponseBodyState.Loading -> {
+////                    _homeState.value = ResponseBodyState.Loading
+//                }
+//                is ResponseBodyState.SuccessList -> {
+//                    if (it.dataResponse.isEmpty()){
+//                        return@execute
+//                    }else{
+//                        _houses.value = it.dataResponse as MutableList<DataHouse>
+//                    }
+//                }
+//                else -> {}
+//            }
+//        }
     }
 }

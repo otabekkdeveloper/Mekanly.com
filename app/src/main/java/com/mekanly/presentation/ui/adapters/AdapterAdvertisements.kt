@@ -9,6 +9,7 @@ import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvBigBinding
+import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 
@@ -69,6 +70,9 @@ class AdapterAdvertisements(
     }
 
     fun onAdvClicked(item: DataHouse) {
-        navController.navigate(R.id.action_homeFragment_to_fragmentSingleHouse)
+        val action =
+            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
+
+        navController.navigate(action)
     }
 }
