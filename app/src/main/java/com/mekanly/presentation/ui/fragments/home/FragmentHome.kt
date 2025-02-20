@@ -71,12 +71,6 @@ class FragmentHome : Fragment() {
                     else -> {}
                 }
             }
-
-            lifecycleScope.launch {
-                viewModel.houses.collectLatest {
-                    setAdapter(it)
-                }
-            }
         }
 
     }
@@ -95,14 +89,11 @@ class FragmentHome : Fragment() {
         binding.rvBigBanners.adapter = adapterBigBanners
     }
 
-    private fun setAdapter(dataResponse: List<DataHouse>) {
-//        propertyAdapter = AdapterSmallAdvertisements(dataResponse)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//        binding.recyclerView.adapter = propertyAdapter
-        propertyAdapter = AdapterTopHouses(dataResponse)
-        binding.rvHouses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.rvHouses.adapter = propertyAdapter
-    }
+//    private fun setAdapter(dataResponse: List<DataHouse>) {
+//        propertyAdapter = AdapterTopHouses(dataResponse)
+//        binding.rvHouses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        binding.rvHouses.adapter = propertyAdapter
+//    }
 
 
 }

@@ -1,5 +1,6 @@
 package com.mekanly.presentation.ui.fragments.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.dataModels.DataBanner
 import com.mekanly.data.dataModels.DataHouse
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class VMHome:ViewModel() {
 
-    private val _homeState = MutableStateFlow<ResponseBodyState>(ResponseBodyState.Loading)
+    private val _homeState = MutableStateFlow<ResponseBodyState>(ResponseBodyState.Initial)
     val homeState: StateFlow<ResponseBodyState> = _homeState.asStateFlow()
 
     private val _banners= MutableStateFlow(emptyList<DataBanner>().toMutableList())
@@ -32,17 +33,11 @@ class VMHome:ViewModel() {
     init {
 //        getHouses()
         getBanners()
-
-        getTopHouses()
-    }
-
-    private fun getHouses() {
-        useCase.execute {
-            _homeState.value = it
-        }
+//        getTopHouses()
     }
 
     private fun getBanners(){
+        Log.e("BANNERS", "getBanners: now getting banners" )
         useCaseBanners.execute {
             _homeState.value = it
            when(it){
