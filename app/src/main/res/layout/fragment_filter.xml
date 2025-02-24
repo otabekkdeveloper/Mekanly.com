@@ -109,7 +109,7 @@
                     android:paddingStart="16dp"
                     android:text="@string/location_text"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry" />
 
