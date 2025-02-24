@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".login.LoginActivity">
+
+
+    <ScrollView
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/login_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="Ulgama girmek"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/mekanly_login_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="130dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_phone"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_width="match_parent"
+                    android:textColorHint="@color/text_color_grey"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:hint="Elektron poçtaňyz"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+
+
+                <CheckBox
+                    android:id="@+id/cbHemmesi"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_color_grey"
+                    android:text="Düzgünnamany okadym we kabul etdim"
+                    android:layout_marginStart="20dp"/>
+
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:layout_marginHorizontal="33dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/bg_color_app"
+                    android:text="Tassyklamak"
+                    android:textColor="@color/white" />
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:textColor="@color/default_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ÝA-DA" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/signUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/ripple_button_gradient"
+                    android:layout_marginHorizontal="80dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginTop="17dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Telefon nomer"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</layout>

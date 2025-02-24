@@ -1,0 +1,183 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/manrope_bold"
+        android:paddingBottom="8dp"
+        android:text="Remont görnüşi"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Чекбокс -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <CheckBox
+            android:id="@+id/cbHemmesi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layoutDirection="rtl"
+            android:text="Hemmesi" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/euro_remont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Ýewro remont"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/remont_cosmetic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Kosmetiçeskiý"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/remont_designer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Dizaýneriskiý"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/gos_remont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Gos. remont"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/normal_remont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Orta"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/remont_etmeli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/emlakler_btn_bg"
+                android:fontFamily="@font/manrope_regular"
+                android:padding="12dp"
+                android:text="Remont etmeli"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btnGoybolsun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:fontFamily="@font/manrope_bold"
+            android:text="GOÝBOLSUN"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnKabulEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:fontFamily="@font/manrope_bold"
+            android:text="KABUL ET"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

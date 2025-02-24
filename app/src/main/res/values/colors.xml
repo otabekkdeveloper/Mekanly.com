@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ripple_color">#57A09E9E</color>
+    <color name="white_20">#CCFFFFFF</color>
+    <color name="bg_app">#00A3FF</color>
+    <color name="background">#5A8FBB</color>
+    <color name="color_transparent">#00000000</color>
+    <color name="bg_app_two">#208BD4</color>
+    <color name="bg_blue_one">#2669FF</color>
+    <color name="section_business_profile">#F2F1EF</color>
+    <color name="bg_blue_two">#457EFE</color>
+    <color name="bg_blue_three">#8DB0FE</color>
+    <color name="grey_text_color">#6A6A6A</color>
+    <color name="bg_blue_four">#D3E0FE</color>
+    <color name="text_color">#384CFF</color>
+    <color name="text_color_white">#E4E4E4</color>
+    <color name="text_color_grey">#717171</color>
+    <color name="color_bg_search_fragment">#4D8BBF</color>
+    <color name="line_divider">#DDDDDD</color>
+    <color name="white_bg">#F3F8FF</color>
+    <color name="default_grey">#DDDDDD</color>
+    <color name="selected_solid_color">#F2F2F2</color>
+    <color name="default_stroke_color">#CCCCCC</color>
+    <color name="unchecked_thumb">#FFFFFF</color>
+    <color name="checked_thumb">#FFFFFF</color>
+    <color name="number_color">#374151</color>
+    <color name="unchecked_track">#B1B1B1</color>
+    <color name="checked_track">#302F2F</color>
+    <color name="error">#D90000</color>
+
+
+
+
+
+
+
+    <color name="switch_thumb_color">
+        <item android:color="#FFFFFF" android:state_checked="true"/>
+        <item android:color="#FFFFFF" android:state_checked="false"/>
+    </color>
+
+    <!-- Цвет полоски (track) -->
+    <color name="switch_track_color">
+        <item android:color="#4CAF50" android:state_checked="true"/>
+        <item android:color="#CCCCCC" android:state_checked="false"/>
+    </color>
+
+
+
+
+</resources>
+
+
+
+
+

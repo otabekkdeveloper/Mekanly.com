@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+       <variable
+           name="item"
+           type="com.mekanly.data.dataModels.DataHouse" />
+        <variable
+            name="adapter"
+            type="com.mekanly.presentation.ui.adapters.AdapterAdvertisements" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:onClick="@{()->adapter.onAdvClicked(item)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPagerImages"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@color/white"
+                        tools:background="@drawable/placeholder" />
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/worm_dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:dotsColor="@color/bg_blue_one"
+                        app:dotsStrokeColor="@color/bg_blue_four"
+                        app:dotsCornerRadius="8dp"
+                        app:dotsSize="6dp"
+                        android:layout_gravity="bottom|center"
+                        app:dotsSpacing="4dp"
+                        android:layout_marginBottom="5dp"
+                        app:dotsStrokeWidth="2dp"
+                        />
+
+
+                </FrameLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_main_title"
+                        android:fontFamily="@font/manrope_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="Aman aman aman" />
+
+                    <View
+                        android:id="@+id/cr_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+
+                    <TextView
+                        android:maxLines="1"
+                        android:id="@+id/tv_address_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="12sp"
+                        tools:text="Aman aman aman" />
+
+                    <TextView
+                        android:maxLines="2"
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/manrope_bold"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="12sp"
+                        tools:text="Aman aman aman" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="15 TMT" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/adv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_corner_99_border_1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Aman" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_like"
+                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/color_transparent"
+                android:padding="10dp"
+                app:icon="@drawable/heart_icon"
+                app:iconTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

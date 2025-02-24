@@ -1,0 +1,85 @@
+package com.mekanly.presentation.ui.fragments.home
+
+import android.util.Log
+import androidx.lifecycle.ViewModel
+import com.mekanly.data.dataModels.DataBanner
+import com.mekanly.data.dataModels.DataHouse
+import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.useCase.GetBannersUseCase
+import com.mekanly.domain.useCase.GetHousesUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+
+class VMHome:ViewModel() {
+
+    private val _homeState = MutableStateFlow<ResponseBodyState>(ResponseBodyState.Initial)
+    val homeState: StateFlow<ResponseBodyState> = _homeState.asStateFlow()
+
+    private val _banners= MutableStateFlow(emptyList<DataBanner>().toMutableList())
+    val banners: StateFlow<MutableList<DataBanner>> = _banners.asStateFlow()
+
+    private val _houses= MutableStateFlow(emptyList<DataHouse>().toMutableList())
+    val houses: StateFlow<MutableList<DataHouse>> = _houses.asStateFlow()
+
+    private val useCase by lazy {
+        GetHousesUseCase()
+    }
+
+    private val useCaseBanners by lazy {
+        GetBannersUseCase()
+    }
+
+    init {
+//        getHouses()
+        getBanners()
+//        getTopHouses()
+    }
+
+    private fun getBanners(){
+        Log.e("BANNERS", "getBanners: now getting banners" )
+        useCaseBanners.execute {
+            _homeState.value = it
+           when(it){
+               is ResponseBodyState.Error -> {
+                   _homeState.value = ResponseBodyState.Error(4)
+               }
+               ResponseBodyState.Loading -> {
+                   _homeState.value = ResponseBodyState.Loading
+               }
+               is ResponseBodyState.SuccessList -> {
+                   if (it.dataResponse.isEmpty()){
+                       return@execute
+                   }else{
+                       _banners.value = it.dataResponse as MutableList<DataBanner>
+                   }
+               }
+
+               else -> {}
+           }
+        }
+    }
+
+    private fun getTopHouses(){
+
+//        useCase.execute {
+//            _homeState.value = it
+//            when(it){
+//                is ResponseBodyState.Error -> {
+////                    _homeState.value = ResponseBodyState.Error(4)
+//                }
+//                ResponseBodyState.Loading -> {
+////                    _homeState.value = ResponseBodyState.Loading
+//                }
+//                is ResponseBodyState.SuccessList -> {
+//                    if (it.dataResponse.isEmpty()){
+//                        return@execute
+//                    }else{
+//                        _houses.value = it.dataResponse as MutableList<DataHouse>
+//                    }
+//                }
+//                else -> {}
+//            }
+//        }
+    }
+}

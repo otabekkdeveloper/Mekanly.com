@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+
+    <style name="TabTextAppearanceTwo" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="TextRegular14" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomSwitchStyle" parent="TextAppearance.AppCompat.Widget.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="CustomSwitchStyleTwo" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+    <style name="CustomSwitchStyleThree" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="CustomSwitchStyleFour" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="bold" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="light" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="medium" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:fontFamily="@font/manrope_bold"
+        android:text="@string/property_type"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Чекбокс -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <CheckBox
+            android:id="@+id/cbHemmesi"
+            android:fontFamily="@font/manrope_regular"
+            android:layoutDirection="rtl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thats_all" />
+
+    </LinearLayout>
+
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_properties"
+       android:orientation="horizontal"
+       android:paddingHorizontal="18dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btnGoybolsun"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            android:background="@color/color_transparent"
+            android:text="@string/cancel"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnKabulEt"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            android:background="@color/color_transparent"
+            android:text="@string/accept"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>

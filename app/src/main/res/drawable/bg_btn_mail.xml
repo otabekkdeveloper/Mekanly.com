@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient background -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/text_color"
+                android:endColor="@color/bg_app"
+                android:angle="45"/>
+            <corners android:radius="12dp"/>
+        </shape>
+    </item>
+
+    <!-- Inner background with solid color -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/> <!-- Replace with your desired inner color -->
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+</layer-list>
