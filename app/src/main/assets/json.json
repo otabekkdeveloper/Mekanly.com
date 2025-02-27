@@ -1,64 +1,85 @@
 {
-  "data": [
-    {
-      "title": "bildirishin ichindaki banner",
-      "type": "inside",
-      "description": "bildirishin ichindaki banner",
-      "image": "[\"banners\\/LsO2PdOPLVxNl3fumVYHvL7L1KLjYzkaqI2K1yAP.jpg\"]",
-      "logo": "banners/mq3KcO1Eaq5aroIYmscqJM9Gkweuoyq27DD9vhVw.png",
-      "url": "https://mekanly.com.tm",
-      "adress": "New York",
-      "phone": "898778",
-      "email": "hghgjggv@gmail.com",
-      "sosial_networks": "hhjghg"
+  "data": {
+    "id": 917,
+    "category_id": 4,
+    "category_name": "Kire\u00fdne ofisler",
+    "location": {
+      "id": 133,
+      "parent_id": 1,
+      "name": "\u00c4hlisi",
+      "created_at": "2025-01-09T09:18:24.000000Z",
+      "updated_at": "2025-01-09T09:18:24.000000Z",
+      "parent_name": "A\u015fgabat \u015f\u00e4heri"
     },
-    {
-      "title": "kici banner 2",
-      "type": "small",
-      "description": null,
-      "image": "[\"banners\\/rpMNnGi5LZYKthp15JbRQKBUU7Ob3mdNQ8CwaGdK.gif\"]",
-      "logo": "banners/tfQyZ4dch3k8EJRSC77STMSrzHyp7JDpl4lFdk8e.png",
-      "url": null,
-      "adress": null,
-      "phone": null,
-      "email": null,
-      "sosial_networks": null
-    },
-    {
-      "title": "Kici banner",
-      "type": "small",
-      "description": "Animatsiyaly kici banner",
-      "image": "[\"banners\\/EgvIgkerC0gG1NIsJoomAOuh41wjCWdLCcC9AnIF.gif\"]",
-      "logo": "banners/tApBWo0FQAZczVvnAbxEoY8PhKmyxHYKd7i5OoMK.gif",
-      "url": "https://mekanly.com.tm",
-      "adress": "New York",
-      "phone": "287648726432",
-      "email": "hghgjggv@gmail.com",
-      "sosial_networks": "@mekanly"
-    },
-    {
-      "title": "Uly Banner 2",
-      "type": "big",
-      "description": "Uly banner 2 test",
-      "image": "[\"banners\\/OoCH8zU3Z96MsRnTG7MWT6S7VoZgy8gZ6wmtslx1.png\"]",
-      "logo": "banners/ILPnEAPYiSwjRcForl4xBHjFiw216IJHPTEA0wjx.jpg",
-      "url": null,
-      "adress": null,
-      "phone": null,
-      "email": null,
-      "sosial_networks": null
-    },
-    {
-      "title": "Mekanly.com.tm",
-      "type": "big",
-      "description": "Mekanly bilen mekan tutun",
-      "image": "[\"banners\\/cqdQwL71lurjBJgRp1MtpOLQcE77f0RBhpU73541.gif\"]",
-      "logo": "banners/vvMIwqbpzmjeKzI5Nk2VF8LCB23YolRGCam2DYEm.jpg",
-      "url": "https://mekanly.com.tm",
-      "adress": "Aşgabat",
-      "phone": "+993737737738",
-      "email": "hshw@hshs.hh",
-      "sosial_networks": "@mekanly"
-    }
-  ]
+    "username": "Mercury",
+    "name": "Arenda Ofis Mir 4 Mir K\u00f6\u00e7",
+    "description": "Arenda Ofis Mir 4 \nMir K\u00f6\u00e7\u00e4n ugrynda\n1 \u043a\u043e\u043c\u043d\u0430\u0442 25m\u00b2\nMebel yok\nKondisaner bar, \nTuwaledy bar, \nArassa gowy Komnat\nBaha: 1.800 manat o\u00f1\u015fuk \u00fderinde\n+ Rieltor hyzmaty\n.........\n\u0410\u0440\u0435\u043d\u0434\u0430 \u043e\u0444\u0438\u0441 \u043c\u0438\u0440 4 \n\u043f\u043e \u041c\u0438\u0440\u0430 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \n1 \u043a\u043e\u043c\u043d\u0430\u0442\u0430 25\u043c\u00b2\n\u0411\u0435\u0437 \u043c\u0435\u0431\u0435\u043b\u0438 \n\u0422\u0443\u0430\u043b\u0435\u0442 \u0435\u0441\u0442\u044c,",
+    "reason": null,
+    "price": "1800.00",
+    "viewed": 2,
+    "star": null,
+    "bron_number": "+99362799898",
+    "room_number": 1,
+    "floor_number": 4,
+    "status": "active",
+    "luxe": 0,
+    "images": [
+      {
+        "id": 4041,
+        "url": "https:\/\/mekanly.com.tm\/storage\/17393486470.jpg"
+      }
+    ],
+    "possibilities": [
+      {
+        "id": 1,
+        "name": "wifi"
+      },
+      {
+        "id": 2,
+        "name": "washer"
+      },
+      {
+        "id": 3,
+        "name": "tv"
+      },
+      {
+        "id": 4,
+        "name": "conditioner"
+      },
+      {
+        "id": 5,
+        "name": "wardrobe"
+      },
+      {
+        "id": 6,
+        "name": "bed"
+      },
+      {
+        "id": 7,
+        "name": "hot"
+      },
+      {
+        "id": 8,
+        "name": "fridge"
+      },
+      {
+        "id": 9,
+        "name": "shower"
+      },
+      {
+        "id": 10,
+        "name": "kitchen"
+      }
+    ],
+    "comment": 0,
+    "comments": [],
+    "is_comment": null,
+    "who": null,
+    "area": null,
+    "exclusisive": 0,
+    "hashtag": null,
+    "level_number": null,
+    "updated_at": "2025-02-25T10:04:10.000000Z",
+    "created_at": "2025-02-25T10:04:10.000000Z"
+  }
 }

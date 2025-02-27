@@ -108,10 +108,10 @@ class FragmentSingleHouse : Fragment() {
 
         val opportunityList = listOf(
             OpportunityItem(R.drawable.ic_wifi, "Wi-Fi"),
-            OpportunityItem(R.drawable.dush_ic, "Duş"),
-            OpportunityItem(R.drawable.kitchen_ic, "Aşhana"),
+            OpportunityItem(R.drawable.ic_bath, "Duş"),
+            OpportunityItem(R.drawable.ic_kitchen, "Aşhana"),
             OpportunityItem(R.drawable.pech_ic, "Peç"),
-            OpportunityItem(R.drawable.kir_mashyn_ic, "Kir maşyn"),
+            OpportunityItem(R.drawable.ic_washing_machine, "Kir maşyn"),
             OpportunityItem(R.drawable.lift_ic, "Lift"),
             OpportunityItem(R.drawable.ic_tv, "Telewizor"),
             OpportunityItem(R.drawable.ic_balcony, "Balkon"),
@@ -120,7 +120,7 @@ class FragmentSingleHouse : Fragment() {
             OpportunityItem(R.drawable.ic_refrigerator, "Sowadyjy"),
             OpportunityItem(R.drawable.ic_swimming_pool, "Basseýn"),
             OpportunityItem(R.drawable.ic_bedroom, "Spalny"),
-            OpportunityItem(R.drawable.ish_stoly_ic, "Iş stoly"),
+            OpportunityItem(R.drawable.ic_table, "Iş stoly"),
             OpportunityItem(R.drawable.mebel_ic, "Mebel şkaf"),
             OpportunityItem(R.drawable.mangal_ic, "Mangal"),
             OpportunityItem(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),

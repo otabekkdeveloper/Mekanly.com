@@ -1,11 +1,9 @@
 package com.mekanly.data.retrofit
 
-
 import com.mekanly.data.dataModels.DataUser
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
-import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.data.responseBody.ResponseHouseDetails
 import com.mekanly.data.responseBody.ResponseHouses
 import com.mekanly.data.responseBody.ResponseRegister
@@ -59,9 +57,6 @@ interface ApiService {
 
     @GET("api/v2/top")
     fun getTopHouses():Call<ResponseHouses>
-
-
-
 
 }
 
