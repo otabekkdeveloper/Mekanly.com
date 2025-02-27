@@ -28,6 +28,7 @@ class FragmentFlow : Fragment() {
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
+        toggleLogo()
 
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
@@ -46,7 +47,7 @@ class FragmentFlow : Fragment() {
                 }
                 3 -> {
                     tab.text = getString(R.string.favorites)
-                    tab.setIcon(R.drawable.heart_icon)
+                    tab.setIcon(R.drawable.ic_favourite)
                 }
                 4 -> {
                     tab.text = getString(R.string.menu)
@@ -76,10 +77,10 @@ class FragmentFlow : Fragment() {
             override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {
                 // Возврат к обычной иконке
                 when (tab.position) {
-                    0 -> tab.setIcon(R.drawable.house_logo)
+                    0 -> tab.setIcon(R.drawable.ic_home_page_unselected)
                     1 -> tab.setIcon(R.drawable.house_search)
                     2 -> tab.setIcon(R.drawable.ic_business_profile_unselected)
-                    3 -> tab.setIcon(R.drawable.heart_icon)
+                    3 -> tab.setIcon(R.drawable.ic_favourite)
                     4 -> tab.setIcon(R.drawable.menu_ic)
                 }
             }
@@ -136,6 +137,13 @@ class FragmentFlow : Fragment() {
 //                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
             }
         }
+
+
+
+
+
     }
+
+
 
 }

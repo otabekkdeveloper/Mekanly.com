@@ -24,7 +24,7 @@ import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
-import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
+import com.mekanly.presentation.ui.bottomSheet.LocationBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 import kotlinx.coroutines.flow.collectLatest
@@ -61,7 +61,8 @@ class SearchFragment : Fragment() {
     private fun setOnClickListener(){
 
         binding.locationBtn.setOnClickListener{
-            LocationDialog()
+            val bottomSheetLocation = LocationBottomSheet()
+            bottomSheetLocation.show(childFragmentManager, "CustomBottomSheet")
         }
 
         binding.btnFilter.setOnClickListener{
@@ -190,37 +191,6 @@ class SearchFragment : Fragment() {
 
 
 
-
-
-
-    private fun LocationDialog() {
-        // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_location_dialog, null)
-
-        // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
-
-        // Настраиваем кнопки
-        val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
-        val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
-
-        btnGoybolsun.setOnClickListener {
-            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnKabulEt.setOnClickListener {
-            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-
-
-
-        dialog.show()
-    }
 
 
 

@@ -33,15 +33,30 @@ class FragmentSingleHouse : Fragment() {
     private val viewModel: VMSingleHouse by viewModels()
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        activity?.window?.apply {
+//            statusBarColor = Color.TRANSPARENT
+//            decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+//        }
+    }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+
+
 
         binding = FragmentSingleHouseBinding.inflate(inflater, container, false)
         getHouseInfo()
         initListeners()
         observeViewModel()
         setBulkyData()
+
         return binding.root
     }
 

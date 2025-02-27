@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.mekanly.R
 import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataBanner
@@ -35,6 +37,14 @@ class FragmentHome : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         observeViewModel()
+
+
+
+
+
+
+
+
         return binding.root
     }
 
@@ -80,6 +90,7 @@ class FragmentHome : Fragment() {
         binding.rvBanner.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvBanner.adapter = adapterBanners
+        binding.rvBanner.isNestedScrollingEnabled = true
     }
 
     private fun setUpBigBanners(dataBanners: List<DataBanner>) {
@@ -87,6 +98,7 @@ class FragmentHome : Fragment() {
         binding.rvBigBanners.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvBigBanners.adapter = adapterBigBanners
+        binding.rvBigBanners.isNestedScrollingEnabled = true
     }
 
 //    private fun setAdapter(dataResponse: List<DataHouse>) {

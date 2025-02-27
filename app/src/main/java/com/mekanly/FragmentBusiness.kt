@@ -65,34 +65,7 @@ class FragmentBusiness : Fragment() {
 
 
 
-    private fun LocationDialog() {
-        // Инфлейтим кастомный макет диалога
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_location_dialog, null)
 
-        // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
-
-        // Настраиваем кнопки
-        val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
-        val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
-
-        btnGoybolsun.setOnClickListener {
-            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnKabulEt.setOnClickListener {
-            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-
-
-
-        dialog.show()
-    }
 
 
 }
