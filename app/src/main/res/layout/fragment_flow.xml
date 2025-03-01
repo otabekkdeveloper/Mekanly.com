@@ -12,16 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
 
-    <!-- Верхний скрываемый бар -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        app:elevation="0dp">
+        app:elevation="0dp" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -50,6 +46,10 @@
                 app:layout_constraintVertical_bias="0.833" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
