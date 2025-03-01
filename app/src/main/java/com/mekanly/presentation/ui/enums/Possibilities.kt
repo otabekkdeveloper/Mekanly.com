@@ -10,5 +10,13 @@ enum class Possibilities(val key: String) {
     HOT("hot"),
     FRIDGE("fridge"),
     SHOWER("shower"),
-    KITCHEN("kitchen")
+    KITCHEN("kitchen"),
+    MANGAL("Mangal"),
+    POOL("Basseýn"),
+    KITCHEN_FURNITURE("Aşhana mebel"),
+    BALCONY("Balkon"),
+    WORK_DESK("Iş stoly"),
+    ELEVATOR("Lift"),
+    STOVE("Peç"),
+    HOT_WATER("Gyzgyn suw")
 }

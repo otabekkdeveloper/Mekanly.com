@@ -46,5 +46,6 @@ data class DataHouse(
     val bronStatus: Int,
     @SerializedName("user")
     val user: DataUser,
-    val images:List<DataImage>
+    val images:List<DataImage>,
+    val possibilities:List<DataPossibility>
 )

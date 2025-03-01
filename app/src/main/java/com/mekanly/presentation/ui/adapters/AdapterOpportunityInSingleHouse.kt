@@ -7,21 +7,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataPossibility
 
-data class OpportunityItem(
-    val iconResId: Int, // ресурс изображения
-    val category: String
-)
-
-class AdapterOpportunityInSingleHouse(private val items: List<OpportunityItem>) : RecyclerView.Adapter<AdapterOpportunityInSingleHouse.HouseViewHolder>() {
+class AdapterOpportunityInSingleHouse(private val items: List<DataPossibility>) : RecyclerView.Adapter<AdapterOpportunityInSingleHouse.HouseViewHolder>() {
 
     inner class HouseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val icon: ImageView = view.findViewById(R.id.imageView20)
         private val category: TextView = view.findViewById(R.id.textViewOpportunity)
 
-        fun bind(item: OpportunityItem) {
-            icon.setImageResource(item.iconResId)
-            category.text = item.category
+        fun bind(item: DataPossibility) {
+//            icon.setImageResource(item.iconResId)
+//            category.text = item.category
         }
     }
 

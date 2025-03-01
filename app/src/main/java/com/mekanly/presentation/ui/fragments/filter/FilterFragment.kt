@@ -2,22 +2,18 @@ package com.mekanly.presentation.ui.fragments.filter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -25,9 +21,7 @@ import com.mekanly.R
 import com.mekanly.data.OpportunityData
 import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentFilterBinding
-import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
 import com.mekanly.presentation.ui.adapters.OpportunityDialogAdapter
-import com.mekanly.presentation.ui.adapters.OpportunityItem
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
 
@@ -364,31 +358,31 @@ class FilterFragment : Fragment() {
 
 //        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerViewOpportunities)
 
-        val opportunityList = listOf(
-            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
-            OpportunityData(R.drawable.dush_ic, "Duş"),
-            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
-            OpportunityData(R.drawable.pech_ic, "Peç"),
-            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
-            OpportunityData(R.drawable.lift_ic, "Lift"),
-            OpportunityData(R.drawable.ic_tv, "Telewizor"),
-            OpportunityData(R.drawable.ic_balcony, "Balkon"),
-            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
-            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
-            OpportunityData(R.drawable.ic_refrigerator, "Sowadyjy"),
-            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
-            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
-            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
-            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
-            OpportunityData(R.drawable.mangal_ic, "Mangal"),
-            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
-            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
-        )
+//        val opportunityList = listOf(
+//            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
+//            OpportunityData(R.drawable.dush_ic, "Duş"),
+//            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
+//            OpportunityData(R.drawable.pech_ic, "Peç"),
+//            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
+//            OpportunityData(R.drawable.lift_ic, "Lift"),
+//            OpportunityData(R.drawable.ic_tv, "Telewizor"),
+//            OpportunityData(R.drawable.ic_balcony, "Balkon"),
+//            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
+//            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
+//            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
+//            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
+//            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
+//            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
+//            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
+//            OpportunityData(R.drawable.ic_grill, "Mangal"),
+//            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
+//            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
+//        )
 
 // Инициализация адаптера с обработчиком клика
-        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
-            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
-        }
+//        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
+//            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
+//        }
 
 //        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 3) // Устанавливаем менеджер
 //        recyclerViewOpportunities.adapter = opportunityAdapter

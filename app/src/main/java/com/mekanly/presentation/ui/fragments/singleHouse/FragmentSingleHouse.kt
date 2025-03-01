@@ -12,13 +12,14 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
+import com.mekanly.data.dataModels.DataPossibility
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
 import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
-import com.mekanly.presentation.ui.adapters.OpportunityItem
+import com.mekanly.presentation.ui.fragments.singleHouse.adapter.AdapterPossibilities
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -27,7 +28,7 @@ class FragmentSingleHouse : Fragment() {
     private lateinit var binding: FragmentSingleHouseBinding
     private val args by navArgs<FragmentSingleHouseArgs>()
     private lateinit var houseAdapter: AdapterInformationInSingleHouse
-    private lateinit var opportunityAdapter: AdapterOpportunityInSingleHouse
+    private lateinit var opportunityAdapter: AdapterPossibilities
 
 
     private val viewModel: VMSingleHouse by viewModels()
@@ -63,12 +64,19 @@ class FragmentSingleHouse : Fragment() {
                         binding.progressBar.visibility = View.GONE
                         setViewPager(it.dataResponse as DataHouse)
                         setHouseDetails(it.dataResponse)
+                        setPossibilityAdapter(it.dataResponse.possibilities)
                     }
 
                     else -> {}
                 }
             }
         }
+    }
+
+    private fun setPossibilityAdapter(possibilities: List<DataPossibility>) {
+        opportunityAdapter = AdapterPossibilities(possibilities)
+        binding.rvOpportunity.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvOpportunity.adapter = opportunityAdapter
     }
 
     private fun setHouseDetails(dataHouse: DataHouse) {
@@ -103,33 +111,6 @@ class FragmentSingleHouse : Fragment() {
         houseAdapter = AdapterInformationInSingleHouse(houseList)
         binding.rvSingleHouse.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvSingleHouse.adapter = houseAdapter
-
-
-
-        val opportunityList = listOf(
-            OpportunityItem(R.drawable.ic_wifi, "Wi-Fi"),
-            OpportunityItem(R.drawable.ic_bath, "Duş"),
-            OpportunityItem(R.drawable.ic_kitchen, "Aşhana"),
-            OpportunityItem(R.drawable.ic_bake, "Peç"),
-            OpportunityItem(R.drawable.ic_washing_machine, "Kir maşyn"),
-            OpportunityItem(R.drawable.ic_lift, "Lift"),
-            OpportunityItem(R.drawable.ic_tv, "Telewizor"),
-            OpportunityItem(R.drawable.ic_balcony, "Balkon"),
-            OpportunityItem(R.drawable.ic_air_conditioner, "Kondisioner"),
-            OpportunityItem(R.drawable.ic_kitchen_furniture, "Aşhana-mebel"),
-            OpportunityItem(R.drawable.ic_refrigerator, "Sowadyjy"),
-            OpportunityItem(R.drawable.ic_swimming_pool, "Basseýn"),
-            OpportunityItem(R.drawable.ic_bedroom, "Spalny"),
-            OpportunityItem(R.drawable.ic_table, "Iş stoly"),
-            OpportunityItem(R.drawable.ic_furniture, "Mebel şkaf"),
-            OpportunityItem(R.drawable.ic_grill, "Mangal"),
-            OpportunityItem(R.drawable.ic_hot_water, "Gyzgyn suw"),
-            OpportunityItem(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
-        )
-
-        opportunityAdapter = AdapterOpportunityInSingleHouse(opportunityList)
-        binding.rvOpportunity.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvOpportunity.adapter = opportunityAdapter
 
 
     }
