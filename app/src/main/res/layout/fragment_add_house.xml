@@ -1,0 +1,979 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/back"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_back"
+                    app:iconGravity="textTop"
+                    app:iconSize="30dp"
+                    app:iconTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Jaý goşmak"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <!-- Dropdown for Bölüm -->
+
+            <LinearLayout
+                android:id="@+id/buttonBolum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:text="Ady"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/bolumTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="Emlägiňiziň gysgaça adyny ýazyň"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </LinearLayout>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="8dp"
+                app:dividerColor="@color/line_divider" />
+
+
+            <LinearLayout
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:paddingStart="16dp"
+                    android:text="@string/location_text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_regular"
+                    android:paddingStart="16dp"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="8dp"
+                app:dividerColor="@color/line_divider" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manrope_bold"
+                android:paddingStart="16dp"
+                android:text="Binanyň gat sany"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@color/color_transparent"
+                android:paddingTop="8dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fadeScrollbars="false">
+
+
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:padding="1dp"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manrope_bold"
+                android:paddingStart="16dp"
+                android:text="@string/rooms_number"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@color/color_transparent"
+                android:paddingTop="8dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupRooms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fadeScrollbars="false">
+
+
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:padding="1dp"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manrope_bold"
+                android:paddingStart="16dp"
+                android:text="@string/floor_number"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:paddingTop="8dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fadeScrollbars="false">
+
+
+
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeWidth="1dp"
+                        tools:ignore="HardcodedText" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+
+
+
+
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:background="@drawable/dashed_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="35dp"
+                    android:backgroundTint="#717171"
+                    android:layout_height="28dp"
+                    android:background="@drawable/ic_camera"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="surat saýla"
+                    android:textColor="#717171"
+                    android:textSize="18sp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/15"
+                    android:layout_gravity="end"
+                    android:textSize="18sp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                app:dividerColor="@color/line_divider" />
+
+            <LinearLayout
+                android:id="@+id/exampleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/property_type"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:gravity="end"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                app:dividerColor="@color/line_divider" />
+
+
+            <LinearLayout
+                android:id="@+id/remont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/repair"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:gravity="end"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                app:dividerColor="@color/line_divider" />
+
+            <LinearLayout
+                android:id="@+id/mumkinchilikler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/possibilities"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:gravity="end"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                app:dividerColor="@color/line_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/general_area"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextText"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_regular"
+                    android:hint="@string/at_least"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="_"
+                    android:textSize="40sp"
+                    tools:ignore="HardcodedText" />
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTwoTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_regular"
+                    android:hint="@string/the_most"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/price"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextOne"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_regular"
+                    android:hint="@string/the_cheapest"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="_"
+                    android:textSize="40sp"
+                    tools:ignore="HardcodedText" />
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_regular"
+                    android:hint="@string/the_most_expensive"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                app:dividerColor="@color/line_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/organize"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:gravity="end"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/menu_icon"
+                    tools:ignore="ContentDescription" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/line_divider" />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/bg_gozle_btn"
+                android:text="@string/search"
+                android:textColor="@color/white"
+                tools:ignore="TooManyViews" />
+
+
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/customSwitch"
+                style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:trackTint="@color/unchecked_track"
+                android:layout_marginHorizontal="20dp"
+                android:checked="false"
+                app:thumbTint="@color/white"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/show_only_status"
+                android:textStyle="bold"
+                app:trackDecoration="@color/color_transparent" />
+
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/customSwitchTwo"
+                style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                android:layout_width="match_parent"
+                app:trackTint="@color/unchecked_track"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                app:thumbTint="@color/white"
+                android:checked="false"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/show_newly_added_properties"
+                android:textStyle="bold"
+                app:trackDecoration="@color/color_transparent" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+

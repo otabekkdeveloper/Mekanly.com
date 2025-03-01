@@ -1,6 +1,7 @@
 package com.mekanly.data
 
 data class OpportunityData(
-    val text: String,     // Текст элемента
-    val iconResId: Int    // Ресурс иконки элемента
+    val iconResId: Int,
+    val text: String     // Текст элемента
+       // Ресурс иконки элемента
 )

@@ -26,6 +26,10 @@ class ProfileFragment : Fragment() {
             findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
         }
 
+        binding.addHouse.setOnClickListener{
+            findNavController().navigate(R.id.action_fragmentHome_to_fragmentAddHouse)
+        }
+
 
 
 
