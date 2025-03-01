@@ -28,7 +28,7 @@ class FragmentFlow : Fragment() {
         viewPagerAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
-        toggleLogo()
+
 
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

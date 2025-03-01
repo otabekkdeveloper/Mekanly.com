@@ -40,4 +40,5 @@ class OpportunityDialogAdapter(
     }
 
     override fun getItemCount(): Int = items.size // Количество элементов
+
 }
