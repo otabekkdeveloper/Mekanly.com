@@ -22,14 +22,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.mekanly.R
+import com.mekanly.data.OpportunityData
 import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentFilterBinding
+import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
+import com.mekanly.presentation.ui.adapters.OpportunityDialogAdapter
+import com.mekanly.presentation.ui.adapters.OpportunityItem
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
 
 
 class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
+
+    private lateinit var opportunityAdapter: OpportunityDialogAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -349,18 +355,43 @@ class FilterFragment : Fragment() {
         "CutPasteId"
     )
     private fun OpportunityDialog() {
+        //TODO: Shu tayyny duzet
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
 //
 //        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.recyclerView)
 //        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Сетка с 2 столбцами
 
-        //        val adapter = OpportunityDialogAdapter(items) { item ->
-//            Toast.makeText(requireContext(), "${item.text} clicked", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        recyclerView.adapter = adapter
+//        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerViewOpportunities)
 
+        val opportunityList = listOf(
+            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
+            OpportunityData(R.drawable.dush_ic, "Duş"),
+            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
+            OpportunityData(R.drawable.pech_ic, "Peç"),
+            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
+            OpportunityData(R.drawable.lift_ic, "Lift"),
+            OpportunityData(R.drawable.ic_tv, "Telewizor"),
+            OpportunityData(R.drawable.ic_balcony, "Balkon"),
+            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
+            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
+            OpportunityData(R.drawable.ic_refrigerator, "Sowadyjy"),
+            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
+            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
+            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
+            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
+            OpportunityData(R.drawable.mangal_ic, "Mangal"),
+            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
+            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
+        )
+
+// Инициализация адаптера с обработчиком клика
+        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
+            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
+        }
+
+//        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 3) // Устанавливаем менеджер
+//        recyclerViewOpportunities.adapter = opportunityAdapter
 
 // Получаем родительский ConstraintLayout
 

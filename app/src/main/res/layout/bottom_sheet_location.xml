@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:fontFamily="@font/manrope_bold"
+        android:text="Ýerleşýän ýeri"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <RadioButton
+            android:id="@+id/checkbox_select_all"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Ählisi" />
+
+        <RadioButton
+            android:id="@+id/checkbox_city1"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Aşgabat şäheri" />
+
+        <RadioButton
+            android:id="@+id/checkbox_city2"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arkadag şäheri" />
+
+        <RadioButton
+
+            android:id="@+id/checkbox_city3"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Ahal welaýaty" />
+
+        <RadioButton
+
+            android:id="@+id/checkbox_city4"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Balkan welaýaty" />
+
+        <RadioButton
+            android:id="@+id/checkbox_city5"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Mary welaýaty" />
+
+        <RadioButton
+            android:id="@+id/checkbox_city6"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Lebap welaýaty" />
+
+        <RadioButton
+            android:id="@+id/checkbox_city7"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_height="wrap_content"
+            android:text="Daşoguz welaýaty" />
+
+
+
+    </RadioGroup>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/manrope_regular"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btnGoybolsun"
+            android:fontFamily="@font/manrope_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:text="GOÝBOLSUN"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnKabulEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            android:background="@color/color_transparent"
+            android:text="KABUL ET"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

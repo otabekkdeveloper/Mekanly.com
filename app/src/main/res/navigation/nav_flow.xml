@@ -33,6 +33,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentAddHouse"
+            app:destination="@id/fragmentAddHouse"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -57,6 +64,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+
     </fragment>
 
     <fragment
@@ -80,6 +88,10 @@
             app:argType="long"
             android:defaultValue="-1L" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentAddHouse"
+        android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddHouse"
+        android:label="FragmentAddHouse" />
 
 
 </navigation>
