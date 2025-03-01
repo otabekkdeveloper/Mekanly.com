@@ -17,7 +17,6 @@ import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
-import com.mekanly.presentation.ui.adapters.AdapterOpportunityInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
 import com.mekanly.presentation.ui.fragments.singleHouse.adapter.AdapterPossibilities
 import kotlinx.coroutines.flow.collectLatest
@@ -42,7 +41,6 @@ class FragmentSingleHouse : Fragment() {
         getHouseInfo()
         initListeners()
         observeViewModel()
-        setBulkyData()
         return binding.root
     }
 
@@ -65,6 +63,7 @@ class FragmentSingleHouse : Fragment() {
                         setViewPager(it.dataResponse as DataHouse)
                         setHouseDetails(it.dataResponse)
                         setPossibilityAdapter(it.dataResponse.possibilities)
+                        setHomeDetails(it.dataResponse)
                     }
 
                     else -> {}
@@ -94,18 +93,18 @@ class FragmentSingleHouse : Fragment() {
         binding.viewPager.adapter = imageSliderAdapter
     }
 
-    private fun setBulkyData() {
+    private fun setHomeDetails(dataResponse: DataHouse) {
         val houseList = listOf(
-            HouseItem(R.drawable.ic_houses_for_sale, "Bölümi", "Satlyk jaýlar"),
-            HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", "Aşgabat/mir1"),
-            HouseItem(R.drawable.ic_calendar, "Goýlan senesi", "09.12.2023"),
-            HouseItem(R.drawable.ic_phone, "Telefon nomeri", "+99364652712"),
-            HouseItem(R.drawable.elitka, "Emläk görnüşi", "Elitga"),
-            HouseItem(R.drawable.ic_count_room, "Otag sany", "1"),
-            HouseItem(R.drawable.ic_number_of_floors, "Gat sany", "5/12"),
-            HouseItem(R.drawable.elitka, "Remont görnüşi", "Ýewroremont"),
-            HouseItem(R.drawable.ic_total_area, "Umumy meýdany", "200 m2"),
-            HouseItem(R.drawable.ic_price, "Bahasy", "100000 TMT")
+            HouseItem(R.drawable.ic_houses_for_sale, "Bölümi", dataResponse.categoryName),
+            HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", dataResponse.location.name),
+            HouseItem(R.drawable.ic_calendar, "Goýlan senesi", "Not available"),
+            HouseItem(R.drawable.ic_phone, "Telefon nomeri", "Not available"),
+            HouseItem(R.drawable.elitka, "Emläk görnüşi", dataResponse.categoryName),
+            HouseItem(R.drawable.ic_count_room, "Otag sany", dataResponse.roomNumber.toString()),
+            HouseItem(R.drawable.ic_number_of_floors, "Gat sany", dataResponse.floorNumber.toString()),
+            HouseItem(R.drawable.elitka, "Remont görnüşi", dataResponse.luxe.toString()),
+            HouseItem(R.drawable.ic_total_area, "Umumy meýdany", "Not available"),
+            HouseItem(R.drawable.ic_price, "Bahasy", "${dataResponse.price} TMT")
         )
 
         houseAdapter = AdapterInformationInSingleHouse(houseList)
