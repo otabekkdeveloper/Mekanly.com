@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="#F6F6F6"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="3dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/user_name"
+            android:text="BFI404HNR"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_marginTop="3dp"
+            android:text="13.10.2024,  20:21"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+
+
+
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_marginTop="3dp"
+            android:text="Reiltor haky näçe?"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <ImageView
+                android:id="@+id/like_icon"
+                android:layout_width="15dp"
+                android:layout_gravity="center"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_like"/>
+
+            <TextView
+                android:id="@+id/like_count"
+                android:layout_marginTop="3dp"
+                android:text="1"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
+
+
+            <ImageView
+                android:id="@+id/dislike_icon"
+                android:layout_width="15dp"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_dislike"/>
+
+            <TextView
+                android:id="@+id/dislike_count"
+                android:layout_marginTop="3dp"
+                android:text="1"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

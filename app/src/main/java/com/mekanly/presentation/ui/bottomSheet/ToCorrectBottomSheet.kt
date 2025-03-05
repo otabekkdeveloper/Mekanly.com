@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.R
-import com.mekanly.presentation.ui.adapters.BottomSheetAdapter
-import com.mekanly.presentation.ui.adapters.BottomSheetItem
 
 class ToCorrectBottomSheet : BottomSheetDialogFragment() {
 

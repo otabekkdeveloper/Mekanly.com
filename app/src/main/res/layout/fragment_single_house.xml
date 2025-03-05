@@ -249,7 +249,7 @@
                         android:id="@+id/btn_comments"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:backgroundTint="#EEEEEE"
                         android:text="@string/comments"
                         android:textColor="#555555"
@@ -315,11 +315,13 @@
 
 
 
-                    <ImageView
-                        android:layout_marginTop="24dp"
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_big_banners"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/example_banner"/>
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 
@@ -362,18 +364,141 @@
 
                     </LinearLayout>
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/vip_avatar_example"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_vip_profile"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/user_profile"
+                            android:backgroundTint="@color/white" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/user_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Atageldi"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/date_register"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="13.02.2025"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_eye"
+                                    android:backgroundTint="@color/white" />
+
+
+                                <TextView
+                                    android:id="@+id/view_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="3dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="130"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp" />
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="VIP profile galan gün:"
+                                android:textColor="#4D8BBF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text=" 30"
+                                android:textColor="#4D8BBF"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/black"
                         android:text="Biznes profiller"/>
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_business_profiles"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+                        android:text="Başga bildirişler"/>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_others"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
                 </LinearLayout>
 

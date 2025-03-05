@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.BottomSheetItem
 
-data class BottomSheetItem(val icon: Int, val title: String)
 
 class BottomSheetAdapter(
     private val items: List<BottomSheetItem>,
