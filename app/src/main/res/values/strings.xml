@@ -76,4 +76,6 @@
     <string name="lift">Lift</string>
     <string name="pech">Peç</string>
     <string name="hot">Gyzgyn</string>
+    <string name="send">Send</string>
+    <string name="enter">Enter</string>
 </resources>

@@ -88,6 +88,9 @@
             android:name="houseId"
             app:argType="long"
             android:defaultValue="-1L" />
+        <action
+            android:id="@+id/action_fragmentSingleHouse_to_bottomSheetComments"
+            app:destination="@id/bottomSheetComments" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddHouse"
@@ -106,6 +109,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+    <dialog
+        android:id="@+id/bottomSheetComments"
+        android:name="com.mekanly.presentation.ui.bottomSheet.bottomSheetComments.BottomSheetComments"
+        android:label="BottomSheetComments" >
+        <argument
+            android:name="houseId"
+            app:argType="long" />
+    </dialog>
 
 
 </navigation>

@@ -34,14 +34,11 @@
 
 
 
-
-
     <color name="switch_thumb_color">
         <item android:color="#FFFFFF" android:state_checked="true"/>
         <item android:color="#FFFFFF" android:state_checked="false"/>
     </color>
 
-    <!-- Цвет полоски (track) -->
     <color name="switch_track_color">
         <item android:color="#4CAF50" android:state_checked="true"/>
         <item android:color="#CCCCCC" android:state_checked="false"/>

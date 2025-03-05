@@ -19,7 +19,6 @@ import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
-import com.mekanly.presentation.ui.bottomSheet.BottomSheetComments
 import com.mekanly.presentation.ui.fragments.singleHouse.adapter.AdapterPossibilities
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -38,7 +37,6 @@ class FragmentSingleHouse : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentSingleHouseBinding.inflate(inflater, container, false)
         getHouseInfo()
         initListeners()
@@ -129,19 +127,17 @@ class FragmentSingleHouse : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
             }
-
         binding.btnComments.setOnClickListener{
             showCommentsBottomSheet()
         }
 
         binding.btnReport.paintFlags = binding.btnReport.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-
     }
 
     private fun showCommentsBottomSheet() {
-        val bottomSheet = BottomSheetComments()
-        bottomSheet.show(requireActivity().supportFragmentManager, "BottomSheetComments")
+        val action =
+            FragmentSingleHouseDirections.actionFragmentSingleHouseToBottomSheetComments(args.houseId)
+        findNavController().navigate(action)
     }
 
 
