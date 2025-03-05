@@ -164,8 +164,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/all"
-                        app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="30dp"
+                        app:chipBackgroundColor="@color/white"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp" />
 

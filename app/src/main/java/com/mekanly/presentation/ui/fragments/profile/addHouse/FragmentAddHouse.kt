@@ -26,9 +26,7 @@ class FragmentAddHouse : Fragment() {
 
 
         binding.back.setOnClickListener{
-
             findNavController().popBackStack()
-
         }
 
 

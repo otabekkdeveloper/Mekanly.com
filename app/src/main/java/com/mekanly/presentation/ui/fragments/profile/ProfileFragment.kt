@@ -27,7 +27,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.addHouse.setOnClickListener{
-            findNavController().navigate(R.id.action_fragmentHome_to_fragmentAddHouse)
+            findNavController().navigate(R.id.action_fragmentHome_to_addNotificationFragment)
         }
 
 

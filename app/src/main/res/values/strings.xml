@@ -58,4 +58,22 @@
     <string name="details">Maglumatlar</string>
     <string name="opportunity">Mümkinçilikler</string>
     <string name="report">Nägilelik bildirmek</string>
+    <string name="wifi">WI-FI</string>
+    <string name="washer">Kir maşyn</string>
+    <string name="tv">Telewizor</string>
+    <string name="conditioner">Kondisioner</string>
+    <string name="wardrobe">Mebel-şkaf</string>
+    <string name="bed">Spalny</string>
+    <string name="hot_water">Gyzgyn suw</string>
+    <string name="fridge">Sowadyjy</string>
+    <string name="shower">Duş</string>
+    <string name="kitchen">Aşhana</string>
+    <string name="mangal">Mangal</string>
+    <string name="basseýn">Basseýn</string>
+    <string name="kitchen_mebel">Aşhana mebel</string>
+    <string name="balcony">Balkon</string>
+    <string name="work_table">Iş stoly</string>
+    <string name="lift">Lift</string>
+    <string name="pech">Peç</string>
+    <string name="hot">Gyzgyn</string>
 </resources>

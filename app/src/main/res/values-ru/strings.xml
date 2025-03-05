@@ -53,5 +53,28 @@
     <string name="Apartment">Квартира</string>
     <string name="turkmen_language">Türkmençe</string>
     <string name="russian_language">Русский</string>
+    <string name="error_message_phone">Error, please check your phone number</string>
+    <string name="comments">Teswirler</string>
+    <string name="details">Maglumatlar</string>
+    <string name="opportunity">Mümkinçilikler</string>
+    <string name="report">Nägilelik bildirmek</string>
+    <string name="wifi">WI-FI</string>
+    <string name="washer">WI-FI</string>
+    <string name="tv">WI-FI</string>
+    <string name="conditioner">WI-FI</string>
+    <string name="wardrobe">WI-FI</string>
+    <string name="bed">WI-FI</string>
+    <string name="hot">WI-FI</string>
+    <string name="fridge">WI-FI</string>
+    <string name="shower">WI-FI</string>
+    <string name="kitchen">WI-FI</string>
+    <string name="mangal">WI-FI</string>
+    <string name="basseýn">WI-FI</string>
+    <string name="kitchen_mebel">Aşhana mebel</string>
+    <string name="balcony">Balkon</string>
+    <string name="work_table">Iş stoly</string>
+    <string name="lift">Lift</string>
+    <string name="pech">Peç</string>
+    <string name="hot_water">Gyzgyn suw</string>
 
 </resources>

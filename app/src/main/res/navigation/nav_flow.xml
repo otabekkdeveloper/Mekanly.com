@@ -34,12 +34,13 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentHome_to_fragmentAddHouse"
-            app:destination="@id/fragmentAddHouse"
+            android:id="@+id/action_fragmentHome_to_addNotificationFragment"
+            app:destination="@id/addNotificationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"/>
+
 
     </fragment>
 
@@ -92,6 +93,19 @@
         android:id="@+id/fragmentAddHouse"
         android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddHouse"
         android:label="FragmentAddHouse" />
+    <fragment
+        android:id="@+id/addNotificationFragment"
+        android:name="com.mekanly.presentation.ui.fragments.profile.AddNotificationFragment"
+        android:label="fragment_add_notification"
+        tools:layout="@layout/fragment_add_notification" >
+        <action
+            android:id="@+id/action_addNotificationFragment_to_fragmentAddHouse"
+            app:destination="@id/fragmentAddHouse"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
 
 </navigation>

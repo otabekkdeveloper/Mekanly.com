@@ -7,6 +7,12 @@
         <item name="android:textSize">9sp</item>
     </style>
 
+    <style name="TabTextAppearanceThree" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
 
     <style name="TabTextAppearanceTwo" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
