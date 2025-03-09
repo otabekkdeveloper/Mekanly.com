@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.prefs.Preferences
 
 class BottomSheetComments : BottomSheetDialogFragment() {
 
@@ -86,9 +87,9 @@ class BottomSheetComments : BottomSheetDialogFragment() {
         binding.sendButton.setOnClickListener {
             val newCommentText = binding.commentEditText.text.toString().trim()
             if (newCommentText.isNotEmpty()) {
-                commentAdapter.notifyItemInserted(0)
                 binding.commentsRecyclerView.scrollToPosition(0)
                 binding.commentEditText.text.clear()
+                showErrorSnackBar(requireContext(),binding.root, "Now on development")
             }
         }
     }
