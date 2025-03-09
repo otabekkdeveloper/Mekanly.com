@@ -3,6 +3,7 @@ package com.mekanly.presentation.ui.fragments.filter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +62,7 @@ class FilterFragment : Fragment() {
 
 
 
-        binding.exampleBtn.setOnClickListener {
+        binding.propertiesBtn.setOnClickListener {
             showCustomDialog()
         }
 
@@ -76,6 +77,18 @@ class FilterFragment : Fragment() {
         binding.location.setOnClickListener {
             findNavController().navigate(R.id.action_filterFragment_to_fragmentLocation)
         }
+
+
+
+        binding.rangeSeekBar.setValues(5f, 330f)
+
+        binding.rangeSeekBar.addOnChangeListener { slider, _, _ ->
+            val values = slider.values
+            val minValue = values[0]  // Левый ползунок
+            val maxValue = values[1]  // Правый ползунок
+            Log.d("RangeSlider", "Min: $minValue, Max: $maxValue")
+        }
+
     }
 
 
@@ -360,22 +373,22 @@ class FilterFragment : Fragment() {
 
 //        val opportunityList = listOf(
 //            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
-//            OpportunityData(R.drawable.dush_ic, "Duş"),
-//            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
-//            OpportunityData(R.drawable.pech_ic, "Peç"),
-//            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
-//            OpportunityData(R.drawable.lift_ic, "Lift"),
+//            OpportunityData(R.drawable.ic_bath, "Duş"),
+//            OpportunityData(R.drawable.ic_kitchen, "Aşhana"),
+//            OpportunityData(R.drawable.ic_bake, "Peç"),
+//            OpportunityData(R.drawable.ic_washing_machine, "Kir maşyn"),
+//            OpportunityData(R.drawable.ic_lift, "Lift"),
 //            OpportunityData(R.drawable.ic_tv, "Telewizor"),
 //            OpportunityData(R.drawable.ic_balcony, "Balkon"),
-//            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
-//            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
+//            OpportunityData(R.drawable.ic_air_conditioner, "Kondisioner"),
+//            OpportunityData(R.drawable.ic_kitchen_furniture, "Aşhana-mebel"),
 //            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
 //            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
 //            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
 //            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
 //            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
 //            OpportunityData(R.drawable.ic_grill, "Mangal"),
-//            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
+//            OpportunityData(R.drawable.ic_hot_water, "Gyzgyn suw"),
 //            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
 //        )
 

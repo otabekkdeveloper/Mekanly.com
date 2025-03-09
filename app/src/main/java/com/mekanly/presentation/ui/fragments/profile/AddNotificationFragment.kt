@@ -41,7 +41,7 @@ class AddNotificationFragment : Fragment() {
         binding.toCorrect.setOnClickListener {
             val bottomSheet = ToCorrectBottomSheet()
 
-            bottomSheet.show(parentFragmentManager, "CustomBottomSheet")
+            bottomSheet.show(childFragmentManager, "CustomBottomSheet")
         }
 
 
