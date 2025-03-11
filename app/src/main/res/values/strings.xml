@@ -78,4 +78,6 @@
     <string name="hot">Gyzgyn</string>
     <string name="send">Send</string>
     <string name="enter">Enter</string>
+    <string name="done">Done</string>
+    <string name="enter_house_name">Enter house name</string>
 </resources>

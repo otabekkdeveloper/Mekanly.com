@@ -1,8 +1,9 @@
-package com.mekanly.presentation.ui.fragments.profile.addHouse
+package com.mekanly.presentation.ui.fragments.addHouse
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,29 +13,37 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.PropertiesDialogData
+import com.mekanly.data.requestBody.RequestBodyAddHouse
+import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentAddHouseBinding
-import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class FragmentAddHouse : Fragment() {
 
     private lateinit var binding: FragmentAddHouseBinding
 
+    private val viewModel:VMAddHouse by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentAddHouseBinding.inflate(inflater, container, false)
-
         switchDesign()
+        initListeners()
+        return binding.root
+    }
 
+    private fun initListeners() {
         binding.propertiesBtn.setOnClickListener {
             showCustomDialog()
         }
@@ -44,23 +53,48 @@ class FragmentAddHouse : Fragment() {
         }
 
         binding.mumkinchilikler.setOnClickListener {
-            OpportunityDialog()
+            opportunityDialog()
         }
-
-
 
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
 
+        binding.location.setOnClickListener{
+            openLocationSelector()
+        }
+        binding.btnDone.setOnClickListener{
+            val requestAddHouse = RequestBodyAddHouse(binding.edtName.text.toString(),binding.edtDescription.text.toString(),0,0,
+                emptyList(), emptyList()
+            )
+            lifecycleScope.launch (Dispatchers.IO){
+                viewModel.addHouse(requestAddHouse){
+                when(it){
+                    is ResponseBodyState.Error -> {
+                        Log.e("ADD_HOUSE", "initListeners: "+it.error )
+                    }
+                    ResponseBodyState.Loading -> {
+                        Log.e("ADD_HOUSE", "initListeners: loading" )
+                    }
+                    is ResponseBodyState.Success -> {
+                        Log.e("ADD_HOUSE", "Success" )
+                    }
+                    else -> {}
+                }
+                }
+            }
 
-        return binding.root
+        }
+    }
+
+    private fun openLocationSelector() {
+
     }
 
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun showCustomDialog() {
-        val currentContext = requireContext() // Убедитесь, что контекст доступен
+        val currentContext = requireContext()
         val dialogView =
             LayoutInflater.from(currentContext).inflate(R.layout.fragment_dialog_properties, null)
 
@@ -204,49 +238,11 @@ class FragmentAddHouse : Fragment() {
     @SuppressLint(
         "UseCompatLoadingForDrawables", "MissingInflatedId", "InflateParams", "CutPasteId"
     )
-    private fun OpportunityDialog() {
-        //TODO: Shu tayyny duzet
+
+    private fun opportunityDialog() {
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
-//
-//        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.recyclerView)
-//        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Сетка с 2 столбцами
 
-//        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerViewOpportunities)
-
-//        val opportunityList = listOf(
-//            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
-//            OpportunityData(R.drawable.dush_ic, "Duş"),
-//            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
-//            OpportunityData(R.drawable.pech_ic, "Peç"),
-//            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
-//            OpportunityData(R.drawable.lift_ic, "Lift"),
-//            OpportunityData(R.drawable.ic_tv, "Telewizor"),
-//            OpportunityData(R.drawable.ic_balcony, "Balkon"),
-//            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
-//            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
-//            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
-//            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
-//            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
-//            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
-//            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
-//            OpportunityData(R.drawable.ic_grill, "Mangal"),
-//            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
-//            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
-//        )
-
-// Инициализация адаптера с обработчиком клика
-//        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
-//            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
-//        }
-
-//        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 3) // Устанавливаем менеджер
-//        recyclerViewOpportunities.adapter = opportunityAdapter
-
-// Получаем родительский ConstraintLayout
-
-
-        // Создаём и отображаем диалог
         AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(true).create()
             .show()
     }
@@ -254,11 +250,8 @@ class FragmentAddHouse : Fragment() {
 
     private fun switchDesign() {
 
-        // Слушатель изменений состояния
         binding.customSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
-                // Установить цвет для "включённого" состояния
                 binding.customSwitch.trackTintList =
                     ContextCompat.getColorStateList(requireContext(), R.color.black)
                 binding.customSwitch.trackDecorationTintList =
@@ -269,7 +262,6 @@ class FragmentAddHouse : Fragment() {
 
             } else {
 
-                // Установить цвет для "выключенного" состояния
                 binding.customSwitch.trackTintList =
                     ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
                 binding.customSwitch.trackDecorationTintList =

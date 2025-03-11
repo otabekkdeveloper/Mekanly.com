@@ -62,7 +62,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope_bold"
                     android:paddingStart="16dp"
@@ -73,12 +73,14 @@
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry" />
 
-                <TextView
-                    android:id="@+id/bolumTextView"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:paddingVertical="14sp"
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:text="Emlägiňiziň gysgaça adyny ýazyň"
+                    android:paddingHorizontal="16dp"
+                    android:background="@color/color_transparent"
+                    android:text="@string/enter_house_name"
                     android:textColor="@color/text_color_grey"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
@@ -101,7 +103,7 @@
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/manrope_bold"
@@ -113,8 +115,9 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/locationText"
-                    android:layout_width="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:id="@+id/edt_"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope_regular"
                     android:paddingStart="16dp"
@@ -754,7 +757,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextText"
+                android:id="@+id/edt_description"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="12dp"
@@ -1016,7 +1019,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/searchButton"
+                android:id="@+id/btn_done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -1024,7 +1027,7 @@
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="@color/black"
                 android:padding="10dp"
-                android:text="Tassyklamak"
+                android:text="@string/done"
                 android:textColor="@color/white"
                 app:cornerRadius="8dp"
                 tools:ignore="TooManyViews" />

@@ -3,9 +3,9 @@ package com.mekanly.presentation.ui.adapters.pagerAdapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubArchiveFragment
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubLookingHousesFragment
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubNotificationsFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubArchiveFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubLookingHousesFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubNotificationsFragment
 
 class NotificationViewPager (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 

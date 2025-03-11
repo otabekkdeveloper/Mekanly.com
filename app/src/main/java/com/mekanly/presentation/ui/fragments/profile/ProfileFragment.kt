@@ -17,11 +17,11 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+        initListeners()
+        return binding.root
+    }
 
-
-
-
-
+    private fun initListeners() {
         binding.btnLanguage.setOnClickListener{
             findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
         }
@@ -29,10 +29,5 @@ class ProfileFragment : Fragment() {
         binding.addHouse.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentHome_to_addNotificationFragment)
         }
-
-
-
-
-        return binding.root
     }
 }

@@ -22,4 +22,8 @@ class VMComments : ViewModel() {
             _commentsState.value = it
         }
     }
+
+    fun addComment(newCommentText: String) {
+
+    }
 }
