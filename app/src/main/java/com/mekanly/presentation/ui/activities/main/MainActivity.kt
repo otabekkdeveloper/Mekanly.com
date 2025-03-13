@@ -1,6 +1,6 @@
 package com.mekanly.presentation.ui.activities.main
 
-import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,7 @@ import com.mekanly.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private lateinit var adapterViewPager: AdapterViewPager
     private lateinit var preferencesHelper: PreferencesHelper
 
 

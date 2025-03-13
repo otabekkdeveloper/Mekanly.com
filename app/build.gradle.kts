@@ -90,4 +90,8 @@ dependencies {
     implementation (libs.viewpager2)
     implementation(libs.dotsindicator)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation ("androidx.core:core-ktx:1.10.1")
+    implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
 }

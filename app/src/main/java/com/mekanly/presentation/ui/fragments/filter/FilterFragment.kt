@@ -30,7 +30,7 @@ import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapt
 class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
 
-    private lateinit var opportunityAdapter: OpportunityDialogAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

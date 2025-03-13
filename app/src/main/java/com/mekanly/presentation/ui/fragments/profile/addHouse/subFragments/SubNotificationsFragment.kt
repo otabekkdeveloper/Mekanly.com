@@ -1,44 +1,32 @@
 package com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.chip.Chip
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.R
+import com.mekanly.data.ProfileNotificationsData
 import com.mekanly.databinding.FragmentSubNotificationsBinding
-
+import com.mekanly.presentation.ui.adapters.ProfileNotificationsAdapter
 
 class SubNotificationsFragment : Fragment() {
-    private lateinit var binding: FragmentSubNotificationsBinding
+
+    private var _binding: FragmentSubNotificationsBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var propertyAdapter: ProfileNotificationsAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        binding = FragmentSubNotificationsBinding.inflate(inflater, container, false)
-
-
-        binding.chipGroups.isSingleSelection = true // Включаем одиночный выбор
-
-        binding.chipGroups.setOnCheckedStateChangeListener { group, checkedIds ->
-            for (i in 0 until group.childCount) {
-                val chip = group.getChildAt(i) as Chip
-                val isActive = checkedIds.contains(chip.id) // Проверяем, выбран ли чип
-
-                chip.chipBackgroundColor = ContextCompat.getColorStateList(
-                    requireContext(), if (isActive) R.color.black else R.color.white
-                )
-                chip.setTextColor(
-                    ContextCompat.getColor(requireContext(), if (isActive) R.color.white else R.color.black)
-                )
-                chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black) // Обводка всегда черная
-            }
-        }
+    ): View {
+        _binding = FragmentSubNotificationsBinding.inflate(inflater, container, false)
 
 
         binding.addHouse.setOnClickListener{
@@ -48,12 +36,116 @@ class SubNotificationsFragment : Fragment() {
 
 
 
-
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
-
-
+        setupRecyclerView()
+        loadProperties()
     }
+
+    private fun setupRecyclerView() {
+        propertyAdapter = ProfileNotificationsAdapter(
+            onItemClick = { property ->
+                // Навигация к деталям объекта
+                navigateToPropertyDetails(property.id)
+            },
+            onLikeClick = { property ->
+                // Обработка нажатия на кнопку "Нравится"
+                toggleFavorite(property)
+            }
+        )
+
+        binding.recyclerViewProperties.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = propertyAdapter
+        }
+    }
+
+    private fun loadProperties() {
+        // Здесь должна быть логика загрузки данных
+        // Например, из ViewModel или Repository
+        val sampleProperties = getSampleProperties()
+        propertyAdapter.submitList(sampleProperties)
+    }
+
+    private fun navigateToPropertyDetails(propertyId: String) {
+        // Навигация к экрану с деталями
+        // Например, с использованием Navigation Component
+        // findNavController().navigate(PropertyListFragmentDirections.actionToPropertyDetails(propertyId))
+    }
+
+    private fun toggleFavorite(property: ProfileNotificationsData) {
+        // Логика изменения состояния избранного
+        // Обычно это делается через ViewModel
+        property.isFavorite = !property.isFavorite
+        propertyAdapter.notifyItemChanged(propertyAdapter.currentList.indexOf(property))
+    }
+
+    private fun getSampleProperties(): List<ProfileNotificationsData> {
+        // Примеры данных для отладки
+        return listOf(
+            ProfileNotificationsData(
+                id = "1",
+                title = "Kwartira",
+                address = "Aşgabat-parahat 1",
+                time = "Şu gün 16:16",
+                price = "133800",
+                status = "Kabul edilmedi",
+                images = listOf(
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg"
+                )
+            ),
+            ProfileNotificationsData(
+                id = "1",
+                title = "Kwartira",
+                address = "Aşgabat-parahat 1",
+                time = "Şu gün 16:16",
+                price = "133800",
+                status = "Kabul edilmedi",
+                images = listOf(
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg"
+                )
+            ),
+            ProfileNotificationsData(
+                id = "1",
+                title = "Kwartira",
+                address = "Aşgabat-parahat 1",
+                time = "Şu gün 16:16",
+                price = "133800",
+                status = "Kabul edilmedi",
+                images = listOf(
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg"
+                )
+            ),
+            ProfileNotificationsData(
+                id = "2",
+                title = "Jaý",
+                address = "Aşgabat-parahat 2",
+                time = "Düýn 14:30",
+                price = "250000",
+                status = "Kabul edildi",
+                images = listOf(
+                    "https://example.com/image3.jpg",
+                    "https://example.com/image4.jpg"
+                )
+            )
+        )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
+
+
+
+
+
+

@@ -108,6 +108,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_addNotificationFragment_to_fragmentAddSearchingHouses"
+            app:destination="@id/fragmentAddSearchingHouses"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetComments"
@@ -117,6 +124,10 @@
             android:name="houseId"
             app:argType="long" />
     </dialog>
+    <fragment
+        android:id="@+id/fragmentAddSearchingHouses"
+        android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddSearchingHouses"
+        android:label="FragmentAddSearchingHouses" />
 
 
 </navigation>

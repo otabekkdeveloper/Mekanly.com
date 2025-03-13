@@ -8,16 +8,15 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
 import com.mekanly.databinding.FragmentFlowBinding
-import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
 
 class FragmentFlow : Fragment() {
     private lateinit var binding: FragmentFlowBinding
-    private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private lateinit var adapterViewPager: AdapterViewPager
 
 
     override fun onCreateView(
@@ -25,8 +24,8 @@ class FragmentFlow : Fragment() {
     ): View {
         binding = FragmentFlowBinding.inflate(inflater, container, false)
 
-        viewPagerAdapter = ViewPagerAdapter(requireActivity())
-        binding.viewPager.adapter = viewPagerAdapter
+        adapterViewPager = AdapterViewPager(requireActivity())
+        binding.viewPager.adapter = adapterViewPager
         binding.viewPager.isUserInputEnabled = false
 
 

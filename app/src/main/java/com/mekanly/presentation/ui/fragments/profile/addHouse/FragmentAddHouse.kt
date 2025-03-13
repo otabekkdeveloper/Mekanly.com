@@ -1,8 +1,12 @@
 package com.mekanly.presentation.ui.fragments.profile.addHouse
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,61 +14,82 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentAddHouseBinding
-import com.mekanly.databinding.FragmentSingleHouseBinding
+import com.mekanly.presentation.ui.adapters.AdapterImageDownload
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
-
 
 class FragmentAddHouse : Fragment() {
 
+    private val images = mutableListOf<Bitmap>()
+    private lateinit var imageAdapter: AdapterImageDownload
     private lateinit var binding: FragmentAddHouseBinding
+
+    @SuppressLint("NotifyDataSetChanged")
+    private val imagePickerLauncher =
+        registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
+            if (images.size + uris.size > 15) {
+                Toast.makeText(requireContext(), "Максимум 15 картинок", Toast.LENGTH_SHORT).show()
+            } else {
+                uris.forEach { uri ->
+                    val bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, uri)
+                    images.add(bitmap)
+                }
+                imageAdapter.notifyDataSetChanged()
+                updateCounter()
+            }
+        }
+
+
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentAddHouseBinding.inflate(inflater, container, false)
-
         switchDesign()
 
-        binding.propertiesBtn.setOnClickListener {
-            showCustomDialog()
+        binding.propertiesBtn.setOnClickListener { showCustomDialog() }
+        binding.remont.setOnClickListener { RemontDialog() }
+//        binding.mumkinchilikler.setOnClickListener { OpportunityDialog() }
+        binding.back.setOnClickListener { findNavController().popBackStack() }
+
+        binding.imageRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        imageAdapter = AdapterImageDownload(images, 0)
+        binding.imageRecyclerView.adapter = imageAdapter
+
+        binding.addImageButton.setOnClickListener {
+            if (images.size < 15) {
+                imagePickerLauncher.launch("image/*")
+            } else {
+                Toast.makeText(requireContext(), "Максимум 15 картинок", Toast.LENGTH_SHORT).show()
+            }
         }
-
-        binding.remont.setOnClickListener {
-            RemontDialog()
-        }
-
-        binding.mumkinchilikler.setOnClickListener {
-            OpportunityDialog()
-        }
-
-
-
-        binding.back.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
 
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun updateCounter() {
+        binding.imageCounter.text = "${images.size}/15"
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun showCustomDialog() {
-        val currentContext = requireContext() // Убедитесь, что контекст доступен
-        val dialogView =
-            LayoutInflater.from(currentContext).inflate(R.layout.fragment_dialog_properties, null)
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.fragment_dialog_properties, null)
 
-        val dialog = AlertDialog.Builder(currentContext).setView(dialogView).create()
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
@@ -72,68 +97,47 @@ class FragmentAddHouse : Fragment() {
         val checkBox = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
 
         btnGoybolsun?.setOnClickListener {
-            Toast.makeText(currentContext, "Отмена", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
         btnKabulEt?.setOnClickListener {
-            Toast.makeText(currentContext, "Принято", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
-        if (recyclerView != null) {
-            val items = listOf(
-                PropertiesDialogData("Kwartira", R.drawable.kwartira),
-                PropertiesDialogData("Kottej", R.drawable.kottej),
-                PropertiesDialogData("Elitka", R.drawable.elitka),
-                PropertiesDialogData("Polelitka", R.drawable.ic_floor_elite),
-                PropertiesDialogData("Daça", R.drawable.dacha),
-                PropertiesDialogData("Plan jaý", R.drawable.ic_flat)
-            )
+        val items = listOf(
+            PropertiesDialogData("Kwartira", R.drawable.kwartira),
+            PropertiesDialogData("Kottej", R.drawable.kottej),
+            PropertiesDialogData("Elitka", R.drawable.elitka),
+            PropertiesDialogData("Polelitka", R.drawable.ic_floor_elite),
+            PropertiesDialogData("Daça", R.drawable.dacha),
+            PropertiesDialogData("Plan jaý", R.drawable.ic_flat)
+        )
 
-            val adapter = PropertiesDialogAdapter(items) { selectedItem ->
-
-
-                Toast.makeText(
-                    currentContext,
-                    "Maks sen ${selectedItem.name} bolümini sayladyň",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(currentContext, 2)
-
-
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                adapter.setAllSelected(isChecked)
-            }
-
+        val adapter = PropertiesDialogAdapter(items) { selectedItem ->
+            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.name}", Toast.LENGTH_SHORT)
+                .show()
         }
 
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
-
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            adapter.setAllSelected(isChecked)
+        }
 
         dialog.show()
     }
 
-
-    @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun RemontDialog() {
-        // Инфлейтим кастомный макет диалога
         val dialogView =
             LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_remont, null)
-
-        // Создаем диалог
         val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
 
-        // Настраиваем кнопки
         val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
         val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
-
-
-        val buttons = listOf<TextView>(
-            dialogView.findViewById(R.id.euro_remont),
+        val buttons = listOf(
+            dialogView.findViewById<TextView>(R.id.euro_remont),
             dialogView.findViewById(R.id.remont_cosmetic),
             dialogView.findViewById(R.id.remont_designer),
             dialogView.findViewById(R.id.gos_remont),
@@ -143,207 +147,44 @@ class FragmentAddHouse : Fragment() {
 
         val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
 
-
         fun toggleAllButtons() {
+            val background = R.drawable.bg_selected_properties_btn
             buttons.forEach { button ->
-                if (cbHemmesi.isChecked) {
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                } else {
-                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
-                }
+                button?.setBackgroundResource(if (cbHemmesi.isChecked) background else R.drawable.emlakler_btn_bg)
             }
         }
-
-
 
         buttons.forEach { button ->
-            button.setOnClickListener {
+            button?.setOnClickListener {
+                val selectedState = R.drawable.bg_selected_properties_btn
+                val defaultState = R.drawable.emlakler_btn_bg
 
-                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
-                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
-                } else {
+                button.setBackgroundResource(
+                    if (button.background.constantState == requireContext().getDrawable(selectedState)?.constantState)
+                        defaultState else selectedState
+                )
 
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                }
-
-
-                if (buttons.any {
-                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
-                    }) {
-                    cbHemmesi.isChecked = false
-                }
-
-
-                if (buttons.all {
-                        it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
-                    }) {
-                    cbHemmesi.isChecked = true
+                cbHemmesi.isChecked = buttons.all {
+                    it?.background?.constantState == requireContext().getDrawable(selectedState)?.constantState
                 }
             }
         }
 
-        cbHemmesi.setOnClickListener {
-            toggleAllButtons()
-        }
+        cbHemmesi.setOnClickListener { toggleAllButtons() }
 
-
-        btnGoybolsun.setOnClickListener {
-            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnKabulEt.setOnClickListener {
-            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
+        btnGoybolsun.setOnClickListener { dialog.dismiss() }
+        btnKabulEt.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
     }
 
-    @SuppressLint(
-        "UseCompatLoadingForDrawables", "MissingInflatedId", "InflateParams", "CutPasteId"
-    )
-    private fun OpportunityDialog() {
-        //TODO: Shu tayyny duzet
-        val dialogView = LayoutInflater.from(requireContext())
-            .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
-//
-//        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.recyclerView)
-//        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Сетка с 2 столбцами
-
-//        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerViewOpportunities)
-
-//        val opportunityList = listOf(
-//            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
-//            OpportunityData(R.drawable.dush_ic, "Duş"),
-//            OpportunityData(R.drawable.kitchen_ic, "Aşhana"),
-//            OpportunityData(R.drawable.pech_ic, "Peç"),
-//            OpportunityData(R.drawable.kir_mashyn_ic, "Kir maşyn"),
-//            OpportunityData(R.drawable.lift_ic, "Lift"),
-//            OpportunityData(R.drawable.ic_tv, "Telewizor"),
-//            OpportunityData(R.drawable.ic_balcony, "Balkon"),
-//            OpportunityData(R.drawable.kondisioner_ic, "Kondisioner"),
-//            OpportunityData(R.drawable.kitchen_furniture_ic, "Aşhana-mebel"),
-//            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
-//            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
-//            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
-//            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
-//            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
-//            OpportunityData(R.drawable.ic_grill, "Mangal"),
-//            OpportunityData(R.drawable.gyzgyn_suw_ic, "Gyzgyn suw"),
-//            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
-//        )
-
-// Инициализация адаптера с обработчиком клика
-//        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
-//            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
-//        }
-
-//        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 3) // Устанавливаем менеджер
-//        recyclerViewOpportunities.adapter = opportunityAdapter
-
-// Получаем родительский ConstraintLayout
-
-
-        // Создаём и отображаем диалог
-        AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(true).create()
-            .show()
-    }
-
-
     private fun switchDesign() {
-
-        // Слушатель изменений состояния
         binding.customSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-
-                // Установить цвет для "включённого" состояния
-                binding.customSwitch.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.black)
-                binding.customSwitch.trackDecorationTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitch.thumbTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.white)
-                binding.customSwitch.thumbIconSize = 200
-
-            } else {
-
-                // Установить цвет для "выключенного" состояния
-                binding.customSwitch.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
-                binding.customSwitch.trackDecorationTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitch.thumbTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.white)
-
-            }
-        }
-
-
-        // Слушатель изменений состояния
-        binding.customSwitchTwo.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-
-                // Установить цвет для "включённого" состояния
-                binding.customSwitchTwo.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.black)
-                binding.customSwitchTwo.trackDecorationTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitchTwo.thumbTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.white)
-
-
-            } else {
-
-                // Установить цвет для "выключенного" состояния
-                binding.customSwitchTwo.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
-                binding.customSwitchTwo.trackDecorationTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitchTwo.thumbTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.white)
-
-            }
-        }
-
-
-        binding.customSwitchThree.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-
-                binding.apply {
-                    customSwitchThree.trackTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.black)
-                    customSwitchThree.trackDecorationTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                    customSwitchThree.thumbTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.white)
-                    customSwitchThree.thumbIconSize = 100
-                }
-
-
-            } else {
-
-                binding.apply {
-
-                    customSwitchThree.trackTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
-                    customSwitchThree.trackDecorationTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                    customSwitchThree.thumbTintList =
-                        ContextCompat.getColorStateList(requireContext(), R.color.white)
-
-
-                }
-            }
+            val trackColor = if (isChecked) R.color.black else R.color.unchecked_track
+            binding.customSwitch.trackTintList =
+                ContextCompat.getColorStateList(requireContext(), trackColor)
+            binding.customSwitch.thumbTintList =
+                ContextCompat.getColorStateList(requireContext(), R.color.white)
         }
     }
 }
-
-
-
-
-
-
-
-

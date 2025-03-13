@@ -8,11 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mekanly.R
 import com.mekanly.databinding.FragmentAddNotificationBinding
 import com.mekanly.presentation.ui.adapters.pagerAdapters.NotificationViewPager
-import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
-import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.ToCorrectBottomSheet
 
 

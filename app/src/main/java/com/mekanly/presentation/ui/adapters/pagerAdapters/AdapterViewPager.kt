@@ -9,7 +9,7 @@ import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
 import com.mekanly.FragmentBusiness
 
-class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class AdapterViewPager(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
         return 5

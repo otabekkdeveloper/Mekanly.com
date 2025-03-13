@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <color name="black">#FF000000</color>
+    <color name="black">#222222</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ripple_color">#57A09E9E</color>
     <color name="white_20">#CCFFFFFF</color>
@@ -29,6 +29,7 @@
     <color name="unchecked_track">#B1B1B1</color>
     <color name="checked_track">#302F2F</color>
     <color name="error">#D90000</color>
+    <color name="success">#32A600</color>
 
 
 
