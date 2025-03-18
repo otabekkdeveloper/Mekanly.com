@@ -1,17 +1,14 @@
 package com.mekanly
 
-import SatyjylarData
-import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.mekanly.data.DataItemBusinessProfile
 import com.mekanly.databinding.FragmentBusinessBinding
-import com.mekanly.presentation.ui.adapters.AdapterSatyjylar
+import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
 
 
 class FragmentBusiness : Fragment() {
@@ -25,39 +22,23 @@ class FragmentBusiness : Fragment() {
         binding = FragmentBusinessBinding.inflate(inflater, container, false)
 
 
-        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
 
 
-        val categories = listOf(
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
-            SatyjylarData(R.drawable.placeholder, "Emlak", "Bu satyjylar siziň islegiňizi kanagatlandyryp biler"),
+        val items = listOf(
+            DataItemBusinessProfile(R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"),
+            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
+            DataItemBusinessProfile(R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"),
+            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
+            DataItemBusinessProfile(R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"),
+            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
+            DataItemBusinessProfile(R.drawable.model_house, "Satlyk dükan", "Dükan doly enjamlaşdyrylan.")
         )
 
-//        binding.recyclerView.adapter = AdapterSatyjylar(categories)
+        val adapter = AdapterItemBusinessProfile(items)
+        binding.rvBusinessProfiles.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvBusinessProfiles.adapter = adapter
 
-
-//        binding.location.setOnClickListener{
-//            LocationDialog()
-//        }
 
 
         return binding.root

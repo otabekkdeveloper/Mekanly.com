@@ -7,6 +7,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,7 @@ import com.mekanly.R
 import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentAddHouseBinding
 import com.mekanly.presentation.ui.adapters.AdapterImageDownload
+import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
 
 class FragmentAddHouse : Fragment() {
@@ -58,6 +61,9 @@ class FragmentAddHouse : Fragment() {
         binding = FragmentAddHouseBinding.inflate(inflater, container, false)
         switchDesign()
 
+        initListeners()
+
+
         binding.propertiesBtn.setOnClickListener { showCustomDialog() }
         binding.remont.setOnClickListener { RemontDialog() }
 //        binding.mumkinchilikler.setOnClickListener { OpportunityDialog() }
@@ -78,6 +84,23 @@ class FragmentAddHouse : Fragment() {
 
         return binding.root
     }
+
+    private fun initListeners() {
+
+//        binding.buttonBolum.setOnClickListener {
+//            val bottomSheet = SectionSelectionBottomSheet()
+//
+//            bottomSheet.setOnCitySelectedListener { selectedCity ->
+//                binding.bolumTextView.text = selectedCity
+//
+//            }
+//
+//            bottomSheet.show(childFragmentManager, "CustomBottomSheet")
+//        }
+
+    }
+
+
 
     @SuppressLint("SetTextI18n")
     private fun updateCounter() {
@@ -187,4 +210,12 @@ class FragmentAddHouse : Fragment() {
                 ContextCompat.getColorStateList(requireContext(), R.color.white)
         }
     }
+
+
+
+
+
+
+
+
 }

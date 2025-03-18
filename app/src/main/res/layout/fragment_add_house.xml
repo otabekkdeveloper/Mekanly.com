@@ -53,35 +53,62 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-            <!-- Dropdown for Bölüm -->
+
+
 
             <LinearLayout
-                android:id="@+id/buttonBolum"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity=""
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/manrope_bold"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:text="Ady"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/bolumTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:text="Emlägiňiziň gysgaça adyny ýazyň"
-                    android:textColor="@color/text_color_grey"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:text="Ady"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/namePropeties"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="16dp"
+                        android:text="Emlägiňiziň gysgaça adyny ýazyň"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="12sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                    <ImageButton
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="end|center"
+                        android:background="@color/color_transparent"
+                        android:src="@drawable/ic_next_btn"
+                        android:backgroundTint="@color/black"/>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
 
             </LinearLayout>
 

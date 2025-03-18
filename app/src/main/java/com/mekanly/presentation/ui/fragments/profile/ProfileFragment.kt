@@ -30,7 +30,9 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_fragmentHome_to_addNotificationFragment)
         }
 
-
+        binding.homeSeekers.setOnClickListener{
+            findNavController().navigate(R.id.action_fragmentHome_to_fragmentHomeSeekers)
+        }
 
 
         return binding.root

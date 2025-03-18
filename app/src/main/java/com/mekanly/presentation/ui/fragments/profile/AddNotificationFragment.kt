@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.databinding.FragmentAddNotificationBinding
 import com.mekanly.presentation.ui.adapters.pagerAdapters.NotificationViewPager
@@ -27,13 +29,13 @@ class AddNotificationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
+
         binding = FragmentAddNotificationBinding.inflate(inflater, container, false)
 
 
         binding.icShare.setOnClickListener {
             shareContent()
         }
-
 
         binding.toCorrect.setOnClickListener {
             val bottomSheet = ToCorrectBottomSheet()
@@ -70,6 +72,59 @@ class AddNotificationFragment : Fragment() {
             findNavController().popBackStack()
 
         }
+
+
+
+
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                if (positionOffset > 0) {
+                    binding.vipProfile.visibility = View.GONE
+                } else {
+                    binding.vipProfile.visibility = View.VISIBLE
+                }
+            }
+        })
+
+
+
+        binding.apply {
+
+
+            // Регистрируем слушатель прокрутки для ViewPager2
+            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                    // Если началась прокрутка, скрываем профиль
+                    if (positionOffsetPixels > 0) {
+                        vipProfile.visibility = View.GONE
+                    } else {
+                        vipProfile.visibility = View.VISIBLE
+                    }
+                }
+            })
+
+
+            val recyclerView = viewPager.getChildAt(0) as RecyclerView
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    // Если прокрутка идет вниз (dy > 0), скрываем профиль
+                    if (dy > 0) {
+                        vipProfile.visibility = View.GONE
+                    } else if (dy < 0 && !recyclerView.canScrollVertically(-1)) {
+                        // Показываем профиль снова только когда достигли верха контента
+                        vipProfile.visibility = View.VISIBLE
+                    }
+                }
+            })
+
+        }
+
+
+
+
 
 
 

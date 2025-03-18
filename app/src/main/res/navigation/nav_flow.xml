@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        tools:layout="@layout/fragment_home"
         android:name="com.mekanly.presentation.ui.fragments.flow.FragmentFlow"
-        android:label="fragment_home">
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_homeFragment_to_filterFragment"
@@ -18,6 +18,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
         <action
             android:id="@+id/action_homeFragment_to_languageFragment"
             app:destination="@id/languageFragment"
@@ -33,13 +34,24 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
         <action
             android:id="@+id/action_fragmentHome_to_addNotificationFragment"
             app:destination="@id/addNotificationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentHomeSeekers"
+            app:destination="@id/fragmentHomeSeekers"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
 
 
     </fragment>
@@ -86,8 +98,8 @@
         tools:layout="@layout/fragment_single_house">
         <argument
             android:name="houseId"
-            app:argType="long"
-            android:defaultValue="-1L" />
+            android:defaultValue="-1L"
+            app:argType="long" />
         <action
             android:id="@+id/action_fragmentSingleHouse_to_bottomSheetComments"
             app:destination="@id/bottomSheetComments" />
@@ -100,7 +112,7 @@
         android:id="@+id/addNotificationFragment"
         android:name="com.mekanly.presentation.ui.fragments.profile.AddNotificationFragment"
         android:label="fragment_add_notification"
-        tools:layout="@layout/fragment_add_notification" >
+        tools:layout="@layout/fragment_add_notification">
         <action
             android:id="@+id/action_addNotificationFragment_to_fragmentAddHouse"
             app:destination="@id/fragmentAddHouse"
@@ -119,7 +131,7 @@
     <dialog
         android:id="@+id/bottomSheetComments"
         android:name="com.mekanly.presentation.ui.bottomSheet.bottomSheetComments.BottomSheetComments"
-        android:label="BottomSheetComments" >
+        android:label="BottomSheetComments">
         <argument
             android:name="houseId"
             app:argType="long" />
@@ -128,6 +140,11 @@
         android:id="@+id/fragmentAddSearchingHouses"
         android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddSearchingHouses"
         android:label="FragmentAddSearchingHouses" />
+    <fragment
+        android:id="@+id/fragmentHomeSeekers"
+        android:name="com.mekanly.presentation.ui.fragments.profile.homeSeekers.FragmentHomeSeekers"
+        android:label="fragment_home_seekers"
+        tools:layout="@layout/fragment_home_seekers" />
 
 
 </navigation>

@@ -107,5 +107,11 @@ class FragmentHome : Fragment() {
 //        binding.rvHouses.adapter = propertyAdapter
 //    }
 
+    private fun initListeners() {
+
+        binding
+
+
+    }
 
 }

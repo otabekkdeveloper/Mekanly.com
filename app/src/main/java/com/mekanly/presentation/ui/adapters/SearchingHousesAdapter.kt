@@ -2,13 +2,18 @@ package com.mekanly.presentation.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.data.SearchingHousesData
 import com.mekanly.databinding.ItemSearchingHousesBinding
 
-class SearchingHousesAdapter(private val context: Context, private val adList: List<SearchingHousesData>)
+class SearchingHousesAdapter(private val context: Context,
+                             private val adList: List<SearchingHousesData>,
+                             private val isTextView1Visible: Boolean,
+                             private val isTextView2Visible: Boolean,
+    )
     : RecyclerView.Adapter<SearchingHousesAdapter.AdViewHolder>() {
 
     inner class AdViewHolder(binding: ItemSearchingHousesBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,6 +24,7 @@ class SearchingHousesAdapter(private val context: Context, private val adList: L
         val tvDescription: TextView = binding.tvDescription
         val tvStatus: TextView = binding.tvStatus
         val tvPrice: TextView = binding.tvPrice
+        val btnViewAd: TextView = binding.btnViewAd
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
@@ -35,6 +41,25 @@ class SearchingHousesAdapter(private val context: Context, private val adList: L
         holder.tvDescription.text = adItem.description
         holder.tvStatus.text = adItem.status
         holder.tvPrice.text = adItem.price
+
+
+        // Управляем видимостью первого TextView
+        holder.tvStatus.visibility = if (isTextView1Visible) View.VISIBLE else View.GONE
+
+        // Управляем видимостью второго TextView
+        holder.btnViewAd.visibility = if (isTextView2Visible) View.VISIBLE else View.GONE
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     override fun getItemCount(): Int {

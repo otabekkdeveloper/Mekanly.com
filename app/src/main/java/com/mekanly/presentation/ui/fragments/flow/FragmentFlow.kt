@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
@@ -23,6 +24,8 @@ class FragmentFlow : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFlowBinding.inflate(inflater, container, false)
+
+//        initListeners()
 
         adapterViewPager = AdapterViewPager(requireActivity())
         binding.viewPager.adapter = adapterViewPager
@@ -89,9 +92,7 @@ class FragmentFlow : Fragment() {
             }
         })
 
-//        binding.logoPlus.setOnClickListener { view ->
-//            showMenu(view)
-//        }
+
 
         return binding.root
     }
@@ -100,46 +101,17 @@ class FragmentFlow : Fragment() {
     private fun disableSwipe(viewPager2: ViewPager2) {
         viewPager2.isUserInputEnabled = false
     }
-    // Отображение меню
-    @SuppressLint("DiscouragedPrivateApi")
-    private fun showMenu(view: View) {
-        val popupMenu = PopupMenu(requireContext(), view, 0)
-        popupMenu.menuInflater.inflate(R.menu.home_menu, popupMenu.menu)
-        try {
-            val fieldPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-            fieldPopup.isAccessible = true
-            val popup = fieldPopup.get(popupMenu)
-            popup.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                .invoke(popup, true)
-        } catch (e: Exception) {
-            e.printStackTrace()
+
+
+
+
+    private fun initListeners() {
+
+        binding.notifications.setOnClickListener{
+
+            findNavController().navigate(R.id.action_fragmentHome2_to_fragmentNotifications)
+
         }
-
-        // Обработка кликов на элементы меню
-        popupMenu.setOnMenuItemClickListener { menuItem ->
-            handleMenuItemClick(menuItem)
-            true
-        }
-
-        popupMenu.show()
-    }
-
-    // Обработка кликов на элементы меню
-    private fun handleMenuItemClick(menuItem: MenuItem) {
-        when (menuItem.itemId) {
-            R.id.menu_item_1 -> {
-                // Переход на первый фрагмент
-//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
-            }
-            R.id.menu_item_2 -> {
-                // Переход на второй фрагмент
-//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
-            }
-        }
-
-
-
-
 
     }
 
