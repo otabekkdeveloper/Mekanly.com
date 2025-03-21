@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments
+package com.mekanly.presentation.ui.fragments.addHouse.subFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

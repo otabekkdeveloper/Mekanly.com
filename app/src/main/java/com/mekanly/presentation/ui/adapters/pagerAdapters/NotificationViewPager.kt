@@ -3,9 +3,9 @@ package com.mekanly.presentation.ui.adapters.pagerAdapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubArchiveFragment
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubSearchingHousesFragment
-import com.mekanly.presentation.ui.fragments.profile.addHouse.subFragments.SubNotificationsFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubArchiveFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubLookingHousesFragment
+import com.mekanly.presentation.ui.fragments.addHouse.subFragments.SubNotificationsFragment
 
 class NotificationViewPager (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
@@ -16,7 +16,7 @@ class NotificationViewPager (fragmentActivity: FragmentActivity) : FragmentState
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> SubNotificationsFragment()
-            1 -> SubSearchingHousesFragment()
+            1 -> SubLookingHousesFragment()
             2 -> SubArchiveFragment()
             else -> SubNotificationsFragment()
         }

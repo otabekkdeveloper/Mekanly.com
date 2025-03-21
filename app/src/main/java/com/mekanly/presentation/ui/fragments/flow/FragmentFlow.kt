@@ -2,33 +2,31 @@ package com.mekanly.presentation.ui.fragments.flow
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
 import com.mekanly.databinding.FragmentFlowBinding
-import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
+import com.mekanly.presentation.ui.adapters.pagerAdapters.ViewPagerAdapter
 
 class FragmentFlow : Fragment() {
     private lateinit var binding: FragmentFlowBinding
-    private lateinit var adapterViewPager: AdapterViewPager
-
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private val vmFlow: VMFlow by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFlowBinding.inflate(inflater, container, false)
 
-//        initListeners()
-
-        adapterViewPager = AdapterViewPager(requireActivity())
-        binding.viewPager.adapter = adapterViewPager
+        viewPagerAdapter = ViewPagerAdapter(requireActivity())
+        binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
 
 
@@ -92,7 +90,9 @@ class FragmentFlow : Fragment() {
             }
         })
 
-
+//        binding.logoPlus.setOnClickListener { view ->
+//            showMenu(view)
+//        }
 
         return binding.root
     }
@@ -101,17 +101,46 @@ class FragmentFlow : Fragment() {
     private fun disableSwipe(viewPager2: ViewPager2) {
         viewPager2.isUserInputEnabled = false
     }
-
-
-
-
-    private fun initListeners() {
-
-        binding.notifications.setOnClickListener{
-
-            findNavController().navigate(R.id.action_fragmentHome2_to_fragmentNotifications)
-
+    // Отображение меню
+    @SuppressLint("DiscouragedPrivateApi")
+    private fun showMenu(view: View) {
+        val popupMenu = PopupMenu(requireContext(), view, 0)
+        popupMenu.menuInflater.inflate(R.menu.home_menu, popupMenu.menu)
+        try {
+            val fieldPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+            fieldPopup.isAccessible = true
+            val popup = fieldPopup.get(popupMenu)
+            popup.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                .invoke(popup, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
+        // Обработка кликов на элементы меню
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            handleMenuItemClick(menuItem)
+            true
+        }
+
+        popupMenu.show()
+    }
+
+    // Обработка кликов на элементы меню
+    private fun handleMenuItemClick(menuItem: MenuItem) {
+        when (menuItem.itemId) {
+            R.id.menu_item_1 -> {
+                // Переход на первый фрагмент
+//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
+            }
+            R.id.menu_item_2 -> {
+                // Переход на второй фрагмент
+//                findNavController().navigate(R.id.action_homeFragment_to_bildirishlerimFragment)
+            }
+        }
+
+
+
+
 
     }
 

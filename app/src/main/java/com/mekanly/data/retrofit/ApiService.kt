@@ -2,11 +2,13 @@ package com.mekanly.data.retrofit
 
 
 import com.mekanly.data.dataModels.DataUser
+import com.mekanly.data.requestBody.RequestBodyAddHouse
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.data.responseBody.ResponseComments
+import com.mekanly.data.responseBody.ResponseGlobalOptions
 import com.mekanly.data.responseBody.ResponseHouseDetails
 import com.mekanly.data.responseBody.ResponseHouses
 import com.mekanly.data.responseBody.ResponseRegister
@@ -58,14 +60,29 @@ interface ApiService {
         @Path("house_id") houseId:String
     ):Call<ResponseHouseDetails>
 
-    @GET("api/v2/top")
+    @GET("/api/v2/top")
     fun getTopHouses():Call<ResponseHouses>
 
-    @GET("api/v1/houses/{houseId}/comments")
+    @GET("/api/v1/houses/{houseId}/comments")
     fun getHouseComments(
         @Path("houseId") houseId:String
     ):Call<ResponseComments>
 
+//    @POST()
+
+    @POST("/api/v1/houses/add")
+    fun addHouse(
+        @Body requestBodyAddHouse: RequestBodyAddHouse
+    ):Call<ResponseBody>
+
+    @POST("/api/v1/houses/{house_id}/update")
+    fun updateHouse(
+        @Path("house_id") houseId:String,
+        @Body requestBodyAddHouse: RequestBodyAddHouse
+    ):Call<ResponseBody>
+
+    @GET("/api/v2/globalOptions")
+    fun globalOptions():Call<ResponseGlobalOptions>
 
 
 }

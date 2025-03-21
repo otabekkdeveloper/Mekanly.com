@@ -53,62 +53,37 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-
-
+            <!-- Dropdown for Bölüm -->
 
             <LinearLayout
-                android:id="@+id/name"
+                android:id="@+id/buttonBolum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
-                    android:gravity=""
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/manrope_bold"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:text="Ady"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/manrope_bold"
-                        android:paddingStart="16dp"
-                        android:paddingTop="16dp"
-                        android:text="Ady"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
-
-                    <TextView
-                        android:id="@+id/namePropeties"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="16dp"
-                        android:text="Emlägiňiziň gysgaça adyny ýazyň"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="12sp"
-                        tools:ignore="RtlSymmetry" />
-
-
-                    <ImageButton
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="end|center"
-                        android:background="@color/color_transparent"
-                        android:src="@drawable/ic_next_btn"
-                        android:backgroundTint="@color/black"/>
-
-
-
-
-
-                </LinearLayout>
-
-
-
-
-
+                <EditText
+                    android:paddingVertical="14sp"
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:background="@color/color_transparent"
+                    android:text="@string/enter_house_name"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
 
@@ -128,7 +103,7 @@
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/manrope_bold"
@@ -140,8 +115,9 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/locationText"
-                    android:layout_width="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:id="@+id/edt_"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope_regular"
                     android:paddingStart="16dp"
@@ -583,7 +559,6 @@
 
 
             <LinearLayout
-                android:id="@+id/addImageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -620,7 +595,6 @@
 
 
                 <TextView
-                    android:id="@+id/imageCounter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -631,13 +605,6 @@
 
 
             </LinearLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/imageRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -790,7 +757,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextText"
+                android:id="@+id/edt_description"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="12dp"
@@ -1052,7 +1019,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/searchButton"
+                android:id="@+id/btn_done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -1060,7 +1027,7 @@
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="@color/black"
                 android:padding="10dp"
-                android:text="Tassyklamak"
+                android:text="@string/done"
                 android:textColor="@color/white"
                 app:cornerRadius="8dp"
                 tools:ignore="TooManyViews" />

@@ -10,11 +10,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.data.DataComments
+import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.BottomSheetCommentsBinding
 import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.CommentsAdapter
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -86,10 +86,19 @@ class BottomSheetComments : BottomSheetDialogFragment() {
         binding.sendButton.setOnClickListener {
             val newCommentText = binding.commentEditText.text.toString().trim()
             if (newCommentText.isNotEmpty()) {
-                commentAdapter.notifyItemInserted(0)
                 binding.commentsRecyclerView.scrollToPosition(0)
                 binding.commentEditText.text.clear()
+                handleCommentAction(newCommentText)
+
             }
+        }
+    }
+
+    private fun handleCommentAction(newCommentText: String) {
+        if (AppPreferences(requireContext()).token==""){
+            showErrorSnackBar(requireContext(),binding.root, "Now on development")
+        }else{
+            viewModel.addComment(newCommentText)
         }
     }
 

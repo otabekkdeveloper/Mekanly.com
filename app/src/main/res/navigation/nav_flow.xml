@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentAddHouse"
-        android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddHouse"
+        android:name="com.mekanly.presentation.ui.fragments.addHouse.FragmentAddHouse"
         android:label="FragmentAddHouse" />
     <fragment
         android:id="@+id/addNotificationFragment"
