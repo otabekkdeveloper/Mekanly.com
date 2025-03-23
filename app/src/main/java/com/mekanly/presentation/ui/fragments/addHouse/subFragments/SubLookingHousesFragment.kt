@@ -35,7 +35,7 @@ class SubLookingHousesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sub_looking_houses, container, false)
+        return inflater.inflate(R.layout.fragment_sub_searching_houses, container, false)
     }
 
     companion object {

@@ -24,13 +24,15 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/iv_banner_avatar"
+                android:layout_margin="5dp"
                 app:riv_oval="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
-                android:src="@color/bg_blue_one"
+                android:background="@drawable/stroke_banner_logo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/logo_ak_setir"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tv_info_banner"
@@ -38,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@color/bg_blue_one"
+                android:background="@color/banner_color"
                 android:fontFamily="@font/manrope_bold"
                 android:paddingHorizontal="8dp"
                 tools:text="Aman"

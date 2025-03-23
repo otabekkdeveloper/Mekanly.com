@@ -649,7 +649,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon"
+                    android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
 
 
@@ -698,7 +698,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon"
+                    android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
             </LinearLayout>
 
@@ -744,7 +744,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
-                    android:background="@drawable/menu_icon"
+                    android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>

@@ -7,6 +7,7 @@
         android:layout_margin="2dp"
         android:layout_width="match_parent"
         android:layout_height="225dp"
+        android:layout_marginHorizontal="5dp"
         app:cardCornerRadius="8dp"
         app:cardBackgroundColor="@color/white">
 
@@ -17,28 +18,32 @@
 
             <ImageView
                 android:id="@+id/riv_banner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder" />
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/iv_banner_avatar"
-                app:riv_oval="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
-                android:src="@color/bg_blue_one"
+                android:src="@drawable/placeholder"
+                app:layout_constraintBottom_toTopOf="@+id/tv_info_banner"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_banner_avatar"
+                android:layout_margin="5dp"
+                app:riv_oval="true"
+                android:background="@drawable/stroke_banner_logo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/logo_ak_setir"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:id="@+id/tv_info_banner"
                 android:paddingVertical="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@color/bg_blue_one"
+                android:background="@color/banner_color"
                 android:fontFamily="@font/manrope_bold"
                 android:paddingHorizontal="8dp"
                 tools:text="Aman"

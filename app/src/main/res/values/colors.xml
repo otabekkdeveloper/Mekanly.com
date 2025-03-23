@@ -5,7 +5,7 @@
     <color name="ripple_color">#57A09E9E</color>
     <color name="white_20">#CCFFFFFF</color>
     <color name="bg_app">#00A3FF</color>
-    <color name="background">#5A8FBB</color>
+    <color name="background">#3272A8</color>
     <color name="color_transparent">#00000000</color>
     <color name="bg_app_two">#208BD4</color>
     <color name="bg_blue_one">#2669FF</color>
@@ -30,6 +30,7 @@
     <color name="checked_track">#302F2F</color>
     <color name="error">#D90000</color>
     <color name="success">#32A600</color>
+    <color name="banner_color">#00B4D8</color>
 
 
 

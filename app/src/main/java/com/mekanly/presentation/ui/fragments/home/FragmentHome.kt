@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.DataTopNotifications
 import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataBanner
-import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentHomeBinding
 import com.mekanly.presentation.BannerType
-import com.mekanly.presentation.ui.adapters.AdapterSmallAdvertisements
+import com.mekanly.presentation.ui.adapters.AdapterTopNotifications
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -37,6 +36,8 @@ class FragmentHome : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         observeViewModel()
+
+        adapterTopNotifications()
 
 
 
@@ -107,9 +108,29 @@ class FragmentHome : Fragment() {
 //        binding.rvHouses.adapter = propertyAdapter
 //    }
 
-    private fun initListeners() {
+    private fun adapterTopNotifications() {
 
-        binding
+        val items = listOf(
+
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" )
+
+        )
+
+        val adapter = AdapterTopNotifications(items)
+        binding.topNotifications.layoutManager = LinearLayoutManager(requireContext())
+        binding.topNotifications.adapter = adapter
+
+
 
 
     }
