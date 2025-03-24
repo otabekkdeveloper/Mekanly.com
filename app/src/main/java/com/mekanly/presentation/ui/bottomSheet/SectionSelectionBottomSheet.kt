@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -25,6 +26,15 @@ class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.bottomSheetRecyclerView)
+        val xBtn = view.findViewById<ImageView>(R.id.x_btn)
+
+
+
+
+        xBtn.setOnClickListener{
+            dismiss()
+        }
+
 
         val cities = listOf(
             BottomSheetItem(R.drawable.ic_houses_for_sale, "Satlyk jaýlar"),
@@ -36,7 +46,7 @@ class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
             BottomSheetItem(R.drawable.ic_other_properties, "Beýleki emläkler")
         )
 
-        // Настройка адаптера
+
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = BottomSheetAdapter(cities) { selectedItem ->
             onCitySelected?.invoke(selectedItem.title) // Передаем название выбранного города

@@ -1,6 +1,6 @@
 package com.mekanly.presentation.ui.fragments.search
 
-import android.app.AlertDialog
+import LocationBottomSheet
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
@@ -11,8 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -24,13 +22,14 @@ import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
-import com.mekanly.presentation.ui.bottomSheet.LocationBottomSheet
+import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
+@Suppress("NAME_SHADOWING")
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
@@ -39,7 +38,7 @@ class SearchFragment : Fragment() {
 
     private var isLoading: Boolean = false
 
-    private var adapter: AdapterAdvertisements?=null
+    private var adapter: AdapterAdvertisements? = null
 
 
     override fun onCreateView(
@@ -58,35 +57,55 @@ class SearchFragment : Fragment() {
     }
 
 
-    private fun setOnClickListener(){
+    private fun setOnClickListener() {
 
-        binding.locationBtn.setOnClickListener{
-            val bottomSheetLocation = LocationBottomSheet()
-            bottomSheetLocation.show(childFragmentManager, "CustomBottomSheet")
+
+        val cities = listOf(
+            "Ählisi    ",
+            "Aşgabat şäheri",
+            "Arkadag şäheri",
+            "Mary welaýaty",
+            "Daşoguz welaýaty",
+            "Lebap welaýaty",
+            "Balkan welaýaty",
+            "Ahal welaýaty"
+        )
+        binding.btnLocations.setOnClickListener {
+            val bottomSheet = LocationBottomSheet(cities) { selectedCity ->
+                binding.nameLocations.text = selectedCity // Устанавливаем выбранный город на кнопку
+            }
+            bottomSheet.show(childFragmentManager, "CityBottomSheetDialog")
         }
 
-        binding.btnFilter.setOnClickListener{
+
+
+
+
+        binding.btnFilter.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
         }
 
-        binding.buttonBolum.setOnClickListener {
+        binding.btnCategories.setOnClickListener {
             val bottomSheet = SectionSelectionBottomSheet()
+
+
+            bottomSheet.setOnCitySelectedListener { selectedCity ->
+                binding.textCategory.text = selectedCity
+            }
+
             bottomSheet.show(childFragmentManager, "CustomBottomSheet")
 
 
+        }
+
+        binding.btnPrice.setOnClickListener {
+
+            val bottomSheet = PriceFilterBottomSheet()
+            bottomSheet.show(childFragmentManager, "PriceFilter")
+        }
 
 
-
-
-
-
-
-
-        }}
-
-
-
-
+    }
 
 
     private fun initListeners() {
@@ -99,8 +118,8 @@ class SearchFragment : Fragment() {
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
-                if (!viewModel.getLoadingState()){
-                    Log.e("Pagination", "onScrolled: "+viewModel.houses.value.size)
+                if (!viewModel.getLoadingState()) {
+                    Log.e("Pagination", "onScrolled: " + viewModel.houses.value.size)
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0 && totalItemCount >= LIMIT_REGULAR) {
                         viewModel.getPageInfoDefault(viewModel.houses.value.size)
                     }
@@ -116,11 +135,11 @@ class SearchFragment : Fragment() {
             inputType = InputType.TYPE_CLASS_TEXT
 
             setOnEditorActionListener { _, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                    (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
                     val searchQuery = text.toString()
                     performSearch(searchQuery)
-                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    val imm =
+                        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(windowToken, 0)
 
                     true
@@ -162,7 +181,8 @@ class SearchFragment : Fragment() {
         }
         lifecycleScope.launch {
             viewModel.houses.collectLatest {
-                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
+                adapter =
+                    AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter
@@ -171,31 +191,24 @@ class SearchFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        if (adapter==null){
-            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel,findNavController())
+        if (adapter == null) {
+            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
             binding.rvSearch.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.rvSearch.adapter = adapter
-        }else{
-            if (viewModel.needToReinitialise()){
-                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel,findNavController())
+        } else {
+            if (viewModel.needToReinitialise()) {
+                adapter =
+                    AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter
                 viewModel.setReinitialiseFalse()
-            }else{
+            } else {
                 adapter?.updateList()
             }
         }
     }
-
-
-
-
-
-
-
-
 
 
 }

@@ -1,34 +1,30 @@
 package com.mekanly.presentation.ui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mekanly.data.dataModels.DataLocation
-import com.mekanly.databinding.ItemLocationsTextBinding
+import com.mekanly.databinding.ItemLocationBottomSheetBinding
 
-// Aдаптер для работы с данными
-class AdapterLocations(private val context: Context, private val data: List<DataLocation>) :
-    RecyclerView.Adapter<AdapterLocations.ItemViewHolder>() {
+class AdapterLocations(
+    private val items: List<String>,
+    private val onItemClick: (String) -> Unit
+) : RecyclerView.Adapter<AdapterLocations.ItemViewHolder>() {
 
-    // ViewHolder класс с использованием ViewBinding
-    inner class ItemViewHolder(val binding: ItemLocationsTextBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ItemViewHolder(private val binding: ItemLocationBottomSheetBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(text: String) {
+            binding.textView.text = text
+            binding.root.setOnClickListener { onItemClick(text) }
+        }
+    }
 
-    // Создание ViewHolder с ViewBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // Используем ViewBinding для инфлейта макета
-        val binding = ItemLocationsTextBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = ItemLocationBottomSheetBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
     }
 
-    // Привязка данных к ViewHolder с использованием ViewBinding
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val parentItem = data[position]
-        holder.binding.textView.text = parentItem.name // Привязываем данные к элементу
+        holder.bind(items[position])
     }
 
-    // Возвращаем количество элементов
-    override fun getItemCount(): Int {
-        return data.size
-    }
+    override fun getItemCount(): Int = items.size
 }

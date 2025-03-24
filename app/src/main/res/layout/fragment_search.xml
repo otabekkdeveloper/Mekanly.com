@@ -62,6 +62,7 @@
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress_bar"
+            app:indicatorColor="@color/bg_app"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:indeterminate="true" />
@@ -117,64 +118,115 @@
                         android:paddingVertical="10dp"
                         app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/location_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginEnd="4dp"
+                        <LinearLayout
                             android:layout_weight="1"
-                            android:fontFamily="@font/roboto_bold"
+                            android:id="@+id/btn_locations"
                             android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Ýerleşýän ýeri"
-                            android:textColor="#4D8EC4"
-                            android:textSize="12sp"
-                            app:backgroundTint="#E5F6FE"
-                            app:cornerRadius="8dp"
-                            app:drawableStartCompat="@drawable/location_icon"
-                            app:icon="@drawable/location_icon"
-                            app:iconTint="#4D8EC4"
-                            app:strokeColor="#D4F1FF"
-                            app:strokeWidth="1dp" />
+                            android:paddingHorizontal="5dp"
+                            android:background="@drawable/bg_btn_search_fragment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/buttonBolum"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/roboto_bold"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Kategoriýa"
-                            android:textColor="#4D8EC4"
-                            android:textSize="12sp"
-                            app:backgroundTint="#E5F6FE"
-                            app:cornerRadius="8dp"
-                            app:icon="@drawable/ic_category"
-                            app:iconTint="#4D8EC4"
-                            app:strokeColor="#D4F1FF"
-                            app:strokeWidth="1dp" />
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/location_icon"/>
+
+                            <TextView
+                                android:id="@+id/nameLocations"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="#3A8BCF"
+                                android:layout_marginStart="5dp"
+                                android:text="Ýerleşýän ýeri"/>
 
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/price"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginStart="4dp"
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/ic_down"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_weight="1"
-                            android:fontFamily="@font/roboto_bold"
+                            android:id="@+id/btnCategories"
+                            android:layout_marginStart="8dp"
                             android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Kategoriýa"
-                            android:textColor="#4D8EC4"
-                            android:textSize="12sp"
-                            app:backgroundTint="#E5F6FE"
-                            app:cornerRadius="8dp"
-                            app:icon="@drawable/ic_category"
-                            app:iconTint="#4D8EC4"
-                            app:strokeColor="#D4F1FF"
-                            app:strokeWidth="1dp" />
+                            android:paddingHorizontal="5dp"
+                            android:background="@drawable/bg_btn_search_fragment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp">
+
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_category"/>
+
+                            <TextView
+                                android:id="@+id/textCategory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="#3A8BCF"
+                                android:fontFamily="@font/roboto_regular"
+                                android:layout_marginStart="5dp"
+                                android:text="Kategoriýa"/>
+
+
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/ic_down"/>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/btnPrice"
+                            android:gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:paddingHorizontal="5dp"
+                            android:background="@drawable/bg_btn_search_fragment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp">
+
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_price"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="#3A8BCF"
+                                android:layout_marginStart="5dp"
+                                android:text="Bahasy"/>
+
+
+                            <ImageView
+                                android:backgroundTint="#3A8BCF"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:background="@drawable/ic_down"/>
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

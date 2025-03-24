@@ -12,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <ImageView
             android:id="@+id/x_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:backgroundTint="@color/black"
             android:layout_marginBottom="16dp"
             android:background="@drawable/ic_close"
             app:layout_constraintBottom_toBottomOf="@+id/bottomSheetTitle"
