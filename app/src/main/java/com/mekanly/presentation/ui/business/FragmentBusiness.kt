@@ -15,6 +15,8 @@ import com.mekanly.data.DataItemBusinessProfile
 import com.mekanly.databinding.FragmentBusinessBinding
 import com.mekanly.presentation.ui.adapters.AdapterItemBusinessCategories
 import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
+import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
+import com.mekanly.presentation.ui.fragments.home.FragmentHomeDirections
 
 
 class FragmentBusiness : Fragment() {
@@ -106,11 +108,9 @@ class FragmentBusiness : Fragment() {
         // Создаем и устанавливаем адаптер
         val businessCategoryAdapter = AdapterItemBusinessCategories(businessProfileItems) { selectedItem ->
             // Навигация на SubFragment
-            findNavController().navigate(R.id.action_fragmentHome_to_subBusinessFragment,
-                Bundle().apply {
-                    putSerializable("business_type", selectedItem.type)
-                }
-            )
+            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(title = selectedItem.title ?: "N/A", businessType = selectedItem.type.name)
+
+            findNavController().navigate(action)
         }
 
         // Настройка RecyclerView

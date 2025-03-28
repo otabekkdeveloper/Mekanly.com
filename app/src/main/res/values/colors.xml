@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ripple_color">#57A09E9E</color>
     <color name="white_20">#CCFFFFFF</color>
+    <color name="black_10">#1A000000</color>
     <color name="bg_app">#00A3FF</color>
     <color name="background">#3272A8</color>
     <color name="color_transparent">#00000000</color>

@@ -12,6 +12,7 @@ data class DataItemBusinessCategories(
 
 // Перечисление типов бизнеса
 enum class BusinessType {
-
     REAL_ESTATE, FURNITURE, HOUSEHOLD_APPLIANCES, CARPET_AND_RUGS, CHANDELIERS, CONSTRUCTION
+
+
 }

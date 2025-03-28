@@ -20,6 +20,7 @@ import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem
 import com.mekanly.presentation.ui.fragments.singleHouse.adapter.AdapterPossibilities
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -59,6 +60,7 @@ class FragmentSingleHouse : Fragment() {
                     }
 
                     is ResponseBodyState.Success -> {
+                        delay(200)
                         binding.progressBar.visibility = View.GONE
                         setViewPager(it.dataResponse as DataHouse)
                         setHouseDetails(it.dataResponse)

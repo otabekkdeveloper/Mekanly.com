@@ -34,10 +34,10 @@
 
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/view_pager"
+                        android:background="@drawable/home_villa_image"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:fitsSystemWindows="true"
-                        android:background="@color/black_10"
                         app:layout_collapseMode="parallax" />
 
 
@@ -114,7 +114,7 @@
 
                     <TextView
                         android:id="@+id/tv_title"
-                        tools:text="Amanyn oyi"
+                        android:text="Amanyn oyi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -133,12 +133,12 @@
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/elitka" />
+                            android:background="@drawable/ic_price" />
 
 
                         <TextView
                             android:id="@+id/tv_house_type"
-                            tools:text="HouseType"
+                            android:text="100000 TMT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -157,32 +157,7 @@
 
 
 
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_calendar" />
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:text="Date"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_regular"
-                            android:textSize="12sp"
-                            android:id="@+id/tv_date"
-                            android:layout_marginStart="8dp"
-                            android:textColor="@color/black" />
-
-
-
-                        <com.google.android.material.divider.MaterialDivider
-                            android:layout_width="1dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:layout_height="24dp"/>
 
                         <ImageView
                             android:layout_width="18dp"
@@ -196,7 +171,7 @@
                             android:id="@+id/tv_view_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="100"
+                            android:text="100"
                             android:layout_gravity="center"
                             android:fontFamily="@font/roboto_regular"
                             android:textSize="12sp"
@@ -209,32 +184,6 @@
 
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:background="@drawable/location_icon"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:id="@+id/tv_address"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/roboto_regular"
-                            android:layout_height="wrap_content"
-                            tools:text="Aşgabat/mir1"/>
-
-
-                    </LinearLayout>
-
                     <TextView
                         android:id="@+id/tv_tag"
                         android:layout_width="wrap_content"
@@ -242,23 +191,85 @@
                         android:textSize="14sp"
                         android:textColor="@color/text_color"
                         android:layout_marginTop="16dp"
-                        tools:text=""/>
+                        android:text =" #Tekebazar #Kwartira #VIP #arenda"/>
 
 
-                    <com.google.android.material.button.MaterialButton
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="6dp"
+                        android:elevation="6dp"
                         android:layout_width="match_parent"
-                        android:id="@+id/btn_comments"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="#EEEEEE"
-                        android:text="@string/comments"
-                        android:textColor="#555555"
-                        android:textSize="14sp"
-                        app:cornerRadius="8dp"
-                        app:icon="@drawable/ic_comments"
-                        app:iconGravity="textStart"
-                        app:iconTint="#555555" />
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/example_rysgal_ulke_image" />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/user_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="HK “Rysgally ülke” "
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/date_register"
+                                    android:maxLines="2"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="“Rysgally ülke” gozgalmaýan emläk agentligi emläk agentligi, jaýlar  ..."
+                                    android:textColor="@color/text_color_grey"
+                                    android:textSize="12sp" />
+
+
+
+
+
+                            </LinearLayout>
+
+
+                           <Button
+                               android:layout_width="wrap_content"
+                               android:layout_margin="5dp"
+                               android:gravity="center"
+                               android:layout_gravity="center"
+                               android:layout_height="wrap_content"
+                               app:cornerRadius="30dp"
+                               android:textSize="12sp"
+                               android:text="Gir"
+                               android:backgroundTint="@color/background"/>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+
 
                     <LinearLayout
                         android:layout_marginTop="10dp"
@@ -298,31 +309,10 @@
 
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:text="@string/opportunity"/>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvOpportunity"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
 
 
 
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_big_banners"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 
@@ -334,139 +324,26 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:textSize="15sp"
-                        tools:text="постельное белье и полотенца можно взять напрокат за 100 крон с человека"
+                        android:text="постельное белье и полотенца можно взять напрокат за 100 крон с человека"
                         android:textColor="@color/black"/>
 
-
-                    <LinearLayout
+                    <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
+                        android:id="@+id/btn_comments"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#EEEEEE"
+                        android:text="Teswirler (2)"
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        app:cornerRadius="8dp"
+                        app:icon="@drawable/ic_comments"
+                        app:iconGravity="textStart"
+                        app:iconTint="#555555" />
 
 
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/ic_flag"/>
-
-
-
-                        <TextView
-                            android:id="@+id/btn_report"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:textSize="14sp"
-                            android:textColor="@color/grey_text_color"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="@string/report"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/bg_vip_profile"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/user_profile"
-                            android:backgroundTint="@color/white" />
-
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/user_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text="Atageldi"
-                                android:textColor="@color/white"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:id="@+id/date_register"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text="13.02.2025"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/ic_eye"
-                                    android:backgroundTint="@color/white" />
-
-
-                                <TextView
-                                    android:id="@+id/view_number"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="3dp"
-                                    android:fontFamily="@font/roboto_regular"
-                                    android:text="130"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp" />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:orientation="horizontal">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text="VIP profile galan gün:"
-                                android:textColor="#4D8BBF"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text=" 30"
-                                android:textColor="#4D8BBF"
-                                android:textSize="14sp" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -505,11 +382,7 @@
 
             </androidx.core.widget.NestedScrollView>
 
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

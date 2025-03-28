@@ -24,6 +24,7 @@ class HouseImagesAdapter(private val images: List<DataImage>) :
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val dataImage = images[position]
+
         Glide.with(holder.itemView.context)
             .load(dataImage.url)
             .placeholder(R.drawable.placeholder)

@@ -1,11 +1,14 @@
 package com.mekanly.presentation.ui.business
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,27 +24,30 @@ import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
 import com.mekanly.presentation.ui.adapters.AdapterBusinessFurniture
 import com.mekanly.presentation.ui.adapters.AdapterBusinessHousehold
 import com.mekanly.presentation.ui.adapters.AdapterBusinessRealEstate
+import com.mekanly.presentation.ui.adapters.AdapterItemBusinessCategories
 
 
 class SubBusinessFragment : Fragment() {
     private lateinit var binding: FragmentSubBusinessBinding
+    private val args by navArgs<SubBusinessFragmentArgs>()
     private var currentBusinessType: BusinessType? = null
+    private var title: String? = "N/A"
+    private var items: List<DataItemBusinessProfile> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Получаем тип бизнеса из аргументов
-        currentBusinessType = arguments?.getSerializable("business_type") as? BusinessType
+        currentBusinessType = BusinessType.valueOf(args.businessType)
+        title = args.title
+
+        Log.e("TAG_business_type", "onCreate: test business type $currentBusinessType, title $title")
+
+        createMockData()
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentSubBusinessBinding.inflate(inflater, container, false)
-
-
-        initListeners()
-
-        val items = listOf(
+    private fun createMockData() {
+        items = listOf(
             DataItemBusinessProfile(
                 R.drawable.rowach_mebel, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"
             ),
@@ -58,18 +64,31 @@ class SubBusinessFragment : Fragment() {
                 R.drawable.model_house, "Satlyk dükan", "Dükan doly enjamlaşdyrylan."
             )
         )
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSubBusinessBinding.inflate(inflater, container, false)
+
+        setUI()
+        initListeners()
+        setRecycler(items)
+
+        return binding.root
+    }
+
+    private fun setRecycler(items: List<DataItemBusinessProfile>) {
         val adapter = AdapterItemBusinessProfile(items)
         binding.businessNotice.layoutManager = LinearLayoutManager(requireContext())
         binding.businessNotice.adapter = adapter
+    }
 
-
-
-
-
-
-
-        return binding.root
+    private fun setUI() {
+        binding.apply {
+            toolbarTitle.text = title ?: "N/A"
+            //galany ashakda
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -134,8 +153,14 @@ class SubBusinessFragment : Fragment() {
 
             // Создайте ваши SubFragmentItem для недвижимости
         )
-        return AdapterBusinessRealEstate(realEstateItems) { item ->
 
+        return AdapterBusinessRealEstate(realEstateItems) { selectedItem ->
+            // Открытие нового фрагмента с деталями
+            val bundle = Bundle().apply {
+                putInt("item_id", selectedItem.id)
+                putString("item_name", selectedItem.name)
+            }
+            findNavController().navigate(R.id.action_subBusinessFragment_to_fragmentDetailsSubBusiness2, bundle)
         }
     }
 
@@ -280,7 +305,9 @@ class SubBusinessFragment : Fragment() {
             // Создайте ваши SubFragmentItem для производства
         )
         return AdapterBusinessCarpet(productionItems) { item ->
-            // Обработка клика на элемент производства
+
+            findNavController().navigate(R.id.action_subBusinessFragment_to_fragmentDetailsSubBusiness2)
+
         }
     }
 
@@ -328,6 +355,18 @@ class SubBusinessFragment : Fragment() {
 
             // Создайте ваши SubFragmentItem для производства
         )
+
+
+        // Создаем и устанавливаем адаптер
+        val businessCategoryAdapter = AdapterBusinessChandelier(productionItems) { selectedItem ->
+
+            findNavController().navigate(R.id.action_subBusinessFragment_to_fragmentDetailsSubBusiness2)
+        }
+
+
+        binding.recyclerView.adapter = businessCategoryAdapter
+
+
         return AdapterBusinessChandelier(productionItems) { item ->
             // Обработка клика на элемент производства
         }

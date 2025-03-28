@@ -151,11 +151,40 @@
         android:name="com.mekanly.presentation.ui.fragments.profile.homeSeekers.FragmentHomeSeekers"
         android:label="fragment_home_seekers"
         tools:layout="@layout/fragment_home_seekers" />
+
+
+
     <fragment
         android:id="@+id/subBusinessFragment"
         android:name="com.mekanly.presentation.ui.business.SubBusinessFragment"
         android:label="fragment_sub_business"
-        tools:layout="@layout/fragment_sub_business" />
+        tools:layout="@layout/fragment_sub_business" >
+
+
+        <action
+            android:id="@+id/action_subBusinessFragment_to_fragmentDetailsSubBusiness2"
+            app:destination="@id/fragmentDetailsSubBusiness"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="N/A" />
+
+        <argument
+            android:name="business_type"
+            app:argType="string"
+            android:defaultValue="N/A" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsSubBusiness"
+        android:name="com.mekanly.presentation.ui.business.FragmentDetailsSubBusiness"
+        android:label="FragmentDetailsSubBusiness" />
 
 
 </navigation>
