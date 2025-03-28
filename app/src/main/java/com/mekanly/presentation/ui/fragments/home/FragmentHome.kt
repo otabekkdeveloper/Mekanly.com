@@ -29,6 +29,7 @@ class FragmentHome : Fragment() {
     private lateinit var adapterBanners: AdapterBanners
     private lateinit var adapterBigBanners: AdapterBigBanners
 
+
     private val viewModel: VMHome by viewModels()
 
     override fun onCreateView(
@@ -38,10 +39,6 @@ class FragmentHome : Fragment() {
         observeViewModel()
 
         adapterTopNotifications()
-
-
-
-
 
 
 
@@ -113,15 +110,15 @@ class FragmentHome : Fragment() {
         val items = listOf(
 
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
-            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
-            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
-            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
-            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
-            DataTopNotifications(R.drawable.example_banner, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
+            DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" ),
             DataTopNotifications(R.drawable.home_villa_image, "02. 08.2024", "Aşgabat/ mkr1,", "Satlyk jaý", "Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly bahadan gerek jjbdjbdçbdfejffifrijirjif...", "10000 TMT" )
 
         )

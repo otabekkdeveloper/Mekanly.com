@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_add_photo_profile"
                 android:gravity="center"
-                android:paddingVertical="4dp"
                 android:paddingHorizontal="7dp"
+                android:paddingVertical="4dp"
                 app:layout_constraintBottom_toBottomOf="@+id/user_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -146,10 +147,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:layout_gravity="center"
+                android:text="1."
                 android:textColor="@color/text_color_grey"
-                android:text="1."/>
+                android:textSize="14sp" />
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -164,21 +165,21 @@
                 android:textSize="14sp" />
 
             <View
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
 
             <TextView
-                android:paddingHorizontal="7dp"
-                android:paddingVertical="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="Esasy nomer"
                 android:layout_gravity="center"
-                android:background="@drawable/bg_green"/>
+                android:background="@drawable/bg_green"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="4dp"
+                android:text="Esasy nomer"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -193,10 +194,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:layout_gravity="center"
+                android:text="2."
                 android:textColor="@color/text_color_grey"
-                android:text="2."/>
+                android:textSize="14sp" />
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -211,21 +212,21 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_marginStart="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:text="3."
                 android:textColor="@color/text_color_grey"
-                android:text="3."/>
+                android:textSize="14sp" />
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/numberThree"
                 android:layout_width="wrap_content"
 
-                android:layout_marginStart="5dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="+993 XX-XX-XX-XX"
                 android:textColor="@color/black"
@@ -236,14 +237,13 @@
         </LinearLayout>
 
 
-
         <LinearLayout
-            android:background="@drawable/bg_social_media_in_correct"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="6dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_social_media_in_correct"
+            android:orientation="vertical"
+            android:paddingHorizontal="6dp">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -263,10 +263,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/urlTikTok"
                 android:layout_width="match_parent"
-                android:drawableStart="@drawable/ic_tik_tok"
-                android:drawableTint="#B0B0B0"
-                android:drawablePadding="14dp"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_tik_tok"
+                android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Tiktok sahypaňyz"
                 android:textColor="@color/black"
@@ -279,8 +279,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_instagram"
-                android:drawableTint="#B0B0B0"
                 android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Instagram sahypaňyz"
                 android:textColor="@color/black"
@@ -292,37 +292,29 @@
                 android:id="@+id/urlImo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
                 android:drawableStart="@drawable/ic_imo"
-                android:drawableTint="#B0B0B0"
                 android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
+                android:fontFamily="@font/roboto_regular"
                 android:hint="Imo sahypaňyz"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_text_color"
                 android:textSize="14sp" />
 
 
-
-
         </LinearLayout>
-        
-        
-        
-        
-        
+
+
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            app:cornerRadius="8dp"
             android:backgroundTint="@color/background"
-            android:textSize="14sp"
             android:fontFamily="@font/roboto_regular"
+            android:text="Tassyklamak"
             android:textColor="@color/white"
-            android:text="Tassyklamak"/>
-
-
-
+            android:textSize="14sp"
+            app:cornerRadius="8dp" />
 
 
     </LinearLayout>

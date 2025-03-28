@@ -7,7 +7,7 @@ import com.mekanly.presentation.ui.fragments.home.FragmentHome
 import com.mekanly.FourthFragment
 import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
-import com.mekanly.FragmentBusiness
+import com.mekanly.presentation.ui.business.FragmentBusiness
 
 class AdapterViewPager(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
