@@ -3,18 +3,23 @@ package com.mekanly.presentation.ui.fragments.home
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.databinding.ItemAdvSmallBinding
+import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 
-class AdapterTopHouses(private val properties: List<DataHouse>) :
+class AdapterTopHouses(
+    private val properties: List<DataHouse>, private val navController: NavController
+) :
     RecyclerView.Adapter<AdapterTopHouses.PropertyViewHolder>() {
     inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(property: DataHouse) {
+            binding.item = property
             binding.apply {
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
@@ -36,6 +41,7 @@ class AdapterTopHouses(private val properties: List<DataHouse>) :
             parent,
             false
         )
+        binding.adapter = this@AdapterTopHouses
         return PropertyViewHolder(binding)
     }
     override fun onBindViewHolder(holder: PropertyViewHolder, position: Int) {
@@ -43,4 +49,11 @@ class AdapterTopHouses(private val properties: List<DataHouse>) :
         holder.bind(property)
     }
     override fun getItemCount() = properties.size
+
+    fun onAdvClicked(item: DataHouse) {
+        val action =
+            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
+
+        navController.navigate(action)
+    }
 }

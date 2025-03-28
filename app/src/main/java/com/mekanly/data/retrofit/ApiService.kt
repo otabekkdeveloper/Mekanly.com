@@ -68,8 +68,6 @@ interface ApiService {
         @Path("houseId") houseId:String
     ):Call<ResponseComments>
 
-//    @POST()
-
     @POST("/api/v1/houses/add")
     fun addHouse(
         @Body requestBodyAddHouse: RequestBodyAddHouse
@@ -83,7 +81,5 @@ interface ApiService {
 
     @GET("/api/v2/globalOptions")
     fun globalOptions():Call<ResponseGlobalOptions>
-
-
 }
 

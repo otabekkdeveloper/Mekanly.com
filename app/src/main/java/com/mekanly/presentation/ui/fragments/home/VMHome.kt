@@ -11,10 +11,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+sealed class FragmentHomeState(){
+    data class SuccessBanners(val dataResponse:List<DataBanner>):FragmentHomeState()
+    data class SuccessTopHouses(val dataResponse:List<DataHouse>):FragmentHomeState()
+    data object Loading:FragmentHomeState()
+    data object Initial:FragmentHomeState()
+    data class Error(val error:Any):FragmentHomeState()
+}
 class VMHome:ViewModel() {
 
-    private val _homeState = MutableStateFlow<ResponseBodyState>(ResponseBodyState.Initial)
-    val homeState: StateFlow<ResponseBodyState> = _homeState.asStateFlow()
+    private val _homeState = MutableStateFlow<FragmentHomeState>(FragmentHomeState.Initial)
+    val homeState: StateFlow<FragmentHomeState> = _homeState.asStateFlow()
 
     private val _banners= MutableStateFlow(emptyList<DataBanner>().toMutableList())
     val banners: StateFlow<MutableList<DataBanner>> = _banners.asStateFlow()
@@ -31,27 +38,27 @@ class VMHome:ViewModel() {
     }
 
     init {
-//        getHouses()
         getBanners()
-//        getTopHouses()
+        getTopHouses()
     }
 
     private fun getBanners(){
         Log.e("BANNERS", "getBanners: now getting banners" )
         useCaseBanners.execute {
-            _homeState.value = it
            when(it){
                is ResponseBodyState.Error -> {
-                   _homeState.value = ResponseBodyState.Error(4)
+                   _homeState.value = FragmentHomeState.Error(4)
                }
                ResponseBodyState.Loading -> {
-                   _homeState.value = ResponseBodyState.Loading
+                   _homeState.value = FragmentHomeState.Loading
                }
                is ResponseBodyState.SuccessList -> {
                    if (it.dataResponse.isEmpty()){
+                       _homeState.value = FragmentHomeState.Error(4)
                        return@execute
                    }else{
-                       _banners.value = it.dataResponse as MutableList<DataBanner>
+                       _homeState.value = FragmentHomeState.SuccessBanners(it.dataResponse as MutableList<DataBanner> )
+                       _banners.value = it.dataResponse
                    }
                }
 
@@ -62,24 +69,25 @@ class VMHome:ViewModel() {
 
     private fun getTopHouses(){
 
-//        useCase.execute {
-//            _homeState.value = it
-//            when(it){
-//                is ResponseBodyState.Error -> {
-////                    _homeState.value = ResponseBodyState.Error(4)
-//                }
-//                ResponseBodyState.Loading -> {
-////                    _homeState.value = ResponseBodyState.Loading
-//                }
-//                is ResponseBodyState.SuccessList -> {
-//                    if (it.dataResponse.isEmpty()){
-//                        return@execute
-//                    }else{
-//                        _houses.value = it.dataResponse as MutableList<DataHouse>
-//                    }
-//                }
-//                else -> {}
-//            }
-//        }
+        useCase.execute {
+            when(it){
+                is ResponseBodyState.Error -> {
+                    _homeState.value = FragmentHomeState.Error(4)
+                }
+                ResponseBodyState.Loading -> {
+                    _homeState.value = FragmentHomeState.Loading
+                }
+                is ResponseBodyState.SuccessList -> {
+                    if (it.dataResponse.isEmpty()){
+                        return@execute
+                    }else{
+                        val list = (it.dataResponse as MutableList<DataHouse>).take(50).toMutableList()
+                        _houses.value = list
+                        _homeState.value = FragmentHomeState.SuccessTopHouses(list)
+                    }
+                }
+                else -> {}
+            }
+        }
     }
 }
