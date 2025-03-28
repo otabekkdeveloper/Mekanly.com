@@ -6,7 +6,7 @@ import com.mekanly.data.requestBody.RequestBodyAddHouse
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.data.responseBody.ResponseBusinessProfilesCategories
 import com.mekanly.data.responseBody.ResponseComments
 import com.mekanly.data.responseBody.ResponseGlobalOptions
 import com.mekanly.data.responseBody.ResponseHouseDetails
@@ -81,5 +81,8 @@ interface ApiService {
 
     @GET("/api/v2/globalOptions")
     fun globalOptions():Call<ResponseGlobalOptions>
+
+    @GET("api/v2/business/categories")
+    fun getBusinessProfileCategories():Call<ResponseBusinessProfilesCategories>
 }
 

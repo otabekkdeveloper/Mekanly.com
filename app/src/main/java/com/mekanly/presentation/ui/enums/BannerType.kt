@@ -1,4 +1,4 @@
-package com.mekanly.presentation
+package com.mekanly.presentation.ui.enums
 
 enum class BannerType(val value:String) {
     BIG_BANNER("big"),

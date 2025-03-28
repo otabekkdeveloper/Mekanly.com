@@ -156,7 +156,7 @@
 
     <fragment
         android:id="@+id/subBusinessFragment"
-        android:name="com.mekanly.presentation.ui.business.SubBusinessFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.SubBusinessFragment"
         android:label="fragment_sub_business"
         tools:layout="@layout/fragment_sub_business" >
 
@@ -183,7 +183,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetailsSubBusiness"
-        android:name="com.mekanly.presentation.ui.business.FragmentDetailsSubBusiness"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.FragmentDetailsSubBusiness"
         android:label="FragmentDetailsSubBusiness" />
 
 

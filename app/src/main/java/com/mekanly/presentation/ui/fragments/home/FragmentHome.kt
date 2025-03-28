@@ -11,16 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mekanly.R
-import com.mekanly.data.DataTopNotifications
 import com.mekanly.data.constants.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.constants.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.dataModels.DataBanner
 import com.mekanly.data.dataModels.DataHouse
-import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentHomeBinding
-import com.mekanly.presentation.BannerType
-import com.mekanly.presentation.ui.adapters.AdapterTopNotifications
+import com.mekanly.presentation.ui.enums.BannerType
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

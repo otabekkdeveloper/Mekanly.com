@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.business
+package com.mekanly.presentation.ui.fragments.businessProfile
 
 import android.os.Bundle
 import android.util.Log
@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mekanly.BusinessType
 import com.mekanly.R
 import com.mekanly.data.DataItemBusinessProfile
 import com.mekanly.data.DataSubBusinessItem
@@ -24,7 +22,7 @@ import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
 import com.mekanly.presentation.ui.adapters.AdapterBusinessFurniture
 import com.mekanly.presentation.ui.adapters.AdapterBusinessHousehold
 import com.mekanly.presentation.ui.adapters.AdapterBusinessRealEstate
-import com.mekanly.presentation.ui.adapters.AdapterItemBusinessCategories
+import com.mekanly.presentation.ui.enums.BusinessType
 
 
 class SubBusinessFragment : Fragment() {
@@ -36,12 +34,9 @@ class SubBusinessFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Получаем тип бизнеса из аргументов
         currentBusinessType = BusinessType.valueOf(args.businessType)
         title = args.title
-
         Log.e("TAG_business_type", "onCreate: test business type $currentBusinessType, title $title")
-
         createMockData()
 
     }
@@ -151,7 +146,6 @@ class SubBusinessFragment : Fragment() {
                 id = 3, name = "Aman", imageResId = R.drawable.business_profile_image_house
             ),
 
-            // Создайте ваши SubFragmentItem для недвижимости
         )
 
         return AdapterBusinessRealEstate(realEstateItems) { selectedItem ->

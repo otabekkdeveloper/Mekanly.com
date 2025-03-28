@@ -2,37 +2,33 @@ package com.mekanly.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mekanly.DataItemBusinessCategories
+import com.bumptech.glide.Glide
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataBusinessProfileCategory
 import com.mekanly.databinding.ItemCategoriesBusinessBinding
 
 
 class AdapterItemBusinessCategories(
-    private val items: List<DataItemBusinessCategories>,
-    private val onItemClick: ((DataItemBusinessCategories) -> Unit)? = null
+    private val items: List<DataBusinessProfileCategory>,
+    private val onItemClick: ((DataBusinessProfileCategory) -> Unit)? = null
 ) : RecyclerView.Adapter<AdapterItemBusinessCategories.BusinessProfileViewHolder>() {
 
     inner class BusinessProfileViewHolder(
         private val binding: ItemCategoriesBusinessBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: DataItemBusinessCategories) {
+        fun bind(item: DataBusinessProfileCategory) {
             binding.apply {
-                // Безопасное установление текста с проверкой на null
-                textView10?.text = item.title ?: ""
+                tvTitle.text = item.title
 
-               count.text = item.count
+               count.text = item.count.toString()
 
-
-
-                // Безопасная установка изображения
                 item.imageResId?.let {
-                    imageView21?.setImageResource(it)
+                    ivCategory.setImageResource(it)
                 }
+                Glide.with(ivCategory.context).load(item.image).placeholder(R.drawable.carpet).into(ivCategory)
 
-                // Обработка клика с проверкой на null
                 root.setOnClickListener {
                     onItemClick?.invoke(item)
                 }

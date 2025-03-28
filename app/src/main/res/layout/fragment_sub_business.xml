@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.business.SubBusinessFragment">
+    tools:context=".presentation.ui.fragments.businessProfile.SubBusinessFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -30,6 +30,8 @@
                 android:src="@drawable/ic_back" />
 
             <TextView
+                android:lines="1"
+                android:maxLines="1"
                 android:id="@+id/toolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
