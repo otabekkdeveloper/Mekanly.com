@@ -9,7 +9,7 @@ data class DataBusinessProfileCategory(
     val image: String,
     val imageResId: Int? = null,
     val id: Int = 0,
-    val type: BusinessType
+    val type: BusinessType? = BusinessType.FURNITURE
 )
 
 

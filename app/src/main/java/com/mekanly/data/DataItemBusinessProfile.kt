@@ -5,3 +5,4 @@ data class DataItemBusinessProfile(
     val propertyType: String,
     val description: String
 )
+

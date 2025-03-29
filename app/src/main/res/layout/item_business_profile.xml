@@ -1,69 +1,72 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="6dp"
-    app:cardBackgroundColor="@android:color/white">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:background="@drawable/bg_business_profile_item"
-        android:padding="8dp">
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@android:color/white">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imgProperty"
-            app:riv_corner_radius_top_left="8dp"
-            app:riv_corner_radius_bottom_left="8dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgProperty"
-            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"
+            android:background="@drawable/bg_business_profile_item"
             android:padding="8dp">
 
-            <TextView
-                android:id="@+id/tvPropertyType"
-                android:layout_width="wrap_content"
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imgProperty"
+                app:riv_corner_radius_top_left="8dp"
+                app:riv_corner_radius_bottom_left="8dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:text="Rowaç mebel"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgProperty"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="8dp">
 
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="12dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_regular"
-                android:maxLines="2"
-                android:text="Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly "
-                android:textColor="@color/text_color_grey"
-                android:textSize="13sp" />
+                <TextView
+                    android:id="@+id/tvPropertyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Rowaç mebel"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="2"
+                    android:text="Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly "
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="13sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

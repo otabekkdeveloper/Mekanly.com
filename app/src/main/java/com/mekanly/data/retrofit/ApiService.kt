@@ -6,6 +6,7 @@ import com.mekanly.data.requestBody.RequestBodyAddHouse
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
+import com.mekanly.data.responseBody.ResponseBusinessProfiles
 import com.mekanly.data.responseBody.ResponseBusinessProfilesCategories
 import com.mekanly.data.responseBody.ResponseComments
 import com.mekanly.data.responseBody.ResponseGlobalOptions
@@ -84,5 +85,14 @@ interface ApiService {
 
     @GET("api/v2/business/categories")
     fun getBusinessProfileCategories():Call<ResponseBusinessProfilesCategories>
+
+    @GET("api/v2/business/categories/{id}/profiles")
+    fun getSimilarBusinessProfiles():Call<ResponseHouses>
+
+    @GET("api/v2/business/allProfiles/{start}/{limit}")
+    fun getBusinessProfilesWithPagination(
+        @Path("start") start:Long,
+        @Path("limit") limit:Long,
+    ):Call<ResponseBusinessProfiles>
 }
 

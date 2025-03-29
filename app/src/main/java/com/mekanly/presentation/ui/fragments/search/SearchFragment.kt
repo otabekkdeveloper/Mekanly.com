@@ -46,12 +46,7 @@ class SearchFragment : Fragment() {
     ): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         observeViewModel()
-
-
         setOnClickListener()
-
-
-
         initListeners()
         return binding.root
     }
