@@ -170,6 +170,11 @@
             app:popExitAnim="@anim/slide_out_right" />
 
         <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+        <argument
             android:name="title"
             app:argType="string"
             android:defaultValue="N/A" />
@@ -178,6 +183,7 @@
             android:name="business_type"
             app:argType="string"
             android:defaultValue="N/A" />
+
 
 
     </fragment>

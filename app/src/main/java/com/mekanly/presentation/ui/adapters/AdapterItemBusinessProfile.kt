@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.data.DataItemBusinessProfile
+import com.mekanly.data.dataModels.DataBusinessProfile
 import com.mekanly.databinding.ItemBusinessProfileBinding
 
 class AdapterItemBusinessProfile(
-    private val items: List<DataItemBusinessProfile>
+    private val items: List<DataBusinessProfile>
 ) : RecyclerView.Adapter<AdapterItemBusinessProfile.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemBusinessProfileBinding) : RecyclerView.ViewHolder(binding.root)
@@ -21,9 +22,9 @@ class AdapterItemBusinessProfile(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         with(holder.binding) {
-            tvPropertyType.text = item.propertyType
+            tvPropertyType.text = item.brand
             tvDescription.text = item.description
-            Glide.with(imgProperty.context).load(item.imageUrl).into(imgProperty)
+            Glide.with(imgProperty.context).load(item.image).into(imgProperty)
         }
     }
 

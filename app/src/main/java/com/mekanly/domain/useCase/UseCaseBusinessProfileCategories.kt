@@ -11,4 +11,8 @@ class UseCaseBusinessProfileCategories {
     fun execute(callback:(ResponseBodyState)->Unit){
         rep.getBusinessProfileCategories(callback)
     }
+
+    fun executeSimilarCategories(id:Int,callback:(ResponseBodyState)->Unit ){
+        rep.getBusinessProfileCategories(callback)
+    }
 }

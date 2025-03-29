@@ -87,12 +87,19 @@ interface ApiService {
     fun getBusinessProfileCategories():Call<ResponseBusinessProfilesCategories>
 
     @GET("api/v2/business/categories/{id}/profiles")
-    fun getSimilarBusinessProfiles():Call<ResponseHouses>
+    fun getSimilarBusinessProfiles(
+        @Path("id") id:Long
+    ):Call<ResponseBusinessProfiles>
 
     @GET("api/v2/business/allProfiles/{start}/{limit}")
     fun getBusinessProfilesWithPagination(
         @Path("start") start:Long,
         @Path("limit") limit:Long,
     ):Call<ResponseBusinessProfiles>
+
+    @GET("api/v2/business/categories/{id}")
+    fun getSimilarBusinessProfileCategories(
+        @Path("id") id:Long
+    ):Call<ResponseBusinessProfilesCategories>
 }
 

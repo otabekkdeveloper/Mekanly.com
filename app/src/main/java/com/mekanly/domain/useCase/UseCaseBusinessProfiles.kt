@@ -10,4 +10,7 @@ class UseCaseBusinessProfiles {
     fun execute(start:Long,callback: (ResponseBodyState) -> Unit){
         rep.getBusinessProfilesWithPagination(start,callback)
     }
+    fun executeSimilar(id:Long,callback: (ResponseBodyState) -> Unit){
+        rep.getSimilarBusinessProfiles(id,callback)
+    }
 }

@@ -65,4 +65,27 @@ class RepositoryBusinessProfiles {
                 }
             })
     }
+
+    fun getSimilarBusinessProfiles(id: Long, callback: (ResponseBodyState) -> Unit) {
+        callback(ResponseBodyState.Loading)
+        apiService.getSimilarBusinessProfiles(id)
+            .enqueue(object : Callback<ResponseBusinessProfiles> {
+                override fun onResponse(
+                    call: Call<ResponseBusinessProfiles>, response: Response<ResponseBusinessProfiles>
+                ) {
+                    if (response.isSuccessful) {
+                        val businessProfiles = response.body()?.data ?: emptyList()
+                        callback(ResponseBodyState.SuccessList(businessProfiles))
+                    } else {
+                        Log.e("FlowFragment", "Error: ${response.code()}")
+                        callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBusinessProfiles>, t: Throwable) {
+                    Log.e("FlowFragment", "Failure: ${t.message}")
+                    callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+                }
+            })
+    }
 }

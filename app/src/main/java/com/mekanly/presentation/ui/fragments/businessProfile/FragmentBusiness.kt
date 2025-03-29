@@ -16,11 +16,9 @@ import com.mekanly.R
 import com.mekanly.data.DataItemBusinessProfile
 import com.mekanly.data.dataModels.DataBusinessProfileCategory
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
-import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentBusinessBinding
 import com.mekanly.presentation.ui.StaticFunctions.showErrorSnackBar
 import com.mekanly.presentation.ui.adapters.AdapterItemBusinessCategories
-import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
 import com.mekanly.presentation.ui.enums.BusinessType
 import com.mekanly.presentation.ui.fragments.businessProfile.adapter.AdapterBusinessProfilesPaginated
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.FragmentBusinessProfileState
@@ -41,7 +39,6 @@ class FragmentBusiness : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentBusinessBinding.inflate(inflater, container, false)
-        setMockData()
         initListeners()
         observeViewModel()
         return binding.root
@@ -108,7 +105,7 @@ class FragmentBusiness : Fragment() {
 
     private fun setBusinessProfileCategoryAdapter(list: List<DataBusinessProfileCategory>) {
         val businessCategoryAdapter = AdapterItemBusinessCategories(list) { selectedItem ->
-            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(title = selectedItem.title ?: "N/A", businessType = selectedItem.type?.name
+            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(selectedItem.id,title = selectedItem.title ?: "N/A", businessType = selectedItem.type?.name
                 ?: BusinessType.FURNITURE.name)
 
             findNavController().navigate(action)
@@ -117,29 +114,6 @@ class FragmentBusiness : Fragment() {
         binding.categoriesRV.adapter = businessCategoryAdapter
     }
 
-    private fun setMockData() {
-        val items = listOf(
-            DataItemBusinessProfile(
-                R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"
-            ),
-            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
-            DataItemBusinessProfile(
-                R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"
-            ),
-            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
-            DataItemBusinessProfile(
-                R.drawable.placeholder, "Rowaç mebel", "Gyssagly satlyk jaý gerek!!!"
-            ),
-            DataItemBusinessProfile(R.drawable.home_villa_image, "Täze öý", "Jaý amatly we täze."),
-            DataItemBusinessProfile(
-                R.drawable.model_house, "Satlyk dükan", "Dükan doly enjamlaşdyrylan."
-            )
-        )
-
-        val adapter = AdapterItemBusinessProfile(items)
-        binding.rvBusinessProfiles.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvBusinessProfiles.adapter = adapter
-    }
 
     private fun setAdapter() {
         if (adapter == null) {
