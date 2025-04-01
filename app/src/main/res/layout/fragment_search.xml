@@ -41,7 +41,7 @@
                 android:paddingVertical="10dp"
                 android:paddingStart="16dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/text_color_grey"
+                android:textColorHint="@color/text_color_gray"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
 
@@ -108,127 +108,144 @@
                     android:orientation="vertical">
 
 
-                    <LinearLayout
-                        android:id="@+id/cr_buttons"
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="10dp"
-                        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:id="@+id/btn_locations"
-                            android:gravity="center"
-                            android:paddingHorizontal="5dp"
-                            android:background="@drawable/bg_btn_search_fragment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp">
-
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:background="@drawable/location_icon"/>
-
-                            <TextView
-                                android:id="@+id/nameLocations"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textColor="#3A8BCF"
-                                android:layout_marginStart="5dp"
-                                android:text="Ýerleşýän ýeri"/>
-
-
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/ic_down"/>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:id="@+id/btnCategories"
-                            android:layout_marginStart="8dp"
-                            android:gravity="center"
-                            android:paddingHorizontal="5dp"
-                            android:background="@drawable/bg_btn_search_fragment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp">
-
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:background="@drawable/ic_category"/>
-
-                            <TextView
-                                android:id="@+id/textCategory"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:textColor="#3A8BCF"
-                                android:fontFamily="@font/roboto_regular"
-                                android:layout_marginStart="5dp"
-                                android:text="Kategoriýa"/>
-
-
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/ic_down"/>
-
-
-                        </LinearLayout>
+                        android:scrollbars="none"
+                        android:layout_height="wrap_content">
 
 
                         <LinearLayout
-                            android:id="@+id/btnPrice"
-                            android:gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_weight="1"
-                            android:paddingHorizontal="5dp"
-                            android:background="@drawable/bg_btn_search_fragment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp">
+                            android:id="@+id/cr_buttons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="10dp"
+                            app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:background="@drawable/ic_price"/>
-
-                            <TextView
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:id="@+id/btn_locations"
+                                android:gravity="center"
+                                android:paddingHorizontal="15dp"
+                                android:background="@drawable/bg_unselected_in_search_fragment"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textColor="#3A8BCF"
-                                android:layout_marginStart="5dp"
-                                android:text="Bahasy"/>
+                                android:layout_height="40dp">
+
+                                <ImageView
+                                    android:id="@+id/ic_location"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/location_icon"/>
+
+                                <TextView
+                                    android:id="@+id/nameLocations"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/text_color_gray"
+                                    android:layout_marginStart="5dp"
+                                    android:text="Ýerleşýän ýeri"/>
 
 
-                            <ImageView
-                                android:backgroundTint="#3A8BCF"
+                                <ImageView
+                                    android:id="@+id/ic_down"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:src="@drawable/ic_down"/>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:id="@+id/btnCategories"
+                                android:layout_marginStart="8dp"
+                                android:gravity="center"
+                                android:paddingHorizontal="15dp"
+                                android:background="@drawable/bg_unselected_in_search_fragment"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/ic_down"/>
+                                android:layout_height="40dp">
+
+                                <ImageView
+                                    android:id="@+id/icCategories"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/ic_category"/>
+
+                                <TextView
+                                    android:id="@+id/textCategory"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/text_color_gray"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:layout_marginStart="5dp"
+                                    android:text="Kategoriýa"/>
+
+
+                                <ImageView
+                                    android:id="@+id/icDownCategories"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:src="@drawable/ic_down"/>
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/btnPrice"
+                                android:gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="15dp"
+                                android:background="@drawable/bg_unselected_in_search_fragment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp">
+
+                                <ImageView
+                                    android:id="@+id/icPrice"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/ic_price"/>
+
+                                <TextView
+                                    android:id="@+id/priceText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/text_color_gray"
+                                    android:layout_marginStart="5dp"
+                                    android:text="Bahasy"/>
+
+
+                                <ImageView
+                                    android:id="@+id/icPriceDown"
+                                    app:tint="@color/text_color_gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:src="@drawable/ic_down"/>
+
+
+                            </LinearLayout>
 
 
                         </LinearLayout>
+                    </HorizontalScrollView>
 
-                    </LinearLayout>
+
 
 
                 </LinearLayout>

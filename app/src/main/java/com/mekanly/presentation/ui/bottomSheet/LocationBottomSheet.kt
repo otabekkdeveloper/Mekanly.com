@@ -10,6 +10,7 @@ import com.mekanly.presentation.ui.adapters.AdapterLocations
 
 class LocationBottomSheet(
     private val cities: List<String>,
+    private val onDelete: () -> Unit, // Новый параметр для удаления
     private val onCitySelected: (String) -> Unit
 ) : BottomSheetDialogFragment() {
 
@@ -24,8 +25,7 @@ class LocationBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        binding.btnClose.setOnClickListener{
+        binding.btnClose.setOnClickListener {
             dismiss()
         }
 
@@ -36,6 +36,11 @@ class LocationBottomSheet(
 
         binding.rvLocation.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLocation.adapter = adapter
+
+        binding.deleteText.setOnClickListener {
+            onDelete() // Вызываем функцию удаления
+            dismiss()
+        }
     }
 
     override fun onDestroyView() {

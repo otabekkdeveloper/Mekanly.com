@@ -29,7 +29,7 @@ class AdapterAdvertisements(
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text =
-                    "Location: ${property.location.name}, ${property.location.parent_name}"
+                    "${property.location.parent_name}, ${property.location.name}"
                 tvDescription.text = property.description
                 advType.text = property.categoryName
 

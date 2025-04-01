@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Ýerleşýän ýeri otag sany bahasy siziň islegiňiz bilen gabat gelýär. "
-                android:textColor="@color/text_color_grey"
+                android:textColor="@color/text_color_gray"
                 android:fontFamily="@font/roboto_regular"
                 android:textSize="14sp" />
 
@@ -131,7 +131,7 @@
 
                 <TextView
                     android:id="@+id/tvPostedDate"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:fontFamily="@font/roboto_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:fontFamily="@font/roboto_regular"
                     android:layout_marginEnd="12dp"
                     android:ellipsize="end"

@@ -80,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/manrope_bold"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_gray"
                         android:textSize="10sp"
                         tools:text="Şu gün 16:16" />
 
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:fontFamily="@font/manrope_bold"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_gray"
                         android:textSize="10sp"
                         tools:text="Aşgabat-parahat 1" />
 

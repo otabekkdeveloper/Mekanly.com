@@ -25,15 +25,17 @@ class FragmentNotifications : Fragment() {
     ): View {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
+        initListeners()
 
+        return binding.root
+    }
+
+    private fun initListeners() {
         binding.backBtn.setOnClickListener{
 
             findNavController().popBackStack()
 
         }
-
-
-        return binding.root
     }
 
 

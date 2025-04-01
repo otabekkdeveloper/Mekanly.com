@@ -81,7 +81,7 @@
                     android:paddingHorizontal="16dp"
                     android:background="@color/color_transparent"
                     android:text="@string/enter_house_name"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 
@@ -122,7 +122,7 @@
                     android:fontFamily="@font/manrope_regular"
                     android:paddingStart="16dp"
                     android:text="@string/not_selected"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 
@@ -765,7 +765,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Doly ady, aýratynlygy, ýagdaýy we ş.m maglmat "
-                android:textColorHint="@color/text_color_grey"
+                android:textColorHint="@color/text_color_gray"
                 android:textSize="14sp"
                 tools:ignore="NestedWeights" />
 
@@ -924,7 +924,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_hashtag"
                     android:hint="#Heşteg"
-                    android:textColorHint="@color/text_color_grey" />
+                    android:textColorHint="@color/text_color_gray" />
 
 
                 <ImageView
@@ -969,7 +969,7 @@
                     android:layout_marginEnd="80dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="Bu funksiýa öz tanyşlaryňdan ýagny mekanly.com-a agza bolan tanyşlaryňdan platformadaky hereketiňi gizlemek üçin niýetlenendir. Bu funksiýany açsaňyz siziň kontaktyňyzdaky mekanly.com-a agza bolan ulanjylardan gizlener. Doly okaň"
-                    android:textColor="@color/text_color_grey" />
+                    android:textColor="@color/text_color_gray" />
 
 
             </LinearLayout>

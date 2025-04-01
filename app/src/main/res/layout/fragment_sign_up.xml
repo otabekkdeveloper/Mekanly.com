@@ -60,7 +60,7 @@
                     android:id="@+id/input_phone"
                     android:fontFamily="@font/manrope_bold"
                     android:layout_width="match_parent"
-                    android:textColorHint="@color/text_color_grey"
+                    android:textColorHint="@color/text_color_gray"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:hint="+993 60 00 00 00"
@@ -70,12 +70,12 @@
 
                 <CheckBox
                     android:id="@+id/btn_check_verification"
-                    android:buttonTint="@color/text_color_grey"
+                    android:buttonTint="@color/text_color_gray"
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/manrope_bold"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:text="Düzgünnamany okadym we kabul etdim"
                     android:layout_marginStart="20dp"/>
 
@@ -113,7 +113,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:textColor="@color/default_grey"
+                        android:textColor="@color/default_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ÝA-DA" />

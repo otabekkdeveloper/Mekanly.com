@@ -17,11 +17,11 @@
     <color name="bg_blue_four">#D3E0FE</color>
     <color name="text_color">#384CFF</color>
     <color name="text_color_white">#E4E4E4</color>
-    <color name="text_color_grey">#717171</color>
+    <color name="text_color_gray">#717171</color>
     <color name="color_bg_search_fragment">#4D8BBF</color>
     <color name="line_divider">#DDDDDD</color>
     <color name="white_bg">#F3F8FF</color>
-    <color name="default_grey">#DDDDDD</color>
+    <color name="default_gray">#DDDDDD</color>
     <color name="selected_solid_color">#F2F2F2</color>
     <color name="default_stroke_color">#CCCCCC</color>
     <color name="unchecked_thumb">#FFFFFF</color>
@@ -33,6 +33,8 @@
     <color name="success">#32A600</color>
     <color name="banner_color">#00B4D8</color>
     <color name="btn_price_color">#5A8FBB</color>
+    <color name="gray">#EEEEEE</color>
+    <color name="selected_color_in_search_fragment">#3A8BCF</color>
 
 
 

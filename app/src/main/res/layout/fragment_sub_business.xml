@@ -87,7 +87,7 @@
                 android:paddingVertical="10dp"
                 android:paddingStart="16dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/text_color_grey"
+                android:textColorHint="@color/text_color_gray"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
 
