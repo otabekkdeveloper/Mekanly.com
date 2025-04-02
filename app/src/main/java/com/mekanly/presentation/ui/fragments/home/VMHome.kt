@@ -39,7 +39,7 @@ class VMHome:ViewModel() {
 
     init {
         getBanners()
-        getTopHouses()
+//        getTopHouses()
     }
 
     private fun getBanners(){

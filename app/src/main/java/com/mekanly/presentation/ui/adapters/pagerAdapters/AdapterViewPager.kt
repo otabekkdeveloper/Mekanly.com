@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mekanly.presentation.ui.fragments.home.FragmentHome
 import com.mekanly.FourthFragment
-import com.mekanly.presentation.ui.fragments.profile.ProfileFragment
+import com.mekanly.presentation.ui.fragments.profile.FragmentProfile
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
 import com.mekanly.presentation.ui.fragments.businessProfile.FragmentBusiness
 
@@ -21,7 +21,7 @@ class AdapterViewPager(fragmentActivity: FragmentActivity) : FragmentStateAdapte
             1 -> SearchFragment()
             2 -> FragmentBusiness()
             3 -> FourthFragment()
-            4 -> ProfileFragment()
+            4 -> FragmentProfile()
             else -> FragmentHome()
         }
     }

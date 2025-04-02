@@ -3,6 +3,7 @@ package com.mekanly.data.retrofit
 
 import com.mekanly.data.dataModels.DataUser
 import com.mekanly.data.requestBody.RequestBodyAddHouse
+import com.mekanly.data.requestBody.RequestBodyConfirmation
 import com.mekanly.data.requestBody.RequestBodyLogin
 import com.mekanly.data.requestBody.RequestBodyRegister
 import com.mekanly.data.responseBody.ResponseBanners
@@ -12,6 +13,7 @@ import com.mekanly.data.responseBody.ResponseComments
 import com.mekanly.data.responseBody.ResponseGlobalOptions
 import com.mekanly.data.responseBody.ResponseHouseDetails
 import com.mekanly.data.responseBody.ResponseHouses
+import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -51,7 +53,13 @@ interface ApiService {
     @POST("/api/login")
     fun login(
         @Body requestBody: RequestBodyLogin
-    ): Call<ResponseBody>
+    ): Call<ResponseLogin>
+
+
+    @POST("/api/checkLogin")
+    fun confirmLogin(
+        @Body requestBody: RequestBodyConfirmation
+    ): Call<ResponseLogin>
 
     @GET("/api/v2/banners")
     fun getBanners(): Call<ResponseBanners>

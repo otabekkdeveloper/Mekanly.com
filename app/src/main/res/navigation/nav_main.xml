@@ -20,7 +20,14 @@
         android:id="@+id/fragmentConfirmation"
         android:name="com.mekanly.presentation.ui.fragments.confirmation.FragmentConfirmation"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation" >
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="token_waitlist"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentOtp"

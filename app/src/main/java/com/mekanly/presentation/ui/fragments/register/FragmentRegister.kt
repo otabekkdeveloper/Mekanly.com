@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataUser
+import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSignUpBinding
 import com.mekanly.login.PhoneNumberTextWatcher
@@ -43,8 +45,15 @@ class FragmentRegister : Fragment(), PhoneNumberTextWatcher.PhoneNumberValidatio
                     }
 
                     is ResponseBodyState.Success -> {
+                        it.dataResponse as DataUser
+                        AppPreferences(requireContext()).tokenOnWaitlist = it.dataResponse.token
                         binding.progressBar.visibility = View.GONE
-                        findNavController().navigate(R.id.action_signUpFragment_to_fragmentConfirmation)
+                        val action =
+                            FragmentRegisterDirections.actionSignUpFragmentToFragmentConfirmation(
+                                binding.inputPhone.text.toString(), it.dataResponse.token
+                            )
+
+                        findNavController().navigate(action)
                     }
 
                     else -> {}
@@ -62,6 +71,11 @@ class FragmentRegister : Fragment(), PhoneNumberTextWatcher.PhoneNumberValidatio
                     getString(R.string.error_message_phone))
             }
         }
+        binding.inputPhone.addTextChangedListener(
+            PhoneNumberTextWatcher(
+                binding.inputPhone, this
+            )
+        )
     }
 
     override fun onPhoneNumberValid() {

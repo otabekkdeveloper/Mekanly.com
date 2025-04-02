@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class DataUser(
     @SerializedName("id") val id: Int,
     @SerializedName("username") val username: String,
+    @SerializedName("token") val token: String,
     @SerializedName("email") val email: String?,
     @SerializedName("phone") val phone: String,
     @SerializedName("email_verified_at") val emailVerifiedAt: String?,
