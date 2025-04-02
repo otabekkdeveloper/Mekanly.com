@@ -70,8 +70,8 @@ class FragmentFlow : Fragment() {
                     4 -> tab.setIcon(R.drawable.menu_ic)
                 }
 
-                // Переход на выбранную вкладку без анимации
-                binding.viewPager.setCurrentItem(tab.position, false)
+//                // Переход на выбранную вкладку без анимации
+//                binding.viewPager.setCurrentItem(tab.position, false)
             }
 
             override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {

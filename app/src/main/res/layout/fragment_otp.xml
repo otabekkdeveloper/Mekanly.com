@@ -60,7 +60,7 @@
             android:fontFamily="@font/manrope_regular"
             android:gravity="center"
             android:text="maksat sapargeldiyew@gmail.com Email-a \n ugradylan paroly ýazyň"
-            android:textColor="@color/text_color_grey"
+            android:textColor="@color/text_color_gray"
             android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="23dp"
             android:fontFamily="@font/manrope_regular"
-            android:textColorHint="@color/text_color_grey"
+            android:textColorHint="@color/text_color_gray"
             android:layout_height="wrap_content"
             android:hint="Email-a gelen belgi"
             android:inputType="text"
@@ -94,7 +94,7 @@
             android:layout_marginTop="30dp"
             android:text="Täzeden synanyşmak"
             android:fontFamily="@font/manrope_bold"
-            android:textColor="@color/text_color_grey"
+            android:textColor="@color/text_color_gray"
             android:gravity="center"/>
 
 

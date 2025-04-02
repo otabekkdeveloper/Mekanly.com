@@ -17,8 +17,11 @@
     <androidx.cardview.widget.CardView
         android:onClick="@{()->adapter.onAdvClicked(item)}"
         android:layout_width="match_parent"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowColor="@color/default_gray"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginVertical="3dp"
         android:backgroundTint="@color/white"
         app:cardCornerRadius="8dp">
@@ -50,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -60,22 +63,22 @@
                 <TextView
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:id="@+id/tv_address_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:text="Aman aman aman" />
 
                 <TextView
                     android:maxLines="2"
                     android:ellipsize="end"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:id="@+id/tv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:text="Aman aman aman" />
 
@@ -83,13 +86,12 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:id="@+id/tv_price"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="3dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     tools:text="15 TMT" />
 
 

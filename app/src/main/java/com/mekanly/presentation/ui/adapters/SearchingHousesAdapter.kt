@@ -49,17 +49,6 @@ class SearchingHousesAdapter(private val context: Context,
         // Управляем видимостью второго TextView
         holder.btnViewAd.visibility = if (isTextView2Visible) View.VISIBLE else View.GONE
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
     override fun getItemCount(): Int {

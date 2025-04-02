@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:text="Aşgabat/ mkr1"/>
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:text="02. 08.2024"/>
@@ -85,7 +85,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:maxLines="2"
                 android:text="Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly "
-                android:textColor="@color/text_color_grey"
+                android:textColor="@color/text_color_gray"
                 android:textSize="13sp"/>
 
             <TextView

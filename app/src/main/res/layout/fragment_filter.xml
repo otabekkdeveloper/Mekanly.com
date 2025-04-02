@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
                     android:text="@string/not_selected"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 
@@ -119,7 +119,7 @@
                     android:fontFamily="@font/manrope_regular"
                     android:paddingStart="16dp"
                     android:text="@string/not_selected"
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 

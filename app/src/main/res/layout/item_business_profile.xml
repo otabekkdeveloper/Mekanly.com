@@ -61,7 +61,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:maxLines="2"
                     android:text="Gyssagly satlyk jaý gerek!!! HEMME şerti bolmaly amatly "
-                    android:textColor="@color/text_color_grey"
+                    android:textColor="@color/text_color_gray"
                     android:textSize="13sp" />
 
             </LinearLayout>

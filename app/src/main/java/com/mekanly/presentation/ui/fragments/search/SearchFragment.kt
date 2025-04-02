@@ -1,7 +1,9 @@
 package com.mekanly.presentation.ui.fragments.search
 
 import LocationBottomSheet
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -56,7 +59,6 @@ class SearchFragment : Fragment() {
 
 
         val cities = listOf(
-            "Ählisi    ",
             "Aşgabat şäheri",
             "Arkadag şäheri",
             "Mary welaýaty",
@@ -66,14 +68,30 @@ class SearchFragment : Fragment() {
             "Ahal welaýaty"
         )
         binding.btnLocations.setOnClickListener {
-            val bottomSheet = LocationBottomSheet(cities) { selectedCity ->
-                binding.nameLocations.text = selectedCity // Устанавливаем выбранный город на кнопку
+            val bottomSheet = LocationBottomSheet(cities, onDelete = {
+                // Очищаем текст и возвращаем кнопку в исходное состояние
+                binding.apply {
+                    nameLocations.text = "Ýerleşýän ýeri"
+                    btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+                    icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
+                }
+            }) { selectedCity ->
+                binding.apply {
+                    nameLocations.text = selectedCity
+                    btnLocations.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+                    icLocation.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
+                    icPriceDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
+                    priceText.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.selected_color_in_search_fragment
+                        )
+                    )
+                }
+
             }
-            bottomSheet.show(childFragmentManager, "CityBottomSheetDialog")
+
+            bottomSheet.show(childFragmentManager, "LocationBottomSheet")
         }
-
-
-
 
 
         binding.btnFilter.setOnClickListener {
@@ -85,7 +103,26 @@ class SearchFragment : Fragment() {
 
 
             bottomSheet.setOnCitySelectedListener { selectedCity ->
-                binding.textCategory.text = selectedCity
+                binding.apply {
+                    textCategory.text = selectedCity
+                    textCategory.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.selected_color_in_search_fragment
+                        )
+                    )
+                    icCategories.setColorFilter(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.selected_color_in_search_fragment
+                        )
+                    )
+                    icDownCategories.setColorFilter(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.selected_color_in_search_fragment
+                        )
+                    )
+                    btnCategories.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+                }
+
             }
 
             bottomSheet.show(childFragmentManager, "CustomBottomSheet")
@@ -95,7 +132,24 @@ class SearchFragment : Fragment() {
 
         binding.btnPrice.setOnClickListener {
 
-            val bottomSheet = PriceFilterBottomSheet()
+
+            val bottomSheet = PriceFilterBottomSheet { minPrice, maxPrice ->
+                val priceText = if (minPrice.isNotEmpty() && maxPrice.isNotEmpty()) {
+                    "$minPrice - $maxPrice TMT"
+                } else if (minPrice.isNotEmpty()) {
+                    "$minPrice + TMT"
+                } else if (maxPrice.isNotEmpty()) {
+                    "0 - $maxPrice TMT"
+                } else {
+                    "Bahasy"
+                }
+
+
+                updatePriceButtonStyle()
+                binding.priceText.text = priceText
+
+            }
+
             bottomSheet.show(childFragmentManager, "PriceFilter")
         }
 
@@ -203,6 +257,21 @@ class SearchFragment : Fragment() {
                 adapter?.updateList()
             }
         }
+    }
+
+
+    private fun updatePriceButtonStyle() {
+        val selectedColor =
+            ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment)
+
+
+        binding.apply {
+            icPrice.setColorFilter(selectedColor)
+            priceText.setTextColor(selectedColor)
+            icPriceDown.setColorFilter(selectedColor)
+            btnPrice.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+        }
+
     }
 
 
