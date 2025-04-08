@@ -1,85 +1,94 @@
 {
-  "data": {
-    "id": 917,
-    "category_id": 4,
-    "category_name": "Kire\u00fdne ofisler",
-    "location": {
-      "id": 133,
-      "parent_id": 1,
-      "name": "\u00c4hlisi",
-      "created_at": "2025-01-09T09:18:24.000000Z",
-      "updated_at": "2025-01-09T09:18:24.000000Z",
-      "parent_name": "A\u015fgabat \u015f\u00e4heri"
-    },
-    "username": "Mercury",
-    "name": "Arenda Ofis Mir 4 Mir K\u00f6\u00e7",
-    "description": "Arenda Ofis Mir 4 \nMir K\u00f6\u00e7\u00e4n ugrynda\n1 \u043a\u043e\u043c\u043d\u0430\u0442 25m\u00b2\nMebel yok\nKondisaner bar, \nTuwaledy bar, \nArassa gowy Komnat\nBaha: 1.800 manat o\u00f1\u015fuk \u00fderinde\n+ Rieltor hyzmaty\n.........\n\u0410\u0440\u0435\u043d\u0434\u0430 \u043e\u0444\u0438\u0441 \u043c\u0438\u0440 4 \n\u043f\u043e \u041c\u0438\u0440\u0430 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \n1 \u043a\u043e\u043c\u043d\u0430\u0442\u0430 25\u043c\u00b2\n\u0411\u0435\u0437 \u043c\u0435\u0431\u0435\u043b\u0438 \n\u0422\u0443\u0430\u043b\u0435\u0442 \u0435\u0441\u0442\u044c,",
-    "reason": null,
-    "price": "1800.00",
-    "viewed": 2,
-    "star": null,
-    "bron_number": "+99362799898",
-    "room_number": 1,
-    "floor_number": 4,
-    "status": "active",
-    "luxe": 0,
-    "images": [
-      {
-        "id": 4041,
-        "url": "https:\/\/mekanly.com.tm\/storage\/17393486470.jpg"
-      }
-    ],
-    "possibilities": [
-      {
-        "id": 1,
-        "name": "wifi"
+  "data": [
+    {
+      "id": 1088,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 134,
+        "parent_id": 2,
+        "name": "\u00c4hlisi",
+        "created_at": "2025-01-09T09:18:51.000000Z",
+        "updated_at": "2025-01-09T09:18:51.000000Z",
+        "parent_name": "Arkadag \u015f\u00e4heri"
       },
-      {
-        "id": 2,
-        "name": "washer"
-      },
-      {
-        "id": 3,
-        "name": "tv"
-      },
-      {
-        "id": 4,
-        "name": "conditioner"
-      },
-      {
-        "id": 5,
-        "name": "wardrobe"
-      },
-      {
-        "id": 6,
-        "name": "bed"
-      },
-      {
-        "id": 7,
-        "name": "hot"
-      },
-      {
-        "id": 8,
-        "name": "fridge"
-      },
-      {
-        "id": 9,
-        "name": "shower"
-      },
-      {
-        "id": 10,
-        "name": "kitchen"
-      }
-    ],
-    "comment": 0,
-    "comments": [],
-    "is_comment": null,
-    "who": null,
-    "area": null,
-    "exclusisive": 0,
-    "hashtag": null,
-    "level_number": null,
-    "updated_at": "2025-02-25T10:04:10.000000Z",
-    "created_at": "2025-02-25T10:04:10.000000Z"
-  }
+      "user_id": 479,
+      "username": "BTXJVJ8KXZ",
+      "user_phone": "+99371401683",
+      "name": "satlyk ja\u00fd",
+      "description": "hurmant gokje taze gurlan yasalmadyk jay 400kw jayyn 80.90% isi edilen dokument duzuw 12sotuk 6komnat monsarda hakyky alarman adama onsuk  bolar obmen saher ici 2komnat jay yada masyn 2ji etaz pacti dynylan aboy tutulan 80 dup limonam bar howlyda tiplissa edip bolya",
+      "price": "125000.00",
+      "viewed": 4,
+      "star": null,
+      "room_number": 6,
+      "floor_number": 0,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99364509200",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592860.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592861.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592862.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592863.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592864.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592865.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592866.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592867.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17412592868.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-03-24T16:34:11.000000Z",
+      "updated_at": "2025-03-11T22:07:02.000000Z",
+      "created_at": "2025-03-06T11:08:06.000000Z"
+    }
+  ],
+  "total": 1,
+  "limit": 10,
+  "offset": 0
 }

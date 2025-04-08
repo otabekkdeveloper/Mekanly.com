@@ -3,17 +3,18 @@ package com.mekanly.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mekanly.data.dataModels.DataLocation
 import com.mekanly.databinding.ItemLocationBottomSheetBinding
 
 class AdapterLocations(
-    private val items: List<String>,
-    private val onItemClick: (String) -> Unit
+    private val items: List<DataLocation>,
+    private val onItemClick: (DataLocation) -> Unit
 ) : RecyclerView.Adapter<AdapterLocations.ItemViewHolder>() {
 
     inner class ItemViewHolder(private val binding: ItemLocationBottomSheetBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(text: String) {
-            binding.textView.text = text
-            binding.root.setOnClickListener { onItemClick(text) }
+        fun bind(location: DataLocation) {
+            binding.textView.text = location.name
+            binding.root.setOnClickListener { onItemClick(location) }
         }
     }
 

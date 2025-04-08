@@ -109,5 +109,32 @@ interface ApiService {
     fun getSimilarBusinessProfileCategories(
         @Path("id") id:Long
     ):Call<ResponseBusinessProfilesCategories>
+
+
+    @GET("api/v2/filter")
+    fun getFilteredResult(
+        @Query("category_id") categoryId: String? = null,
+        @Query("location_id") locationId: Int? = null,
+        @Query("start_date") startDate: String? = null,
+        @Query("end_date") endDate: String? = null,
+        @Query("possibilities") possibilities: String? = null,
+        @Query("image") image: String? = null,
+        @Query("who") who: String? = null,
+        @Query("cheap_price") cheapPrice: String? = null,
+        @Query("expensive_price") expensivePrice: String? = null,
+        @Query("small_area") smallArea: String? = null,
+        @Query("big_area") bigArea: String? = null,
+        @Query("location") location: String? = null, // JSON format
+        @Query("categories") categories: String? = null, // JSON format
+        @Query("property_type") propertyType: String? = null, // JSON format
+        @Query("repair_type") repairType: String? = null, // JSON format
+        @Query("status") status: String? = null,
+        @Query("room_number") roomNumber: String? = null, // JSON format
+        @Query("floor_number") floorNumber: String? = null, // JSON format
+        @Query("sort_by") sortBy: String? = null, // "price", "created_at"
+        @Query("sort_order") sortOrder: String? = null, // "asc", "desc"
+        @Query("limit") limit: String? = null, // Example: "15"
+        @Query("offset") offset: String? = null // Example: "0"
+    ): Call<ResponseHouses>
 }
 

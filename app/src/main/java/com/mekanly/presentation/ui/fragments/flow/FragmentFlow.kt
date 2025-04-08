@@ -2,6 +2,7 @@ package com.mekanly.presentation.ui.fragments.flow
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -24,12 +25,10 @@ class FragmentFlow : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFlowBinding.inflate(inflater, container, false)
-
+        getGlobalOptions()
         viewPagerAdapter = AdapterViewPager(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
-
-
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
@@ -95,6 +94,11 @@ class FragmentFlow : Fragment() {
 //        }
 
         return binding.root
+    }
+
+    private fun getGlobalOptions() {
+        Log.e("GLOBAL_OPTIONS", "getGlobalOptions: ")
+        vmFlow.getGlobalOptions()
     }
 
     // Метод для отключения свайпа

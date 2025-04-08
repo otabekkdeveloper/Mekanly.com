@@ -38,8 +38,8 @@ data class DataHouse(
     val price: String,
     @SerializedName("status")
     val status: String,
-    @SerializedName("luxe")
-    val luxe: Int,
+//    @SerializedName("luxe")
+//    val luxe: Int,
     @SerializedName("bron_number")
     val bronNumber: String,
     @SerializedName("bron_status")

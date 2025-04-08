@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mekanly.data.dataModels.DataLocation
 import com.mekanly.databinding.BottomSheetLocationBinding
 import com.mekanly.presentation.ui.adapters.AdapterLocations
 
 class LocationBottomSheet(
-    private val cities: List<String>,
+    private val cities: List<DataLocation>,
     private val onDelete: () -> Unit, // Новый параметр для удаления
-    private val onCitySelected: (String) -> Unit
+    private val onCitySelected: (DataLocation) -> Unit
 ) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetLocationBinding? = null
@@ -31,14 +32,14 @@ class LocationBottomSheet(
 
         val adapter = AdapterLocations(cities) { selectedCity ->
             onCitySelected(selectedCity)
-            dismiss() // Закрываем BottomSheet
+            dismiss()
         }
 
         binding.rvLocation.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLocation.adapter = adapter
 
         binding.deleteText.setOnClickListener {
-            onDelete() // Вызываем функцию удаления
+            onDelete()
             dismiss()
         }
     }

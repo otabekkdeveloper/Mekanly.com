@@ -15,6 +15,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,7 @@ import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
+import com.mekanly.presentation.ui.fragments.flow.VMFlow
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -44,6 +46,8 @@ class SearchFragment : Fragment() {
 
     private var adapter: AdapterAdvertisements? = null
 
+    private val vmFlow: VMFlow by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -57,43 +61,37 @@ class SearchFragment : Fragment() {
 
 
     private fun setOnClickListener() {
+        if (vmFlow.globalState.value.locations.isNotEmpty()){
+            val cities = vmFlow.globalState.value.locations
 
-
-        val cities = listOf(
-            "Aşgabat şäheri",
-            "Arkadag şäheri",
-            "Mary welaýaty",
-            "Daşoguz welaýaty",
-            "Lebap welaýaty",
-            "Balkan welaýaty",
-            "Ahal welaýaty"
-        )
-        binding.btnLocations.setOnClickListener {
-            val bottomSheet = LocationBottomSheet(cities, onDelete = {
-                // Очищаем текст и возвращаем кнопку в исходное состояние
-                binding.apply {
-                    nameLocations.text = "Ýerleşýän ýeri"
-                    nameLocations.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
-                    btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-                    icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
-                    icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
-                }
-            }) { selectedCity ->
-                binding.apply {
-                    nameLocations.text = selectedCity
-                    btnLocations.setBackgroundResource(R.drawable.bg_selected_search_fragment)
-                    icLocation.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                    icDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                    nameLocations.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(), R.color.selected_color_in_search_fragment
+            binding.btnLocations.setOnClickListener {
+                val bottomSheet = LocationBottomSheet(cities, onDelete = {
+                    binding.apply {
+                        nameLocations.text = "Ýerleşýän ýeri"
+                        nameLocations.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
+                        btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+                        icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
+                        icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
+                    }
+                }) { selectedCity ->
+                    binding.apply {
+                        adapter=null
+                        nameLocations.text = selectedCity.name
+                        btnLocations.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+                        icLocation.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
+                        icDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
+                        nameLocations.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(), R.color.selected_color_in_search_fragment
+                            )
                         )
-                    )
+                    }
+                    viewModel.getPageInfoDefault(0,selectedCity)
                 }
 
+                bottomSheet.show(childFragmentManager, "LocationBottomSheet")
             }
 
-            bottomSheet.show(childFragmentManager, "LocationBottomSheet")
         }
 
 
@@ -103,7 +101,6 @@ class SearchFragment : Fragment() {
 
         binding.btnCategories.setOnClickListener {
             val bottomSheet = SectionSelectionBottomSheet(onDelete = {
-
                 binding.apply {
                     textCategory.text = "Kategoriya"
                     textCategory.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
@@ -111,7 +108,6 @@ class SearchFragment : Fragment() {
                     icDownCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
                     icCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
                 }
-
             })
 
 
