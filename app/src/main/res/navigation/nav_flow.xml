@@ -59,6 +59,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
 
+        <action
+            android:id="@+id/action_fragmentHome_to_subSearchBusinessFragment"
+            app:destination="@id/subSearchBusinessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
 
     </fragment>
 
@@ -191,6 +199,11 @@
         android:id="@+id/fragmentDetailsSubBusiness"
         android:name="com.mekanly.presentation.ui.fragments.businessProfile.FragmentDetailsSubBusiness"
         android:label="FragmentDetailsSubBusiness" />
+    <fragment
+        android:id="@+id/subSearchBusinessFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.SubSearchBusinessFragment"
+        android:label="fragment_sub_search_business"
+        tools:layout="@layout/fragment_sub_search_business" />
 
 
 </navigation>

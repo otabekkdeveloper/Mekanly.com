@@ -24,6 +24,7 @@ import com.mekanly.presentation.ui.fragments.businessProfile.adapter.AdapterBusi
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.FragmentBusinessProfileState
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.VMBusinessProfiles
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -39,6 +40,7 @@ class FragmentBusiness : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentBusinessBinding.inflate(inflater, container, false)
+
         initListeners()
         observeViewModel()
         return binding.root
@@ -65,6 +67,14 @@ class FragmentBusiness : Fragment() {
 
             }
         })
+
+        binding.inputSearch.setOnClickListener{
+
+            findNavController().navigate(R.id.action_fragmentHome_to_subSearchBusinessFragment)
+
+        }
+
+
     }
 
     private fun observeViewModel() {
@@ -79,11 +89,13 @@ class FragmentBusiness : Fragment() {
                         binding.progressBar.visibility = View.VISIBLE
                     }
                     is FragmentBusinessProfileState.SuccessCategories -> {
+                        delay(200)
                         binding.progressBar.visibility = View.GONE
                         setBusinessProfileCategoryAdapter(it.dataResponse)
                     }
 
                     is FragmentBusinessProfileState.SuccessBusinessProfiles ->{
+                        delay(200)
                         binding.progressBar.visibility = View.GONE
                         setAdapter()
                     }

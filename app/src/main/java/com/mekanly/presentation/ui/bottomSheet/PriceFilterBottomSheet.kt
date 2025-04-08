@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.mekanly.R
 import com.mekanly.databinding.BottomSheetPriceFilterBinding
 
-class PriceFilterBottomSheet(private val onPriceSelected: (String, String) -> Unit) :
-    BottomSheetDialogFragment() {
+class PriceFilterBottomSheet(
+    private val onPriceSelected: (String, String, Boolean) -> Unit
+) : BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetPriceFilterBinding
 
@@ -27,60 +25,36 @@ class PriceFilterBottomSheet(private val onPriceSelected: (String, String) -> Un
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.apply {
+            btnClose.setOnClickListener { dismiss() }
 
-            btnClose.setOnClickListener {
+            deleteText.setOnClickListener {
+                onPriceSelected("", "", true) // Передаем true для onDelete
                 dismiss()
             }
 
-            deleteText.setOnClickListener {
-                etMaxPrice.text.clear()
-                etMinPrice.text.clear()
+            btnConfirm.setOnClickListener {
+
+                val minPriceText = etMinPrice.text.toString().trim()
+                val maxPriceText = etMaxPrice.text.toString().trim()
+
+                val minPriceLong = etMinPrice.text.toString().trim().toLongOrNull()
+                val maxPriceLong = etMaxPrice.text.toString().trim().toLongOrNull()
+
+                if (minPriceLong != null && maxPriceLong != null && minPriceLong > maxPriceLong) {
+                    Toast.makeText(requireContext(), "Ýalňyş! Min baha maks bahadan uly bolmaly däl!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                val minPriceFormatted = formatPrice(minPriceText)
+                val maxPriceFormatted = formatPrice(maxPriceText)
+
+                onPriceSelected(minPriceFormatted, maxPriceFormatted, false)
+                dismiss()
             }
 
-
         }
-
-
-
-
-
-
-        binding.btnConfirm.setOnClickListener {
-            val minPrice = formatPrice(binding.etMinPrice.text.toString().trim())
-            val maxPrice = formatPrice(binding.etMaxPrice.text.toString().trim())
-
-
-//            if (minPrice.isEmpty() && maxPrice.isEmpty()) {
-//                Toast.makeText(requireContext(), "Siz hiç zat ýazmadyňyz!", Toast.LENGTH_SHORT).show()
-//                binding.etMinPrice.error = "Bu ýeri dolduryň"
-//                binding.etMaxPrice.error = "Bu ýeri dolduryň"
-//                return@setOnClickListener
-//            }
-
-//            if (minPrice.isEmpty()) {
-//                binding.etMinPrice.error = "Bu ýeri dolduryň"
-//                return@setOnClickListener
-//            }
-//
-//            if (maxPrice.isEmpty()) {
-//                binding.etMaxPrice.error = "Bu ýeri dolduryň"
-//                return@setOnClickListener
-//            }
-
-
-
-
-
-            onPriceSelected(minPrice, maxPrice)
-            dismiss()
-        }
-
-
-
     }
-
 
     @SuppressLint("DefaultLocale")
     private fun formatPrice(price: String): String {
@@ -95,7 +69,4 @@ class PriceFilterBottomSheet(private val onPriceSelected: (String, String) -> Un
             price
         }
     }
-
-
-
 }

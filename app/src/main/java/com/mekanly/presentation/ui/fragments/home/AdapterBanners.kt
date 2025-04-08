@@ -17,10 +17,10 @@ class AdapterBanners(private val images: List<DataBanner>) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dataBanner: DataBanner) {
-            if(dataBanner.logo.isNotEmpty()){
-                Glide.with(binding.ivBannerAvatar).load(BASE_URL+ dataBanner.parsedImages()[0])
-                    .into(binding.ivBannerAvatar)
-            }
+//            if(dataBanner.logo.isNotEmpty()){
+//                Glide.with(binding.ivBannerAvatar).load(BASE_URL+ dataBanner.parsedImages()[0])
+//                    .into(binding.ivBannerAvatar)
+//            }
             binding.tvInfoBanner.text = dataBanner.title
             if (dataBanner.image.isNotEmpty()) {
                 Glide.with(binding.rivBanner).load(BASE_URL + dataBanner.parsedImages()[0])

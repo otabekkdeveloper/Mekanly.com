@@ -1,18 +1,21 @@
 package com.mekanly.presentation.ui.bottomSheet
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.R
 import com.mekanly.data.BottomSheetItem
+import com.mekanly.databinding.FragmentBottomSheetBinding
 import com.mekanly.presentation.ui.adapters.BottomSheetAdapter
 
-class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
+class SectionSelectionBottomSheet(
+    private val onDelete : ()-> Unit
+) : BottomSheetDialogFragment() {
+    private lateinit var binding: FragmentBottomSheetBinding
 
     private var onCitySelected: ((String) -> Unit)? = null
 
@@ -20,18 +23,22 @@ class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
         onCitySelected = listener
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.bottomSheetRecyclerView)
-        val xBtn = view.findViewById<ImageView>(R.id.x_btn)
+
+        binding = FragmentBottomSheetBinding.inflate(inflater, container, false)
+
+        binding.deleteText.setOnClickListener {
+            onDelete() // Вызываем функцию удаления
+            dismiss()
+        }
 
 
 
-
-        xBtn.setOnClickListener{
+        binding.btnClose.setOnClickListener{
             dismiss()
         }
 
@@ -47,12 +54,12 @@ class SectionSelectionBottomSheet : BottomSheetDialogFragment() {
         )
 
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = BottomSheetAdapter(cities) { selectedItem ->
+        binding.bottomSheetRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.bottomSheetRecyclerView.adapter = BottomSheetAdapter(cities) { selectedItem ->
             onCitySelected?.invoke(selectedItem.title) // Передаем название выбранного города
             dismiss() // Закрываем BottomSheet
         }
 
-        return view
+        return binding.root
     }
 }

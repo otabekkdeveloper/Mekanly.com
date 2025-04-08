@@ -35,6 +35,7 @@
     <color name="btn_price_color">#5A8FBB</color>
     <color name="gray">#EEEEEE</color>
     <color name="selected_color_in_search_fragment">#3A8BCF</color>
+    <color name="bg_color_business_search">#EBEAE8</color>
 
 
 

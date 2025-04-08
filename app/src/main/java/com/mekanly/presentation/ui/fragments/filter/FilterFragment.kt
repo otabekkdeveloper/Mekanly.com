@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.slider.RangeSlider
 import com.mekanly.R
 import com.mekanly.data.OpportunityData
 import com.mekanly.data.PropertiesDialogData
@@ -25,10 +27,15 @@ import com.mekanly.databinding.FragmentFilterBinding
 import com.mekanly.presentation.ui.adapters.OpportunityDialogAdapter
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
+import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesTypeDialog
+import com.mekanly.presentation.ui.dialog.propertiesDialog.RepairTypeDialog
 
 
 class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
+    private lateinit var rangeSlider: RangeSlider
+    private lateinit var minValueTextView: TextView
+    private lateinit var maxValueTextView: TextView
 
 
 
@@ -39,13 +46,27 @@ class FilterFragment : Fragment() {
         initListeners()
         chipGroups()
         switchDesign()
+        seekBarLogicTerritory()
+        priceEditText()
+
+
+
+        binding.popupMenu.setOnClickListener{ view->
+
+            showPopupMenu(view)
+
+        }
+
+
         return binding.root
     }
 
 
     private fun initListeners() {
+
+
         binding.buttonBolum.setOnClickListener {
-            val bottomSheet = SectionSelectionBottomSheet()
+            val bottomSheet = SectionSelectionBottomSheet(onDelete = {})
 
             bottomSheet.setOnCitySelectedListener { selectedCity ->
                 binding.bolumTextView.text = selectedCity
@@ -55,7 +76,7 @@ class FilterFragment : Fragment() {
             bottomSheet.show(childFragmentManager, "CustomBottomSheet")
         }
 
-        binding.back.setOnClickListener() {
+        binding.backBtn.setOnClickListener() {
             findNavController().popBackStack()
         }
 
@@ -63,11 +84,15 @@ class FilterFragment : Fragment() {
 
 
         binding.propertiesBtn.setOnClickListener {
-            showCustomDialog()
+
+            val dialog = PropertiesTypeDialog(requireContext())
+            dialog.show()
         }
 
+
         binding.remont.setOnClickListener {
-            RemontDialog()
+            val dialog = RepairTypeDialog(requireContext())
+            dialog.show()
         }
 
         binding.mumkinchilikler.setOnClickListener {
@@ -78,39 +103,33 @@ class FilterFragment : Fragment() {
             findNavController().navigate(R.id.action_filterFragment_to_fragmentLocation)
         }
 
-
-
-        binding.rangeSeekBar.setValues(5f, 330f)
-
-        binding.rangeSeekBar.addOnChangeListener { slider, _, _ ->
-            val values = slider.values
-            val minValue = values[0]  // Левый ползунок
-            val maxValue = values[1]  // Правый ползунок
-            Log.d("RangeSlider", "Min: $minValue, Max: $maxValue")
-        }
-
     }
 
 
-
-    private fun switchDesign(){
+    private fun switchDesign() {
 
         // Слушатель изменений состояния
         binding.customSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
 
                 // Установить цвет для "включённого" состояния
-                binding.customSwitch.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.black)
-                binding.customSwitch.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitch.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+                binding.customSwitch.trackTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.black)
+                binding.customSwitch.trackDecorationTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitch.thumbTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.white)
                 binding.customSwitch.thumbIconSize = 200
 
             } else {
 
                 // Установить цвет для "выключенного" состояния
-                binding.customSwitch.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
-                binding.customSwitch.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitch.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+                binding.customSwitch.trackTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
+                binding.customSwitch.trackDecorationTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitch.thumbTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.white)
 
             }
         }
@@ -121,25 +140,27 @@ class FilterFragment : Fragment() {
             if (isChecked) {
 
                 // Установить цвет для "включённого" состояния
-                binding.customSwitchTwo.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.black)
-                binding.customSwitchTwo.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitchTwo.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+                binding.customSwitchTwo.trackTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.black)
+                binding.customSwitchTwo.trackDecorationTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitchTwo.thumbTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.white)
 
 
             } else {
 
                 // Установить цвет для "выключенного" состояния
-                binding.customSwitchTwo.trackTintList = ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
-                binding.customSwitchTwo.trackDecorationTintList = ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
-                binding.customSwitchTwo.thumbTintList = ContextCompat.getColorStateList(requireContext(), R.color.white)
+                binding.customSwitchTwo.trackTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.unchecked_track)
+                binding.customSwitchTwo.trackDecorationTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
+                binding.customSwitchTwo.thumbTintList =
+                    ContextCompat.getColorStateList(requireContext(), R.color.white)
 
             }
-        }}
-
-
-
-
-
+        }
+    }
 
     private fun chipGroups() {
         setupChipGroup(binding.chipGroup, R.id.allChips)
@@ -205,6 +226,7 @@ class FilterFragment : Fragment() {
         chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black)
     }
 
+
     // Проверяет, выбран ли хотя бы один чип (кроме чипа "Все")
     private fun isNoChipSelected(chipGroup: ChipGroup, allChipsId: Int): Boolean {
         for (i in 0 until chipGroup.childCount) {
@@ -217,199 +239,149 @@ class FilterFragment : Fragment() {
     }
 
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun showCustomDialog() {
-        val currentContext = requireContext() // Убедитесь, что контекст доступен
-        val dialogView = LayoutInflater.from(currentContext).inflate(R.layout.fragment_dialog_properties, null)
-
-        val dialog = AlertDialog.Builder(currentContext)
-            .setView(dialogView)
-            .create()
-
-        val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
-        val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
-        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.rv_properties)
-        val checkBox = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-
-        btnGoybolsun?.setOnClickListener {
-            Toast.makeText(currentContext, "Отмена", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnKabulEt?.setOnClickListener {
-            Toast.makeText(currentContext, "Принято", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        if (recyclerView != null) {
-            val items = listOf(
-                PropertiesDialogData("Kwartira", R.drawable.kwartira),
-                PropertiesDialogData("Kottej", R.drawable.kottej),
-                PropertiesDialogData("Elitka", R.drawable.elitka),
-                PropertiesDialogData("Polelitka", R.drawable.ic_floor_elite),
-                PropertiesDialogData("Daça", R.drawable.dacha),
-                PropertiesDialogData("Plan jaý", R.drawable.ic_flat)
-            )
-
-            val adapter = PropertiesDialogAdapter(items) { selectedItem ->
-
-
-                Toast.makeText(currentContext, "Maks sen ${selectedItem.name} bolümini sayladyň", Toast.LENGTH_SHORT).show()
-            }
-
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(currentContext, 2)
-
-
-            checkBox.setOnCheckedChangeListener{ _, isChecked ->
-                adapter.setAllSelected(isChecked)
-            }
-
-        }
-
-
-
-
-        dialog.show()
-    }
-
-
-    @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
-    private fun RemontDialog() {
-        // Инфлейтим кастомный макет диалога
-        val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.fragment_dialog_remont, null)
-
-        // Создаем диалог
-        val dialog = AlertDialog.Builder(requireContext()).setView(dialogView).create()
-
-        // Настраиваем кнопки
-        val btnGoybolsun = dialogView.findViewById<Button>(R.id.btnGoybolsun)
-        val btnKabulEt = dialogView.findViewById<Button>(R.id.btnKabulEt)
-
-
-        val buttons = listOf<TextView>(
-            dialogView.findViewById(R.id.euro_remont),
-            dialogView.findViewById(R.id.remont_cosmetic),
-            dialogView.findViewById(R.id.remont_designer),
-            dialogView.findViewById(R.id.gos_remont),
-            dialogView.findViewById(R.id.normal_remont),
-            dialogView.findViewById(R.id.remont_etmeli)
-        )
-
-        val cbHemmesi = dialogView.findViewById<CheckBox>(R.id.cbHemmesi)
-
-
-        fun toggleAllButtons() {
-            buttons.forEach { button ->
-                if (cbHemmesi.isChecked) {
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                } else {
-                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
-                }
-            }
-        }
-
-
-
-        buttons.forEach { button ->
-            button.setOnClickListener {
-
-                if (button.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState) {
-                    button.setBackgroundResource(R.drawable.emlakler_btn_bg)
-                } else {
-
-                    button.setBackgroundResource(R.drawable.bg_selected_properties_btn)
-                }
-
-
-                if (buttons.any {
-                        it.background.constantState != requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
-                    }) {
-                    cbHemmesi.isChecked = false
-                }
-
-
-                if (buttons.all {
-                        it.background.constantState == requireContext().getDrawable(R.drawable.bg_selected_properties_btn)?.constantState
-                    }) {
-                    cbHemmesi.isChecked = true
-                }
-            }
-        }
-
-        cbHemmesi.setOnClickListener {
-            toggleAllButtons()
-        }
-
-
-        btnGoybolsun.setOnClickListener {
-            Toast.makeText(requireContext(), "Отмена", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnKabulEt.setOnClickListener {
-            Toast.makeText(requireContext(), "Принято", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-
-        dialog.show()
-    }
-
-    @SuppressLint(
-        "UseCompatLoadingForDrawables", "MissingInflatedId", "InflateParams",
-        "CutPasteId"
-    )
+    @SuppressLint("MissingInflatedId")
     private fun OpportunityDialog() {
-        //TODO: Shu tayyny duzet
+//        TODO: Shu tayyny duzet
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.fragment_dialog_mumkinchilikler, null)
-//
-//        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.recyclerView)
-//        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Сетка с 2 столбцами
 
-//        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerViewOpportunities)
 
-//        val opportunityList = listOf(
-//            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
-//            OpportunityData(R.drawable.ic_bath, "Duş"),
-//            OpportunityData(R.drawable.ic_kitchen, "Aşhana"),
-//            OpportunityData(R.drawable.ic_bake, "Peç"),
-//            OpportunityData(R.drawable.ic_washing_machine, "Kir maşyn"),
-//            OpportunityData(R.drawable.ic_lift, "Lift"),
-//            OpportunityData(R.drawable.ic_tv, "Telewizor"),
-//            OpportunityData(R.drawable.ic_balcony, "Balkon"),
-//            OpportunityData(R.drawable.ic_air_conditioner, "Kondisioner"),
-//            OpportunityData(R.drawable.ic_kitchen_furniture, "Aşhana-mebel"),
-//            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
-//            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
-//            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
-//            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
-//            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
-//            OpportunityData(R.drawable.ic_grill, "Mangal"),
-//            OpportunityData(R.drawable.ic_hot_water, "Gyzgyn suw"),
-//            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
-//        )
+        val recyclerViewOpportunities = dialogView.findViewById<RecyclerView>(R.id.recyclerView)
+
+        val opportunityList = listOf(
+            OpportunityData(R.drawable.ic_wifi, "Wi-Fi"),
+            OpportunityData(R.drawable.ic_bath, "Duş"),
+            OpportunityData(R.drawable.ic_kitchen, "Aşhana"),
+            OpportunityData(R.drawable.ic_bake, "Peç"),
+            OpportunityData(R.drawable.ic_washing_machine, "Kir maşyn"),
+            OpportunityData(R.drawable.ic_lift, "Lift"),
+            OpportunityData(R.drawable.ic_tv, "Telewizor"),
+            OpportunityData(R.drawable.ic_balcony, "Balkon"),
+            OpportunityData(R.drawable.ic_air_conditioner, "Kondisioner"),
+            OpportunityData(R.drawable.ic_kitchen_furniture, "Aşhana-mebel"),
+            OpportunityData(R.drawable.ic_fridge, "Sowadyjy"),
+            OpportunityData(R.drawable.ic_swimming_pool, "Basseýn"),
+            OpportunityData(R.drawable.ic_bedroom, "Spalny"),
+            OpportunityData(R.drawable.ish_stoly_ic, "Iş stoly"),
+            OpportunityData(R.drawable.mebel_ic, "Mebel şkaf"),
+            OpportunityData(R.drawable.ic_grill, "Mangal"),
+            OpportunityData(R.drawable.ic_hot_water, "Gyzgyn suw"),
+            OpportunityData(R.drawable.ic_heating_system, "Ýyladyş ylgamy")
+        )
+
+
 
 // Инициализация адаптера с обработчиком клика
-//        opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
-//            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
-//        }
+        val opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
+            Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
+        }
 
-//        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 3) // Устанавливаем менеджер
-//        recyclerViewOpportunities.adapter = opportunityAdapter
+        recyclerViewOpportunities.layoutManager = GridLayoutManager(requireContext(), 2) // Устанавливаем менеджер
+        recyclerViewOpportunities.adapter = opportunityAdapter
 
 // Получаем родительский ConstraintLayout
 
 
         // Создаём и отображаем диалог
-        AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .setCancelable(true)
-            .create()
+        AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(true).create()
             .show()
     }
+
+    private fun seekBarLogicTerritory() {
+
+
+
+        // Инициализация View
+        rangeSlider = binding.rangeSeekBar
+
+
+        // Предполагается, что эти TextView находятся внутри LinearLayout с текстами "20 m2" и "500+ m2"
+        minValueTextView = binding.minValueText
+        maxValueTextView = binding.maxValueText
+        // Установка начальных значений
+        val minValue = rangeSlider.valueFrom
+        val maxValue = rangeSlider.valueTo
+
+        // Устанавливаем начальные значения для RangeSlider
+        rangeSlider.values = listOf(minValue, maxValue)
+
+        // Обновляем текст
+        updateTextViewsInSeekBar(minValue, maxValue)
+
+        // Устанавливаем слушатель для обработки изменений
+        rangeSlider.addOnChangeListener { slider, value, fromUser ->
+            val values = slider.values
+            val currentMinValue = values[0]
+            val currentMaxValue = values[1]
+
+            // Обновляем текст при изменении значений
+            updateTextViewsInSeekBar(currentMinValue, currentMaxValue)
+        }
+
+
+    }
+
+    private fun updateTextViewsInSeekBar(minValue: Float, maxValue: Float) {
+        // Форматируем значения для отображения
+        val minValueText = "${minValue.toInt()} m²"
+
+        // Если значение достигло максимума, добавляем "+"
+        val maxValueText = if (maxValue.toInt() >= rangeSlider.valueTo.toInt()) {
+            "${maxValue.toInt()}+ m²"
+        } else {
+            "${maxValue.toInt()} m²"
+        }
+
+        // Обновляем текст в TextView
+        minValueTextView.text = minValueText
+        maxValueTextView.text = maxValueText
+    }
+
+    private fun priceEditText() {
+
+        val minPriceLong = binding.etMinPrice.text.toString().trim().toLongOrNull()
+        val maxPriceLong = binding.etMaxPrice.text.toString().trim().toLongOrNull()
+
+
+        if (minPriceLong != null && maxPriceLong != null && minPriceLong > maxPriceLong) {
+            Toast.makeText(
+                requireContext(), "Ýalňyş! Min baha maks bahadan uly bolmaly däl!", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+
+
+    private fun showPopupMenu(view: View) {
+        // Create a PopupMenu with the view (button) as anchor
+        val popupMenu = PopupMenu(requireContext(), view)
+
+        // Inflate the menu resource
+        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
+
+        // Set click listener for menu items
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.option_default -> {
+                    Toast.makeText(requireContext(), "Saylanmadyk", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.option_price_asc -> {
+                    Toast.makeText(requireContext(), "Arzandan gymmada", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.option_price_desc -> {
+                    Toast.makeText(requireContext(), "Gymmatdan arzana", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Show the popup menu
+        popupMenu.show()
+    }
+
 
 }
 

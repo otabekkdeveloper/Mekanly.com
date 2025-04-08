@@ -11,7 +11,8 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/manrope_bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
         android:paddingBottom="8dp"
         android:text="Remont görnüşi"
         android:textSize="18sp"
@@ -29,7 +30,8 @@
             android:id="@+id/cbHemmesi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/manrope_regular"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
             android:layoutDirection="rtl"
             android:text="Hemmesi" />
 
@@ -166,18 +168,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/color_transparent"
-            android:fontFamily="@font/manrope_bold"
             android:text="GOÝBOLSUN"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular" />
 
         <Button
             android:id="@+id/btnKabulEt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/color_transparent"
-            android:fontFamily="@font/manrope_bold"
             android:text="KABUL ET"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular" />
     </LinearLayout>
 
 </LinearLayout>

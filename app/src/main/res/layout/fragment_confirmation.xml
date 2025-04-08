@@ -82,7 +82,7 @@
             android:fontFamily="@font/manrope_bold"
             android:gravity="center"
             android:text="Täzeden synanyşmak"
-            android:textColor="@color/text_color_grey" />
+            android:textColor="@color/text_color_gray" />
 
 
     </LinearLayout>

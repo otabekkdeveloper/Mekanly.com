@@ -19,7 +19,7 @@
         android:elevation="5dp"
         app:cardBackgroundColor="@color/white"
         android:layout_marginVertical="5dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="16dp"
         app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -145,7 +145,7 @@
                 android:layout_gravity="end"
                 android:background="@color/color_transparent"
                 android:padding="10dp"
-                app:icon="@drawable/heart_icon"
+                app:icon="@drawable/ic_favourite"
                 app:iconTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

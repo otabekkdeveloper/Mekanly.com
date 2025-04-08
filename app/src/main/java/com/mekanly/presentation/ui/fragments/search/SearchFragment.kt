@@ -28,6 +28,7 @@ import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -72,7 +73,9 @@ class SearchFragment : Fragment() {
                 // Очищаем текст и возвращаем кнопку в исходное состояние
                 binding.apply {
                     nameLocations.text = "Ýerleşýän ýeri"
+                    nameLocations.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
                     btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+                    icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
                     icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
                 }
             }) { selectedCity ->
@@ -80,8 +83,8 @@ class SearchFragment : Fragment() {
                     nameLocations.text = selectedCity
                     btnLocations.setBackgroundResource(R.drawable.bg_selected_search_fragment)
                     icLocation.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                    icPriceDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                    priceText.setTextColor(
+                    icDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
+                    nameLocations.setTextColor(
                         ContextCompat.getColor(
                             requireContext(), R.color.selected_color_in_search_fragment
                         )
@@ -99,7 +102,17 @@ class SearchFragment : Fragment() {
         }
 
         binding.btnCategories.setOnClickListener {
-            val bottomSheet = SectionSelectionBottomSheet()
+            val bottomSheet = SectionSelectionBottomSheet(onDelete = {
+
+                binding.apply {
+                    textCategory.text = "Kategoriya"
+                    textCategory.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
+                    btnCategories.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+                    icDownCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
+                    icCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
+                }
+
+            })
 
 
             bottomSheet.setOnCitySelectedListener { selectedCity ->
@@ -131,27 +144,21 @@ class SearchFragment : Fragment() {
         }
 
         binding.btnPrice.setOnClickListener {
-
-
-            val bottomSheet = PriceFilterBottomSheet { minPrice, maxPrice ->
-                val priceText = if (minPrice.isNotEmpty() && maxPrice.isNotEmpty()) {
-                    "$minPrice - $maxPrice TMT"
-                } else if (minPrice.isNotEmpty()) {
-                    "$minPrice + TMT"
-                } else if (maxPrice.isNotEmpty()) {
-                    "0 - $maxPrice TMT"
-                } else {
-                    "Bahasy"
+            val bottomSheet = PriceFilterBottomSheet { minPrice, maxPrice, onDelete ->
+                if (onDelete) {
+                    resetPriceSelection()
                 }
-
-
-                updatePriceButtonStyle()
-                binding.priceText.text = priceText
-
+                else if (minPrice.isEmpty() && maxPrice.isEmpty()){
+                    binding.btnPrice.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+                }
+                else {
+                    updatePriceSelection(minPrice, maxPrice)
+                }
             }
 
             bottomSheet.show(childFragmentManager, "PriceFilter")
         }
+
 
 
     }
@@ -219,6 +226,7 @@ class SearchFragment : Fragment() {
                     }
 
                     is ResponseBodyState.SuccessList -> {
+                        delay(200)
                         isLoading = false
                         binding.progressBar.visibility = View.GONE
                         setAdapter()
@@ -270,6 +278,38 @@ class SearchFragment : Fragment() {
             priceText.setTextColor(selectedColor)
             icPriceDown.setColorFilter(selectedColor)
             btnPrice.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+        }
+
+    }
+
+
+    private fun resetPriceSelection() {
+        binding.apply {
+            priceText.text = "Bahasy"
+            priceText.setTextColor(resources.getColor(R.color.text_color_gray))
+            icPriceDown.setColorFilter(resources.getColor(R.color.text_color_gray))
+            btnPrice.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+            icPrice.setColorFilter(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
+        }
+    }
+
+    /**
+     * Функция для обновления фильтра цены
+     */
+    private fun updatePriceSelection(minPrice: String, maxPrice: String) {
+        val priceText = when {
+            minPrice.isNotEmpty() && maxPrice.isNotEmpty() -> "$minPrice - $maxPrice TMT"
+            minPrice.isNotEmpty() -> "$minPrice + TMT"
+            maxPrice.isNotEmpty() -> "0 - $maxPrice TMT"
+            else -> "Bahasy"
+        }
+
+        binding.apply {
+            this.priceText.text = priceText
+            this.priceText.setTextColor(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
+            btnPrice.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+            icPriceDown.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
+            icPrice.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
         }
 
     }

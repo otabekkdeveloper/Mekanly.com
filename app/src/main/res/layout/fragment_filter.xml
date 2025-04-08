@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
+            android:theme="@style/ThemeOverlay.Material3.ActionBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -24,14 +25,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/back"
+                <ImageView
+                    android:id="@+id/back_btn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:icon="@drawable/ic_back"
-                    app:iconGravity="textTop"
-                    app:iconSize="30dp"
-                    app:iconTint="@color/white" />
+                    android:padding="8dp"
+                    android:src="@drawable/ic_back"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/toolbarTitle"
@@ -55,35 +55,60 @@
 
             <!-- Dropdown for Bölüm -->
 
+
+
             <LinearLayout
-                android:id="@+id/buttonBolum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/buttonBolum"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/manrope_bold"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:text="@string/section"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/bolumTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:text="@string/not_selected"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_bold"
+                            android:paddingStart="16dp"
+                            android:paddingTop="8dp"
+                            android:text="@string/section"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
+
+                        <TextView
+                            android:id="@+id/bolumTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="@string/not_selected"
+                            android:textColor="@color/text_color_gray"
+                            android:textSize="12sp"
+                            tools:ignore="RtlSymmetry" />
+
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_next_btn"/>
+
+
+
+                </LinearLayout>
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -97,31 +122,52 @@
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/manrope_bold"
-                    android:paddingStart="16dp"
-                    android:text="@string/location_text"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/locationText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/manrope_regular"
-                    android:paddingStart="16dp"
-                    android:text="@string/not_selected"
-                    android:textColor="@color/text_color_gray"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/location_text"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/locationText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="16dp"
+                        android:text="@string/not_selected"
+                        android:textColor="@color/text_color_gray"
+                        android:textSize="12sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_next_btn"/>
+
+
 
             </LinearLayout>
 
@@ -161,6 +207,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/allChips"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/all"
@@ -174,6 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="1dp"
+                        android:textColor="@color/black"
                         android:text="1"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
@@ -185,6 +233,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -195,6 +244,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -205,6 +255,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -215,6 +266,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -225,6 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -235,6 +288,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -245,6 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -255,6 +310,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -265,6 +321,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -275,6 +332,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="11"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -315,6 +373,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/all"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -325,6 +384,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -335,6 +395,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -345,6 +406,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -355,6 +417,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -365,6 +428,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -375,6 +439,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -385,6 +450,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -395,6 +461,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -405,6 +472,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -415,6 +483,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -425,6 +494,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="11"
+                        android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
@@ -439,6 +509,7 @@
                 style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginHorizontal="20dp"
                 android:checked="false"
                 android:fontFamily="@font/manrope_bold"
@@ -453,6 +524,7 @@
                 android:id="@+id/customSwitchTwo"
                 style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:checked="false"
@@ -512,6 +584,11 @@
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProperties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -525,6 +602,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
+
 
 
                 <TextView
@@ -558,6 +636,12 @@
                     android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
             </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRemont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -606,6 +690,13 @@
 
             </LinearLayout>
 
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvOpportunity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -630,7 +721,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/radio_selector"
                     android:button="@color/color_transparent"
-                    android:checked="true"
+                    android:checked="false"
                     android:gravity="center"
                     android:text="Eýesi"
                     android:textColor="@color/radio_text_color"
@@ -675,11 +766,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-
                 android:layout_marginHorizontal="16dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
                 <com.google.android.material.slider.RangeSlider
                     android:id="@+id/rangeSeekBar"
@@ -687,11 +776,10 @@
                     android:valueTo="500"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:haloColor="@android:color/transparent"
-                    app:tickColor="@android:color/black"
-                    app:trackColorActive="@color/bg_blue_three"
+                    style="@style/CustomRangeSliderStyle"
+                    app:trackColorActive="@color/bg_app_two"
                     app:trackColorInactive="@color/unchecked_track"
-                    app:trackHeight="2dp" />
+                    app:thumbColor="@color/white" />
 
             </LinearLayout>
 
@@ -707,7 +795,6 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -715,12 +802,15 @@
 
                     <TextView
                         android:textSize="10sp"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Minimum"/>
 
 
                     <TextView
+                        android:id="@+id/min_value_text"
+                        android:textColor="@color/black"
                         android:layout_marginTop="8dp"
                         android:textSize="10sp"
                         android:layout_width="wrap_content"
@@ -736,7 +826,6 @@
 
                 <LinearLayout
                     android:gravity="end"
-                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -744,12 +833,15 @@
 
                     <TextView
                         android:textSize="10sp"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Maksimum"/>
 
 
                     <TextView
+                        android:id="@+id/max_value_text"
+                        android:textColor="@color/black"
                         android:layout_marginTop="8dp"
                         android:textSize="10sp"
                         android:layout_width="wrap_content"
@@ -792,47 +884,58 @@
                 tools:ignore="RtlSymmetry" />
 
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingHorizontal="16dp">
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextOne"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/manrope_regular"
-                    android:hint="@string/the_cheapest"
-                    android:textColorHint="@color/black"
-                    android:textSize="14sp"
-                    tools:ignore="NestedWeights" />
-
-                <TextView
+                <EditText
+                    android:id="@+id/etMinPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="_"
-                    android:textSize="40sp"
-                    tools:ignore="HardcodedText" />
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextTwo"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_regular"
-                    android:hint="@string/the_most_expensive"
-                    android:textColorHint="@color/black"
-                    android:textSize="14sp" />
+                    android:hint="iň arzan"
+                    android:textColorHint="@color/text_color_gray"
+                    android:inputType="number"
+                    android:paddingEnd="50dp"
+                    android:textColor="@color/grey_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="—"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-            </LinearLayout>
+                <EditText
+                    android:id="@+id/etMaxPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="iň gymmat"
+                    android:inputType="number"
+                    android:textColorHint="@color/text_color_gray"
+                    android:paddingEnd="50dp"
+                    android:textColor="@color/grey_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView11"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -841,6 +944,7 @@
                 app:dividerColor="@color/line_divider" />
 
             <LinearLayout
+                android:id="@+id/popupMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

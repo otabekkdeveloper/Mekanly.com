@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.data.repository.RepositoryLocation
 import com.mekanly.data.responseBody.ResponseLocation
@@ -22,6 +23,9 @@ class FragmentLocation : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
+
+        setOnClickListeners()
+
         return binding.root
     }
 
@@ -30,4 +34,18 @@ class FragmentLocation : Fragment() {
 
 
     }
+
+
+    private fun setOnClickListeners(){
+
+        binding.apply {
+
+            backBtn.setOnClickListener{
+                findNavController().popBackStack()
+            }
+        }
+
+
+    }
+
 }

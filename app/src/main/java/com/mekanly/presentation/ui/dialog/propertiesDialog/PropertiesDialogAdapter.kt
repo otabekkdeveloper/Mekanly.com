@@ -1,5 +1,6 @@
 package com.mekanly.presentation.ui.dialog.propertiesDialog
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,7 @@ class PropertiesDialogAdapter(
     override fun getItemCount(): Int = items.size
 
     // Метод для выделения или сброса всех кнопок
+    @SuppressLint("NotifyDataSetChanged")
     fun setAllSelected(selected: Boolean) {
         selectedItems.fill(selected)
         notifyDataSetChanged()

@@ -7,8 +7,9 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:background="@drawable/emlakler_btn_bg"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -16,16 +17,19 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="15dp"
+            android:layout_gravity="center"
             android:layout_height="15dp"
             android:background="@drawable/ic_wifi" />
 
         <TextView
             android:id="@+id/textView"
+            android:layout_gravity="center"
             android:textSize="12sp"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="Wi-Fi" />
+            android:text="Wi-Fi,Wi-Fi,Wi-Fi" />
 
 
     </LinearLayout>

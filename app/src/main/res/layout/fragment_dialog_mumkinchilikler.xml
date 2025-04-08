@@ -1,7 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/constraint"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -14,8 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="@color/black"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/manrope_bold"
+        android:fontFamily="@font/roboto_regular"
         android:paddingBottom="8dp"
         android:text="Mümkinçilikler"
         android:textSize="18sp"
@@ -24,19 +25,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:flow_horizontalGap="8dp"
-        app:flow_verticalGap="8dp"
-        app:flow_wrapMode="chain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbHemmesi"
-        app:layout_constraintWidth="wrap_content" />
-
+        tools:layout_editor_absoluteX="8dp" />
 
     <Button
         android:id="@+id/btnGoybolsun"
@@ -44,9 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:background="@color/color_transparent"
-        android:fontFamily="@font/manrope_bold"
-        android:text="GOÝBOLSUN"
         android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:text="GOÝBOLSUN"
         app:layout_constraintBottom_toBottomOf="@+id/btnKabulEt"
         app:layout_constraintEnd_toStartOf="@+id/btnKabulEt"
         app:layout_constraintTop_toTopOf="@+id/btnKabulEt" />
@@ -55,20 +49,20 @@
         android:id="@+id/btnKabulEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:background="@color/color_transparent"
-        android:fontFamily="@font/manrope_bold"
         android:text="KABUL ET"
         android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flowLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <CheckBox
         android:id="@+id/cbHemmesi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/manrope_regular"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
         android:layoutDirection="rtl"
         android:text="Hemmesi"
         app:layout_constraintEnd_toEndOf="@+id/tvTitle"
