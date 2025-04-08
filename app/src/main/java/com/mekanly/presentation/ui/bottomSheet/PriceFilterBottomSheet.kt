@@ -29,7 +29,7 @@ class PriceFilterBottomSheet(
             btnClose.setOnClickListener { dismiss() }
 
             deleteText.setOnClickListener {
-                onPriceSelected("", "", true) // Передаем true для onDelete
+                onPriceSelected("", "", true)
                 dismiss()
             }
 

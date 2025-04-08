@@ -1,8 +1,10 @@
 package com.mekanly.presentation.ui.fragments.search.viewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.dataModels.DataHouse
 import com.mekanly.data.dataModels.DataLocation
+import com.mekanly.data.dataModels.DataPriceRange
 import com.mekanly.data.responseBody.DataHouseCategory
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.domain.useCase.UseCasePaginatedHouses
@@ -54,7 +56,7 @@ class VMSearch : ViewModel() {
     }
 
     fun getPageInfoDefault(
-        size: Int, location: DataLocation? = null, category: DataHouseCategory? = null
+        size: Int, location: DataLocation? = null, category: DataHouseCategory? = null,priceRange: DataPriceRange?=null
     ) {
         _isLoading.value = true
         if (location != null) {
@@ -93,7 +95,26 @@ class VMSearch : ViewModel() {
                     else -> {}
                 }
             }
-        } else {
+        } else if (priceRange!=null){
+            Log.e("PRICE_FILTER", "getPageInfoDefault: ", )
+            useCase.execute(size.toLong(), priceRange = priceRange) { result ->
+                _searchState.value = result
+                when (result) {
+                    is ResponseBodyState.SuccessList -> {
+                        _houses.value.clear()
+                        _isLoading.value = false
+                        val data = result.dataResponse as List<DataHouse>
+                        _houses.value.addAll(data)
+                    }
+
+                    is ResponseBodyState.Error -> {
+                        _isLoading.value = false
+                    }
+
+                    else -> {}
+                }
+            }
+        }else {
             useCase.execute(size.toLong()) { result ->
                 _searchState.value = result
                 when (result) {

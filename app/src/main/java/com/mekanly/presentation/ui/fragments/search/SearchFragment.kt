@@ -20,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.dataModels.DataPriceRange
 import com.mekanly.data.repository.RepositoryHouses.Companion.LIMIT_REGULAR
 import com.mekanly.data.responseBody.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
@@ -370,6 +371,11 @@ class SearchFragment : Fragment() {
             icPriceDown.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
             icPrice.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
         }
+        adapter = null
+        viewModel.updateFilterType(FILTER_TYPE_PRICE)
+        val dataPriceRange = DataPriceRange(min = minPrice, max = maxPrice)
+        Log.e("PRICE_FILTER", "updatePriceSelection: "+minPrice+maxPrice )
+        viewModel.getPageInfoDefault(0, priceRange = dataPriceRange)
 
     }
 
