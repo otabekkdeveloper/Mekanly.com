@@ -1,103 +1,47 @@
 package com.mekanly.presentation.ui.bottomSheet
 
 import LocationBottomSheet
-import android.app.AlertDialog
-import android.app.FragmentManager
-import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.R
-import com.mekanly.data.PropertiesDialogData
-import com.mekanly.databinding.BottomSheetLocationBinding
 import com.mekanly.databinding.FragmentBusinessFilterBottomSheetBinding
-import com.mekanly.databinding.FragmentDialogPropertiesBinding
 
-class BusinessFilterFragmentBottomSheet(
-    private val context: Context,
-    private val fragmentManager: androidx.fragment.app.FragmentManager,
-    private val onDelete : () ->Unit)
-{
-    private val binding: FragmentBusinessFilterBottomSheetBinding =
-        FragmentBusinessFilterBottomSheetBinding.inflate(LayoutInflater.from(context))
+class BusinessFilterFragmentBottomSheet : BottomSheetDialogFragment() {
+    private var _binding: FragmentBusinessFilterBottomSheetBinding? = null
+    private val binding get() = _binding!!
 
-    private val dialog: AlertDialog = AlertDialog.Builder(context)
-        .setView(binding.root)
-        .setCancelable(true)
-        .create()
+    private var onDeleteCallback: (() -> Unit)? = null
 
-
-    init {
-
-        binding.deleteText.apply{
-            setOnClickListener{
-
-                binding.apply {
-
-                    locationText.text = "Saýlanmadyk"
-                    bolumTextView.text = "Saýlanmadyk"
-                    etMaxPrice.setText("")
-                    etMinPrice.setText("")
-
-                }
-
+    companion object {
+        fun newInstance(onDelete: () -> Unit): BusinessFilterFragmentBottomSheet {
+            return BusinessFilterFragmentBottomSheet().apply {
+                this.onDeleteCallback = onDelete
             }
         }
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentBusinessFilterBottomSheetBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
-        binding.buttonBolum.setOnClickListener{
-
-            val bottomSheet = SectionSelectionBottomSheet(onDelete = {
-                binding.bolumTextView.text = "Saýlanmadyk"
-
-            })
-
-            bottomSheet.setOnCitySelectedListener { selectedCity ->
-
-                binding.bolumTextView.text = selectedCity
-
-            }
-            bottomSheet.show(fragmentManager, "SectionSelectionManager")
-
-        }
-
-        binding.location.setOnClickListener{
-
-            val cities = listOf(
-                "Aşgabat şäheri",
-                "Arkadag şäheri",
-                "Mary welaýaty",
-                "Daşoguz welaýaty",
-                "Lebap welaýaty",
-                "Balkan welaýaty",
-                "Ahal welaýaty"
-            )
-
-            val locationBottomSheet = LocationBottomSheet(cities, onDelete = {
-
-                binding.locationText.text = "Saýlanmadyk"
-
-
-            }){selectedLocation ->
-
-                binding.locationText.text = selectedLocation
-
-            }
-
-            locationBottomSheet.show(fragmentManager, "LocationBottomSheet")
-        }
-
-
-        binding.btnClose.setOnClickListener{
-            onDelete()
-            dialog.dismiss()
-        }
 
     }
 
-    fun show() {
-        dialog.show()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

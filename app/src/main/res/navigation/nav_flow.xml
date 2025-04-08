@@ -204,6 +204,26 @@
         android:name="com.mekanly.presentation.ui.fragments.businessProfile.SubSearchBusinessFragment"
         android:label="fragment_sub_search_business"
         tools:layout="@layout/fragment_sub_search_business" />
+    <dialog
+        android:id="@+id/businessFilterFragmentBottomSheet"
+        android:name="com.mekanly.presentation.ui.bottomSheet.BusinessFilterFragmentBottomSheet"
+        android:label="BusinessFilterFragmentBottomSheet" >
+
+
+        <action
+            android:id="@+id/action_businessFilterFragmentBottomSheet_to_sectionSelectionBottomSheet"
+            app:destination="@id/sectionSelectionBottomSheet"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </dialog>
+    <dialog
+        android:id="@+id/sectionSelectionBottomSheet"
+        android:name="com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet"
+        android:label="SectionSelectionBottomSheet" />
 
 
 </navigation>
