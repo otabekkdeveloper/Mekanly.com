@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 //        window.setBackgroundDrawableResource(R.drawable.btn_bg_color)
 
     }
+
+
 }
 
 
