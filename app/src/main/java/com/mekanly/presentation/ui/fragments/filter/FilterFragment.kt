@@ -48,16 +48,11 @@ class FilterFragment : Fragment() {
         switchDesign()
         seekBarLogicTerritory()
         priceEditText()
-
-
-
         binding.popupMenu.setOnClickListener{ view->
 
             showPopupMenu(view)
 
         }
-
-
         return binding.root
     }
 
@@ -69,7 +64,7 @@ class FilterFragment : Fragment() {
             val bottomSheet = SectionSelectionBottomSheet(onDelete = {})
 
             bottomSheet.setOnCitySelectedListener { selectedCity ->
-                binding.bolumTextView.text = selectedCity
+                binding.bolumTextView.text = selectedCity.name
 
             }
 

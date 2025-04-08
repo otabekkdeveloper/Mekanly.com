@@ -8,20 +8,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.BottomSheetItem
+import com.mekanly.data.responseBody.DataHouseCategory
 
 
 class BottomSheetAdapter(
-    private val items: List<BottomSheetItem>,
-    private val onClick: (BottomSheetItem) -> Unit
+    private val items: List<DataHouseCategory>,
+    private val onClick: (DataHouseCategory) -> Unit
 ) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val icon = view.findViewById<ImageView>(R.id.itemIcon)
         val title = view.findViewById<TextView>(R.id.itemTitle)
 
-        fun bind(item: BottomSheetItem) {
-            icon.setImageResource(item.icon)
-            title.text = item.title
+        fun bind(item: DataHouseCategory) {
+            icon.setImageResource(R.drawable.ic_houses_for_sale)
+            title.text = item.name
             itemView.setOnClickListener { onClick(item) }
         }
     }

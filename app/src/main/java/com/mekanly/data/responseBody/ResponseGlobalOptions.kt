@@ -9,14 +9,14 @@ data class ResponseGlobalOptions(
 
 data class DataGlobalOptions(
     val locations: List<DataLocation> = emptyList(),
-    val categoryHouses: List<CategoryHouse> = emptyList(),
+    val categoryHouses: List<DataHouseCategory> = emptyList(),
     val categoryShops: List<CategoryShop> = emptyList(),
     val possibility: List<DataPossibility> = emptyList(),
     val propertyType: List<PropertyType>  = emptyList(),
     val repairType: List<RepairType> = emptyList()
 )
 
-data class CategoryHouse(
+data class DataHouseCategory(
     val id: Int,
     val parent_id: Int?,
     val name: String,

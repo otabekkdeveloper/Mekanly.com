@@ -1,9 +1,7 @@
 package com.mekanly.presentation.ui.fragments.search
 
 import LocationBottomSheet
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -30,10 +28,18 @@ import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.presentation.ui.fragments.flow.VMFlow
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_CATEGORY
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_DEFAULT
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
+import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_PRICE
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+//TODO: TASK_OTTO:
+// Bratok kara
+// <<<<nameLocations.text = "Ýerleşýän ýeri">>>
+// gornushda sohranit atilgan hamma textlarni iki dil variantyny dorat wa dine getString gornushda al bolmasa dol chalyshsa utgamidi
 
 @Suppress("NAME_SHADOWING")
 class SearchFragment : Fragment() {
@@ -86,7 +92,8 @@ class SearchFragment : Fragment() {
                             )
                         )
                     }
-                    viewModel.getPageInfoDefault(0,selectedCity)
+                    viewModel.updateFilterType(FILTER_TYPE_LOCATION)
+                    viewModel.getPageInfoDefault(0, location = selectedCity)
                 }
 
                 bottomSheet.show(childFragmentManager, "LocationBottomSheet")
@@ -111,9 +118,9 @@ class SearchFragment : Fragment() {
             })
 
 
-            bottomSheet.setOnCitySelectedListener { selectedCity ->
+            bottomSheet.setOnCitySelectedListener { selectedCategory ->
                 binding.apply {
-                    textCategory.text = selectedCity
+                    textCategory.text = selectedCategory.name
                     textCategory.setTextColor(
                         ContextCompat.getColor(
                             requireContext(), R.color.selected_color_in_search_fragment
@@ -130,6 +137,9 @@ class SearchFragment : Fragment() {
                         )
                     )
                     btnCategories.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+                    viewModel.updateFilterType(FILTER_TYPE_CATEGORY)
+                    adapter = null
+                    viewModel.getPageInfoDefault(0, category = selectedCategory)
                 }
 
             }
@@ -241,6 +251,62 @@ class SearchFragment : Fragment() {
                 binding.rvSearch.adapter = adapter
             }
         }
+
+        lifecycleScope.launch {
+            viewModel.currentSelectedFilter.collectLatest {
+                when (it) {
+                    FILTER_TYPE_DEFAULT -> {
+                        resetPriceSelection()
+                        resetLocationSelection()
+                        resetCategorySelection()
+                    }
+
+                    FILTER_TYPE_PRICE -> {
+                        resetLocationSelection()
+                        resetCategorySelection()
+                    }
+
+                    FILTER_TYPE_CATEGORY -> {
+                        resetLocationSelection()
+                        resetPriceSelection()
+                    }
+
+                    FILTER_TYPE_LOCATION -> {
+                        resetPriceSelection()
+                        resetCategorySelection()
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun resetCategorySelection() {
+        binding.apply {
+            textCategory.text = "Kategoriya"
+            textCategory.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(), R.color.text_color_gray
+                )
+            )
+            btnCategories.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+            icDownCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
+            icCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
+        }
+    }
+
+    private fun resetLocationSelection() {
+        binding.apply {
+            nameLocations.text = "Ýerleşýän ýeri"
+            nameLocations.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(), R.color.text_color_gray
+                )
+            )
+            btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
+            icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
+            icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
+        }
     }
 
     private fun setAdapter() {
@@ -289,9 +355,6 @@ class SearchFragment : Fragment() {
         }
     }
 
-    /**
-     * Функция для обновления фильтра цены
-     */
     private fun updatePriceSelection(minPrice: String, maxPrice: String) {
         val priceText = when {
             minPrice.isNotEmpty() && maxPrice.isNotEmpty() -> "$minPrice - $maxPrice TMT"
