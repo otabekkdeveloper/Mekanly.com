@@ -45,6 +45,11 @@ class FragmentProfile : Fragment() {
     }
 
     private fun initListeners() {
+
+        binding.hintFragment.setOnClickListener{
+            findNavController().navigate(R.id.action_fragmentHome_to_hintFragment)
+        }
+
         binding.btnLanguage.setOnClickListener{
             findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
         }

@@ -143,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraint">
@@ -150,15 +151,15 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/homeSeekers"
-                    android:visibility="gone"
-                    android:layout_marginHorizontal="14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
                     android:focusable="true"
+                    android:paddingVertical="15dp"
 
-                    android:paddingVertical="15dp">
+                    android:visibility="gone">
 
 
                     <ImageView
@@ -212,9 +213,9 @@
                     android:id="@+id/addHouse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -281,9 +282,9 @@
                     android:id="@+id/btn_language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -339,9 +340,9 @@
                     android:id="@+id/btn_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -408,9 +409,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -463,9 +464,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -519,9 +520,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -575,9 +576,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -629,11 +630,12 @@
                     app:dividerColor="@color/line_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hintFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 
@@ -687,9 +689,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
-                    android:layout_marginHorizontal="14dp"
                     android:focusable="true"
                     android:paddingVertical="15dp">
 

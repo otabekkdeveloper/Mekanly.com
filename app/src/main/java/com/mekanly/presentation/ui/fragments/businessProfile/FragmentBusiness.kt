@@ -117,8 +117,8 @@ class FragmentBusiness : Fragment() {
 
     private fun setBusinessProfileCategoryAdapter(list: List<DataBusinessProfileCategory>) {
         val businessCategoryAdapter = AdapterItemBusinessCategories(list) { selectedItem ->
-            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(selectedItem.id,title = selectedItem.title ?: "N/A", businessType = selectedItem.type?.name
-                ?: BusinessType.FURNITURE.name)
+            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(selectedItem.id,title = selectedItem.title ?: "N/A",
+                businessType = selectedItem.type?.name ?: BusinessType.FURNITURE.name)
 
             findNavController().navigate(action)
         }

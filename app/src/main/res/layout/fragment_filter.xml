@@ -997,7 +997,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="150dp"
                 android:background="@drawable/bg_gozle_btn"
                 android:text="@string/search"
                 android:textColor="@color/white"

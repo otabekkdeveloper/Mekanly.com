@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -348,8 +349,9 @@ class FilterFragment : Fragment() {
 
 
     private fun showPopupMenu(view: View) {
-        // Create a PopupMenu with the view (button) as anchor
-        val popupMenu = PopupMenu(requireContext(), view)
+
+
+        val popupMenu = PopupMenu(requireContext(), view, Gravity.END or  Gravity.BOTTOM)
 
         // Inflate the menu resource
         popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)

@@ -7,19 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import com.mekanly.R
-import com.mekanly.data.ProfileNotificationsData
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.databinding.FragmentSubSearchBusinessBinding
-import com.mekanly.databinding.FragmentSubSearchingHousesBinding
-import com.mekanly.presentation.ui.adapters.ProfileNotificationsAdapter
+import com.mekanly.presentation.ui.adapters.pagerAdapters.BusinessSearchViewPager
 import com.mekanly.presentation.ui.bottomSheet.BusinessFilterFragmentBottomSheet
 
 
 class SubSearchBusinessFragment : Fragment() {
 
     private lateinit var binding: FragmentSubSearchBusinessBinding
-    private lateinit var propertyAdapter: ProfileNotificationsAdapter
+    private lateinit var viewPagerAdapter: BusinessSearchViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +30,31 @@ class SubSearchBusinessFragment : Fragment() {
         binding = FragmentSubSearchBusinessBinding.inflate(layoutInflater, container, false)
 
         initListeners()
+        viewPager()
 
 
         return binding.root
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun viewPager() {
 
-        setupRecyclerView()
-        loadProperties()
+
+        viewPagerAdapter = BusinessSearchViewPager(requireActivity())
+        binding.viewPager.adapter = viewPagerAdapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "Bildirişler"
+                }
+
+                1 -> {
+                    tab.text = "Biznes profiller"
+                }
+
+            }
+        }.attach()
     }
 
     private fun initListeners() {
@@ -57,7 +68,6 @@ class SubSearchBusinessFragment : Fragment() {
 
             btnFilter.setOnClickListener{
 
-
                 showBusinessFilterBottomSheet()
 
             }
@@ -67,90 +77,6 @@ class SubSearchBusinessFragment : Fragment() {
 
 
     }
-
-
-    private fun setupRecyclerView() {
-        propertyAdapter = ProfileNotificationsAdapter(onItemClick = { property ->
-            // Навигация к деталям объекта
-            navigateToPropertyDetails(property.id)
-        }, onLikeClick = { property ->
-            // Обработка нажатия на кнопку "Нравится"
-            toggleFavorite(property)
-        })
-
-        binding.rvSubSearch.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = propertyAdapter
-        }
-    }
-
-    private fun loadProperties() {
-        // Здесь должна быть логика загрузки данных
-        // Например, из ViewModel или Repository
-        val sampleProperties = getSampleProperties()
-        propertyAdapter.submitList(sampleProperties)
-    }
-
-    private fun navigateToPropertyDetails(propertyId: String) {
-        // Навигация к экрану с деталями
-        // Например, с использованием Navigation Component
-        // findNavController().navigate(PropertyListFragmentDirections.actionToPropertyDetails(propertyId))
-    }
-
-    private fun toggleFavorite(property: ProfileNotificationsData) {
-        // Логика изменения состояния избранного
-        // Обычно это делается через ViewModel
-        property.isFavorite = !property.isFavorite
-        propertyAdapter.notifyItemChanged(propertyAdapter.currentList.indexOf(property))
-    }
-
-    private fun getSampleProperties(): List<ProfileNotificationsData> {
-        // Примеры данных для отладки
-        return listOf(
-            ProfileNotificationsData(
-                id = "1",
-                title = "Kwartira",
-                address = "Aşgabat-parahat 1",
-                time = "Şu gün 16:16",
-                price = "133800",
-                status = "Kabul edilmedi",
-                images = listOf(
-                    "https://example.com/image1.jpg", "https://example.com/image2.jpg"
-                )
-            ), ProfileNotificationsData(
-                id = "1",
-                title = "Kwartira",
-                address = "Aşgabat-parahat 1",
-                time = "Şu gün 16:16",
-                price = "133800",
-                status = "Kabul edilmedi",
-                images = listOf(
-                    "https://example.com/image1.jpg", "https://example.com/image2.jpg"
-                )
-            ), ProfileNotificationsData(
-                id = "1",
-                title = "Kwartira",
-                address = "Aşgabat-parahat 1",
-                time = "Şu gün 16:16",
-                price = "133800",
-                status = "Kabul edilmedi",
-                images = listOf(
-                    "https://example.com/image1.jpg", "https://example.com/image2.jpg"
-                )
-            ), ProfileNotificationsData(
-                id = "2",
-                title = "Jaý",
-                address = "Aşgabat-parahat 2",
-                time = "Düýn 14:30",
-                price = "250000",
-                status = "Kabul edildi",
-                images = listOf(
-                    "https://example.com/image3.jpg", "https://example.com/image4.jpg"
-                )
-            )
-        )
-    }
-
 
     private fun showBusinessFilterBottomSheet() {
         val businessFilterBottomSheet = BusinessFilterFragmentBottomSheet.newInstance(
