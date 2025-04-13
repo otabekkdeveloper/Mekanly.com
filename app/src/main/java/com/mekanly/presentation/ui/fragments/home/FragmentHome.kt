@@ -103,4 +103,6 @@ class FragmentHome : Fragment() {
         binding.rvTopHouses.adapter = propertyAdapter
     }
 
+
+
 }

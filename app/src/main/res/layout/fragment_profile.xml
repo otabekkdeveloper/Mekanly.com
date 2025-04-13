@@ -76,6 +76,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginHorizontal="20dp"
@@ -204,13 +205,77 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/addHouse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:background="@drawable/ripple_button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingVertical="15dp">
+
+
+                    <ImageView
+                        android:id="@+id/imageView31212"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/ic_next_btn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView331"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:background="@drawable/vip"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView31212"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Biznes hasabym"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView412"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView412"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/black"
+                        android:background="@drawable/ic_business_profile_unselected"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     app:dividerColor="@color/line_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/addHouse"
+                    android:id="@+id/addNotifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="14dp"
@@ -231,15 +296,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
-                    <ImageView
-                        android:id="@+id/imageView33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:background="@drawable/vip"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
@@ -359,7 +415,7 @@
 
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/textLocations"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -374,11 +430,12 @@
 
 
                     <TextView
+                        android:id="@+id/textLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="Mary welaýat"
+                        android:text=""
                         android:textColor="@color/text_color_gray"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView578"
                         app:layout_constraintEnd_toStartOf="@+id/imageView578"
@@ -407,6 +464,7 @@
                     app:dividerColor="@color/line_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/favouriteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="14dp"

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mekanly.presentation.ui.fragments.home.FragmentHome
-import com.mekanly.FourthFragment
+import com.mekanly.FavouriteFragment
 import com.mekanly.presentation.ui.fragments.profile.FragmentProfile
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
 import com.mekanly.presentation.ui.fragments.businessProfile.FragmentBusiness
@@ -20,7 +20,7 @@ class AdapterViewPager(fragmentActivity: FragmentActivity) : FragmentStateAdapte
             0 -> FragmentHome()
             1 -> SearchFragment()
             2 -> FragmentBusiness()
-            3 -> FourthFragment()
+            3 -> FavouriteFragment()
             4 -> FragmentProfile()
             else -> FragmentHome()
         }

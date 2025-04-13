@@ -1,7 +1,9 @@
 package com.mekanly.presentation.ui.adapters
 
 import android.annotation.SuppressLint
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
@@ -22,14 +24,13 @@ class AdapterAdvertisements(
     inner class PropertyViewHolder(private val binding: ItemAdvBigBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SetTextI18n")
+        @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
         fun bind(property: DataHouse) {
             binding.item = property
             binding.apply {
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
-                tvAddressTime.text =
-                    "${property.location.parent_name}, ${property.location.name}"
+                tvAddressTime.text = "${property.location.parent_name}, ${property.location.name}"
                 tvDescription.text = property.description
                 advType.text = property.categoryName
 
@@ -39,8 +40,34 @@ class AdapterAdvertisements(
                     viewPagerImages.adapter = adapter
                     wormDotsIndicator.attachTo(viewPagerImages)
                 }
+
+                root.setOnClickListener {
+                    val action = FragmentFlowDirections
+                        .actionHomeFragmentToFragmentSingleHouse(property.id.toLong())
+                    navController.navigate(action)
+                }
+
+
+                val gestureDetector = GestureDetector(itemView.context, object : GestureDetector.SimpleOnGestureListener() {
+                    override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                        val action = FragmentFlowDirections
+                            .actionHomeFragmentToFragmentSingleHouse(property.id.toLong())
+                        navController.navigate(action)
+                        return true
+                    }
+                })
+
+                viewPagerImages.getChildAt(0).setOnTouchListener { _, event ->
+                    val result = gestureDetector.onTouchEvent(event)
+                    // Возвращаем false, чтобы не мешать свайпам ViewPager2
+                    false
+                }
+
+
+
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
@@ -69,10 +96,10 @@ class AdapterAdvertisements(
         notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
     }
 
-    fun onAdvClicked(item: DataHouse) {
-        val action =
-            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
-
-        navController.navigate(action)
-    }
+//    fun onAdvClicked(item: DataHouse) {
+//        val action =
+//            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
+//
+//        navController.navigate(action)
+//    }
 }

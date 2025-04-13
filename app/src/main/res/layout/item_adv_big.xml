@@ -13,7 +13,6 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:onClick="@{()->adapter.onAdvClicked(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"
@@ -40,6 +39,8 @@
                         android:id="@+id/viewPagerImages"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:background="@color/white"
                         tools:background="@drawable/placeholder" />
 
@@ -56,6 +57,8 @@
                         android:layout_marginBottom="5dp"
                         app:dotsStrokeWidth="2dp"
                         />
+
+
 
 
                 </FrameLayout>
@@ -145,7 +148,7 @@
                 android:layout_gravity="end"
                 android:background="@color/color_transparent"
                 android:padding="10dp"
-                app:icon="@drawable/ic_favourite"
+                app:icon="@drawable/favourite_three"
                 app:iconTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

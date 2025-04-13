@@ -26,6 +26,8 @@ class FragmentFlow : Fragment() {
     ): View {
         binding = FragmentFlowBinding.inflate(inflater, container, false)
         getGlobalOptions()
+
+
         viewPagerAdapter = AdapterViewPager(requireActivity())
         binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
@@ -106,6 +108,13 @@ class FragmentFlow : Fragment() {
         viewPager2.isUserInputEnabled = false
     }
 
+    // Метод для переключения на определенную страницу ViewPager
+    fun navigateToPage(position: Int) {
+        if (::binding.isInitialized && position >= 0 && position < viewPagerAdapter.itemCount) {
+            binding.viewPager.currentItem = position
+        }
+
+    }
 
 
 
