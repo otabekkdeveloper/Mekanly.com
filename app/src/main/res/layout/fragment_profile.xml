@@ -206,7 +206,7 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/addHouse"
+                    android:id="@+id/addNotifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="14dp"
@@ -275,7 +275,7 @@
                     app:dividerColor="@color/line_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/addNotifications"
+                    android:id="@+id/addHouse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="14dp"

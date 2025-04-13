@@ -1,5 +1,6 @@
 package com.mekanly.presentation.ui.fragments.singleHouse
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,6 +24,8 @@ import com.mekanly.presentation.ui.fragments.singleHouse.adapter.AdapterPossibil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class FragmentSingleHouse : Fragment() {
 
@@ -80,11 +83,14 @@ class FragmentSingleHouse : Fragment() {
         binding.rvOpportunity.adapter = opportunityAdapter
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setHouseDetails(dataHouse: DataHouse) {
         binding.apply{
             tvTitle.text = dataHouse.name
+            tvDate.text = formatDate(dataHouse.createdAt)
             tvDetails.text = dataHouse.description
             tvHouseType.text = dataHouse.categoryName
+            tvViewCount.text = dataHouse.viewed.toString()
             tvAddress.text =dataHouse.location.name
         }
 
@@ -99,8 +105,8 @@ class FragmentSingleHouse : Fragment() {
         val houseList = listOf(
             HouseItem(R.drawable.ic_houses_for_sale, "Bölümi", dataResponse.categoryName),
             HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", dataResponse.location.name),
-            HouseItem(R.drawable.ic_calendar, "Goýlan senesi", "Not available"),
-            HouseItem(R.drawable.ic_phone, "Telefon nomeri", "Not available"),
+            HouseItem(R.drawable.ic_calendar, "Goýlan senesi", formatDate(dataResponse.createdAt)),
+            HouseItem(R.drawable.ic_phone, "Telefon nomeri", dataResponse.bronNumber),
             HouseItem(R.drawable.elitka, "Emläk görnüşi", dataResponse.categoryName),
             HouseItem(R.drawable.ic_count_room, "Otag sany", dataResponse.roomNumber.toString()),
             HouseItem(R.drawable.ic_number_of_floors, "Gat sany", dataResponse.floorNumber.toString()),
@@ -140,6 +146,14 @@ class FragmentSingleHouse : Fragment() {
         val action =
             FragmentSingleHouseDirections.actionFragmentSingleHouseToBottomSheetComments(args.houseId)
         findNavController().navigate(action)
+    }
+
+    private fun formatDate(dateString: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault()) // формат входной строки
+        val outputFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()) // нужный формат: день месяц год
+
+        val date = inputFormat.parse(dateString) // парсим строку в объект Date
+        return outputFormat.format(date)
     }
 
 

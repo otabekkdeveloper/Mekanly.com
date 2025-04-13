@@ -1,6 +1,5 @@
 package com.mekanly.presentation.ui.fragments.singleHouse.adapter
 
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
