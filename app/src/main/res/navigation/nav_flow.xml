@@ -132,7 +132,7 @@
         android:label="FragmentAddHouse" />
     <fragment
         android:id="@+id/addNotificationFragment"
-        android:name="com.mekanly.presentation.ui.fragments.profile.AddNotificationFragment"
+        android:name="com.mekanly.ui.fragments.profile.AddNotificationFragment"
         android:label="fragment_add_notification"
         tools:layout="@layout/fragment_add_notification">
         <action

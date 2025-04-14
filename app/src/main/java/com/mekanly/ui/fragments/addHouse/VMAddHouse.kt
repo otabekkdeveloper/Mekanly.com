@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.addHouse
+package com.mekanly.ui.fragments.addHouse
 
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.request.AddHouseBody

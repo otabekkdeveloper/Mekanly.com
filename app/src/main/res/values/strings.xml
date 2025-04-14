@@ -81,4 +81,7 @@
     <string name="done">Done</string>
     <string name="enter_house_name">Enter house name</string>
     <string name="business_profiles">Business profiles</string>
+    <string name="account">Account</string>
+    <string name="press_to_log_in">Press to log in</string>
+    <string name="my_announcements">Bildirişlerim</string>
 </resources>

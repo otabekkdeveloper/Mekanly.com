@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mekanly.presentation.ui.fragments.home.FragmentHome
 import com.mekanly.presentation.ui.fragments.favorite.FavouriteFragment
-import com.mekanly.presentation.ui.fragments.profile.FragmentProfile
+import com.mekanly.ui.fragments.profile.FragmentProfile
 import com.mekanly.presentation.ui.fragments.search.SearchFragment
 import com.mekanly.presentation.ui.fragments.businessProfile.FragmentBusiness
 

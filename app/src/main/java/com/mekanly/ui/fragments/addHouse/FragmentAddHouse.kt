@@ -24,6 +24,7 @@ import com.mekanly.data.request.AddHouseBody
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentAddHouseBinding
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
+import com.mekanly.ui.fragments.addHouse.VMAddHouse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -32,7 +33,7 @@ class FragmentAddHouse : Fragment() {
 
     private lateinit var binding: FragmentAddHouseBinding
 
-    private val viewModel:VMAddHouse by viewModels()
+    private val viewModel: VMAddHouse by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

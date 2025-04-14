@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.profile
+package com.mekanly.ui.fragments.profile
 
 import LocationBottomSheet
 import android.content.Intent
@@ -14,13 +14,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mekanly.R
 import com.mekanly.data.local.preferences.AppPreferences
-import com.mekanly.databinding.ActivityLoginBinding
 import com.mekanly.databinding.FragmentProfileBinding
 import com.mekanly.ui.login.LoginActivity
-import com.mekanly.presentation.ui.activities.main.MainActivity
-import com.mekanly.presentation.ui.fragments.flow.FragmentFlow
 import com.mekanly.presentation.ui.fragments.flow.VMFlow
-import com.mekanly.presentation.ui.fragments.home.FragmentHome
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
 import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
 
@@ -44,13 +40,15 @@ class FragmentProfile : Fragment() {
     private fun initView() {
         if (appPrefs.token == "") {
             binding.apply {
-                tvAccountName.text = "Press to log in"
-                tvAccountNumber.text = ""
+                tvAccountName.text = getString(R.string.account)
+                tvAccountNumber.text = getString(R.string.press_to_log_in)
+                tvAccountNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.bg_blue_two))
             }
         } else {
             binding.apply {
                 tvAccountName.text = "Akkaunt"
                 tvAccountNumber.text = appPrefs.username
+                tvAccountNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
             }
         }
     }
@@ -67,6 +65,10 @@ class FragmentProfile : Fragment() {
 
         binding.addHouse.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_addNotificationFragment)
+        }
+
+        binding.addNotifications.setOnClickListener {
+
         }
 
         binding.crAccount.setOnClickListener {
