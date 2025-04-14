@@ -3,8 +3,9 @@ package com.mekanly.presentation.ui.fragments.businessProfile.viewModel
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.BusinessCategory
-import com.mekanly.data.responseBody.ResponseBodyState
-import com.mekanly.domain.useCase.UseCaseBusinessProfiles
+import com.mekanly.domain.model.ResponseBodyState
+import com.mekanly.domain.useCase.GetBusinessProfilesUseCase
+import com.mekanly.domain.useCase.GetSimilarBusinessProfilesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,14 +28,18 @@ class VMSubBusinessProfile : ViewModel() {
         MutableStateFlow<FragmentSubBusinessProfileState>(FragmentSubBusinessProfileState.Loading)
     val fragmentState: StateFlow<FragmentSubBusinessProfileState> = _fragmentState.asStateFlow()
 
-    private val useCaseBusinessProfiles by lazy {
-        UseCaseBusinessProfiles()
+    private val getBusinessProfilesUseCase by lazy {
+        GetBusinessProfilesUseCase()
+    }
+
+    private val getSimilarBusinessProfilesUseCase by lazy {
+        GetSimilarBusinessProfilesUseCase()
     }
 
 
 
     fun getSimilarBusinessProfiles(id: Long) {
-        useCaseBusinessProfiles.executeSimilar(id) {
+        getSimilarBusinessProfilesUseCase.invoke(id) {
         when(it){
             is ResponseBodyState.Error -> {
                 _fragmentState.value = FragmentSubBusinessProfileState.Error(it.error)

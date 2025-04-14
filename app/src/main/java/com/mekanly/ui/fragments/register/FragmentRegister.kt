@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.mekanly.R
 import com.mekanly.data.models.User
 import com.mekanly.data.local.preferences.AppPreferences
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSignUpBinding
 import com.mekanly.ui.login.PhoneNumberTextWatcher
 import com.mekanly.utils.extensions.showErrorSnackBar

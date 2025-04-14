@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.PropertiesDialogData
 import com.mekanly.data.request.AddHouseBody
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentAddHouseBinding
 import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
 import kotlinx.coroutines.Dispatchers

@@ -3,9 +3,9 @@ package com.mekanly.presentation.ui.fragments.businessProfile.viewModel
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.BusinessCategory
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.domain.useCase.GetBusinessCategoriesUseCase
-import com.mekanly.domain.useCase.UseCaseBusinessProfiles
+import com.mekanly.domain.useCase.GetBusinessProfilesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,8 +30,8 @@ class VMBusinessProfiles:ViewModel() {
         GetBusinessCategoriesUseCase()
     }
 
-    private val useCaseBusinessProfiles by lazy {
-        UseCaseBusinessProfiles()
+    private val getBusinessProfilesUseCase by lazy {
+        GetBusinessProfilesUseCase()
     }
     init {
         getBusinessProfileCategories()
@@ -64,7 +64,7 @@ class VMBusinessProfiles:ViewModel() {
 
     fun getPageInfoDefault(size: Int) {
         _isLoading.value = true
-        useCaseBusinessProfiles.execute(size.toLong()) { result ->
+        getBusinessProfilesUseCase.invoke(size.toLong()) { result ->
 
             when (result) {
                 is ResponseBodyState.SuccessList -> {

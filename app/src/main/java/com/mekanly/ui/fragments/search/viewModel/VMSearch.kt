@@ -6,8 +6,9 @@ import com.mekanly.data.models.House
 import com.mekanly.data.models.Location
 import com.mekanly.data.models.PriceRange
 import com.mekanly.data.models.HouseCategory
-import com.mekanly.data.responseBody.ResponseBodyState
-import com.mekanly.domain.useCase.UseCasePaginatedHouses
+import com.mekanly.domain.model.ResponseBodyState
+import com.mekanly.domain.useCase.GetPaginatedHousesUseCase
+import com.mekanly.domain.useCase.SearchPaginatedHousesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,9 +36,8 @@ class VMSearch : ViewModel() {
     val currentSelectedFilter: StateFlow<Int> = _currentSelectedFilter.asStateFlow()
 
 
-    private val useCase by lazy {
-        UseCasePaginatedHouses()
-    }
+    private val getHousesUseCase by lazy { GetPaginatedHousesUseCase() }
+    private val searchUseCase by lazy { SearchPaginatedHousesUseCase() }
 
     init {
         getPageInfoDefault(0)
@@ -60,7 +60,7 @@ class VMSearch : ViewModel() {
     ) {
         _isLoading.value = true
         if (location != null) {
-            useCase.execute(size.toLong(), location = location) { result ->
+            getHousesUseCase.execute(size.toLong(), location = location) { result ->
                 _searchState.value = result
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
@@ -78,7 +78,7 @@ class VMSearch : ViewModel() {
                 }
             }
         } else if (category != null) {
-            useCase.execute(size.toLong(), category = category) { result ->
+            getHousesUseCase.execute(size.toLong(), category = category) { result ->
                 _searchState.value = result
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
@@ -97,7 +97,7 @@ class VMSearch : ViewModel() {
             }
         } else if (priceRange!=null){
             Log.e("PRICE_FILTER", "getPageInfoDefault: ", )
-            useCase.execute(size.toLong(), priceRange = priceRange) { result ->
+            getHousesUseCase.execute(size.toLong(), priceRange = priceRange) { result ->
                 _searchState.value = result
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
@@ -115,7 +115,7 @@ class VMSearch : ViewModel() {
                 }
             }
         }else {
-            useCase.execute(size.toLong()) { result ->
+            getHousesUseCase.execute(size.toLong()) { result ->
                 _searchState.value = result
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
@@ -138,7 +138,7 @@ class VMSearch : ViewModel() {
     fun search(query: String) {
         _needToReinitialiseAdapter.value = true
         _isLoading.value = true
-        useCase.search(query) { result ->
+        searchUseCase.search(query) { result ->
             _searchState.value = result
             when (result) {
                 is ResponseBodyState.SuccessList -> {

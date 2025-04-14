@@ -1,7 +1,7 @@
 package com.mekanly.domain.useCase
 
 import com.mekanly.data.repository.HousesRepository
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 
 class GetHousesUseCase {
     private val rep by lazy {

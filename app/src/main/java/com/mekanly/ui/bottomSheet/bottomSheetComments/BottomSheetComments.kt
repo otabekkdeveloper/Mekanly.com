@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.data.models.Comment
 import com.mekanly.data.local.preferences.AppPreferences
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.BottomSheetCommentsBinding
 import com.mekanly.presentation.ui.adapters.CommentsAdapter
 import com.mekanly.utils.extensions.showErrorSnackBar

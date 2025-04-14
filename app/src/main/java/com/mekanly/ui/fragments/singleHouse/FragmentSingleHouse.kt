@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
 import com.mekanly.data.models.House
 import com.mekanly.data.models.Possibility
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
 import com.mekanly.presentation.ui.adapters.HouseItem

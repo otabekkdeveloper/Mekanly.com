@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.Banner
 import com.mekanly.data.models.House
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.domain.useCase.GetBannersUseCase
 import com.mekanly.domain.useCase.GetHousesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow

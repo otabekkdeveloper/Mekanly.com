@@ -1,12 +1,11 @@
 package com.mekanly.domain.useCase
 
 import com.mekanly.data.repository.CommentsRepository
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 
-class UseCaseGetComments {
-    private val rep by lazy {
-        CommentsRepository()
-    }
+class GetCommentsUseCase {
+    private val rep by lazy { CommentsRepository() }
+
     fun execute(id:Long,callback: (ResponseBodyState) -> Unit){
         rep.getHouseComments(id,callback)
     }

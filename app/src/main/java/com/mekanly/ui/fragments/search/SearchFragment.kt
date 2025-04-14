@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.models.PriceRange
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet

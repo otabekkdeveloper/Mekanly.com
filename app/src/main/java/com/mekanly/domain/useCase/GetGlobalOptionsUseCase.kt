@@ -1,12 +1,10 @@
 package com.mekanly.domain.useCase
 
 import com.mekanly.data.repository.GlobalOptionsRepository
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 
-class UseCaseGlobalOptions {
-    private val rep by lazy {
-        GlobalOptionsRepository()
-    }
+class GetGlobalOptionsUseCase {
+    private val rep by lazy { GlobalOptionsRepository() }
 
     fun execute(callback: (ResponseBodyState) -> Unit){
         rep.getGlobalOptions(callback)

@@ -1,11 +1,11 @@
 package com.mekanly.domain.useCase
 
 import com.mekanly.data.repository.RegisterRepository
-import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.AuthBody
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.data.request.ConfirmationBody
+import com.mekanly.domain.model.ResponseBodyState
 
-class UseCaseLogin {
+class LoginUseCase {
 
     private val rep by lazy {
         RegisterRepository()
@@ -25,3 +25,4 @@ class UseCaseLogin {
         rep.confirmLogin(confirmBody, callback)
     }
 }
+

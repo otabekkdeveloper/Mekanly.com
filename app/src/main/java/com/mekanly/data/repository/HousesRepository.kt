@@ -10,7 +10,7 @@ import com.mekanly.data.models.PriceRange
 import com.mekanly.data.models.ResponseDataList
 import com.mekanly.data.request.AddHouseBody
 import com.mekanly.data.models.HouseCategory
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.retrofit.ApiClient
 import com.mekanly.data.retrofit.ApiService

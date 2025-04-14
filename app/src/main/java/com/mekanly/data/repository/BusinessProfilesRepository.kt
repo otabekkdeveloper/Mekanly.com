@@ -8,7 +8,7 @@ import com.mekanly.data.models.BusinessCategory
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.ResponseDataList
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.data.retrofit.ApiClient
 import com.mekanly.data.retrofit.ApiService
 import retrofit2.Call

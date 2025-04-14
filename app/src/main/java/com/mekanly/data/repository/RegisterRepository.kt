@@ -6,7 +6,7 @@ import com.mekanly.utils.Constants.Companion.RESPONSE_FAILURE
 import com.mekanly.utils.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.AuthBody
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import com.mekanly.data.retrofit.ApiClient

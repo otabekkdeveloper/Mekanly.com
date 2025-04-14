@@ -6,7 +6,7 @@ import com.mekanly.utils.Constants.Companion.RESPONSE_FAILURE
 import com.mekanly.utils.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.data.models.Banner
 import com.mekanly.data.models.ResponseDataList
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.data.retrofit.ApiClient
 import com.mekanly.data.retrofit.ApiService
 import retrofit2.Call

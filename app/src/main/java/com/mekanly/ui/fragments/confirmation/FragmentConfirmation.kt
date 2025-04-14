@@ -9,9 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.mekanly.data.models.User
 import com.mekanly.data.local.preferences.AppPreferences
-import com.mekanly.data.responseBody.ResponseBodyState
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentConfirmationBinding
-import com.mekanly.domain.useCase.UseCaseLogin
+import com.mekanly.domain.useCase.ConfirmationUseCase
+import com.mekanly.domain.useCase.LoginUseCase
 import com.mekanly.presentation.ui.activities.main.MainActivity
 import com.mekanly.utils.extensions.showErrorSnackBar
 import com.mekanly.utils.extensions.showSuccessSnackBar
@@ -19,9 +20,8 @@ import com.mekanly.utils.extensions.showSuccessSnackBar
 class FragmentConfirmation : Fragment() {
     private lateinit var binding: FragmentConfirmationBinding
 
-    private val useCase by lazy {
-        UseCaseLogin()
-    }
+    private val loginUseCase by lazy { LoginUseCase() }
+    private val confirmationUseCase by lazy { ConfirmationUseCase() }
 
     private val appPrefs by lazy {
         AppPreferences(requireContext())
@@ -38,7 +38,7 @@ class FragmentConfirmation : Fragment() {
 
     private fun initListeners() {
         binding.btnSendEmptyMessage.setOnClickListener {
-            useCase.executeConfirmation(
+            confirmationUseCase.invoke(
                 args.phone, args.tokenWaitlist, binding.inputOtp.text.toString()
             ) {
                 when (it) {
