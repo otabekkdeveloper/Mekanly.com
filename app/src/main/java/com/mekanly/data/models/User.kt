@@ -8,6 +8,7 @@ data class User(
     @SerializedName("token") val token: String,
     @SerializedName("email") val email: String?,
     @SerializedName("phone") val phone: String,
+    @SerializedName("vip") val vip: Int,
     @SerializedName("email_verified_at") val emailVerifiedAt: String?,
     @SerializedName("phone_verified_at") val phoneVerifiedAt: String?,
     @SerializedName("role") val role: String,

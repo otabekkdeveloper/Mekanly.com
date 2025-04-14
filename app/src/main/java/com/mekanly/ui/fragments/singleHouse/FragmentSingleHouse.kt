@@ -111,7 +111,7 @@ class FragmentSingleHouse : Fragment() {
             HouseItem(R.drawable.ic_count_room, "Otag sany", dataResponse.roomNumber.toString()),
             HouseItem(R.drawable.ic_number_of_floors, "Gat sany", dataResponse.floorNumber.toString()),
 //            HouseItem(R.drawable.elitka, "Remont görnüşi", dataResponse.luxe.toString()),
-            HouseItem(R.drawable.ic_total_area, "Umumy meýdany", "Not available"),
+//            HouseItem(R.drawable.ic_total_area, "Umumy meýdany", "Not available"),
             HouseItem(R.drawable.ic_price, "Bahasy", "${dataResponse.price} TMT")
         )
 
