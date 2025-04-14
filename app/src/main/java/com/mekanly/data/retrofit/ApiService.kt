@@ -1,18 +1,19 @@
 package com.mekanly.data.retrofit
 
 
-import com.mekanly.data.dataModels.DataUser
-import com.mekanly.data.requestBody.RequestBodyAddHouse
-import com.mekanly.data.requestBody.RequestBodyConfirmation
-import com.mekanly.data.requestBody.RequestBodyLogin
-import com.mekanly.data.requestBody.RequestBodyRegister
-import com.mekanly.data.responseBody.ResponseBanners
-import com.mekanly.data.responseBody.ResponseBusinessProfiles
-import com.mekanly.data.responseBody.ResponseBusinessProfilesCategories
-import com.mekanly.data.responseBody.ResponseComments
-import com.mekanly.data.responseBody.ResponseGlobalOptions
-import com.mekanly.data.responseBody.ResponseHouseDetails
-import com.mekanly.data.responseBody.ResponseHouses
+import com.mekanly.data.models.Banner
+import com.mekanly.data.models.BusinessCategory
+import com.mekanly.data.models.BusinessProfile
+import com.mekanly.data.models.Comment
+import com.mekanly.data.models.DataGlobalOptions
+import com.mekanly.data.models.House
+import com.mekanly.data.models.ResponseDataList
+import com.mekanly.data.models.User
+import com.mekanly.data.request.AddHouseBody
+import com.mekanly.data.request.ConfirmationBody
+import com.mekanly.data.request.AuthBody
+import com.mekanly.data.models.HouseDetails
+import com.mekanly.data.models.ResponseData
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.ResponseBody
@@ -26,89 +27,89 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("api/v1/houses")
-    fun getHouses(): Call<ResponseHouses>
+    fun getHouses(): Call<ResponseDataList<House>>
 
     @GET("api/v1/houses/{start}/{limit}")
     fun getHousesWithPagination(
         @Path("start") start:Long,
         @Path("limit") limit:Long,
-    ): Call<ResponseHouses>
+    ): Call<ResponseDataList<House>>
 
     @GET("api/v1/search")
     fun search(
         @Query("search") search:String
-    ):Call<ResponseHouses>
+    ):Call<ResponseDataList<House>>
 
     @GET("api/v1/profile")
     fun getProfileData(
         @Header("Authorization") token: String
-    ): Call<DataUser>
+    ): Call<User>
 
     @POST("/api/register")
     fun register(
-        @Body requestBodyRegister: RequestBodyRegister
+        @Body requestBodyRegister: AuthBody
     ): Call<ResponseRegister>
 
 
     @POST("/api/login")
     fun login(
-        @Body requestBody: RequestBodyLogin
+        @Body requestBody: AuthBody
     ): Call<ResponseLogin>
 
 
     @POST("/api/checkLogin")
     fun confirmLogin(
-        @Body requestBody: RequestBodyConfirmation
+        @Body requestBody: ConfirmationBody
     ): Call<ResponseLogin>
 
     @GET("/api/v2/banners")
-    fun getBanners(): Call<ResponseBanners>
+    fun getBanners(): Call<ResponseDataList<Banner>>
 
     @GET("/api/v2/house/{house_id}")
     fun getHouseDetails(
         @Path("house_id") houseId:String
-    ):Call<ResponseHouseDetails>
+    ):Call<HouseDetails>
 
     @GET("/api/v2/top")
-    fun getTopHouses():Call<ResponseHouses>
+    fun getTopHouses():Call<ResponseDataList<House>>
 
     @GET("/api/v1/houses/{houseId}/comments")
     fun getHouseComments(
         @Path("houseId") houseId:String
-    ):Call<ResponseComments>
+    ):Call<ResponseDataList<Comment>>
 
     @POST("/api/v1/houses/add")
     fun addHouse(
-        @Body requestBodyAddHouse: RequestBodyAddHouse
+        @Body addHouseBody: AddHouseBody
     ):Call<ResponseBody>
 
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
         @Path("house_id") houseId:String,
-        @Body requestBodyAddHouse: RequestBodyAddHouse
+        @Body addHouseBody: AddHouseBody
     ):Call<ResponseBody>
 
     @GET("/api/v2/globalOptions")
-    fun globalOptions():Call<ResponseGlobalOptions>
+    fun globalOptions():Call<ResponseData<DataGlobalOptions>>
 
     @GET("api/v2/business/categories")
-    fun getBusinessProfileCategories():Call<ResponseBusinessProfilesCategories>
+    fun getBusinessProfileCategories():Call<ResponseDataList<BusinessCategory>>
 
     @GET("api/v2/business/categories/{id}/profiles")
     fun getSimilarBusinessProfiles(
         @Path("id") id:Long
-    ):Call<ResponseBusinessProfiles>
+    ):Call<ResponseDataList<BusinessProfile>>
 
     @GET("api/v2/business/allProfiles/{start}/{limit}")
     fun getBusinessProfilesWithPagination(
         @Path("start") start:Long,
         @Path("limit") limit:Long,
-    ):Call<ResponseBusinessProfiles>
+    ):Call<ResponseDataList<BusinessProfile>>
 
     @GET("api/v2/business/categories/{id}")
     fun getSimilarBusinessProfileCategories(
         @Path("id") id:Long
-    ):Call<ResponseBusinessProfilesCategories>
+    ):Call<ResponseDataList<BusinessCategory>>
 
 
     @GET("api/v2/filter")
@@ -135,6 +136,6 @@ interface ApiService {
         @Query("sort_order") sortOrder: String? = null, // "asc", "desc"
         @Query("limit") limit: String? = null, // Example: "15"
         @Query("offset") offset: String? = null // Example: "0"
-    ): Call<ResponseHouses>
+    ): Call<ResponseDataList<House>>
 }
 

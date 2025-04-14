@@ -164,7 +164,7 @@
         android:label="FragmentAddSearchingHouses" />
     <fragment
         android:id="@+id/fragmentHomeSeekers"
-        android:name="com.mekanly.presentation.ui.fragments.profile.homeSeekers.FragmentHomeSeekers"
+        android:name="com.mekanly.ui.fragments.profile.homeSeekers.FragmentHomeSeekers"
         android:label="fragment_home_seekers"
         tools:layout="@layout/fragment_home_seekers" />
 

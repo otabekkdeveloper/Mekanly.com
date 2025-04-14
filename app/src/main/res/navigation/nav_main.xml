@@ -31,6 +31,6 @@
 
     <fragment
         android:id="@+id/fragmentOtp"
-        android:name="com.mekanly.login.FragmentOtp"
+        android:name="com.mekanly.ui.login.FragmentOtp"
         android:label="FragmentOtp" />
 </navigation>

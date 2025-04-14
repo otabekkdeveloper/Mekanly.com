@@ -1,11 +1,11 @@
 package com.mekanly.domain.useCase
 
-import com.mekanly.data.repository.RepositoryBanner
+import com.mekanly.data.repository.BannerRepository
 import com.mekanly.data.responseBody.ResponseBodyState
 
 class GetBannersUseCase {
     private val rep by lazy {
-        RepositoryBanner()
+        BannerRepository()
     }
 
     fun execute(callback: (ResponseBodyState) -> Unit) {

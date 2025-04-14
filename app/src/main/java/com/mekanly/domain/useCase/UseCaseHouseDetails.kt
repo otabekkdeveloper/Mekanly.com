@@ -1,11 +1,11 @@
 package com.mekanly.domain.useCase
 
-import com.mekanly.data.repository.RepositoryHouses
+import com.mekanly.data.repository.HousesRepository
 import com.mekanly.data.responseBody.ResponseBodyState
 
 class UseCaseHouseDetails {
     private val repository by lazy {
-        RepositoryHouses()
+        HousesRepository()
     }
 
 

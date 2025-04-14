@@ -1,17 +1,16 @@
 package com.mekanly.domain.useCase
 
-import androidx.loader.app.LoaderManager.LoaderCallbacks
-import com.mekanly.data.repository.RepositoryRegister
-import com.mekanly.data.requestBody.RequestBodyRegister
+import com.mekanly.data.repository.RegisterRepository
+import com.mekanly.data.request.AuthBody
 import com.mekanly.data.responseBody.ResponseBodyState
 
 class RegisterUseCase {
     private val rep by lazy {
-        RepositoryRegister()
+        RegisterRepository()
     }
 
     fun execute(phone:String, callback:(ResponseBodyState)->Unit){
-        val registerBody =RequestBodyRegister(phone)
+        val registerBody = AuthBody(phone)
         rep.register(registerBody,callback)
     }
 }

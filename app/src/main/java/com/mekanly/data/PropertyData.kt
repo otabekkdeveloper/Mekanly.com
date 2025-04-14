@@ -1,16 +1,16 @@
 package com.mekanly.data
 
 import android.annotation.SuppressLint
-import com.mekanly.data.dataModels.DataImage
-import com.mekanly.data.dataModels.DataLocation
-import com.mekanly.data.dataModels.DataPossibility
+import com.mekanly.data.models.Image
+import com.mekanly.data.models.Location
+import com.mekanly.data.models.Possibility
 import org.w3c.dom.Comment
 
 data class PropertyData @SuppressLint("RestrictedApi") constructor(
     val id: Int,
     val category_id: Int,
     val category_name: String,
-    val location: DataLocation,
+    val location: Location,
     val enter_time: String?,
     val leave_time: String?,
     val day_enter_time: String?,
@@ -29,8 +29,8 @@ data class PropertyData @SuppressLint("RestrictedApi") constructor(
     val bron_number: String?,
     val bron_status: Int,
     val user: Any,
-    val images: List<DataImage>,
-    val possibilities: List<DataPossibility>,
+    val images: List<Image>,
+    val possibilities: List<Possibility>,
     val comments: List<Comment>,
     val updated_at: String,
     val created_at: String,

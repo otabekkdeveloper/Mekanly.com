@@ -6,7 +6,7 @@
     <data>
        <variable
            name="item"
-           type="com.mekanly.data.dataModels.DataHouse" />
+           type="com.mekanly.data.models.House" />
         <variable
             name="adapter"
             type="com.mekanly.presentation.ui.adapters.AdapterAdvertisements" />
