@@ -24,6 +24,8 @@ import com.mekanly.presentation.ui.fragments.businessProfile.adapter.AdapterBusi
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.FragmentBusinessProfileState
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.VMBusinessProfiles
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
+import com.mekanly.utils.GridSpacingItemDecoration
+import com.mekanly.utils.SpacingItemDecoration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -95,7 +97,6 @@ class FragmentBusiness : Fragment() {
                     }
 
                     is FragmentBusinessProfileState.SuccessBusinessProfiles ->{
-                        delay(200)
                         binding.progressBar.visibility = View.GONE
                         setAdapter()
                     }
@@ -110,6 +111,7 @@ class FragmentBusiness : Fragment() {
                     AdapterBusinessProfilesPaginated(viewModel.businessProfiles.value, viewModel, findNavController())
                 binding.rvBusinessProfiles.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                binding.rvBusinessProfiles.addItemDecoration(SpacingItemDecoration(5F))
                 binding.rvBusinessProfiles.adapter = adapter
             }
         }
@@ -123,6 +125,12 @@ class FragmentBusiness : Fragment() {
             findNavController().navigate(action)
         }
         binding.categoriesRV.layoutManager = GridLayoutManager(requireContext(), 3)
+        val itemDecoration = GridSpacingItemDecoration(
+            spanCount = 3,
+            spacingInDp = 6F,
+            includeEdge = true
+        )
+        binding.categoriesRV.addItemDecoration(itemDecoration)
         binding.categoriesRV.adapter = businessCategoryAdapter
     }
 
@@ -132,6 +140,7 @@ class FragmentBusiness : Fragment() {
             adapter = AdapterBusinessProfilesPaginated(viewModel.businessProfiles.value, viewModel, findNavController())
             binding.rvBusinessProfiles.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            binding.rvBusinessProfiles.addItemDecoration(SpacingItemDecoration(5F))
             binding.rvBusinessProfiles.adapter = adapter
         } else {
             adapter?.updateList()

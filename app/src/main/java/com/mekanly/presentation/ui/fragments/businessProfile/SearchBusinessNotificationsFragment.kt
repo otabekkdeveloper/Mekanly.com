@@ -10,6 +10,7 @@ import com.mekanly.R
 import com.mekanly.data.ProfileNotificationsData
 import com.mekanly.databinding.FragmentSearchBusinessNotificationsBinding
 import com.mekanly.presentation.ui.adapters.ProfileNotificationsAdapter
+import com.mekanly.utils.GridSpacingItemDecoration
 
 class SearchBusinessNotificationsFragment : Fragment() {
 
@@ -48,9 +49,14 @@ class SearchBusinessNotificationsFragment : Fragment() {
             // Обработка нажатия на кнопку "Нравится"
             toggleFavorite(property)
         })
-
+        val itemDecoration = GridSpacingItemDecoration(
+            spanCount = 2,
+            spacingInDp = 16F,
+            includeEdge = true
+        )
         binding.rvSubSearch.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
+            addItemDecoration(itemDecoration)
             adapter = propertyAdapter
         }
     }
