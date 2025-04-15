@@ -83,11 +83,6 @@ interface ApiService {
         @Path("houseId") houseId:String
     ):Call<ResponseDataList<Comment>>
 
-//    @POST("/api/v1/houses/add")
-//    fun addHouse(
-//        @Body addHouseBody: AddHouseBody
-//    ):Call<ResponseBody>
-
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
         @Path("house_id") houseId:String,

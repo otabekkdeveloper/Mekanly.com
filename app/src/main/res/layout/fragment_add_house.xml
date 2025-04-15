@@ -655,6 +655,7 @@
 
 
             <LinearLayout
+                android:id="@+id/lay_add_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -692,6 +693,7 @@
 
 
                 <TextView
+                    android:id="@+id/txt_image_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center_vertical"
@@ -702,6 +704,12 @@
 
 
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvImages"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -858,6 +866,7 @@
 
 
             <RadioGroup
+                android:id="@+id/radioGroupPoster"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -867,7 +876,7 @@
 
 
                 <RadioButton
-                    android:id="@+id/radioBtnOne"
+                    android:id="@+id/radioBtnOwner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="3dp"
@@ -876,13 +885,12 @@
                     android:button="@color/color_transparent"
                     android:checked="true"
                     android:gravity="center"
-                    android:text="Eýesi"
+                    android:text="@string/owner"
                     android:textColor="@color/radio_text_color"
                     android:textSize="14sp" />
 
-
                 <RadioButton
-                    android:id="@+id/radioBtnTwo"
+                    android:id="@+id/radioBtnRealtor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -891,7 +899,7 @@
                     android:button="@color/color_transparent"
                     android:checked="false"
                     android:gravity="center"
-                    android:text="Reiltor"
+                    android:text="@string/realtor"
                     android:textColor="@color/radio_text_color"
                     android:textSize="14sp" />
 

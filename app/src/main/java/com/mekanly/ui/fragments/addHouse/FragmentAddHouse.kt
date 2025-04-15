@@ -1,6 +1,9 @@
 package com.mekanly.ui.fragments.addHouse
 
 import LocationBottomSheet
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.mekanly.R
@@ -19,6 +23,7 @@ import com.mekanly.data.request.AddHouseBody
 import com.mekanly.databinding.FragmentAddHouseBinding
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.helpers.PreferencesHelper
+import com.mekanly.ui.adapters.AdapterLocalImages
 import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.ui.dialog.OptionSelectionDialog
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_OPPORTUNITY
@@ -35,6 +40,11 @@ class FragmentAddHouse : Fragment() {
     private val addHouseBody = AddHouseBody()
     private val viewModel: VMAddHouse by viewModels()
 
+    companion object {
+        const val REQUEST_CODE_PICK_IMAGES = 1001
+    }
+    private lateinit var adapter: AdapterLocalImages
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -45,9 +55,23 @@ class FragmentAddHouse : Fragment() {
             findNavController().popBackStack()
         }
         globalOptions?.let { initListeners(it) }
+        setImagesAdapter()
+        lifecycleScope.launchWhenStarted {
+            viewModel.images.collect { imageUris ->
+                adapter.submitList(imageUris)
+                binding.txtImageCount.text = "${imageUris.size}/15"
+            }
+
+        }
+
         return binding.root
     }
 
+    private fun setImagesAdapter(){
+        adapter = AdapterLocalImages { uri -> viewModel.removeImage(uri) }
+        binding.rvImages.adapter = adapter
+        binding.rvImages.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
     private fun initListeners(globalOptions: DataGlobalOptions) {
         binding.propertiesBtn.setOnClickListener {
             showPropertyTypeDialog(globalOptions)
@@ -69,22 +93,38 @@ class FragmentAddHouse : Fragment() {
             openCategorySelector(globalOptions)
         }
 
+        binding.radioGroupPoster.setOnCheckedChangeListener { group, checkedId ->
+            addHouseBody.who = when (checkedId) {
+                R.id.radioBtnOwner -> "Eýesinden"
+                R.id.radioBtnRealtor -> "realtordan"
+                else -> "Eýesinden"
+            }
+        }
+
+        binding.layAddImages.setOnClickListener{
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "image/*"
+                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            }
+            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGES)
+        }
         binding.btnDone.setOnClickListener {
 
+            //TODO
             addHouseBody.apply {
                 name = binding.edtName.text?.trim().toString()
                 description = binding.edtDescription.text?.trim().toString()
                 area = binding.editTextArea.text?.trim().toString().toIntOrNull()
                 price = binding.editTextPrice.text?.trim().toString().toIntOrNull()
                 hashtag = binding.editTextHashTag.text?.trim().toString()
-
                 roomNumber = binding.chipGroupRooms.getSelectedChipInt()
                 floorNumber = binding.chipGroupFloor.getSelectedChipInt()
                 levelNumber = binding.chipGroupLevel.getSelectedChipInt()
             }
 
             lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.addHouse(addHouseBody) {
+                viewModel.addHouse(addHouseBody, viewModel.convertUrisToFiles(requireContext(), viewModel.images.value) ) {
                     when (it) {
                         is ResponseBodyState.Error -> {
                             Log.e("ADD_HOUSE", "initListeners: " + it.error)
@@ -96,6 +136,7 @@ class FragmentAddHouse : Fragment() {
 
                         is ResponseBodyState.Success -> {
                             Log.e("ADD_HOUSE", "Success")
+                            findNavController().popBackStack()
                         }
 
                         else -> {}
@@ -265,6 +306,25 @@ class FragmentAddHouse : Fragment() {
             }
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_PICK_IMAGES && resultCode == RESULT_OK) {
+            val uris = mutableListOf<Uri>()
+            data?.let {
+                if (it.clipData != null) {
+                    for (i in 0 until it.clipData!!.itemCount) {
+                        uris.add(it.clipData!!.getItemAt(i).uri)
+                    }
+                } else if (it.data != null) {
+                    uris.add(it.data!!)
+                }
+            }
+            viewModel.addImages(uris)
+        }
+    }
+
 }
 
 fun ChipGroup.getSelectedChipInt(): Int? {

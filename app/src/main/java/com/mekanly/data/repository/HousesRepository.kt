@@ -1,5 +1,6 @@
 package com.mekanly.data.repository
 
+import android.net.Uri
 import android.util.Log
 import com.mekanly.utils.Constants.Companion.NO_CONTENT
 import com.mekanly.utils.Constants.Companion.RESPONSE_FAILURE
@@ -221,23 +222,6 @@ class HousesRepository {
         })
     }
 
-//    fun addHouse(requestBody:AddHouseBody, callback: (ResponseBodyState) -> Unit){
-//        callback(ResponseBodyState.Loading)
-//        apiService.addHouse(requestBody).enqueue(object : Callback<ResponseBody> {
-//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                if (response.isSuccessful) {
-//                        callback(ResponseBodyState.Success("Success"))
-//                } else {
-//                    callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
-//                }
-//            }
-//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                Log.e("FlowFragment", "Failure: ${t.message}")
-//                callback(ResponseBodyState.Error(RESPONSE_FAILURE))
-//            }
-//        })
-//    }
-
     fun addHouse(body: AddHouseBody, imageFiles: List<File>, callback: (ResponseBodyState) -> Unit) {
         try {
             val mediaTypeText = "text/plain".toMediaTypeOrNull()
@@ -270,7 +254,7 @@ class HousesRepository {
                 name, description, price, locationId, categoryId, who,
                 area, writeComment, floorNumber, roomNumber, exclusive,
                 hashtag, levelNumber, propertyTypeId, repairTypeId,
-                possibilities, imageParts
+                /*possibilities,*/ imageParts
             ).enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {

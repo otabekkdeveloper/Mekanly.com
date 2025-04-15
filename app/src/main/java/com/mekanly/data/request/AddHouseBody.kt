@@ -15,7 +15,7 @@ data class AddHouseBody(
     @SerializedName("repair_type_id")
     var repairTypeId: Int? = null,
     var possibilities: List<Int>? = null,
-    var who: String? = null,
+    var who: String = "Eýesinden",
     var area: Int? = null,
     @SerializedName("write_comment")
     var writeComment: Int? = null,
