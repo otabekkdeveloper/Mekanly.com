@@ -1,12 +1,13 @@
 package com.mekanly.data.retrofit
 
-import com.mekanly.presentation.ui.application.MyApplication
+import com.mekanly.data.local.preferences.AppPreferences
+import com.mekanly.ui.application.MyApplication
 import okhttp3.Cache
+import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import java.io.File
 
 object ApiClient {
     const val BASE_URL = "https://mekanly.com.tm/"
@@ -16,8 +17,18 @@ object ApiClient {
     }
     private val cache:Cache = MyApplication.CacheManager.getCache()
 
+    private val authInterceptor = Interceptor { chain ->
+        val token = AppPreferences.getToken()
+        val requestBuilder = chain.request().newBuilder()
+        token?.let {
+            requestBuilder.addHeader("Authorization", "Bearer $it")
+        }
+        chain.proceed(requestBuilder.build())
+    }
+
     private val client = OkHttpClient.Builder()
         .cache(cache)
+        .addInterceptor(authInterceptor)
         .addInterceptor(loggingInterceptor)
         .build()
 

@@ -1,27 +1,26 @@
-package com.mekanly.presentation.ui.bottomSheet
+package com.mekanly.ui.bottomSheet
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.data.models.HouseCategory
 import com.mekanly.databinding.FragmentBottomSheetBinding
 import com.mekanly.presentation.ui.adapters.BottomSheetAdapter
-import com.mekanly.presentation.ui.fragments.flow.VMFlow
 
 class SectionSelectionBottomSheet(
+    private val categories: List<HouseCategory>,
     private val onDelete : ()-> Unit
 ) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentBottomSheetBinding
-    private val vmFlow:VMFlow by activityViewModels()
-    private var onCitySelected: ((HouseCategory) -> Unit)? = null
+    private var onCategorySelected: ((HouseCategory) -> Unit)? = null
 
-    fun setOnCitySelectedListener(listener: (HouseCategory) -> Unit) {
-        onCitySelected = listener
+    fun setOnCategorySelectedListener(listener: (HouseCategory) -> Unit) {
+        onCategorySelected = listener
     }
 
     @SuppressLint("MissingInflatedId")
@@ -40,10 +39,10 @@ class SectionSelectionBottomSheet(
         binding.btnClose.setOnClickListener{
             dismiss()
         }
-        val categories = vmFlow.globalState.value.houseCategories
+
         binding.bottomSheetRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.bottomSheetRecyclerView.adapter = BottomSheetAdapter(categories) { selectedItem ->
-            onCitySelected?.invoke(selectedItem)
+            onCategorySelected?.invoke(selectedItem)
             dismiss()
         }
 

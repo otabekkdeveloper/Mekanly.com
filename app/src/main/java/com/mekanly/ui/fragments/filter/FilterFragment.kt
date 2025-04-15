@@ -1,15 +1,12 @@
-package com.mekanly.presentation.ui.fragments.filter
+package com.mekanly.ui.fragments.filter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
@@ -23,13 +20,10 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.slider.RangeSlider
 import com.mekanly.R
 import com.mekanly.data.OpportunityData
-import com.mekanly.data.PropertiesDialogData
 import com.mekanly.databinding.FragmentFilterBinding
-import com.mekanly.presentation.ui.adapters.OpportunityDialogAdapter
-import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
-import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesDialogAdapter
-import com.mekanly.presentation.ui.dialog.propertiesDialog.PropertiesTypeDialog
-import com.mekanly.presentation.ui.dialog.propertiesDialog.RepairTypeDialog
+import com.mekanly.ui.adapters.OpportunityDialogAdapter
+import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
+import com.mekanly.ui.dialog.OptionSelectionDialog
 
 
 class FilterFragment : Fragment() {
@@ -62,9 +56,9 @@ class FilterFragment : Fragment() {
 
 
         binding.buttonBolum.setOnClickListener {
-            val bottomSheet = SectionSelectionBottomSheet(onDelete = {})
+            val bottomSheet = SectionSelectionBottomSheet(emptyList(), onDelete = {})
 
-            bottomSheet.setOnCitySelectedListener { selectedCity ->
+            bottomSheet.setOnCategorySelectedListener { selectedCity ->
                 binding.bolumTextView.text = selectedCity.name
 
             }
@@ -81,14 +75,12 @@ class FilterFragment : Fragment() {
 
         binding.propertiesBtn.setOnClickListener {
 
-            val dialog = PropertiesTypeDialog(requireContext())
-            dialog.show()
+
         }
 
 
         binding.remont.setOnClickListener {
-            val dialog = RepairTypeDialog(requireContext())
-            dialog.show()
+
         }
 
         binding.mumkinchilikler.setOnClickListener {
@@ -268,7 +260,7 @@ class FilterFragment : Fragment() {
 
 
 // Инициализация адаптера с обработчиком клика
-        val opportunityAdapter = OpportunityDialogAdapter(opportunityList) { selectedItem ->
+        val opportunityAdapter = OpportunityDialogAdapter(opportunityList, emptyList()) { selectedItem ->
             Toast.makeText(requireContext(), "Выбрано: ${selectedItem.text}", Toast.LENGTH_SHORT).show()
         }
 

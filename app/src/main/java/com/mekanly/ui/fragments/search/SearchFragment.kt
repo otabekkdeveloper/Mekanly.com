@@ -26,13 +26,13 @@ import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
-import com.mekanly.presentation.ui.bottomSheet.SectionSelectionBottomSheet
-import com.mekanly.presentation.ui.fragments.flow.VMFlow
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_CATEGORY
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_DEFAULT
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_PRICE
+import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
+import com.mekanly.ui.fragments.flow.VMFlow
+import com.mekanly.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_CATEGORY
+import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_DEFAULT
+import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
+import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_PRICE
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -107,8 +107,9 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
         }
 
+        val categories = vmFlow.globalState.value.houseCategories
         binding.btnCategories.setOnClickListener {
-            val bottomSheet = SectionSelectionBottomSheet(onDelete = {
+            val bottomSheet = SectionSelectionBottomSheet(categories, onDelete = {
                 binding.apply {
                     textCategory.text = "Kategoriya"
                     textCategory.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
@@ -119,7 +120,7 @@ class SearchFragment : Fragment() {
             })
 
 
-            bottomSheet.setOnCitySelectedListener { selectedCategory ->
+            bottomSheet.setOnCategorySelectedListener { selectedCategory ->
                 binding.apply {
                     textCategory.text = selectedCategory.name
                     textCategory.setTextColor(
@@ -373,7 +374,7 @@ class SearchFragment : Fragment() {
         }
         adapter = null
         viewModel.updateFilterType(FILTER_TYPE_PRICE)
-        val dataPriceRange = PriceRange(min = minPrice, max = maxPrice)
+        val dataPriceRange = PriceRange(min = minPrice.toIntOrNull(), max = maxPrice.toIntOrNull())
         Log.e("PRICE_FILTER", "updatePriceSelection: "+minPrice+maxPrice )
         viewModel.getPageInfoDefault(0, priceRange = dataPriceRange)
 

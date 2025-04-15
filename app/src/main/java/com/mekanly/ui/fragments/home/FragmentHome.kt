@@ -17,6 +17,8 @@ import com.mekanly.data.models.Banner
 import com.mekanly.data.models.House
 import com.mekanly.databinding.FragmentHomeBinding
 import com.mekanly.presentation.ui.enums.BannerType
+import com.mekanly.ui.fragments.home.FragmentHomeState
+import com.mekanly.ui.fragments.home.VMHome
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

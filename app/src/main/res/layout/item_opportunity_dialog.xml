@@ -7,6 +7,7 @@
 
 
     <LinearLayout
+        android:id="@+id/layBackground"
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:gravity="center"
@@ -16,10 +17,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="15dp"
+            android:layout_width="20dp"
             android:layout_gravity="center"
-            android:layout_height="15dp"
-            android:background="@drawable/ic_wifi" />
+            android:layout_height="20dp"
+            android:src="@drawable/kwartira" />
 
         <TextView
             android:id="@+id/textView"

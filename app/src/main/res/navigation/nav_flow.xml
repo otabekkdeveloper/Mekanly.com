@@ -80,7 +80,7 @@
 
     <fragment
         android:id="@+id/filterFragment"
-        android:name="com.mekanly.presentation.ui.fragments.filter.FilterFragment"
+        android:name="com.mekanly.ui.fragments.filter.FilterFragment"
         android:label="FilterFragment">
 
         <action
@@ -104,7 +104,7 @@
 
     <fragment
         android:id="@+id/languageFragment"
-        android:name="com.mekanly.presentation.ui.fragments.language.LanguageFragment"
+        android:name="com.mekanly.ui.fragments.language.LanguageFragment"
         android:label="LanguageFragment" />
 
     <fragment
@@ -128,7 +128,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentAddHouse"
-        android:name="com.mekanly.presentation.ui.fragments.addHouse.FragmentAddHouse"
+        android:name="com.mekanly.ui.fragments.addHouse.FragmentAddHouse"
         android:label="FragmentAddHouse" />
     <fragment
         android:id="@+id/addNotificationFragment"

@@ -16,17 +16,14 @@ import com.mekanly.R
 import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.databinding.FragmentProfileBinding
 import com.mekanly.ui.login.LoginActivity
-import com.mekanly.presentation.ui.fragments.flow.VMFlow
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
+import com.mekanly.ui.fragments.flow.VMFlow
+import com.mekanly.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
 
 class FragmentProfile : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val vmFlow: VMFlow by activityViewModels()
     private val viewModel: VMSearch by viewModels()
-    private val appPrefs by lazy {
-        AppPreferences(requireContext())
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,7 +35,7 @@ class FragmentProfile : Fragment() {
     }
 
     private fun initView() {
-        if (appPrefs.token == "") {
+        if (AppPreferences.getToken() == "") {
             binding.apply {
                 tvAccountName.text = getString(R.string.account)
                 tvAccountNumber.text = getString(R.string.press_to_log_in)
@@ -47,7 +44,7 @@ class FragmentProfile : Fragment() {
         } else {
             binding.apply {
                 tvAccountName.text = "Akkaunt"
-                tvAccountNumber.text = appPrefs.username
+                tvAccountNumber.text = AppPreferences.getUsername()
                 tvAccountNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
             }
         }
@@ -72,7 +69,7 @@ class FragmentProfile : Fragment() {
         }
 
         binding.crAccount.setOnClickListener {
-            if (appPrefs.token == "") {
+            if (AppPreferences.getToken() == "") {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
             } else {

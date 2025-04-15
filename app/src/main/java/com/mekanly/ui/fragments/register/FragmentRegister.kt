@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.register
+package com.mekanly.ui.fragments.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import com.mekanly.data.models.User
 import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSignUpBinding
+import com.mekanly.presentation.ui.fragments.register.VMRegister
 import com.mekanly.ui.login.PhoneNumberTextWatcher
 import com.mekanly.utils.extensions.showErrorSnackBar
 import kotlinx.coroutines.flow.collectLatest
@@ -46,7 +47,7 @@ class FragmentRegister : Fragment(), PhoneNumberTextWatcher.PhoneNumberValidatio
 
                     is ResponseBodyState.Success -> {
                         it.dataResponse as User
-                        AppPreferences(requireContext()).tokenOnWaitlist = it.dataResponse.token
+                        AppPreferences.setTokenOnWaitlist(it.dataResponse.token)
                         binding.progressBar.visibility = View.GONE
                         val action =
                             FragmentRegisterDirections.actionSignUpFragmentToFragmentConfirmation(

@@ -6,7 +6,7 @@
     app:startDestination="@id/signUpFragment">
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.mekanly.presentation.ui.fragments.register.FragmentRegister"
+        android:name="com.mekanly.ui.fragments.register.FragmentRegister"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_fragmentConfirmation"

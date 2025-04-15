@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.home
+package com.mekanly.ui.fragments.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 sealed class FragmentHomeState(){
-    data class SuccessBanners(val dataResponse:List<Banner>):FragmentHomeState()
-    data class SuccessTopHouses(val dataResponse:List<House>):FragmentHomeState()
-    data object Loading:FragmentHomeState()
-    data object Initial:FragmentHomeState()
-    data class Error(val error:Any):FragmentHomeState()
+    data class SuccessBanners(val dataResponse:List<Banner>): FragmentHomeState()
+    data class SuccessTopHouses(val dataResponse:List<House>): FragmentHomeState()
+    data object Loading: FragmentHomeState()
+    data object Initial: FragmentHomeState()
+    data class Error(val error:Any): FragmentHomeState()
 }
 class VMHome:ViewModel() {
 
@@ -57,7 +57,8 @@ class VMHome:ViewModel() {
                        _homeState.value = FragmentHomeState.Error(4)
                        return@execute
                    }else{
-                       _homeState.value = FragmentHomeState.SuccessBanners(it.dataResponse as MutableList<Banner> )
+                       _homeState.value =
+                           FragmentHomeState.SuccessBanners(it.dataResponse as MutableList<Banner>)
                        _banners.value = it.dataResponse
                    }
                }

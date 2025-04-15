@@ -13,7 +13,7 @@ import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentConfirmationBinding
 import com.mekanly.domain.useCase.ConfirmationUseCase
 import com.mekanly.domain.useCase.LoginUseCase
-import com.mekanly.presentation.ui.activities.main.MainActivity
+import com.mekanly.ui.activities.MainActivity
 import com.mekanly.utils.extensions.showErrorSnackBar
 import com.mekanly.utils.extensions.showSuccessSnackBar
 
@@ -23,9 +23,6 @@ class FragmentConfirmation : Fragment() {
     private val loginUseCase by lazy { LoginUseCase() }
     private val confirmationUseCase by lazy { ConfirmationUseCase() }
 
-    private val appPrefs by lazy {
-        AppPreferences(requireContext())
-    }
     private val args by navArgs<FragmentConfirmationArgs>()
 
     override fun onCreateView(
@@ -55,8 +52,8 @@ class FragmentConfirmation : Fragment() {
                         it.dataResponse as User
                         binding.progressBar.visibility = View.GONE
                         requireContext().showSuccessSnackBar(binding.root, "Login Success")
-                        appPrefs.token = it.dataResponse.token
-                        appPrefs.username = it.dataResponse.phone
+                        AppPreferences.setToken(it.dataResponse.token)
+                        AppPreferences.setUsername(it.dataResponse.phone)
                         val intent = Intent(requireContext(), MainActivity::class.java)
                         startActivity(intent)
                         requireActivity().finish()

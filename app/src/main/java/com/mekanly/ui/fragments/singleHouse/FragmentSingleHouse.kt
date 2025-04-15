@@ -14,7 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
 import com.mekanly.data.models.House
-import com.mekanly.data.models.Possibility
+import com.mekanly.data.models.Option
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
 import com.mekanly.presentation.ui.adapters.AdapterInformationInSingleHouse
@@ -77,7 +77,7 @@ class FragmentSingleHouse : Fragment() {
         }
     }
 
-    private fun setPossibilityAdapter(possibilities: List<Possibility>) {
+    private fun setPossibilityAdapter(possibilities: List<Option>) {
         opportunityAdapter = AdapterPossibilities(possibilities)
         binding.rvOpportunity.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvOpportunity.adapter = opportunityAdapter

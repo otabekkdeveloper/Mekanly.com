@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
-import com.mekanly.data.models.Possibility
+import com.mekanly.data.models.Option
 import com.mekanly.presentation.ui.enums.Possibilities
 
 class AdapterPossibilities(
-    private val possibilities: List<Possibility>
+    private val possibilities: List<Option>
 ) : RecyclerView.Adapter<AdapterPossibilities.PossibilityViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PossibilityViewHolder {
@@ -32,10 +32,10 @@ class AdapterPossibilities(
         private val iconImageView: ImageView = itemView.findViewById(R.id.imageView20)
         private val nameTextView: TextView = itemView.findViewById(R.id.textViewOpportunity)
 
-        fun bind(possibility: Possibility) {
+        fun bind(option: Option) {
             val possibilityEnum = Possibilities.entries.find {
-                it.key.equals(possibility.name, ignoreCase = true) ||
-                        it.name.equals(possibility.name, ignoreCase = true)
+                it.key.equals(option.name, ignoreCase = true) ||
+                        it.name.equals(option.name, ignoreCase = true)
             }
             val name:String = when (possibilityEnum) {
                 Possibilities.WIFI -> ContextCompat.getString(nameTextView.context,R.string.wifi)

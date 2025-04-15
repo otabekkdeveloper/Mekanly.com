@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.language
+package com.mekanly.ui.fragments.language
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,11 +22,9 @@ class LanguageFragment : Fragment() {
     ): View? {
         binding = FragmentLanguageBinding.inflate(inflater, container, false)
 
-        // Инициализация PreferencesHelper
-        preferencesHelper = PreferencesHelper(requireContext())
 
         // Установить язык по умолчанию, если не выбран ранее
-        val currentLanguage = preferencesHelper.getLanguage() ?: "tk" // Язык по умолчанию
+        val currentLanguage = PreferencesHelper.getLanguage() ?: "tk" // Язык по умолчанию
 
         // Установить выбранную радиокнопку
         val radioGroup = binding.languageRadioGroup

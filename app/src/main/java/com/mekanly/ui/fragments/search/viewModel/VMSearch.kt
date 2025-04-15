@@ -1,6 +1,5 @@
-package com.mekanly.presentation.ui.fragments.search.viewModel
+package com.mekanly.ui.fragments.search.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.House
 import com.mekanly.data.models.Location
@@ -96,7 +95,6 @@ class VMSearch : ViewModel() {
                 }
             }
         } else if (priceRange!=null){
-            Log.e("PRICE_FILTER", "getPageInfoDefault: ", )
             getHousesUseCase.execute(size.toLong(), priceRange = priceRange) { result ->
                 _searchState.value = result
                 when (result) {

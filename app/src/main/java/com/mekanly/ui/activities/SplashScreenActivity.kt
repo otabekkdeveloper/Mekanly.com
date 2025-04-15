@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.mekanly.R
 import com.mekanly.databinding.ActivitySplashScreenBinding
-import com.mekanly.presentation.ui.activities.main.MainActivity
+import com.mekanly.ui.activities.MainActivity
 import pl.droidsonroids.gif.GifDrawable
 
 @SuppressLint("CustomSplashScreen")

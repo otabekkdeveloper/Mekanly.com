@@ -3,7 +3,7 @@ package com.mekanly.data
 import android.annotation.SuppressLint
 import com.mekanly.data.models.Image
 import com.mekanly.data.models.Location
-import com.mekanly.data.models.Possibility
+import com.mekanly.data.models.Option
 import org.w3c.dom.Comment
 
 data class PropertyData @SuppressLint("RestrictedApi") constructor(
@@ -30,7 +30,7 @@ data class PropertyData @SuppressLint("RestrictedApi") constructor(
     val bron_status: Int,
     val user: Any,
     val images: List<Image>,
-    val possibilities: List<Possibility>,
+    val possibilities: List<Option>,
     val comments: List<Comment>,
     val updated_at: String,
     val created_at: String,

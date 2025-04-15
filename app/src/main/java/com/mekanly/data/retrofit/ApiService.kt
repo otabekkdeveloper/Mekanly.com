@@ -14,14 +14,19 @@ import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.AuthBody
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.ResponseData
+import com.mekanly.data.request.FilterRequest
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -78,10 +83,10 @@ interface ApiService {
         @Path("houseId") houseId:String
     ):Call<ResponseDataList<Comment>>
 
-    @POST("/api/v1/houses/add")
-    fun addHouse(
-        @Body addHouseBody: AddHouseBody
-    ):Call<ResponseBody>
+//    @POST("/api/v1/houses/add")
+//    fun addHouse(
+//        @Body addHouseBody: AddHouseBody
+//    ):Call<ResponseBody>
 
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
@@ -112,30 +117,31 @@ interface ApiService {
     ):Call<ResponseDataList<BusinessCategory>>
 
 
-    @GET("api/v2/filter")
+    @POST("api/v2/filter")
     fun getFilteredResult(
-        @Query("category_id") categoryId: String? = null,
-        @Query("location_id") locationId: Int? = null,
-        @Query("start_date") startDate: String? = null,
-        @Query("end_date") endDate: String? = null,
-        @Query("possibilities") possibilities: String? = null,
-        @Query("image") image: String? = null,
-        @Query("who") who: String? = null,
-        @Query("cheap_price") cheapPrice: String? = null,
-        @Query("expensive_price") expensivePrice: String? = null,
-        @Query("small_area") smallArea: String? = null,
-        @Query("big_area") bigArea: String? = null,
-        @Query("location") location: String? = null, // JSON format
-        @Query("categories") categories: String? = null, // JSON format
-        @Query("property_type") propertyType: String? = null, // JSON format
-        @Query("repair_type") repairType: String? = null, // JSON format
-        @Query("status") status: String? = null,
-        @Query("room_number") roomNumber: String? = null, // JSON format
-        @Query("floor_number") floorNumber: String? = null, // JSON format
-        @Query("sort_by") sortBy: String? = null, // "price", "created_at"
-        @Query("sort_order") sortOrder: String? = null, // "asc", "desc"
-        @Query("limit") limit: String? = null, // Example: "15"
-        @Query("offset") offset: String? = null // Example: "0"
+        @Body request: FilterRequest
     ): Call<ResponseDataList<House>>
+
+    @Multipart
+    @POST("api/v2/houses/add")
+    fun addHouse(
+        @Part("name") name: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part("price") price: RequestBody?,
+        @Part("location_id") locationId: RequestBody?,
+        @Part("category_id") categoryId: RequestBody?,
+        @Part("who") who: RequestBody?,
+        @Part("area") area: RequestBody?,
+        @Part("write_comment") writeComment: RequestBody?,
+        @Part("floor_number") floorNumber: RequestBody?,
+        @Part("room_number") roomNumber: RequestBody?,
+        @Part("exclusive") exclusive: RequestBody?,
+        @Part("hashtag") hashtag: RequestBody?,
+        @Part("level_number") levelNumber: RequestBody?,
+        @Part("property_type_id") propertyTypeId: RequestBody?,
+        @Part("repair_type_id") repairTypeId: RequestBody?,
+//        @Part("possibilities") possibilities: List<@JvmSuppressWildcards RequestBody>?,
+        @Part images: List<MultipartBody.Part>
+    ):Call<ResponseBody>
 }
 

@@ -1,13 +1,10 @@
 package com.mekanly.presentation.ui.fragments.flow
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
@@ -15,6 +12,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.mekanly.R
 import com.mekanly.databinding.FragmentFlowBinding
 import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
+import com.mekanly.ui.fragments.flow.VMFlow
 
 class FragmentFlow : Fragment() {
     private lateinit var binding: FragmentFlowBinding

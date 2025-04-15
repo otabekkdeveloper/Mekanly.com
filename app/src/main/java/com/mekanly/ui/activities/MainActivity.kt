@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.activities.main
+package com.mekanly.ui.activities
 
 import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
 import android.annotation.SuppressLint
@@ -21,10 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
-        preferencesHelper = PreferencesHelper(this)
-
         // Установить язык
-        LanguageManager.setLocale(this, preferencesHelper.getLanguage())
+        LanguageManager.setLocale(this, PreferencesHelper.getLanguage())
 
         super.onCreate(savedInstanceState)
 

@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mekanly.R
-import com.mekanly.databinding.FragmentMailBinding
 import com.mekanly.databinding.FragmentOtpBinding
-import com.mekanly.presentation.ui.activities.main.MainActivity
+import com.mekanly.ui.activities.MainActivity
 
 
 class FragmentOtp : Fragment() {

@@ -15,8 +15,7 @@
         android:fontFamily="@font/roboto_regular"
         android:paddingBottom="8dp"
         android:text="Remont görnüşi"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <!-- Чекбокс -->
     <LinearLayout

@@ -2,34 +2,45 @@ package com.mekanly.data.local.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 
-class AppPreferences(private val context: Context) {
+object AppPreferences {
 
-    companion object {
-        private const val PREF_TOKEN = "pref_token"
-        private const val PREF_USERNAME = "pref_username"
-        private const val TOKEN_ON_WAITLIST = "pref_token_on_waitlist"
+    private lateinit var sharedPreferences: SharedPreferences
+
+    private const val PREF_TOKEN = "pref_token"
+    private const val PREF_USERNAME = "pref_username"
+    private const val TOKEN_ON_WAITLIST = "pref_token_on_waitlist"
+
+
+    fun initialize(context: Context) {
+        val defaultPreferenceName = context.packageName + "_preferences"
+        sharedPreferences = context.getSharedPreferences(defaultPreferenceName, Context.MODE_PRIVATE)
     }
 
-    private val defaultPreferenceName by lazy {
-        context.packageName + "_preferences"
+    fun getToken(): String? {
+        return sharedPreferences.getString(PREF_TOKEN, "")
     }
 
-    private val sharedPreferences: SharedPreferences by lazy {
-        context.getSharedPreferences(defaultPreferenceName, Context.MODE_PRIVATE)
+    fun setToken(value: String) {
+        sharedPreferences.edit().putString(PREF_TOKEN, value).apply()
     }
 
-    var token: String
-        get() = sharedPreferences.getString(PREF_TOKEN, "") ?: ""
-        set(value) = sharedPreferences.edit().putString(PREF_TOKEN, value).apply()
+    fun getTokenOnWaitlist(): String {
+        return sharedPreferences.getString(TOKEN_ON_WAITLIST, "") ?: ""
+    }
 
-    var tokenOnWaitlist: String
-        get() = sharedPreferences.getString(TOKEN_ON_WAITLIST, "") ?: ""
-        set(value) = sharedPreferences.edit().putString(TOKEN_ON_WAITLIST, value).apply()
+    fun setTokenOnWaitlist(value: String) {
+        sharedPreferences.edit().putString(TOKEN_ON_WAITLIST, value).apply()
+    }
 
+    fun getUsername(): String {
+        return sharedPreferences.getString(PREF_USERNAME, "") ?: ""
+    }
 
-    var username: String
-        get() = sharedPreferences.getString(PREF_USERNAME, "") ?: ""
-        set(value) = sharedPreferences.edit().putString(PREF_USERNAME, value).apply()
+    fun setUsername(value: String) {
+        sharedPreferences.edit().putString(TOKEN_ON_WAITLIST, value).apply()
+    }
+
 
 }

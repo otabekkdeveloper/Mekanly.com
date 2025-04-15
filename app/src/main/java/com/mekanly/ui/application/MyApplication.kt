@@ -1,6 +1,8 @@
-package com.mekanly.presentation.ui.application
+package com.mekanly.ui.application
 
 import android.app.Application
+import com.mekanly.data.local.preferences.AppPreferences
+import com.mekanly.helpers.PreferencesHelper
 import okhttp3.Cache
 import java.io.File
 
@@ -9,6 +11,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        PreferencesHelper.initialize(applicationContext)
+        AppPreferences.initialize(applicationContext)
         CacheManager.initialiseCache(this)
     }
 

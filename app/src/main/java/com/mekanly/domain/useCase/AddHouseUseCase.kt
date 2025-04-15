@@ -8,6 +8,6 @@ class AddHouseUseCase {
     private val rep by lazy { HousesRepository() }
 
     fun addHouse(requestHouseBody:AddHouseBody, callback: (ResponseBodyState) -> Unit){
-        rep.addHouse(requestHouseBody,callback)
+        rep.addHouse(requestHouseBody, emptyList(), callback)
     }
 }

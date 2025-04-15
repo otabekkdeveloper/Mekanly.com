@@ -9,9 +9,9 @@ import com.mekanly.R
 import com.mekanly.data.models.House
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvSmallBinding
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.ui.fragments.search.viewModel.VMSearch
 
-class   AdapterSmallAdvertisements(private val properties: List<House>, private val viewModel:VMSearch) :
+class   AdapterSmallAdvertisements(private val properties: List<House>, private val viewModel: VMSearch) :
     RecyclerView.Adapter<AdapterSmallAdvertisements.PropertyViewHolder>() {
 
     inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :

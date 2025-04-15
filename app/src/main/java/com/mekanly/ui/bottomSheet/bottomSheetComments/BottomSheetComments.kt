@@ -95,7 +95,7 @@ class BottomSheetComments : BottomSheetDialogFragment() {
     }
 
     private fun handleCommentAction(newCommentText: String) {
-        if (AppPreferences(requireContext()).token==""){
+        if (AppPreferences.getToken()==""){
             requireContext().showErrorSnackBar(binding.root, "Now on development")
         }else{
             viewModel.addComment(newCommentText)

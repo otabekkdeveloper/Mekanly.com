@@ -12,7 +12,7 @@ import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvBigBinding
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
-import com.mekanly.presentation.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.ui.fragments.search.viewModel.VMSearch
 
 class AdapterAdvertisements(
     private var properties: List<House>,

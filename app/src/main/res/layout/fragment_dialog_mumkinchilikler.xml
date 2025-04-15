@@ -20,7 +20,6 @@
         android:paddingBottom="8dp"
         android:text="Mümkinçilikler"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

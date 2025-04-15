@@ -1,10 +1,14 @@
 package com.mekanly.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class DataGlobalOptions(
     val locations: List<Location> = emptyList(),
+    @SerializedName("categoryHouses")
     val houseCategories: List<HouseCategory> = emptyList(),
+    @SerializedName("categoryShops")
     val shopCategories: List<ShopCategory> = emptyList(),
-    val possibility: List<Possibility> = emptyList(),
-    val propertyType: List<PropertyType>  = emptyList(),
-    val repairType: List<RepairType> = emptyList()
+    val possibility: List<Option> = emptyList(),
+    val propertyType: List<Option>  = emptyList(),
+    val repairType: List<Option> = emptyList()
 )

@@ -49,5 +49,5 @@ data class House(
     @SerializedName("user")
     val user: User,
     val images:List<Image>,
-    val possibilities:List<Possibility>
+    val possibilities:List<Option>
 )
