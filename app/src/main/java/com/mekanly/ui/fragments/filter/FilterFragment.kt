@@ -211,7 +211,7 @@ class FilterFragment : Fragment() {
         chip.setTextColor(
             ContextCompat.getColor(requireContext(), if (isActive) R.color.white else R.color.black)
         )
-        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black)
+        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), if (isActive) R.color.black else R.color.chip_border_color)
     }
 
 

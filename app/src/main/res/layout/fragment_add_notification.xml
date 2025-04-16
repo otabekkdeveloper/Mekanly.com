@@ -49,6 +49,7 @@
             </com.google.android.material.appbar.AppBarLayout>
 
             <LinearLayout
+                android:background="@color/white"
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,6 +140,7 @@
                 android:id="@+id/recyclerViewProperties"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:background="@color/white"
                 android:clipToPadding="false"
                 android:layout_weight="1"/>
 
