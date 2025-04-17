@@ -147,16 +147,15 @@ class FilterFragment : Fragment() {
                 }
                 launch {
                     viewModel.floorNumber.collect { floorNumber ->
-
-                        for (i in 0 until binding.chipGroupRooms.childCount) {
-                            val chip = binding.chipGroupRooms.getChildAt(i) as Chip
+                        for (i in 0 until binding.chipGroupFloor.childCount) {
+                            val chip = binding.chipGroupFloor.getChildAt(i) as Chip
                             val chipValue = chip.text.toString().toIntOrNull()
                             if (chip.id == R.id.allChipsTwo) {
-                                val shouldActivateAll = floorNumber.isEmpty()
+                                val shouldActivateAll = viewModel.floorNumber.value.isEmpty()
                                 activateChip(chip, shouldActivateAll)
                             } else {
                                 val shouldBeSelected =
-                                    chipValue != null && floorNumber?.contains(chipValue) == true
+                                    chipValue != null && viewModel.floorNumber.value.contains(chipValue)
                                 activateChip(chip, shouldBeSelected)
                             }
                         }
@@ -168,11 +167,11 @@ class FilterFragment : Fragment() {
                             val chip = binding.chipGroupRooms.getChildAt(i) as Chip
                             val chipValue = chip.text.toString().toIntOrNull()
                             if (chip.id == R.id.allChips) {
-                                val shouldActivateAll = rooms.isEmpty()
+                                val shouldActivateAll = viewModel.roomNumber.value.isEmpty()
                                 activateChip(chip, shouldActivateAll)
                             } else {
                                 val shouldBeSelected =
-                                    chipValue != null && rooms.contains(chipValue)
+                                    chipValue != null && viewModel.roomNumber.value.contains(chipValue)
                                 activateChip(chip, shouldBeSelected)
                             }
                         }
@@ -449,10 +448,7 @@ class FilterFragment : Fragment() {
         chip.setTextColor(
             ContextCompat.getColor(requireContext(), if (isActive) R.color.white else R.color.black)
         )
-        chip.chipStrokeColor = ContextCompat.getColorStateList(
-            requireContext(),
-            if (isActive) R.color.black else R.color.chip_border_color
-        )
+        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black)
     }
 
 
