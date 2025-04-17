@@ -173,7 +173,6 @@
                 android:layout_marginTop="8dp"
                 android:paddingStart="16dp"
                 android:text="@string/rooms_number"
-                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -316,7 +315,7 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11"
+                        android:text="10+"
                         android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
@@ -456,7 +455,6 @@
                 android:layout_marginTop="8dp"
                 android:paddingStart="16dp"
                 android:text="@string/floor_number"
-                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -599,7 +597,7 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11"
+                        android:text="10+"
                         android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="20dp"
@@ -739,6 +737,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:checked="false"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/show_only_images"
                 android:textColor="@color/black"
@@ -767,7 +766,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 app:dividerColor="@color/line_divider" />
 
             <LinearLayout
@@ -842,6 +841,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_weight="1"
                     android:gravity="end"
                     android:text="@string/not_selected" />
@@ -852,6 +852,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="30dp"
                     android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
             </LinearLayout>
@@ -889,6 +890,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_weight="1"
                     android:gravity="end"
                     android:text="@string/not_selected" />
@@ -899,6 +901,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="30dp"
                     android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
 
@@ -990,7 +993,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:valueFrom="5"
-                    android:valueTo="500"
+                    android:valueTo="700"
                     app:thumbColor="@color/white"
                     app:trackColorActive="@color/bg_app_two"
                     app:trackColorInactive="@color/unchecked_track" />
@@ -1021,15 +1024,16 @@
                         android:textSize="10sp" />
 
 
-                    <TextView
+                    <EditText
                         android:id="@+id/min_value_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="65dp"
+                        android:layout_height="35dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/emlakler_btn_bg"
                         android:fontFamily="@font/roboto_regular"
+                        android:hint="20 m2"
+                        android:inputType="number"
                         android:padding="10dp"
-                        android:text="20 m2"
                         android:textColor="@color/black"
                         android:textSize="10sp" />
 
@@ -1053,15 +1057,16 @@
                         android:textSize="10sp" />
 
 
-                    <TextView
+                    <EditText
                         android:id="@+id/max_value_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="65dp"
+                        android:layout_height="35dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/emlakler_btn_bg"
                         android:fontFamily="@font/roboto_regular"
+                        android:hint="700+ m2"
+                        android:inputType="number"
                         android:padding="10dp"
-                        android:text="500+ m2"
                         android:textColor="@color/black"
                         android:textSize="10sp" />
 
@@ -1164,6 +1169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_weight="1"
                     android:gravity="end"
                     android:text="@string/not_selected" />
@@ -1174,6 +1180,7 @@
                     android:layout_gravity="center|end"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="6dp"
+                    android:layout_marginEnd="30dp"
                     android:background="@drawable/ic_down"
                     tools:ignore="ContentDescription" />
 

@@ -3,6 +3,8 @@ package com.mekanly.ui.fragments.filter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +30,7 @@ import com.mekanly.ui.dialog.OptionSelectionDialog
 
 class FilterFragment : Fragment() {
     private lateinit var binding: FragmentFilterBinding
-    private lateinit var rangeSlider: RangeSlider
-    private lateinit var minValueTextView: TextView
-    private lateinit var maxValueTextView: TextView
-
+    private var isProgrammaticChange = false
 
 
     override fun onCreateView(
@@ -41,13 +40,81 @@ class FilterFragment : Fragment() {
         initListeners()
         chipGroups()
         switchDesign()
-        seekBarLogicTerritory()
+//        seekBarLogicTerritory()
         priceEditText()
         binding.popupMenu.setOnClickListener{ view->
 
             showPopupMenu(view)
 
         }
+
+
+// Инициализация компонентов через View Binding
+        val rangeSeekBar = binding.rangeSeekBar
+        val minValueText = binding.minValueText
+        val maxValueText = binding.maxValueText
+
+        // Установка начальных значений с проверкой
+        val initialValues = rangeSeekBar.values
+        if (initialValues.size >= 2) {
+            minValueText.setText(initialValues[0].toInt().toString())
+            maxValueText.setText(initialValues[1].toInt().toString())
+        } else {
+            // Устанавливаем значения по умолчанию, если список некорректен
+            rangeSeekBar.values = listOf(5f, 700f) // Устанавливаем диапазон вручную
+            minValueText.setText("5")
+            maxValueText.setText("700")
+        }
+
+        // Слушатель для изменения RangeSlider
+        rangeSeekBar.addOnChangeListener { slider, value, fromUser ->
+            if (fromUser && !isProgrammaticChange) {
+                isProgrammaticChange = true
+                val values = slider.values
+                if (values.size >= 2) {
+                    minValueText.setText(values[0].toInt().toString())
+                    maxValueText.setText(values[1].toInt().toString())
+                }
+                isProgrammaticChange = false
+            }
+        }
+
+        // Слушатель для изменения EditText (минимум)
+        minValueText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!isProgrammaticChange) {
+                    isProgrammaticChange = true
+                    val minValue = s.toString().toIntOrNull() ?: 5
+                    val maxValue = maxValueText.text.toString().toIntOrNull() ?: 700
+
+                    val clampedMin = minOf(maxOf(minValue, 5), maxValue)
+                    rangeSeekBar.values = listOf(clampedMin.toFloat(), maxValue.toFloat())
+                    isProgrammaticChange = false
+                }
+            }
+        })
+
+        // Слушатель для изменения EditText (максимум)
+        maxValueText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!isProgrammaticChange) {
+                    isProgrammaticChange = true
+                    val maxValue = s.toString().toIntOrNull() ?: 700
+                    val minValue = minValueText.text.toString().toIntOrNull() ?: 5
+
+                    val clampedMax = maxOf(minOf(maxValue, 700), minValue)
+                    rangeSeekBar.values = listOf(minValue.toFloat(), clampedMax.toFloat())
+                    isProgrammaticChange = false
+                }
+            }
+        })
+
+
+
         return binding.root
     }
 
@@ -275,55 +342,7 @@ class FilterFragment : Fragment() {
             .show()
     }
 
-    private fun seekBarLogicTerritory() {
 
-
-
-        // Инициализация View
-        rangeSlider = binding.rangeSeekBar
-
-
-        // Предполагается, что эти TextView находятся внутри LinearLayout с текстами "20 m2" и "500+ m2"
-        minValueTextView = binding.minValueText
-        maxValueTextView = binding.maxValueText
-        // Установка начальных значений
-        val minValue = rangeSlider.valueFrom
-        val maxValue = rangeSlider.valueTo
-
-        // Устанавливаем начальные значения для RangeSlider
-        rangeSlider.values = listOf(minValue, maxValue)
-
-        // Обновляем текст
-        updateTextViewsInSeekBar(minValue, maxValue)
-
-        // Устанавливаем слушатель для обработки изменений
-        rangeSlider.addOnChangeListener { slider, _, _ ->
-            val values = slider.values
-            val currentMinValue = values[0]
-            val currentMaxValue = values[1]
-
-            // Обновляем текст при изменении значений
-            updateTextViewsInSeekBar(currentMinValue, currentMaxValue)
-        }
-
-
-    }
-
-    private fun updateTextViewsInSeekBar(minValue: Float, maxValue: Float) {
-        // Форматируем значения для отображения
-        val minValueText = "${minValue.toInt()} m²"
-
-        // Если значение достигло максимума, добавляем "+"
-        val maxValueText = if (maxValue.toInt() >= rangeSlider.valueTo.toInt()) {
-            "${maxValue.toInt()}+ m²"
-        } else {
-            "${maxValue.toInt()} m²"
-        }
-
-        // Обновляем текст в TextView
-        minValueTextView.text = minValueText
-        maxValueTextView.text = maxValueText
-    }
 
     private fun priceEditText() {
 
@@ -370,6 +389,14 @@ class FilterFragment : Fragment() {
         // Show the popup menu
         popupMenu.show()
     }
+
+
+
+
+
+
+
+
 
 
 }
