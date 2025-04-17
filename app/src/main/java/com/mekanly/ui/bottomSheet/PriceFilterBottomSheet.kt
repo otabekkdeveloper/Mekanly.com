@@ -10,7 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mekanly.databinding.BottomSheetPriceFilterBinding
 
 class PriceFilterBottomSheet(
-    private val onPriceSelected: (String, String, Boolean) -> Unit
+    private val onPriceSelected: (String, String) -> Unit
 ) : BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetPriceFilterBinding
@@ -29,7 +29,7 @@ class PriceFilterBottomSheet(
             btnClose.setOnClickListener { dismiss() }
 
             deleteText.setOnClickListener {
-                onPriceSelected("", "", true)
+                onPriceSelected("", "")
                 dismiss()
             }
 
@@ -49,7 +49,7 @@ class PriceFilterBottomSheet(
                 val minPriceFormatted = formatPrice(minPriceText)
                 val maxPriceFormatted = formatPrice(maxPriceText)
 
-                onPriceSelected(minPriceFormatted, maxPriceFormatted, false)
+                onPriceSelected(minPriceFormatted, maxPriceFormatted)
                 dismiss()
             }
 

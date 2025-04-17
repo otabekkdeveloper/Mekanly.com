@@ -24,7 +24,7 @@ class AdapterTopHouses(
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text =
-                   "${property.location.parentName}, ${property.location.name} "
+                   "${property.location?.parentName}, ${property.location?.name} "
                 tvDescription.text = property.description
                 if (property.images.isNotEmpty()) {
                     Glide.with(itemView.context)

@@ -39,7 +39,7 @@ object AppPreferences {
     }
 
     fun setUsername(value: String) {
-        sharedPreferences.edit().putString(TOKEN_ON_WAITLIST, value).apply()
+        sharedPreferences.edit().putString(PREF_USERNAME, value).apply()
     }
 
 

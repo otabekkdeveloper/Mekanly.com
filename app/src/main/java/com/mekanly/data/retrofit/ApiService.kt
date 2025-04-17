@@ -14,7 +14,7 @@ import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.AuthBody
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.ResponseData
-import com.mekanly.data.request.FilterRequest
+import com.mekanly.data.request.FilterBody
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.MultipartBody
@@ -73,7 +73,7 @@ interface ApiService {
     @GET("/api/v2/house/{house_id}")
     fun getHouseDetails(
         @Path("house_id") houseId:String
-    ):Call<HouseDetails>
+    ):Call<ResponseData<HouseDetails>>
 
     @GET("/api/v2/top")
     fun getTopHouses():Call<ResponseDataList<House>>
@@ -114,7 +114,7 @@ interface ApiService {
 
     @POST("api/v2/filter")
     fun getFilteredResult(
-        @Body request: FilterRequest
+        @Body request: FilterBody
     ): Call<ResponseDataList<House>>
 
     @Multipart
@@ -135,7 +135,7 @@ interface ApiService {
         @Part("level_number") levelNumber: RequestBody?,
         @Part("property_type_id") propertyTypeId: RequestBody?,
         @Part("repair_type_id") repairTypeId: RequestBody?,
-//        @Part("possibilities") possibilities: List<@JvmSuppressWildcards RequestBody>?,
+        @Part("possibilities") possibilities: RequestBody?,
         @Part images: List<MultipartBody.Part>
     ):Call<ResponseBody>
 }

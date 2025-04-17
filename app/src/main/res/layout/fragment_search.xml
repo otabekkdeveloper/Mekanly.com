@@ -73,8 +73,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/coordinatorLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -111,8 +112,8 @@
 
                     <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:scrollbars="none"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
 
 
                         <LinearLayout
@@ -126,78 +127,78 @@
                             app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
                             <LinearLayout
-                                android:layout_weight="1"
                                 android:id="@+id/btn_locations"
-                                android:gravity="center"
-                                android:paddingHorizontal="15dp"
-                                android:background="@drawable/bg_unselected_in_search_fragment"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp">
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_unselected_in_search_fragment"
+                                android:gravity="center"
+                                android:paddingHorizontal="15dp">
 
                                 <ImageView
                                     android:id="@+id/ic_location"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="15dp"
                                     android:layout_height="15dp"
-                                    android:src="@drawable/location_icon"/>
+                                    android:src="@drawable/location_icon"
+                                    app:tint="@color/text_color_gray" />
 
                                 <TextView
                                     android:id="@+id/nameLocations"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
-                                    android:fontFamily="@font/roboto_regular"
-                                    android:textColor="@color/text_color_gray"
                                     android:layout_marginStart="5dp"
-                                    android:text="Ýerleşýän ýeri"/>
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="@string/location"
+                                    android:textColor="@color/text_color_gray"
+                                    android:textSize="12sp" />
 
 
                                 <ImageView
                                     android:id="@+id/ic_down"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
-                                    android:src="@drawable/ic_down"/>
+                                    android:src="@drawable/ic_down"
+                                    app:tint="@color/text_color_gray" />
 
 
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_weight="1"
                                 android:id="@+id/btnCategories"
-                                android:layout_marginStart="8dp"
-                                android:gravity="center"
-                                android:paddingHorizontal="15dp"
-                                android:background="@drawable/bg_unselected_in_search_fragment"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp">
+                                android:layout_height="40dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_unselected_in_search_fragment"
+                                android:gravity="center"
+                                android:paddingHorizontal="15dp">
 
                                 <ImageView
                                     android:id="@+id/icCategories"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="15dp"
                                     android:layout_height="15dp"
-                                    android:src="@drawable/ic_category"/>
+                                    android:src="@drawable/ic_category"
+                                    app:tint="@color/text_color_gray" />
 
                                 <TextView
                                     android:id="@+id/textCategory"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/text_color_gray"
-                                    android:fontFamily="@font/roboto_regular"
                                     android:layout_marginStart="5dp"
-                                    android:text="Kategoriýa"/>
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="@string/category"
+                                    android:textColor="@color/text_color_gray"
+                                    android:textSize="12sp" />
 
 
                                 <ImageView
                                     android:id="@+id/icDownCategories"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
-                                    android:src="@drawable/ic_down"/>
+                                    android:src="@drawable/ic_down"
+                                    app:tint="@color/text_color_gray" />
 
 
                             </LinearLayout>
@@ -205,39 +206,39 @@
 
                             <LinearLayout
                                 android:id="@+id/btnPrice"
-                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
                                 android:layout_marginStart="8dp"
                                 android:layout_weight="1"
-                                android:paddingHorizontal="15dp"
                                 android:background="@drawable/bg_unselected_in_search_fragment"
-                                android:layout_width="wrap_content"
-                                android:layout_height="40dp">
+                                android:gravity="center"
+                                android:paddingHorizontal="15dp">
 
                                 <ImageView
                                     android:id="@+id/icPrice"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="15dp"
                                     android:layout_height="15dp"
-                                    android:src="@drawable/ic_price"/>
+                                    android:src="@drawable/ic_price"
+                                    app:tint="@color/text_color_gray" />
 
                                 <TextView
                                     android:id="@+id/priceText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
-                                    android:fontFamily="@font/roboto_regular"
-                                    android:textColor="@color/text_color_gray"
                                     android:layout_marginStart="5dp"
-                                    android:text="Bahasy"/>
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Bahasy"
+                                    android:textColor="@color/text_color_gray"
+                                    android:textSize="12sp" />
 
 
                                 <ImageView
                                     android:id="@+id/icPriceDown"
-                                    app:tint="@color/text_color_gray"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
-                                    android:src="@drawable/ic_down"/>
+                                    android:src="@drawable/ic_down"
+                                    app:tint="@color/text_color_gray" />
 
 
                             </LinearLayout>
@@ -245,8 +246,6 @@
 
                         </LinearLayout>
                     </HorizontalScrollView>
-
-
 
 
                 </LinearLayout>
@@ -257,17 +256,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/white"
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 app:layout_constraintTop_toBottomOf="@+id/cr_buttons" />
 
         </LinearLayout>

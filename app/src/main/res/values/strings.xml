@@ -42,6 +42,7 @@
     <string name="organize">Tertipleme</string>
     <string name="search">Gözle</string>
     <string name="show_only_status">Diňe statusly jaýlary görkez</string>
+    <string name="show_only_images">Diňe suratly jaýlary görkez</string>
     <string name="thats_all">Hemmesi</string>
     <string name="cancel">GOÝ BOLSUN</string>
     <string name="accept">KABUL ET</string>
@@ -88,4 +89,9 @@
     <string name="name">Ady</string>
     <string name="realtor">Realtor</string>
     <string name="owner">Eýesi</string>
+    <string name="location">Ýerleşýän ýeri</string>
+    <string name="category">Kategoriýa</string>
+    <string name="bahasy">Bahasy</string>
+    <string name="price_from_low_to_high">Arzandan gymmada</string>
+    <string name="price_from_high_to_low">Gymmatdan arzana</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.search
+package com.mekanly.ui.fragments.search
 
 import LocationBottomSheet
 import android.content.Context
@@ -14,46 +14,40 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
+import com.mekanly.data.models.DataGlobalOptions
+import com.mekanly.data.models.HouseCategory
+import com.mekanly.data.models.Location
 import com.mekanly.data.models.PriceRange
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSearchBinding
+import com.mekanly.helpers.PreferencesHelper
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
-import com.mekanly.ui.fragments.flow.VMFlow
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
-import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_CATEGORY
-import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_DEFAULT
-import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
-import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_PRICE
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-//TODO: TASK_OTTO:
-// Bratok kara
-// <<<<nameLocations.text = "Ýerleşýän ýeri">>>
-// gornushda sohranit atilgan hamma textlarni iki dil variantyny dorat wa dine getString gornushda al bolmasa dol chalyshsa utgamidi
 
 @Suppress("NAME_SHADOWING")
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
 
-    private val viewModel: VMSearch by viewModels()
+    private val viewModel: VMSearch by activityViewModels()
 
     private var isLoading: Boolean = false
 
     private var adapter: AdapterAdvertisements? = null
-
-    private val vmFlow: VMFlow by activityViewModels()
 
 
     override fun onCreateView(
@@ -68,106 +62,26 @@ class SearchFragment : Fragment() {
 
 
     private fun setOnClickListener() {
-        if (vmFlow.globalState.value.locations.isNotEmpty()){
-            val cities = vmFlow.globalState.value.locations
-
-            binding.btnLocations.setOnClickListener {
-                val bottomSheet = LocationBottomSheet(cities, onDelete = {
-                    binding.apply {
-                        nameLocations.text = "Ýerleşýän ýeri"
-                        nameLocations.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
-                        btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-                        icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
-                        icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
-                    }
-                }) { selectedCity ->
-                    binding.apply {
-                        adapter=null
-                        nameLocations.text = selectedCity.name
-                        btnLocations.setBackgroundResource(R.drawable.bg_selected_search_fragment)
-                        icLocation.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                        icDown.setColorFilter(resources.getColor(R.color.selected_color_in_search_fragment))
-                        nameLocations.setTextColor(
-                            ContextCompat.getColor(
-                                requireContext(), R.color.selected_color_in_search_fragment
-                            )
-                        )
-                    }
-                    viewModel.updateFilterType(FILTER_TYPE_LOCATION)
-                    viewModel.getPageInfoDefault(0, location = selectedCity)
-                }
-
-                bottomSheet.show(childFragmentManager, "LocationBottomSheet")
-            }
-
-        }
-
 
         binding.btnFilter.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_filterFragment)
         }
 
-        val categories = vmFlow.globalState.value.houseCategories
+        binding.btnLocations.setOnClickListener {
+            PreferencesHelper.getGlobalOptions()?.let { it -> openLocationSelector(it) }
+        }
+
         binding.btnCategories.setOnClickListener {
-            val bottomSheet = SectionSelectionBottomSheet(categories, onDelete = {
-                binding.apply {
-                    textCategory.text = "Kategoriya"
-                    textCategory.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
-                    btnCategories.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-                    icDownCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
-                    icCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
-                }
-            })
-
-
-            bottomSheet.setOnCategorySelectedListener { selectedCategory ->
-                binding.apply {
-                    textCategory.text = selectedCategory.name
-                    textCategory.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(), R.color.selected_color_in_search_fragment
-                        )
-                    )
-                    icCategories.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(), R.color.selected_color_in_search_fragment
-                        )
-                    )
-                    icDownCategories.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(), R.color.selected_color_in_search_fragment
-                        )
-                    )
-                    btnCategories.setBackgroundResource(R.drawable.bg_selected_search_fragment)
-                    viewModel.updateFilterType(FILTER_TYPE_CATEGORY)
-                    adapter = null
-                    viewModel.getPageInfoDefault(0, category = selectedCategory)
-                }
-
-            }
-
-            bottomSheet.show(childFragmentManager, "CustomBottomSheet")
-
-
+            PreferencesHelper.getGlobalOptions()?.let { it -> openCategorySelector(it) }
         }
 
         binding.btnPrice.setOnClickListener {
-            val bottomSheet = PriceFilterBottomSheet { minPrice, maxPrice, onDelete ->
-                if (onDelete) {
-                    resetPriceSelection()
-                }
-                else if (minPrice.isEmpty() && maxPrice.isEmpty()){
-                    binding.btnPrice.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-                }
-                else {
-                    updatePriceSelection(minPrice, maxPrice)
-                }
+            val bottomSheet = PriceFilterBottomSheet { minPrice, maxPrice ->
+                viewModel.setPrice(PriceRange(minPrice.toIntOrNull(), maxPrice.toIntOrNull()))
             }
 
             bottomSheet.show(childFragmentManager, "PriceFilter")
         }
-
-
 
     }
 
@@ -185,7 +99,7 @@ class SearchFragment : Fragment() {
                 if (!viewModel.getLoadingState()) {
                     Log.e("Pagination", "onScrolled: " + viewModel.houses.value.size)
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0 && totalItemCount >= LIMIT_REGULAR) {
-                        viewModel.getPageInfoDefault(viewModel.houses.value.size)
+                        viewModel.getHouses(viewModel.houses.value.size)
                     }
 
                 }
@@ -200,8 +114,9 @@ class SearchFragment : Fragment() {
 
             setOnEditorActionListener { _, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
-                    val searchQuery = text.toString()
-                    performSearch(searchQuery)
+                    val searchQuery = text?.trim().toString()
+                    viewModel.setSearch(searchQuery)
+                    viewModel.getHouses()
                     val imm =
                         context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(windowToken, 0)
@@ -255,61 +170,109 @@ class SearchFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            viewModel.currentSelectedFilter.collectLatest {
-                when (it) {
-                    FILTER_TYPE_DEFAULT -> {
-                        resetPriceSelection()
-                        resetLocationSelection()
-                        resetCategorySelection()
-                    }
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-                    FILTER_TYPE_PRICE -> {
-                        resetLocationSelection()
-                        resetCategorySelection()
+                launch {
+                    viewModel.selectedLocation.collect { location ->
+                        updateLocationUI(location)
+                        viewModel.getHouses()
                     }
+                }
 
-                    FILTER_TYPE_CATEGORY -> {
-                        resetLocationSelection()
-                        resetPriceSelection()
+                launch {
+                    viewModel.selectedCategory.collect { category ->
+                        updateCategoryUI(category)
+                        viewModel.getHouses()
                     }
-
-                    FILTER_TYPE_LOCATION -> {
-                        resetPriceSelection()
-                        resetCategorySelection()
+                }
+                launch {
+                    viewModel.price.collect { price ->
+                        updatePriceUI(price)
+                        viewModel.getHouses()
                     }
-
                 }
             }
         }
     }
 
-    private fun resetCategorySelection() {
+
+    private fun updateLocationUI(location: Location?) {
+        val isSelected = location != null
         binding.apply {
-            textCategory.text = "Kategoriya"
-            textCategory.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(), R.color.text_color_gray
-                )
+            nameLocations.text = location?.name ?: getString(R.string.location)
+
+            val textColor = ContextCompat.getColor(
+                requireContext(),
+                if (isSelected) R.color.selected_color_in_search_fragment
+                else R.color.text_color_gray
             )
-            btnCategories.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-            icDownCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
-            icCategories.setColorFilter(resources.getColor(R.color.text_color_gray))
+            val btnBackground = if (isSelected) {
+                R.drawable.bg_selected_search_fragment
+            } else {
+                R.drawable.bg_unselected_in_search_fragment
+            }
+
+            nameLocations.setTextColor(textColor)
+            btnLocations.setBackgroundResource(btnBackground)
+            icDown.setColorFilter(textColor)
+            icLocation.setColorFilter(textColor)
         }
     }
 
-    private fun resetLocationSelection() {
+    private fun updateCategoryUI(category: HouseCategory?) {
+        val isSelected = category != null
         binding.apply {
-            nameLocations.text = "Ýerleşýän ýeri"
-            nameLocations.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(), R.color.text_color_gray
-                )
+            textCategory.text = category?.name ?: getString(R.string.category)
+
+            val textColor = ContextCompat.getColor(
+                requireContext(),
+                if (isSelected) R.color.selected_color_in_search_fragment
+                else R.color.text_color_gray
             )
-            btnLocations.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-            icDown.setColorFilter(resources.getColor(R.color.text_color_gray))
-            icLocation.setColorFilter(resources.getColor(R.color.text_color_gray))
+            val btnBackground = if (isSelected) {
+                R.drawable.bg_selected_search_fragment
+            } else {
+                R.drawable.bg_unselected_in_search_fragment
+            }
+
+            textCategory.setTextColor(textColor)
+            btnCategories.setBackgroundResource(btnBackground)
+            icDownCategories.setColorFilter(textColor)
+            icCategories.setColorFilter(textColor)
         }
     }
+
+    private fun updatePriceUI(priceFilter: PriceRange) {
+        binding.apply {
+            val isSelected = priceFilter.max != null || priceFilter.min != null
+
+            val priceText = when {
+                priceFilter.max == null && priceFilter.min == null -> getString(R.string.bahasy)
+                priceFilter.max != null && priceFilter.min != null -> "${priceFilter.min} - ${priceFilter.max} TMT"
+                priceFilter.min != null -> "${priceFilter.min} + TMT"
+                priceFilter.max != null -> "0 - ${priceFilter.max}TMT"
+                else -> getString(R.string.bahasy)
+            }
+
+            val textColor = ContextCompat.getColor(
+                requireContext(),
+                if (isSelected) R.color.selected_color_in_search_fragment
+                else R.color.text_color_gray
+            )
+            val btnBackground = if (isSelected) {
+                R.drawable.bg_selected_search_fragment
+            } else {
+                R.drawable.bg_unselected_in_search_fragment
+            }
+
+            this.priceText.text = priceText
+            this.priceText.setTextColor(textColor)
+            btnPrice.setBackgroundResource(btnBackground)
+            icPriceDown.setColorFilter(textColor)
+            icPrice.setColorFilter(textColor)
+        }
+    }
+
 
     private fun setAdapter() {
         if (adapter == null) {
@@ -331,55 +294,36 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun openCategorySelector(globalOptions: DataGlobalOptions) {
+        val houseCategories = globalOptions.houseCategories
+        val bottomSheet = SectionSelectionBottomSheet(
+            houseCategories, onDelete = {
+                viewModel.setSelectedCategory(null)
+                binding.textCategory.text = getString(R.string.category)
+            }
+        )
 
-    private fun updatePriceButtonStyle() {
-        val selectedColor =
-            ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment)
-
-
-        binding.apply {
-            icPrice.setColorFilter(selectedColor)
-            priceText.setTextColor(selectedColor)
-            icPriceDown.setColorFilter(selectedColor)
-            btnPrice.setBackgroundResource(R.drawable.bg_selected_search_fragment)
+        bottomSheet.setOnCategorySelectedListener { category ->
+            viewModel.setSelectedCategory(category)
         }
 
+        bottomSheet.show(childFragmentManager, "CustomBottomSheet")
     }
 
-
-    private fun resetPriceSelection() {
-        binding.apply {
-            priceText.text = "Bahasy"
-            priceText.setTextColor(resources.getColor(R.color.text_color_gray))
-            icPriceDown.setColorFilter(resources.getColor(R.color.text_color_gray))
-            btnPrice.setBackgroundResource(R.drawable.bg_unselected_in_search_fragment)
-            icPrice.setColorFilter(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
+    private fun openLocationSelector(globalOptions: DataGlobalOptions) {
+        if (globalOptions.locations.isNotEmpty()) {
+            val cities = globalOptions.locations
+            val bottomSheet = LocationBottomSheet(
+                cities, onDelete = {
+                    viewModel.setSelectedLocation(null)
+                    binding.nameLocations.text = getString(R.string.location)
+                }
+            ) { selectedCity ->
+                viewModel.setSelectedLocation(selectedCity)
+            }
+            bottomSheet.show(childFragmentManager, "LocationBottomSheet")
         }
     }
-
-    private fun updatePriceSelection(minPrice: String, maxPrice: String) {
-        val priceText = when {
-            minPrice.isNotEmpty() && maxPrice.isNotEmpty() -> "$minPrice - $maxPrice TMT"
-            minPrice.isNotEmpty() -> "$minPrice + TMT"
-            maxPrice.isNotEmpty() -> "0 - $maxPrice TMT"
-            else -> "Bahasy"
-        }
-
-        binding.apply {
-            this.priceText.text = priceText
-            this.priceText.setTextColor(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
-            btnPrice.setBackgroundResource(R.drawable.bg_selected_search_fragment)
-            icPriceDown.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
-            icPrice.setColorFilter(ContextCompat.getColor(requireContext(), R.color.selected_color_in_search_fragment))
-        }
-        adapter = null
-        viewModel.updateFilterType(FILTER_TYPE_PRICE)
-        val dataPriceRange = PriceRange(min = minPrice.toIntOrNull(), max = maxPrice.toIntOrNull())
-        Log.e("PRICE_FILTER", "updatePriceSelection: "+minPrice+maxPrice )
-        viewModel.getPageInfoDefault(0, priceRange = dataPriceRange)
-
-    }
-
 
 }
 

@@ -18,7 +18,6 @@ import com.mekanly.databinding.FragmentProfileBinding
 import com.mekanly.ui.login.LoginActivity
 import com.mekanly.ui.fragments.flow.VMFlow
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
-import com.mekanly.ui.fragments.search.viewModel.VMSearch.Companion.FILTER_TYPE_LOCATION
 
 class FragmentProfile : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -91,8 +90,7 @@ class FragmentProfile : Fragment() {
                     binding.apply {
                         textLocation.text = selectedCity.name
                     }
-                    viewModel.updateFilterType(FILTER_TYPE_LOCATION)
-                    viewModel.getPageInfoDefault(0, location = selectedCity)
+                    viewModel.getHouses()
                 }
 
                 bottomSheet.show(childFragmentManager, "LocationBottomSheet")

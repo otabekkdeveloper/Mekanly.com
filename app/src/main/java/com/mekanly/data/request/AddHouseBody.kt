@@ -1,6 +1,7 @@
 package com.mekanly.data.request
 
 import com.google.gson.annotations.SerializedName
+import com.mekanly.utils.Constants.Companion.OWNER
 
 data class AddHouseBody(
     var name: String? = null,
@@ -15,7 +16,7 @@ data class AddHouseBody(
     @SerializedName("repair_type_id")
     var repairTypeId: Int? = null,
     var possibilities: List<Int>? = null,
-    var who: String = "Eýesinden",
+    var who: String = OWNER,
     var area: Int? = null,
     @SerializedName("write_comment")
     var writeComment: Int? = null,

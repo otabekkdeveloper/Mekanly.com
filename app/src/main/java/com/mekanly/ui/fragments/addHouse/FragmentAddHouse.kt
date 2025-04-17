@@ -29,6 +29,8 @@ import com.mekanly.ui.dialog.OptionSelectionDialog
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_OPPORTUNITY
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_PROPERTIES
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_REPAIR
+import com.mekanly.utils.Constants.Companion.OWNER
+import com.mekanly.utils.Constants.Companion.REALTOR
 import com.mekanly.utils.extensions.toInt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -95,9 +97,9 @@ class FragmentAddHouse : Fragment() {
 
         binding.radioGroupPoster.setOnCheckedChangeListener { group, checkedId ->
             addHouseBody.who = when (checkedId) {
-                R.id.radioBtnOwner -> "Eýesinden"
-                R.id.radioBtnRealtor -> "realtordan"
-                else -> "Eýesinden"
+                R.id.radioBtnOwner -> OWNER
+                R.id.radioBtnRealtor -> REALTOR
+                else -> OWNER
             }
         }
 

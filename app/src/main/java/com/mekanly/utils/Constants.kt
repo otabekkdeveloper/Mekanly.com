@@ -17,6 +17,14 @@ class Constants {
                 else -> context.getString(R.string.error_no_content)
             }
         }
+
+        const val OWNER = "eyesinden"
+        const val REALTOR = "realtor"
+        const val SORT_BY_PRICE = "price"
+        const val SORT_BY_CREATED_AT = "created_at"
+        const val SORT_ORDER_ASC = "asc"
+        const val SORT_ORDER_DESC = "desc"
+
     }
 
 

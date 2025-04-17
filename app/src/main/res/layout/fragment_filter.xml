@@ -41,8 +41,7 @@
                     android:gravity="center"
                     android:text="@string/filter"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -58,63 +57,39 @@
 
 
             <LinearLayout
-                    android:id="@+id/buttonBolum"
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/section"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:paddingVertical="2dp"
+                    android:id="@+id/txt_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/manrope_bold"
-                            android:paddingStart="16dp"
-                            android:paddingTop="8dp"
-                            android:text="@string/section"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            tools:ignore="RtlSymmetry" />
-
-                        <TextView
-                            android:id="@+id/bolumTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="16dp"
-                            android:text="@string/not_selected"
-                            android:textColor="@color/text_color_gray"
-                            android:textSize="12sp"
-                            tools:ignore="RtlSymmetry" />
-
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"/>
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_next_btn"/>
-
-
-
-                </LinearLayout>
-
+            </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginTop="8dp"
                 app:dividerColor="@color/line_divider" />
 
 
@@ -122,72 +97,52 @@
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:paddingTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/location_text"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/manrope_bold"
-                        android:paddingStart="16dp"
-                        android:paddingTop="8dp"
-                        android:text="@string/location_text"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlSymmetry" />
-
-                    <TextView
-                        android:id="@+id/locationText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="16dp"
-                        android:text="@string/not_selected"
-                        android:textColor="@color/text_color_gray"
-                        android:textSize="12sp"
-                        tools:ignore="RtlSymmetry" />
-
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_next_btn"/>
-
-
+                <TextView
+                    android:paddingVertical="2dp"
+                    android:id="@+id/txt_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/not_selected"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
+
+
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginTop="8dp"
                 app:dividerColor="@color/line_divider" />
+
+
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/roboto_regular"
                 android:paddingStart="16dp"
                 android:text="@string/rooms_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -200,7 +155,7 @@
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroup"
+                    android:id="@+id/chipGroupRooms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fadeScrollbars="false">
@@ -345,12 +300,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/roboto_regular"
                 android:paddingStart="16dp"
                 android:text="@string/floor_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -362,7 +316,7 @@
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroupTwo"
+                    android:id="@+id/chipGroupFloor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fadeScrollbars="false">
@@ -505,32 +459,30 @@
 
 
             <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/customSwitch"
+                android:id="@+id/switch_show_only_images"
                 style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginHorizontal="20dp"
                 android:checked="false"
-                android:fontFamily="@font/manrope_bold"
-                android:text="@string/show_only_status"
-                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/show_only_images"
                 app:thumbTint="@color/white"
                 app:trackDecoration="@color/color_transparent"
                 app:trackTint="@color/unchecked_track" />
 
 
             <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/customSwitchTwo"
+                android:id="@+id/switch_show_date_desc"
                 style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:checked="false"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/roboto_regular"
                 android:text="@string/show_newly_added_properties"
-                android:textStyle="bold"
                 app:thumbTint="@color/white"
                 app:trackDecoration="@color/color_transparent"
                 app:trackTint="@color/unchecked_track" />
@@ -554,19 +506,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@string/property_type"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"/>
 
                 <TextView
+                    android:id="@+id/txt_property_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="end"
                     android:text="@string/not_selected"
                     android:textColor="@color/black"
@@ -609,19 +560,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@string/repair"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"/>
 
                 <TextView
+                    android:id="@+id/txt_repair_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="end"
                     android:text="@string/not_selected"
                     android:textColor="@color/black"
@@ -661,19 +611,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@string/possibilities"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/txt_opportunities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="end"
                     android:text="@string/not_selected"
                     android:textColor="@color/black"
@@ -705,6 +654,7 @@
 
 
             <RadioGroup
+                android:id="@+id/radioGroupPoster"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -714,7 +664,7 @@
 
 
                 <RadioButton
-                    android:id="@+id/radioBtnOne"
+                    android:id="@+id/radioBtnOwner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="3dp"
@@ -723,13 +673,13 @@
                     android:button="@color/color_transparent"
                     android:checked="false"
                     android:gravity="center"
-                    android:text="Eýesi"
+                    android:text="@string/owner"
                     android:textColor="@color/radio_text_color"
                     android:textSize="14sp" />
 
 
                 <RadioButton
-                    android:id="@+id/radioBtnTwo"
+                    android:id="@+id/radioBtnRealtor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -738,7 +688,7 @@
                     android:button="@color/color_transparent"
                     android:checked="false"
                     android:gravity="center"
-                    android:text="Reiltor"
+                    android:text="@string/realtor"
                     android:textColor="@color/radio_text_color"
                     android:textSize="14sp" />
 
@@ -956,18 +906,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@string/organize"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"/>
 
                 <TextView
+                    android:id="@+id/txt_sort_by"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="end"
                     android:text="@string/not_selected"
                     android:textColor="@color/black"

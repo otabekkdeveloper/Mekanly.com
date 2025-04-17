@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/option_default"
-        android:title="Saylanmadyk" />
+        android:title="@string/not_selected" />
     <item
         android:id="@+id/option_price_asc"
-        android:title="Arzandan gymmada" />
+        android:title="@string/price_from_low_to_high" />
     <item
         android:id="@+id/option_price_desc"
-        android:title="Gymmatdan arzana" />
+        android:title="@string/price_from_high_to_low" />
 </menu>

@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
 import com.mekanly.data.models.House
+import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.Option
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSingleHouseBinding
@@ -65,7 +66,7 @@ class FragmentSingleHouse : Fragment() {
                     is ResponseBodyState.Success -> {
                         delay(200)
                         binding.progressBar.visibility = View.GONE
-                        setViewPager(it.dataResponse as House)
+                        setViewPager(it.dataResponse as HouseDetails)
                         setHouseDetails(it.dataResponse)
                         setPossibilityAdapter(it.dataResponse.possibilities)
                         setHomeDetails(it.dataResponse)
@@ -84,27 +85,27 @@ class FragmentSingleHouse : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setHouseDetails(house: House) {
+    private fun setHouseDetails(house: HouseDetails) {
         binding.apply{
             tvTitle.text = house.name
             tvDate.text = formatDate(house.createdAt)
             tvDetails.text = house.description
             tvHouseType.text = house.categoryName
             tvViewCount.text = house.viewed.toString()
-            tvAddress.text =house.location.name
+            tvAddress.text =house.location?.name
         }
 
     }
 
-    private fun setViewPager(house: House) {
+    private fun setViewPager(house: HouseDetails) {
         val imageSliderAdapter = HouseImagesAdapter(house.images)
         binding.viewPager.adapter = imageSliderAdapter
     }
 
-    private fun setHomeDetails(dataResponse: House) {
+    private fun setHomeDetails(dataResponse: HouseDetails) {
         val houseList = listOf(
             HouseItem(R.drawable.ic_houses_for_sale, "Bölümi", dataResponse.categoryName),
-            HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", dataResponse.location.name),
+            HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", dataResponse.location?.name ?: ""),
             HouseItem(R.drawable.ic_calendar, "Goýlan senesi", formatDate(dataResponse.createdAt)),
             HouseItem(R.drawable.ic_phone, "Telefon nomeri", dataResponse.bronNumber),
             HouseItem(R.drawable.elitka, "Emläk görnüşi", dataResponse.categoryName),

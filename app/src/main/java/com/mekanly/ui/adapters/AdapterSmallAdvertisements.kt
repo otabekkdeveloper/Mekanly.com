@@ -23,7 +23,7 @@ class   AdapterSmallAdvertisements(private val properties: List<House>, private 
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text =
-                    "Location: ${property.location.name}, ${property.location.parentName}"
+                    "Location: ${property.location?.name ?: ""}, ${property.location?.parentName ?: ""}"
                 tvDescription.text = property.description
                 if (property.images.isNotEmpty()) {
                     Glide.with(itemView.context)
