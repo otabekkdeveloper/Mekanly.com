@@ -65,7 +65,7 @@ class VMSearch : ViewModel() {
     private val _sortBy = MutableStateFlow<String>(SORT_BY_CREATED_AT)
     val sortBy: StateFlow<String> = _sortBy
 
-    private val _area = MutableStateFlow<PriceRange>(PriceRange(5, 500))
+    private val _area = MutableStateFlow<PriceRange>(PriceRange(5, 700))
     val area: StateFlow<PriceRange> = _area
 
     private val _price = MutableStateFlow<PriceRange>(PriceRange())

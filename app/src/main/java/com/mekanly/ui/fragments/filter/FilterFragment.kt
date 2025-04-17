@@ -2,6 +2,8 @@ package com.mekanly.ui.fragments.filter
 
 import LocationBottomSheet
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +50,7 @@ class FilterFragment : Fragment() {
     private lateinit var maxValueTextView: TextView
 
     private val viewModel: VMSearch by activityViewModels()
+    private var isProgrammaticChange = false
 
 
     override fun onCreateView(
@@ -101,11 +104,13 @@ class FilterFragment : Fragment() {
         }
 
         binding.radioGroupPoster.setOnCheckedChangeListener { _, checkedId ->
-            viewModel.setOwner( when (checkedId) {
-                R.id.radioBtnOwner -> OWNER
-                R.id.radioBtnRealtor -> REALTOR
-                else -> null
-            })
+            viewModel.setOwner(
+                when (checkedId) {
+                    R.id.radioBtnOwner -> OWNER
+                    R.id.radioBtnRealtor -> REALTOR
+                    else -> null
+                }
+            )
         }
 
         binding.popupMenu.setOnClickListener { view ->
@@ -150,7 +155,8 @@ class FilterFragment : Fragment() {
                                 val shouldActivateAll = floorNumber.isEmpty()
                                 activateChip(chip, shouldActivateAll)
                             } else {
-                                val shouldBeSelected = chipValue != null && floorNumber?.contains(chipValue) == true
+                                val shouldBeSelected =
+                                    chipValue != null && floorNumber?.contains(chipValue) == true
                                 activateChip(chip, shouldBeSelected)
                             }
                         }
@@ -165,7 +171,8 @@ class FilterFragment : Fragment() {
                                 val shouldActivateAll = rooms.isEmpty()
                                 activateChip(chip, shouldActivateAll)
                             } else {
-                                val shouldBeSelected = chipValue != null && rooms.contains(chipValue)
+                                val shouldBeSelected =
+                                    chipValue != null && rooms.contains(chipValue)
                                 activateChip(chip, shouldBeSelected)
                             }
                         }
@@ -217,7 +224,7 @@ class FilterFragment : Fragment() {
                 }
                 launch {
                     viewModel.sortBy.collect { sortBy ->
-                        if (sortBy != SORT_BY_PRICE){
+                        if (sortBy != SORT_BY_PRICE) {
                             binding.txtSortBy.text = getString(R.string.not_selected)
                         }
                     }
@@ -442,7 +449,10 @@ class FilterFragment : Fragment() {
         chip.setTextColor(
             ContextCompat.getColor(requireContext(), if (isActive) R.color.white else R.color.black)
         )
-        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black)
+        chip.chipStrokeColor = ContextCompat.getColorStateList(
+            requireContext(),
+            if (isActive) R.color.black else R.color.chip_border_color
+        )
     }
 
 
@@ -463,11 +473,52 @@ class FilterFragment : Fragment() {
             rangeSeekBar.values = listOf(initialMin, initialMax)
             updateTextViewsInSeekBar(initialMin, initialMax)
 
-            rangeSeekBar.addOnChangeListener { slider, _, _ ->
-                val (currentMin, currentMax) = slider.values
-                updateTextViewsInSeekBar(currentMin, currentMax)
+            rangeSeekBar.addOnChangeListener { slider, _, fromUser ->
+                if (fromUser && !isProgrammaticChange) {
+                    isProgrammaticChange = true
+                    val (currentMin, currentMax) = slider.values
+                    updateTextViewsInSeekBar(currentMin, currentMax)
+                    isProgrammaticChange = false
+                }
+
             }
         }
+
+
+        val rangeSeekBar = binding.rangeSeekBar
+        val minValueText = binding.minValueText
+        val maxValueText = binding.maxValueText
+        minValueText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!isProgrammaticChange) {
+                    isProgrammaticChange = true
+                    val minValue = s.toString().toIntOrNull() ?: 5
+                    val maxValue = maxValueText.text.toString().toIntOrNull() ?: 700
+
+                    val clampedMin = minOf(maxOf(minValue, 5), maxValue)
+                    rangeSeekBar.values = listOf(clampedMin.toFloat(), maxValue.toFloat())
+                    isProgrammaticChange = false
+                }
+            }
+        })
+        maxValueText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!isProgrammaticChange) {
+                    isProgrammaticChange = true
+                    val maxValue = s.toString().toIntOrNull() ?: 700
+                    val minValue = minValueText.text.toString().toIntOrNull() ?: 5
+
+                    val clampedMax = maxOf(minOf(maxValue, 700), minValue)
+                    rangeSeekBar.values = listOf(minValue.toFloat(), clampedMax.toFloat())
+                    isProgrammaticChange = false
+                }
+            }
+        })
+
 
     }
 

@@ -22,7 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@drawable/bg_vip_houses"
+            android:background="@color/white"
             android:layout_height="wrap_content">
 
             <LinearLayout
