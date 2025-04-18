@@ -120,8 +120,8 @@ class FragmentSingleHouse : Fragment() {
         binding.rvSingleHouse.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvSingleHouse.adapter = houseAdapter
 
-
     }
+
 
     private fun getHouseInfo() {
         if (args.houseId == -1L) {

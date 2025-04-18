@@ -17,6 +17,7 @@ class AdapterBigBanners(private val images: List<Banner>) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dataBanner: Banner) {
+
 //            if (dataBanner.logo.isNotEmpty()) {
 //                Glide.with(binding.ivBannerAvatar).load(BASE_URL + dataBanner.parsedImages()[0])
 //                    .into(binding.ivBannerAvatar)

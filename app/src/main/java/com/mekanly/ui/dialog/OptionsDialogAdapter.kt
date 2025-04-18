@@ -1,20 +1,15 @@
 package com.mekanly.ui.dialog
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.models.Option
 import com.mekanly.databinding.ItemDialogPropertiesBinding
 import com.mekanly.databinding.ItemOpportunityDialogBinding
-import com.mekanly.databinding.ItemOpportunityInSingleHouseBinding
-
+import com.mekanly.presentation.ui.enums.Possibilities
 
 
 class OptionsDialogAdapter(
@@ -93,34 +88,80 @@ class OptionsDialogAdapter(
         }
     }
 
-    inner class OpportunitiesViewHolder(private val binding: ItemOpportunityDialogBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Option) {
-            binding.textView.text = item.name
-            binding.imageView.visibility = VISIBLE
-            val isSelected = selectedItems.contains(item)
+        inner class OpportunitiesViewHolder(private val binding: ItemOpportunityDialogBinding) :
+            RecyclerView.ViewHolder(binding.root) {
 
-            binding.layBackground.setBackgroundResource(
-                if (isSelected) R.drawable.bg_selected_properties_btn
-                else R.drawable.emlakler_btn_bg
-            )
+            fun bind(item: Option) {
+                val possibilityEnum = Possibilities.entries.find {
+                    it.key.equals(item.name, ignoreCase = true) ||
+                            it.name.equals(item.name, ignoreCase = true)
+                }
 
-            binding.layBackground.setOnClickListener {
-                if (singleSelection) {
-                    selectedItems.clear()
-                    selectedItems.add(item)
-                    notifyDataSetChanged()
-                } else {
-                    if (selectedItems.contains(item)) {
-                        selectedItems.remove(item)
-                    } else {
+                val context = binding.textView.context
+                binding.textView.text = when (possibilityEnum) {
+                    Possibilities.WIFI -> context.getString(R.string.wifi)
+                    Possibilities.WASHER -> context.getString(R.string.washer)
+                    Possibilities.TV -> context.getString(R.string.tv)
+                    Possibilities.CONDITIONER -> context.getString(R.string.conditioner)
+                    Possibilities.WARDROBE -> context.getString(R.string.wardrobe)
+                    Possibilities.BED -> context.getString(R.string.bed)
+                    Possibilities.HOT -> context.getString(R.string.hot)
+                    Possibilities.FRIDGE -> context.getString(R.string.fridge)
+                    Possibilities.SHOWER -> context.getString(R.string.shower)
+                    Possibilities.KITCHEN -> context.getString(R.string.kitchen)
+                    Possibilities.HOT_WATER -> context.getString(R.string.hot_water)
+                    else -> item.name
+                }
+
+                val iconRes = when (possibilityEnum) {
+                    Possibilities.WIFI -> R.drawable.ic_wifi
+                    Possibilities.POOL -> R.drawable.ic_swimming_pool
+                    Possibilities.BALCONY -> R.drawable.ic_balcony
+                    Possibilities.ELEVATOR -> R.drawable.ic_lift
+                    Possibilities.KITCHEN_FURNITURE -> R.drawable.ic_kitchen_furniture
+                    Possibilities.WASHER -> R.drawable.ic_washing_machine
+                    Possibilities.TV -> R.drawable.ic_tv
+                    Possibilities.HOT -> R.drawable.ic_heating_system
+                    Possibilities.STOVE -> R.drawable.ic_stove
+                    Possibilities.WORK_DESK -> R.drawable.ic_table
+                    Possibilities.CONDITIONER -> R.drawable.ic_air_conditioner
+                    Possibilities.WARDROBE -> R.drawable.ic_wardrobe
+                    Possibilities.BED -> R.drawable.ic_bedroom
+                    Possibilities.MANGAL -> R.drawable.ic_bbq
+                    Possibilities.HOT_WATER -> R.drawable.ic_hot_water
+                    Possibilities.FRIDGE -> R.drawable.ic_fridge
+                    Possibilities.SHOWER -> R.drawable.ic_bath
+                    Possibilities.KITCHEN -> R.drawable.ic_kitchen
+                    else -> R.drawable.ic_wifi
+                }
+
+                binding.imageView.setImageResource(iconRes)
+
+                val isSelected = selectedItems.contains(item)
+                binding.layBackground.setBackgroundResource(
+                    if (isSelected) R.drawable.bg_selected_properties_btn
+                    else R.drawable.emlakler_btn_bg
+                )
+
+                binding.layBackground.setOnClickListener {
+                    if (singleSelection) {
+                        selectedItems.clear()
                         selectedItems.add(item)
+                        notifyDataSetChanged()
+                    } else {
+                        if (selectedItems.contains(item)) {
+                            selectedItems.remove(item)
+                        } else {
+                            selectedItems.add(item)
+                        }
+                        notifyItemChanged(bindingAdapterPosition)
                     }
-                    notifyItemChanged(bindingAdapterPosition)
                 }
             }
         }
-    }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -131,6 +172,8 @@ class OptionsDialogAdapter(
             }
             TYPE_OPPORTUNITY -> {
                 val binding = ItemOpportunityDialogBinding.inflate(layoutInflater, parent, false)
+
+
                 OpportunitiesViewHolder(binding)
             }
             else -> {
