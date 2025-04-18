@@ -141,5 +141,8 @@ interface ApiService {
         @Part("possibilities") possibilities: RequestBody?,
         @Part images: List<MultipartBody.Part>
     ):Call<ResponseBody>
+
+    @GET("api/v2/user/favorites/houses")
+    fun getFavoriteHouses(): Call<ResponseDataList<House>>
 }
 
