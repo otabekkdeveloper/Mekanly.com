@@ -1,6 +1,8 @@
 package com.mekanly.ui.fragments.profile
 
 import LocationBottomSheet
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,19 +11,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mekanly.R
 import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.databinding.FragmentProfileBinding
-import com.mekanly.ui.login.LoginActivity
-import com.mekanly.ui.fragments.flow.VMFlow
+import com.mekanly.helpers.PreferencesHelper
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
+import com.mekanly.ui.login.LoginActivity
 
 class FragmentProfile : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    private val vmFlow: VMFlow by activityViewModels()
     private val viewModel: VMSearch by viewModels()
 
     override fun onCreateView(
@@ -38,20 +38,30 @@ class FragmentProfile : Fragment() {
             binding.apply {
                 tvAccountName.text = getString(R.string.account)
                 tvAccountNumber.text = getString(R.string.press_to_log_in)
-                tvAccountNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.bg_blue_two))
+                tvAccountNumber.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.bg_blue_two
+                    )
+                )
             }
         } else {
             binding.apply {
-                tvAccountName.text = "Akkaunt"
+                tvAccountName.text = getString(R.string.account)
                 tvAccountNumber.text = AppPreferences.getUsername()
-                tvAccountNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_color_gray))
+                tvAccountNumber.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.text_color_gray
+                    )
+                )
             }
         }
     }
 
     private fun initListeners() {
 
-        binding.hintFragment.setOnClickListener {
+        binding.buttonSupport.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_hintFragment)
         }
 
@@ -59,12 +69,8 @@ class FragmentProfile : Fragment() {
             findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
         }
 
-        binding.addHouse.setOnClickListener {
+        binding.btnAddHouse.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_addNotificationFragment)
-        }
-
-        binding.addNotifications.setOnClickListener {
-
         }
 
         binding.crAccount.setOnClickListener {
@@ -78,25 +84,42 @@ class FragmentProfile : Fragment() {
 
         }
 
-        if (vmFlow.globalState.value.locations.isNotEmpty()) {
-            val cities = vmFlow.globalState.value.locations
+        binding.btnLogout.setOnClickListener{
+            showLogoutDialog()
+        }
 
+        if (!PreferencesHelper.getGlobalOptions()?.locations.isNullOrEmpty()) {
+            val cities = PreferencesHelper.getGlobalOptions()?.locations!!
             binding.btnLocation.setOnClickListener {
                 val bottomSheet = LocationBottomSheet(cities, onDelete = {
-                    binding.apply {
-                        textLocation.text = ""
-                    }
+                    binding.apply { textLocation.text = "" }
                 }) { selectedCity ->
-                    binding.apply {
-                        textLocation.text = selectedCity.name
-                    }
+                    binding.apply { textLocation.text = selectedCity.name }
                     viewModel.getHouses()
                 }
-
                 bottomSheet.show(childFragmentManager, "LocationBottomSheet")
             }
 
         }
 
+    }
+
+    private fun showLogoutDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.logout))
+            .setMessage(getString(R.string.logout_question))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                logout()
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
+    }
+
+    private fun logout() {
+        AppPreferences.clearPreferences()
+        val intent = requireContext().packageManager.getLaunchIntentForPackage(requireContext().packageName)
+        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent?.let { startActivity(it) }
+        requireActivity().finishAffinity()
     }
 }

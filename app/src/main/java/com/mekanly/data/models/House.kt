@@ -65,7 +65,7 @@ data class House(
     @SerializedName("level_number")
     val levelNumber: Int?,
     @SerializedName("liked")
-    val liked: Boolean,
+    var liked: Boolean,
     @SerializedName("shop")
     val shop: BusinessProfile?,
     @SerializedName("type")

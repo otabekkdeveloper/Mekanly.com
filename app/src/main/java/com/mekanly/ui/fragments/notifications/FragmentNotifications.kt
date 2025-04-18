@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.mekanly.R
-import com.mekanly.databinding.FragmentAddNotificationBinding
 import com.mekanly.databinding.FragmentNotificationsBinding
 
 

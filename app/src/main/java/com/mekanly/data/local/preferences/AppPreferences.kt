@@ -42,5 +42,8 @@ object AppPreferences {
         sharedPreferences.edit().putString(PREF_USERNAME, value).apply()
     }
 
+    fun clearPreferences() {
+        sharedPreferences.edit { clear() }
+    }
 
 }

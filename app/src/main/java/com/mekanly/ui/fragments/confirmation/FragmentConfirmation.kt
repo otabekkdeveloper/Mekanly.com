@@ -36,7 +36,7 @@ class FragmentConfirmation : Fragment() {
     private fun initListeners() {
         binding.btnSendEmptyMessage.setOnClickListener {
             confirmationUseCase.invoke(
-                args.phone, args.tokenWaitlist, binding.inputOtp.text.toString()
+                args.phone, args.tokenWaitlist, binding.otpView.otp ?: ""
             ) {
                 when (it) {
                     is ResponseBodyState.Error -> {

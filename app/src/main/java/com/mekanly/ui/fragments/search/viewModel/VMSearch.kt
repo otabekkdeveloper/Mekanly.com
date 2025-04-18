@@ -103,7 +103,9 @@ class VMSearch : ViewModel() {
             _searchState.value = result
             when (result) {
                 is ResponseBodyState.SuccessList -> {
-                    _houses.value.clear()
+                    if (offset == 0){
+                        _houses.value.clear()
+                    }
                     _isLoading.value = false
                     val data = result.dataResponse as List<House>
                     _houses.value.addAll(data)
@@ -117,28 +119,6 @@ class VMSearch : ViewModel() {
             }
         }
 
-    }
-
-    fun search(query: String) {
-        _needToReinitialiseAdapter.value = true
-        _isLoading.value = true
-        searchUseCase.search(query) { result ->
-            _searchState.value = result
-            when (result) {
-                is ResponseBodyState.SuccessList -> {
-                    _isLoading.value = false
-                    _houses.value.clear()
-                    val houses = result.dataResponse as List<House>
-                    _houses.value.addAll(houses)
-                }
-
-                is ResponseBodyState.Error -> {
-                    _isLoading.value = false
-                }
-
-                else -> {}
-            }
-        }
     }
 
     fun setSelectedLocation(location: Location?) {
@@ -201,11 +181,10 @@ class VMSearch : ViewModel() {
         _selectedLocation.value = null
         _selectedCategory.value = null
         _price.value = PriceRange()
-
         _selectedPropertyTypes.value = emptyList()
         _selectedRepairTypes.value = emptyList()
         _selectedOpportunities.value = emptyList()
-        _owner.value = OWNER
+        _owner.value = null
         _image.value = false
         _status.value = null
         _sortOrder.value = SORT_ORDER_DESC
@@ -219,18 +198,18 @@ class VMSearch : ViewModel() {
         return FilterBody(
             categoryId = _selectedCategory.value?.id,
             locationId = _selectedLocation.value?.id,
-//            possibilities = _selectedOpportunities.value.map { it.id }.toString(),
+            possibilities = _selectedOpportunities.value.map { it.id }.toString(),
             image = _image.value.takeIf { it },
             who = _owner.value,
             minPrice = _price.value.min,
             maxPrice = _price.value.max,
             minArea = _area.value.min,
             maxArea = _area.value.max,
-//            propertyType = _selectedPropertyTypes.value.map { it.id }.toString(),
-//            repairType = _selectedRepairTypes.value.map { it.id }.toString(),
+            propertyType = _selectedPropertyTypes.value.map { it.id }.toString(),
+            repairType = _selectedRepairTypes.value.map { it.id }.toString(),
             status = _status.value,
-//            roomNumber = _roomNumber.value.map { it }.toString() ,
-//            floorNumber = _floorNumber.value.map { it }.toString(),
+            roomNumber = _roomNumber.value.map { it }.toString() ,
+            floorNumber = _floorNumber.value.map { it }.toString(),
             sortBy = _sortBy.value,
             sortOrder = _sortOrder.value,
             limit = LIMIT_REGULAR.toInt(),

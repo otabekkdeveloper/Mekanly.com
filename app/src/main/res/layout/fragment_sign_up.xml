@@ -12,53 +12,30 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <FrameLayout
-                android:id="@+id/frameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/login_bg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/manrope_bold"
-                android:text="Ulgama girmek"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/ic_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="150dp"
                 android:src="@drawable/mekanly_login_logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="70dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+                app:layout_constraintTop_toBottomOf="@id/ic_logo">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_phone"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_width="match_parent"
                     android:textColorHint="@color/text_color_gray"
                     android:layout_height="wrap_content"
@@ -72,37 +49,31 @@
                     android:id="@+id/btn_check_verification"
                     android:buttonTint="@color/text_color_gray"
                     android:layout_width="wrap_content"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
                     android:textColor="@color/text_color_gray"
-                    android:text="Düzgünnamany okadym we kabul etdim"
+                    android:text="@string/agree_with_terms"
                     android:layout_marginStart="20dp"/>
-
-
-
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_confimation"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginHorizontal="33dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/bg_color_app"
-                    android:text="Tassyklamak"
+                    android:text="@string/confirm"
                     android:textColor="@color/white" />
-
-
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
-
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="0dp"
@@ -113,10 +84,10 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:textColor="@color/default_gray"
+                        android:textColor="@color/text_color_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ÝA-DA" />
+                        android:text="@string/or" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="0dp"
@@ -132,13 +103,14 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Elektron poçta"
+                    android:text="@string/email"
                     android:id="@+id/btn_email"
                     android:textAllCaps="true"
-                    android:fontFamily="@font/manrope_bold"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginTop="16dp"
                     app:cornerRadius="26dp"
                     android:textSize="12sp"
+                    android:textColor="@color/bg_blue_one"
                     app:strokeColor="@color/bg_blue_one"
                     app:strokeWidth="2dp" />
 

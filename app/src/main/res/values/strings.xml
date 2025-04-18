@@ -94,4 +94,16 @@
     <string name="bahasy">Bahasy</string>
     <string name="price_from_low_to_high">Arzandan gymmada</string>
     <string name="price_from_high_to_low">Gymmatdan arzana</string>
+    <string name="add_announcement">Bildiriş goşmak</string>
+    <string name="terms_of_use">Düzgünnama</string>
+    <string name="contact_us">Habarlaşmak</string>
+    <string name="support">Kömekçi</string>
+    <string name="logout_question">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="confirm">Tassyklamak</string>
+    <string name="agree_with_terms">Düzgünnamany okadym we kabul etdim</string>
+    <string name="or">ÝA-DA</string>
+    <string name="email">Elektron poçta</string>
+    <string name="enter_otp">Enter confirmation code</string>
+    <string name="retry">Täzeden synanyşmak</string>
 </resources>

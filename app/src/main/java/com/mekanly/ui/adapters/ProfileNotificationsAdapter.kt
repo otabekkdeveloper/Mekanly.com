@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.adapters
+package com.mekanly.ui.adapters
 
 
 import android.view.LayoutInflater
@@ -6,14 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mekanly.data.ProfileNotificationsData
+import com.mekanly.data.models.House
 import com.mekanly.databinding.ItemProfileNotificationsBinding
 import com.mekanly.presentation.ui.adapters.pagerAdapters.ImageSliderNotifications
+import com.mekanly.utils.extensions.formatIsoDateLegacy
 
 class ProfileNotificationsAdapter(
-    private val onItemClick: (ProfileNotificationsData) -> Unit,
-    private val onLikeClick: (ProfileNotificationsData) -> Unit
-) : ListAdapter<ProfileNotificationsData, ProfileNotificationsAdapter.PropertyViewHolder>(PropertyDiffCallback()) {
+    private val onItemClick: (House) -> Unit,
+    private val onLikeClick: (House) -> Unit
+) : ListAdapter<House, ProfileNotificationsAdapter.PropertyViewHolder>(PropertyDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
         val binding = ItemProfileNotificationsBinding.inflate(
@@ -49,11 +50,11 @@ class ProfileNotificationsAdapter(
             }
         }
 
-        fun bind(property: ProfileNotificationsData) {
+        fun bind(property: House) {
             binding.apply {
-                tvMainTitle.text = property.title
-                tvAddressTime.text = property.time
-                tvDescription.text = property.address
+                tvMainTitle.text = property.name
+                tvAddressTime.text = formatIsoDateLegacy(property.createdAt)
+                tvDescription.text = property.description
                 tvPrice.text = "${property.price} TMT"
 
                 // Установка статуса с соответствующим цветом
@@ -67,13 +68,13 @@ class ProfileNotificationsAdapter(
                 )
 
                 // Настройка ViewPager для изображений
-                val imageAdapter = ImageSliderNotifications(property.images)
+                val imageAdapter = ImageSliderNotifications(property.images.map { it.url })
                 viewPagerImages.adapter = imageAdapter
                 wormDotsIndicator.setViewPager2(viewPagerImages)
 
                 // Обновление иконки избранного
                 btnLike.setIconTintResource(
-                    if (property.isFavorite) {
+                    if (property.liked) {
                         com.mekanly.R.color.error
                     } else {
                         com.mekanly.R.color.black
@@ -83,12 +84,12 @@ class ProfileNotificationsAdapter(
         }
     }
 
-    private class PropertyDiffCallback : DiffUtil.ItemCallback<ProfileNotificationsData>() {
-        override fun areItemsTheSame(oldItem: ProfileNotificationsData, newItem: ProfileNotificationsData): Boolean {
+    private class PropertyDiffCallback : DiffUtil.ItemCallback<House>() {
+        override fun areItemsTheSame(oldItem: House, newItem: House): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ProfileNotificationsData, newItem: ProfileNotificationsData): Boolean {
+        override fun areContentsTheSame(oldItem: House, newItem: House): Boolean {
             return oldItem == newItem
         }
     }

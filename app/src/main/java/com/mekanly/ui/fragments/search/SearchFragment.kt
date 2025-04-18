@@ -131,10 +131,6 @@ class SearchFragment : Fragment() {
 
     }
 
-    private fun performSearch(query: String) {
-        viewModel.search(query)
-    }
-
     private fun observeViewModel() {
 
         lifecycleScope.launch {

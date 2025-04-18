@@ -117,6 +117,9 @@ interface ApiService {
         @Body request: FilterBody
     ): Call<ResponseDataList<House>>
 
+    @GET("api/v2/user/houses")
+    fun getUserHouses(): Call<ResponseDataList<House>>
+
     @Multipart
     @POST("api/v2/houses/add")
     fun addHouse(

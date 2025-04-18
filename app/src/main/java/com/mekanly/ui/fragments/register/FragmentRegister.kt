@@ -51,7 +51,7 @@ class FragmentRegister : Fragment(), PhoneNumberTextWatcher.PhoneNumberValidatio
                         binding.progressBar.visibility = View.GONE
                         val action =
                             FragmentRegisterDirections.actionSignUpFragmentToFragmentConfirmation(
-                                binding.inputPhone.text.toString(), it.dataResponse.token
+                                it.dataResponse.phone, it.dataResponse.token
                             )
 
                         findNavController().navigate(action)
@@ -66,7 +66,8 @@ class FragmentRegister : Fragment(), PhoneNumberTextWatcher.PhoneNumberValidatio
     private fun initListeners() {
         binding.btnConfimation.setOnClickListener {
             if (isPhoneValid && binding.btnCheckVerification.isChecked) {
-                viewModel.login(binding.inputPhone.text.toString())
+                val cleanedPhone = binding.inputPhone.text.toString().replace(" ", "")
+                viewModel.login(cleanedPhone)
             }else{
                 requireContext().showErrorSnackBar(binding.root,
                     getString(R.string.error_message_phone))

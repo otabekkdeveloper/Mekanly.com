@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.R
 import com.mekanly.data.ProfileNotificationsData
+import com.mekanly.data.models.House
 import com.mekanly.databinding.FragmentSubNotificationsBinding
-import com.mekanly.presentation.ui.adapters.ProfileNotificationsAdapter
+import com.mekanly.ui.adapters.ProfileNotificationsAdapter
 
 class SubNotificationsFragment : Fragment() {
 
@@ -50,7 +50,7 @@ class SubNotificationsFragment : Fragment() {
         propertyAdapter = ProfileNotificationsAdapter(
             onItemClick = { property ->
                 // Навигация к деталям объекта
-                navigateToPropertyDetails(property.id)
+                navigateToPropertyDetails(property.id.toString())
             },
             onLikeClick = { property ->
                 // Обработка нажатия на кнопку "Нравится"
@@ -67,8 +67,8 @@ class SubNotificationsFragment : Fragment() {
     private fun loadProperties() {
         // Здесь должна быть логика загрузки данных
         // Например, из ViewModel или Repository
-        val sampleProperties = getSampleProperties()
-        propertyAdapter.submitList(sampleProperties)
+//        val sampleProperties = getSampleProperties()
+//        propertyAdapter.submitList(sampleProperties)
     }
 
     private fun navigateToPropertyDetails(propertyId: String) {
@@ -77,10 +77,10 @@ class SubNotificationsFragment : Fragment() {
         // findNavController().navigate(PropertyListFragmentDirections.actionToPropertyDetails(propertyId))
     }
 
-    private fun toggleFavorite(property: ProfileNotificationsData) {
+    private fun toggleFavorite(property: House) {
         // Логика изменения состояния избранного
         // Обычно это делается через ViewModel
-        property.isFavorite = !property.isFavorite
+        property.liked = !property.liked
         propertyAdapter.notifyItemChanged(propertyAdapter.currentList.indexOf(property))
     }
 
