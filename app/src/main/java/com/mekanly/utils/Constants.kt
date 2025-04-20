@@ -24,6 +24,10 @@ class Constants {
         const val SORT_BY_CREATED_AT = "created_at"
         const val SORT_ORDER_ASC = "asc"
         const val SORT_ORDER_DESC = "desc"
+        const val FAV_TYPE_SHOP = "Shop"
+        const val FAV_TYPE_HOUSE = "House"
+        const val COMMENT_TYPE_HOUSE = "House"
+        const val COMMENT_TYPE_PRODUCT = "Product"
 
     }
 

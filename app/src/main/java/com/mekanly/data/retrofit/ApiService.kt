@@ -14,7 +14,10 @@ import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.AuthBody
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.ResponseData
+import com.mekanly.data.request.AddCommentBody
 import com.mekanly.data.request.FilterBody
+import com.mekanly.data.request.ReactionBody
+import com.mekanly.data.request.UpdateCommentBody
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.MultipartBody
@@ -22,6 +25,7 @@ import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
@@ -33,12 +37,6 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("api/v1/houses")
     fun getHouses(): Call<ResponseDataList<House>>
-
-    @GET("api/v1/houses/{start}/{limit}")
-    fun getHousesWithPagination(
-        @Path("start") start:Long,
-        @Path("limit") limit:Long,
-    ): Call<ResponseDataList<House>>
 
     @GET("api/v1/search")
     fun search(
@@ -55,12 +53,10 @@ interface ApiService {
         @Body requestBodyRegister: AuthBody
     ): Call<ResponseRegister>
 
-
     @POST("/api/login")
     fun login(
         @Body requestBody: AuthBody
     ): Call<ResponseLogin>
-
 
     @POST("/api/checkLogin")
     fun confirmLogin(
@@ -77,11 +73,6 @@ interface ApiService {
 
     @GET("/api/v2/top")
     fun getTopHouses():Call<ResponseDataList<House>>
-
-    @GET("/api/v1/houses/{houseId}/comments")
-    fun getHouseComments(
-        @Path("houseId") houseId:String
-    ):Call<ResponseDataList<Comment>>
 
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
@@ -144,5 +135,35 @@ interface ApiService {
 
     @GET("api/v2/user/favorites/houses")
     fun getFavoriteHouses(): Call<ResponseDataList<House>>
+
+    @POST("api/v2/user/favorites/toggle")
+    fun toggleFavorite(
+        @Body request: ReactionBody
+    ): Call<ResponseBody>
+
+    @GET("/api/v2/comments/{start}/{limit}")
+    fun getComments(
+        @Path("start") start:Int,
+        @Path("limit") limit:Int,
+        @Query("id") id:Long,
+        @Query("type") type:String
+    ):Call<ResponseDataList<Comment>>
+
+    @POST("api/v2/houses/add")
+    fun addComment(
+        @Body request: AddCommentBody
+    ):Call<ResponseBody>
+
+    @POST("api/v2/comment/{id}/update")
+    fun updateComment(
+        @Path("id") id:Long,
+        @Body request: UpdateCommentBody
+    ):Call<ResponseBody>
+
+    @DELETE("api/v2/comment/{id}/update")
+    fun deleteComment(
+        @Path("id") id:Long,
+    ):Call<ResponseBody>
+
 }
 

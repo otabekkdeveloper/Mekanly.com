@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.bottomSheet.bottomSheetComments
+package com.mekanly.ui.bottomSheet.bottomSheetComments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mekanly.R
 import com.mekanly.data.models.Comment
 import com.mekanly.data.local.preferences.AppPreferences
+import com.mekanly.data.request.AddCommentBody
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.BottomSheetCommentsBinding
 import com.mekanly.presentation.ui.adapters.CommentsAdapter
+import com.mekanly.utils.Constants.Companion.COMMENT_TYPE_HOUSE
 import com.mekanly.utils.extensions.showErrorSnackBar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -69,7 +72,7 @@ class BottomSheetComments : BottomSheetDialogFragment() {
     }
 
     private fun getHouseComments() {
-        viewModel.getHouseComments(args.houseId)
+        viewModel.getComments(args.houseId, COMMENT_TYPE_HOUSE)
     }
 
     override fun onDestroyView() {
@@ -96,9 +99,10 @@ class BottomSheetComments : BottomSheetDialogFragment() {
 
     private fun handleCommentAction(newCommentText: String) {
         if (AppPreferences.getToken()==""){
-            requireContext().showErrorSnackBar(binding.root, "Now on development")
+            requireContext().showErrorSnackBar(binding.root,
+                getString(R.string.log_in_to_write_comment))
         }else{
-            viewModel.addComment(newCommentText)
+            viewModel.addComment(AddCommentBody(newCommentText, args.houseId,COMMENT_TYPE_HOUSE) )
         }
     }
 

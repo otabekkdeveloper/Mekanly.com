@@ -152,7 +152,7 @@
     </fragment>
     <dialog
         android:id="@+id/bottomSheetComments"
-        android:name="com.mekanly.presentation.ui.bottomSheet.bottomSheetComments.BottomSheetComments"
+        android:name="com.mekanly.ui.bottomSheet.bottomSheetComments.BottomSheetComments"
         android:label="BottomSheetComments">
         <argument
             android:name="houseId"
