@@ -99,11 +99,14 @@ class FragmentHome : Fragment() {
     }
 
     private fun setTopHousesAdapter(dataResponse: List<House>) {
-        binding.progressBarTopHouses.visibility = View.GONE
+//        binding.progressBarTopHouses.visibility = View.GONE
         propertyAdapter = AdapterTopHouses(dataResponse, findNavController())
         binding.rvTopHouses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvTopHouses.adapter = propertyAdapter
     }
+
+
+
 
 
 

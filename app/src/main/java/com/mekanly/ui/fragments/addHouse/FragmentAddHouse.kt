@@ -2,11 +2,18 @@ package com.mekanly.ui.fragments.addHouse
 
 import LocationBottomSheet
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.graphics.Color
+import android.graphics.Typeface
+import android.os.Build
+import android.text.Layout
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -53,6 +60,9 @@ class FragmentAddHouse : Fragment() {
         binding = FragmentAddHouseBinding.inflate(inflater, container, false)
         val globalOptions = PreferencesHelper.getGlobalOptions()
         switchDesign()
+
+
+
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -65,6 +75,25 @@ class FragmentAddHouse : Fragment() {
             }
 
         }
+
+        binding.hashtagInfo.setOnClickListener {
+
+            val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_hashtag_info, null)
+
+
+
+            AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .setCancelable(true)
+                .create()
+                .show()
+
+
+        }
+
+
+
+
 
         return binding.root
     }
@@ -325,7 +354,12 @@ class FragmentAddHouse : Fragment() {
             }
             viewModel.addImages(uris)
         }
+
+
+
     }
+
+
 
 }
 

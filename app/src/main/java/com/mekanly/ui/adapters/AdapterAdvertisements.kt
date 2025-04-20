@@ -5,8 +5,12 @@ import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.mekanly.R
 import com.mekanly.data.models.House
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvBigBinding
@@ -64,7 +68,6 @@ class AdapterAdvertisements(
 
 
 
-
             }
         }
 
@@ -102,4 +105,16 @@ class AdapterAdvertisements(
 //
 //        navController.navigate(action)
 //    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

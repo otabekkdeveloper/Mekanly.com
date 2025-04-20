@@ -130,7 +130,7 @@
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/elitka" />
+                            android:background="@drawable/ic_elite" />
 
 
                         <TextView

@@ -44,18 +44,19 @@
                         android:background="@color/white"
                         tools:background="@drawable/placeholder" />
 
-                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                         android:id="@+id/worm_dots_indicator"
                         android:layout_width="wrap_content"
+                        app:selectedDotColor="@color/white"
                         android:layout_height="wrap_content"
-                        app:dotsColor="@color/bg_blue_one"
-                        app:dotsStrokeColor="@color/bg_blue_four"
+                        android:scrollbarStyle="outsideInset"
+                        app:dotsColor="@color/unchecked_track"
                         app:dotsCornerRadius="8dp"
                         app:dotsSize="6dp"
                         android:layout_gravity="bottom|center"
                         app:dotsSpacing="4dp"
                         android:layout_marginBottom="5dp"
-                        app:dotsStrokeWidth="2dp"
+                        app:dotsStrokeWidth="20dp"
                         />
 
 

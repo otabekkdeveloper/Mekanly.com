@@ -11,7 +11,7 @@
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:background="@drawable/emlakler_btn_bg"
+        android:background="@drawable/bg_btn_unselected_dialog_options"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -20,7 +20,7 @@
             android:layout_width="20dp"
             android:layout_gravity="center"
             android:layout_height="20dp"
-            android:src="@drawable/kwartira" />
+            android:src="@drawable/ic_apartment" />
 
         <TextView
             android:id="@+id/textView"

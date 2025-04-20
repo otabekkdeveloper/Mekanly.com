@@ -678,7 +678,7 @@
                         android:padding="10dp"
                         android:layout_height="wrap_content"
                         android:text="20 m2"
-                        android:background="@drawable/emlakler_btn_bg"/>
+                        android:background="@drawable/bg_btn_unselected_dialog_options"/>
 
 
 
@@ -707,7 +707,7 @@
                         android:padding="10dp"
                         android:layout_height="wrap_content"
                         android:text="500+ m2"
-                        android:background="@drawable/emlakler_btn_bg"/>
+                        android:background="@drawable/bg_btn_unselected_dialog_options"/>
 
 
 
@@ -885,7 +885,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/emlakler_btn_bg"
+                android:background="@drawable/bg_btn_unselected_dialog_options"
                 android:orientation="vertical"
                 android:padding="6dp">
 

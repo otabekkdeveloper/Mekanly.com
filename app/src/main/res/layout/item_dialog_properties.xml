@@ -14,7 +14,7 @@
         android:layout_marginHorizontal="12dp"
         android:layout_height="63dp"
         android:layout_columnWeight="1"
-        android:background="@drawable/emlakler_btn_bg"
+        android:background="@drawable/bg_btn_unselected_dialog_options"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
         android:gravity="center_vertical"
@@ -26,10 +26,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/kwartira"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -38,7 +37,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/manrope_regular"
             android:paddingTop="8dp"
-            android:text="@string/Apartment"
+            android:text="@string/apartment"
             android:textColor="@color/black" />
 
 

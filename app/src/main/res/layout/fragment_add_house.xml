@@ -28,14 +28,14 @@
                     android:id="@+id/back_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_back"/>
+                    android:src="@drawable/ic_back" />
 
                 <TextView
                     android:id="@+id/toolbarTitle"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/roboto_regular"
-                    android:layout_height="wrap_content"
                     android:text="@string/add_house"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
@@ -55,9 +55,9 @@
                 android:id="@+id/buttonBolum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:orientation="vertical"
                 android:paddingHorizontal="10dp"
-                android:orientation="vertical">
+                android:paddingTop="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -69,13 +69,15 @@
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
-                    android:paddingVertical="10sp"
                     android:id="@+id/edt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
                     android:background="@color/color_transparent"
+                    android:fontFamily="@font/roboto_regular"
                     android:hint="@string/enter_house_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingVertical="10sp"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 
@@ -91,9 +93,9 @@
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:orientation="vertical"
                 android:paddingHorizontal="10dp"
-                android:orientation="vertical">
+                android:paddingTop="10dp">
 
 
                 <TextView
@@ -106,11 +108,11 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:paddingVertical="10dp"
                     android:id="@+id/txt_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
+                    android:paddingVertical="10dp"
                     android:text="@string/not_selected"
                     android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
@@ -128,9 +130,9 @@
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:orientation="vertical"
                 android:paddingHorizontal="10dp"
-                android:orientation="vertical">
+                android:paddingTop="10dp">
 
 
                 <TextView
@@ -143,18 +145,17 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:paddingVertical="10dp"
                     android:id="@+id/txt_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
+                    android:paddingVertical="10dp"
                     android:text="@string/not_selected"
                     android:textColor="@color/text_color_gray"
                     android:textSize="12sp"
                     tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
-
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -166,9 +167,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingHorizontal="10dp"
                 android:fontFamily="@font/roboto_regular"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="10dp"
                 android:text="Binanyň gat sany"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -186,19 +187,19 @@
                     android:id="@+id/chipGroupFloor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+                    android:fadeScrollbars="false"
                     app:selectionRequired="false"
-                    android:fadeScrollbars="false">
+                    app:singleSelection="true">
 
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:padding="1dp"
                         android:text="1"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -207,10 +208,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="2"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -219,10 +220,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="3"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -231,10 +232,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="4"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -243,10 +244,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="5"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -255,10 +256,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="6"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -267,10 +268,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="7"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -279,10 +280,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="8"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -291,10 +292,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="9"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -303,10 +304,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="10"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -315,10 +316,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11"
-                        app:chipBackgroundColor="@color/chip_bg_color"
-                        android:textColor="@color/chip_text_color"
                         android:checkable="true"
+                        android:text="11"
+                        android:textColor="@color/chip_text_color"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -331,8 +332,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:paddingTop="10dp"
                 android:paddingHorizontal="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/rooms_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -350,19 +351,19 @@
                     android:id="@+id/chipGroupRooms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+                    android:fadeScrollbars="false"
                     app:selectionRequired="false"
-                    android:fadeScrollbars="false">
+                    app:singleSelection="true">
 
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:padding="1dp"
                         android:text="1"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -371,10 +372,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="2"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -383,10 +384,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="3"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -395,10 +396,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="4"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -407,10 +408,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="5"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -419,10 +420,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="6"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -431,10 +432,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="7"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -443,10 +444,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="8"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -455,10 +456,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="9"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -467,10 +468,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="10"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -479,10 +480,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11"
-                        app:chipBackgroundColor="@color/chip_bg_color"
-                        android:textColor="@color/chip_text_color"
                         android:checkable="true"
+                        android:text="11"
+                        android:textColor="@color/chip_text_color"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -493,14 +494,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"
-                app:selectionRequired="false"
                 android:fontFamily="@font/roboto_regular"
                 android:paddingHorizontal="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/floor_number"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                app:selectionRequired="false"
+                app:singleSelection="true"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -514,18 +515,18 @@
                     android:id="@+id/chipGroupLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+                    android:fadeScrollbars="false"
                     app:selectionRequired="false"
-                    android:fadeScrollbars="false">
+                    app:singleSelection="true">
 
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="1"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -534,10 +535,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="2"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -546,10 +547,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="3"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -558,10 +559,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="4"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -570,10 +571,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="5"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -582,10 +583,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="6"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -594,10 +595,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="7"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -606,10 +607,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="8"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -618,10 +619,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="9"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -630,10 +631,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checkable="true"
                         android:text="10"
-                        app:chipBackgroundColor="@color/chip_bg_color"
                         android:textColor="@color/chip_text_color"
-                        android:checkable="true"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -642,10 +643,10 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11"
-                        app:chipBackgroundColor="@color/chip_bg_color"
-                        android:textColor="@color/chip_text_color"
                         android:checkable="true"
+                        android:text="11"
+                        android:textColor="@color/chip_text_color"
+                        app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
                         app:chipStrokeColor="@color/black"
                         app:chipStrokeWidth="1dp"
@@ -707,9 +708,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvImages"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -722,8 +723,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp">
 
 
                 <TextView
@@ -760,9 +761,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProperties"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -776,8 +777,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp">
 
 
                 <TextView
@@ -812,9 +813,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRepair"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -826,18 +827,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="@string/possibilities"
                     android:maxLines="1"
+                    android:text="@string/possibilities"
                     android:textColor="@color/black"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_possibilities"
@@ -863,10 +864,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOpportunity"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -884,6 +884,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Doly ady, aýratynlygy, ýagdaýy we ş.m maglumat "
+                android:inputType="text"
                 android:textColorHint="@color/text_color_gray"
                 android:textSize="14sp"
                 tools:ignore="NestedWeights" />
@@ -950,9 +951,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextArea"
-                    android:layout_width="50dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:maxLines="1"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
 
@@ -984,9 +988,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPrice"
-                    android:layout_width="50dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
+                    android:inputType="number"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
 
@@ -1023,6 +1028,8 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:hint="+993 xxxxxxxx"
+                    android:inputType="number"
+                    android:maxLines="1"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
 
@@ -1049,10 +1056,11 @@
 
 
                 <ImageView
+                    android:id="@+id/hashtag_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="12dp"
+                    android:padding="12dp"
                     android:src="@drawable/ic_helper" />
 
 
@@ -1064,7 +1072,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/emlakler_btn_bg"
+                android:background="@drawable/bg_btn_unselected_dialog_options"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -1076,10 +1084,10 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="Diňe mekanly.com-da"
-                    app:thumbTint="@color/white"
                     android:minHeight="0dp"
                     android:paddingVertical="4dp"
+                    android:text="Diňe mekanly.com-da"
+                    app:thumbTint="@color/white"
                     app:trackDecoration="@color/color_transparent"
                     app:trackTint="@color/unchecked_track" />
 
@@ -1117,10 +1125,10 @@
                 android:layout_marginTop="10dp"
                 android:checked="false"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Düzgünnamany okadym kabul etdim"
-                app:thumbTint="@color/white"
                 android:minHeight="0dp"
                 android:paddingVertical="4dp"
+                android:text="Düzgünnamany okadym kabul etdim"
+                app:thumbTint="@color/white"
                 app:trackDecoration="@color/color_transparent"
                 app:trackTint="@color/unchecked_track" />
 
@@ -1131,13 +1139,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
                 android:checked="false"
                 android:fontFamily="@font/roboto_regular"
+                android:minHeight="0dp"
+                android:paddingVertical="4dp"
                 android:text="Ulanyjylar teswir ýazyp bilýärler"
                 app:thumbTint="@color/white"
-                android:minHeight="0dp"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="4dp"
                 app:trackDecoration="@color/color_transparent"
                 app:trackTint="@color/unchecked_track" />
 

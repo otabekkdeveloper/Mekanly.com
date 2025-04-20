@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mekanly.R
-import com.mekanly.data.models.House
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.Option
 import com.mekanly.domain.model.ResponseBodyState
@@ -108,7 +107,7 @@ class FragmentSingleHouse : Fragment() {
             HouseItem(R.drawable.location_icon, "Ýerleşýän ýeri", dataResponse.location?.name ?: ""),
             HouseItem(R.drawable.ic_calendar, "Goýlan senesi", formatDate(dataResponse.createdAt)),
             HouseItem(R.drawable.ic_phone, "Telefon nomeri", dataResponse.bronNumber),
-            HouseItem(R.drawable.elitka, "Emläk görnüşi", dataResponse.categoryName),
+            HouseItem(R.drawable.ic_elite, "Emläk görnüşi", dataResponse.categoryName),
             HouseItem(R.drawable.ic_count_room, "Otag sany", dataResponse.roomNumber.toString()),
             HouseItem(R.drawable.ic_number_of_floors, "Gat sany", dataResponse.floorNumber.toString()),
 //            HouseItem(R.drawable.elitka, "Remont görnüşi", dataResponse.luxe.toString()),

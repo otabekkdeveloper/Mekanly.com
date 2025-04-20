@@ -10,6 +10,7 @@ import com.mekanly.data.models.Option
 import com.mekanly.databinding.ItemDialogPropertiesBinding
 import com.mekanly.databinding.ItemOpportunityDialogBinding
 import com.mekanly.presentation.ui.enums.Possibilities
+import com.mekanly.ui.enums.Properties
 
 
 class OptionsDialogAdapter(
@@ -38,8 +39,8 @@ class OptionsDialogAdapter(
             val isSelected = selectedItems.contains(item)
 
             binding.layButton.setBackgroundResource(
-                if (isSelected) R.drawable.bg_selected_properties_btn
-                else R.drawable.emlakler_btn_bg
+                if (isSelected) R.drawable.bg_selected_btn_dialog_options
+                else R.drawable.bg_btn_unselected_dialog_options
             )
 
             binding.layButton.setOnClickListener {
@@ -56,6 +57,40 @@ class OptionsDialogAdapter(
                     notifyItemChanged(bindingAdapterPosition)
                 }
             }
+
+            val propertiesEnum = Properties.entries.find {
+                it.key.equals(item.name, ignoreCase = true) ||
+                        it.name.equals(item.name, ignoreCase = true)
+            }
+
+            val context = binding.textView.context
+            binding.textView.text = when (propertiesEnum) {
+                Properties.APARTMENT -> context.getString(R.string.apartment)
+                Properties.ELITE -> context.getString(R.string.elite)
+                Properties.COTTAGE -> context.getString(R.string.cottage)
+                Properties.SEMI_ELITE -> context.getString(R.string.semi_elite)
+                Properties.VALLEY -> context.getString(R.string.valley)
+                Properties.PLAN_HOUSE -> context.getString(R.string.plan_house)
+                else -> item.name
+            }
+
+            val iconRes = when (propertiesEnum) {
+
+                Properties.APARTMENT -> R.drawable.ic_apartment
+                Properties.ELITE -> R.drawable.ic_elite
+                Properties.COTTAGE -> R.drawable.ic_cottage
+                Properties.SEMI_ELITE -> R.drawable.ic_semi_elite
+                Properties.VALLEY -> R.drawable.ic_valley
+                Properties.PLAN_HOUSE -> R.drawable.house_logo
+                else -> R.drawable.ic_wifi
+            }
+
+            binding.imageView.setImageResource(iconRes)
+
+
+
+
+
         }
     }
 
@@ -67,8 +102,8 @@ class OptionsDialogAdapter(
             val isSelected = selectedItems.contains(item)
 
             binding.layBackground.setBackgroundResource(
-                if (isSelected) R.drawable.bg_selected_properties_btn
-                else R.drawable.emlakler_btn_bg
+                if (isSelected) R.drawable.bg_selected_btn_dialog_options
+                else R.drawable.bg_btn_unselected_dialog_options
             )
 
             binding.layBackground.setOnClickListener {
@@ -140,8 +175,8 @@ class OptionsDialogAdapter(
 
                 val isSelected = selectedItems.contains(item)
                 binding.layBackground.setBackgroundResource(
-                    if (isSelected) R.drawable.bg_selected_properties_btn
-                    else R.drawable.emlakler_btn_bg
+                    if (isSelected) R.drawable.bg_selected_btn_dialog_options
+                    else R.drawable.bg_btn_unselected_dialog_options
                 )
 
                 binding.layBackground.setOnClickListener {
