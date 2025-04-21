@@ -3,24 +3,21 @@ package com.mekanly.ui.fragments.addHouse
 import LocationBottomSheet
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.graphics.Color
-import android.graphics.Typeface
-import android.os.Build
-import android.text.Layout
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -31,6 +28,7 @@ import com.mekanly.databinding.FragmentAddHouseBinding
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.helpers.PreferencesHelper
 import com.mekanly.ui.adapters.AdapterLocalImages
+import com.mekanly.ui.adapters.PossibilitySelectedAdapter
 import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.ui.dialog.OptionSelectionDialog
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_OPPORTUNITY
@@ -47,6 +45,7 @@ class FragmentAddHouse : Fragment() {
 
     private lateinit var binding: FragmentAddHouseBinding
     private val addHouseBody = AddHouseBody()
+    private lateinit var selectedOptionsAdapter: PossibilitySelectedAdapter
     private val viewModel: VMAddHouse by viewModels()
 
     companion object {
@@ -60,6 +59,10 @@ class FragmentAddHouse : Fragment() {
         binding = FragmentAddHouseBinding.inflate(inflater, container, false)
         val globalOptions = PreferencesHelper.getGlobalOptions()
         switchDesign()
+
+        selectedOptionsAdapter = PossibilitySelectedAdapter()
+        binding.rvOpportunity.adapter = selectedOptionsAdapter
+        binding.rvOpportunity.layoutManager = GridLayoutManager(context, 3)
 
 
 
@@ -97,6 +100,9 @@ class FragmentAddHouse : Fragment() {
 
         return binding.root
     }
+
+
+
 
     private fun setImagesAdapter(){
         adapter = AdapterLocalImages { uri -> viewModel.removeImage(uri) }
@@ -140,42 +146,109 @@ class FragmentAddHouse : Fragment() {
             }
             startActivityForResult(intent, REQUEST_CODE_PICK_IMAGES)
         }
+
+        val progressDialog = Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_loading)
+            setCancelable(false)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+
         binding.btnDone.setOnClickListener {
+            var name = binding.edtName.text.toString().trim()
+            val category = binding.txtCategory.text.toString()
+            val location = binding.txtLocation.text.toString()
+            val isAgreeChecked = binding.switchAgree.isChecked
 
-            //TODO
-            addHouseBody.apply {
-                name = binding.edtName.text?.trim().toString()
-                description = binding.edtDescription.text?.trim().toString()
-                area = binding.editTextArea.text?.trim().toString().toIntOrNull()
-                price = binding.editTextPrice.text?.trim().toString().toIntOrNull()
-                hashtag = binding.editTextHashTag.text?.trim().toString()
-                roomNumber = binding.chipGroupRooms.getSelectedChipInt()
-                floorNumber = binding.chipGroupFloor.getSelectedChipInt()
-                levelNumber = binding.chipGroupLevel.getSelectedChipInt()
-            }
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.addHouse(addHouseBody, viewModel.convertUrisToFiles(requireContext(), viewModel.images.value) ) {
-                    when (it) {
-                        is ResponseBodyState.Error -> {
-                            Log.e("ADD_HOUSE", "initListeners: " + it.error)
-                        }
-
-                        ResponseBodyState.Loading -> {
-                            Log.e("ADD_HOUSE", "initListeners: loading")
-                        }
-
-                        is ResponseBodyState.Success -> {
-                            Log.e("ADD_HOUSE", "Success")
-                            findNavController().popBackStack()
-                        }
-
-                        else -> {}
+            fun checkRequiredFields(): Boolean {
+                return when {
+                    name.isEmpty() -> {
+                        Toast.makeText(requireContext(), "Ady giriziň", Toast.LENGTH_SHORT).show()
+                        false
                     }
+                    category == getString(R.string.not_selected) -> {
+                        Toast.makeText(requireContext(), "Bölümi saýlaň", Toast.LENGTH_SHORT).show()
+                        false
+                    }
+                    location == getString(R.string.not_selected) -> {
+                        Toast.makeText(requireContext(), "Ýerini saýlaň", Toast.LENGTH_SHORT).show()
+                        false
+                    }
+                    !isAgreeChecked -> {
+                        Toast.makeText(requireContext(), "Ylalaşyga razy boluň", Toast.LENGTH_SHORT).show()
+                        false
+                    }
+                    else -> true
                 }
             }
 
+            if (checkRequiredFields()) {
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Tassykla")
+                    .setMessage("Siz hakykatdanam ugratmakçymy?")
+                    .setPositiveButton("Howwa") { _, _ ->
+                        addHouseBody.apply {
+                            name = binding.edtName.text?.trim().toString()
+                            description = binding.edtDescription.text?.trim().toString()
+                            area = binding.editTextArea.text?.trim().toString().toIntOrNull()
+                            price = binding.editTextPrice.text?.trim().toString().toIntOrNull()
+                            hashtag = binding.editTextHashTag.text?.trim().toString()
+                            roomNumber = binding.chipGroupRooms.getSelectedChipInt()
+                            floorNumber = binding.chipGroupFloor.getSelectedChipInt()
+                            levelNumber = binding.chipGroupLevel.getSelectedChipInt()
+                        }
+
+                        progressDialog.show()
+
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            viewModel.addHouse(
+                                addHouseBody,
+                                viewModel.convertUrisToFiles(requireContext(), viewModel.images.value)
+                            ) {
+                                when (it) {
+                                    is ResponseBodyState.Error -> {
+                                        lifecycleScope.launch(Dispatchers.Main) {
+                                            progressDialog.dismiss()
+                                            Toast.makeText(requireContext(), "Ýalňyşlyk ýüze çykdy", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                    ResponseBodyState.Loading -> {
+                                        // Progress dialog shown already
+                                    }
+                                    is ResponseBodyState.Success -> {
+                                        Log.d("ADD_HOUSE", "Üstünlikli ugradyldy")
+                                        lifecycleScope.launch(Dispatchers.Main) {
+                                            progressDialog.dismiss()
+                                            AlertDialog.Builder(requireContext())
+                                                .setTitle("Habarnama")
+                                                .setMessage("Bildiriş ýatda saklanyldy. Moderasiýa edilen soň, bildiriş ähli ulanyjylara görner!")
+                                                .setCancelable(false) // OK basmazdan ýapylmaz
+                                                .setPositiveButton("OK") { dialog, _ ->
+                                                    dialog.dismiss()
+                                                    findNavController().popBackStack()
+                                                }
+                                                .create()
+                                                .show()
+                                        }
+                                    }
+
+                                    else -> {
+                                        lifecycleScope.launch(Dispatchers.Main) {
+                                            progressDialog.dismiss()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .setNegativeButton("Ýok") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+            }
         }
+
 
     }
 
@@ -263,13 +336,21 @@ class FragmentAddHouse : Fragment() {
                 if (res.isNotEmpty()) {
                     binding.txtPossibilities.text = res.joinToString(", ") { it.name }
                     addHouseBody.possibilities = res.map { it.id }
+
+                    // ✅ Обновляем список в RecyclerView
+                    selectedOptionsAdapter.setOptions(res)
+
                 } else {
                     binding.txtPossibilities.text = getString(R.string.not_selected)
                     addHouseBody.possibilities = null
+
+                    // Очищаем список в RecyclerView
+                    selectedOptionsAdapter.setOptions(emptyList())
                 }
             })
         dialog.show()
     }
+
 
     private fun switchDesign() {
 

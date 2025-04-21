@@ -759,11 +759,7 @@
             </LinearLayout>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvProperties"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -811,11 +807,6 @@
             </LinearLayout>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRepair"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -1028,7 +1019,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:hint="+993 xxxxxxxx"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:maxLines="1"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
