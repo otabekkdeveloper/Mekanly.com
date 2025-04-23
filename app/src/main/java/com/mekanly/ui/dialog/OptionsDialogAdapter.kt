@@ -81,8 +81,8 @@ class OptionsDialogAdapter(
                 Properties.COTTAGE -> R.drawable.ic_cottage
                 Properties.SEMI_ELITE -> R.drawable.ic_semi_elite
                 Properties.VALLEY -> R.drawable.ic_valley
-                Properties.PLAN_HOUSE -> R.drawable.house_logo
-                else -> R.drawable.ic_wifi
+                Properties.PLAN_HOUSE -> R.drawable.ic_plan_house
+                else -> R.drawable.house_logo
             }
 
             binding.imageView.setImageResource(iconRes)

@@ -4,6 +4,7 @@ import LocationBottomSheet
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,7 @@ class FragmentProfile : Fragment() {
         if (AppPreferences.getToken() == "") {
             binding.apply {
                 tvAccountName.text = getString(R.string.account)
+                tvAccountNumber.paintFlags = tvAccountNumber.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 tvAccountNumber.text = getString(R.string.press_to_log_in)
                 tvAccountNumber.setTextColor(
                     ContextCompat.getColor(
@@ -48,6 +50,8 @@ class FragmentProfile : Fragment() {
         } else {
             binding.apply {
                 tvAccountName.text = getString(R.string.account)
+                btnLogout.visibility = View.VISIBLE
+                dividerLogOut.visibility = View.VISIBLE
                 tvAccountNumber.text = AppPreferences.getUsername()
                 tvAccountNumber.setTextColor(
                     ContextCompat.getColor(

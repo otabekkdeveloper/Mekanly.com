@@ -531,6 +531,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ripple_button"
                     android:clickable="true"
+                    android:visibility="gone"
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="14dp"
@@ -564,6 +565,8 @@
                 </LinearLayout>
 
                 <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/dividerLogOut"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     app:dividerColor="@color/line_divider" />

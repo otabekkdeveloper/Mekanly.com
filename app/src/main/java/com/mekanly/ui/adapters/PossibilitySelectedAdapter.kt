@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mekanly.R
 import com.mekanly.data.models.Option
 import com.mekanly.databinding.ItemOpportunityDialogBinding
+import com.mekanly.presentation.ui.enums.Possibilities
 
 class PossibilitySelectedAdapter : RecyclerView.Adapter<PossibilitySelectedAdapter.OptionViewHolder>() {
 
@@ -28,6 +30,61 @@ class PossibilitySelectedAdapter : RecyclerView.Adapter<PossibilitySelectedAdapt
                     .load(it)
                     .into(binding.imageView)
             }
+
+
+            val possibilityEnum = Possibilities.entries.find {
+                it.key.equals(option.name, ignoreCase = true) ||
+                        it.name.equals(option.name, ignoreCase = true)
+            }
+
+            val context = binding.textView.context
+            binding.textView.text = when (possibilityEnum) {
+                Possibilities.WIFI -> context.getString(R.string.wifi)
+                Possibilities.WASHER -> context.getString(R.string.washer)
+                Possibilities.TV -> context.getString(R.string.tv)
+                Possibilities.CONDITIONER -> context.getString(R.string.conditioner)
+                Possibilities.WARDROBE -> context.getString(R.string.wardrobe)
+                Possibilities.BED -> context.getString(R.string.bed)
+                Possibilities.HOT -> context.getString(R.string.hot)
+                Possibilities.FRIDGE -> context.getString(R.string.fridge)
+                Possibilities.SHOWER -> context.getString(R.string.shower)
+                Possibilities.KITCHEN -> context.getString(R.string.kitchen)
+                Possibilities.HOT_WATER -> context.getString(R.string.hot_water)
+                else -> option.name
+            }
+
+            val iconRes = when (possibilityEnum) {
+                Possibilities.WIFI -> R.drawable.ic_wifi
+                Possibilities.POOL -> R.drawable.ic_swimming_pool
+                Possibilities.BALCONY -> R.drawable.ic_balcony
+                Possibilities.ELEVATOR -> R.drawable.ic_lift
+                Possibilities.KITCHEN_FURNITURE -> R.drawable.ic_kitchen_furniture
+                Possibilities.WASHER -> R.drawable.ic_washing_machine
+                Possibilities.TV -> R.drawable.ic_tv
+                Possibilities.HOT -> R.drawable.ic_heating_system
+                Possibilities.STOVE -> R.drawable.ic_stove
+                Possibilities.WORK_DESK -> R.drawable.ic_table
+                Possibilities.CONDITIONER -> R.drawable.ic_air_conditioner
+                Possibilities.WARDROBE -> R.drawable.ic_wardrobe
+                Possibilities.BED -> R.drawable.ic_bedroom
+                Possibilities.MANGAL -> R.drawable.ic_bbq
+                Possibilities.HOT_WATER -> R.drawable.ic_hot_water
+                Possibilities.FRIDGE -> R.drawable.ic_fridge
+                Possibilities.SHOWER -> R.drawable.ic_bath
+                Possibilities.KITCHEN -> R.drawable.ic_kitchen
+                else -> R.drawable.ic_wifi
+            }
+
+            binding.imageView.setImageResource(iconRes)
+
+
+
+
+
+
+
+
+
         }
     }
 

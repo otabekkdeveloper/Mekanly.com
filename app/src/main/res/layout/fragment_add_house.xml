@@ -70,6 +70,8 @@
 
                 <EditText
                     android:id="@+id/edt_name"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/text_color_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/color_transparent"
@@ -164,19 +166,45 @@
                 app:dividerColor="@color/line_divider" />
 
 
-            <TextView
+
+            <LinearLayout
+                android:id="@+id/headerLayoutBuilding"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="10dp"
-                android:paddingTop="10dp"
-                android:text="Binanyň gat sany"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/textStyle16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Binanyň gat sany"
+                    tools:ignore="RtlSymmetry" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/dropDownBuilding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_down"/>
+
+
+
+            </LinearLayout>
+
+
 
 
             <HorizontalScrollView
+                android:layout_marginTop="5dp"
+                android:id="@+id/menuLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -328,21 +356,44 @@
             </HorizontalScrollView>
 
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/headerLayoutRooms"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/rooms_number"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/textStyle16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/rooms_number"
+                    tools:ignore="RtlSymmetry" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/dropDownRooms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_down"/>
+
+
+
+            </LinearLayout>
 
 
             <HorizontalScrollView
+                android:id="@+id/menuLayoutRooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
                 android:background="@color/color_transparent"
                 android:scrollbars="none">
@@ -491,21 +542,42 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/headerLayoutFloor"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/floor_number"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:selectionRequired="false"
-                app:singleSelection="true"
-                tools:ignore="RtlSymmetry" />
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/textStyle16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/floor_number"
+                    tools:ignore="RtlSymmetry" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/dropDownFloor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_down"/>
+
+
+
+            </LinearLayout>
 
 
             <HorizontalScrollView
+                android:id="@+id/menuLayoutFloor"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -696,6 +768,7 @@
                 <TextView
                     android:id="@+id/txt_image_count"
                     android:layout_width="wrap_content"
+                    android:textColor="#717171"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginStart="12dp"
@@ -843,6 +916,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
+                    android:id="@+id/possibilitiesDown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|end"
@@ -870,9 +944,11 @@
                 android:id="@+id/edt_description"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:textColor="@color/black"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
+                android:maxLines="20"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Doly ady, aýratynlygy, ýagdaýy we ş.m maglumat "
                 android:inputType="text"
@@ -956,6 +1032,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="m2"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
@@ -992,6 +1069,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:text="TMT"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
@@ -1016,6 +1094,7 @@
                     android:id="@+id/editTextPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:hint="+993 xxxxxxxx"
@@ -1041,6 +1120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/black"
                     android:background="@drawable/bg_hashtag"
                     android:hint="#Heşteg"
                     android:textColorHint="@color/text_color_gray" />
@@ -1074,6 +1154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_regular"
                     android:minHeight="0dp"
                     android:paddingVertical="4dp"
@@ -1114,6 +1195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/black"
                 android:checked="false"
                 android:fontFamily="@font/roboto_regular"
                 android:minHeight="0dp"
@@ -1132,6 +1214,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:checked="false"
+                android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"
                 android:minHeight="0dp"
                 android:paddingVertical="4dp"
