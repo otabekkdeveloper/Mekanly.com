@@ -5,7 +5,13 @@
     <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
     <string name="error_no_internet">Internet elýeter däl</string>
     <string name="select_language">Dil saýlan</string>
-    <string name="rent_offices">Kireýne ofisler</string>
+    <string name="house_for_sale">Satlyk jaý</string>
+    <string name="house_for_rent">Kireýne jaý</string>
+    <string name="room_for_rent">Kireýne otag</string>
+    <string name="office_for_rent">Kireýne ofis</string>
+    <string name="commercial_rent">Kireýne söwda emläk</string>
+    <string name="commercial_sale">Satlyk söwda emläk</string>
+    <string name="other_real_estate">Beýleki emläkler</string>
     <string name="splash_gif">splash_gif</string>
     <string name="language">Dil</string>
     <string name="favorites">Halanlarym</string>
@@ -33,7 +39,7 @@
     <string name="possibilities">Mümkinçilikler</string>
     <string name="show_newly_added_properties">Täze goşulan emläkleri görkez</string>
     <string name="property_type">Emläk görnüşi</string>
-    <string name="general_area">Umumy meýdany:</string>
+    <string name="general_area">Umumy meýdany</string>
     <string name="at_least">iň az</string>
     <string name="the_most">iň köp</string>
     <string name="price">Bahа</string>

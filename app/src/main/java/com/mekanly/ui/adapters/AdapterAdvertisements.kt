@@ -5,15 +5,13 @@ import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.models.House
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvBigBinding
+import com.mekanly.presentation.ui.enums.Categories
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 import com.mekanly.presentation.ui.fragments.search.ImageSliderAdapter
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
@@ -35,7 +33,26 @@ class AdapterAdvertisements(
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text = "${property.location?.parentName}, ${property.location?.name}"
                 tvDescription.text = property.description
-                advType.text = property.categoryName
+
+
+                val categoriesEnum = Categories.entries.find {
+                    it.key.equals(property.categoryName, ignoreCase = true) ||
+                            it.name.equals(property.categoryName, ignoreCase = true)
+                }
+                val context = binding.advType.context
+
+                binding.advType.text = when (categoriesEnum) {
+                    Categories.SATLYK_JAY -> context.getString(R.string.house_for_sale)
+                    Categories.KIREYNE_JAYLAR -> context.getString(R.string.house_for_rent)
+                    Categories.KIREYNE_OTAGLAR -> context.getString(R.string.room_for_rent)
+                    Categories.KIREYNE_OFISLER -> context.getString(R.string.office_for_rent)
+                    Categories.KIREYNE_SOWDA_EMLAKLER -> context.getString(R.string.commercial_rent)
+                    Categories.SATLYK_SOWDA_EMLAKLER -> context.getString(R.string.commercial_sale)
+                    Categories.BEYLEKI_EMLAKLER -> context.getString(R.string.other_real_estate)
+                    else -> property.categoryName
+                }
+
+
 
                 if (property.images.isNotEmpty()) {
                     val imageUrls = property.images.map { it.url }

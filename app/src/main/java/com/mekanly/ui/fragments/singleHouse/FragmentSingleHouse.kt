@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myapp.ReportBottomSheetFragment
 import com.mekanly.R
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.Option
@@ -139,7 +140,14 @@ class FragmentSingleHouse : Fragment() {
             showCommentsBottomSheet()
         }
 
-        binding.btnReport.paintFlags = binding.btnReport.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding.btnReport.apply {
+            paintFlags = binding.btnReport.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+            setOnClickListener{
+                val bottomSheet = ReportBottomSheetFragment()
+                bottomSheet.show(childFragmentManager, "ReportBottomSheetFragment")
+            }
+        }
+
     }
 
     private fun showCommentsBottomSheet() {

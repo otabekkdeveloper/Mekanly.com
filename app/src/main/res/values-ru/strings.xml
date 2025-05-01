@@ -5,7 +5,13 @@
     <string name="error_failure">Ýalňyşlyk ýüze çykdy</string>
     <string name="error_no_internet">Internet elýeter däl</string>
     <string name="select_language">Выберите язык</string>
-    <string name="rent_offices">Офисы в аренду</string>
+    <string name="house_for_sale">Дом на продажу</string>
+    <string name="house_for_rent">Дом в аренду</string>
+    <string name="room_for_rent">Комнат в аренду</string>
+    <string name="office_for_rent">Офис в аренду</string>
+    <string name="commercial_rent">Коммерческая недвижимость в аренду</string>
+    <string name="commercial_sale">Коммерческая недвижимость на продажу</string>
+    <string name="other_real_estate">Другая недвижимость</string>
     <string name="splash_gif">splash_gif</string>
     <string name="language">Язык </string>
     <string name="favorites">Избранное</string>
@@ -33,7 +39,7 @@
     <string name="possibilities">Возможности</string>
     <string name="show_newly_added_properties">Показать недавно добавленные</string>
     <string name="property_type">Тип недвижимости</string>
-    <string name="general_area">Общая площадь:</string>
+    <string name="general_area">Общая площадь</string>
     <string name="at_least">минимум</string>
     <string name="the_most">максимум</string>
     <string name="price">Цена</string>

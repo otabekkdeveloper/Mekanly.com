@@ -97,6 +97,7 @@
     <!-- И, наконец, определите конкретные стили для виджета -->
     <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
         <item name="thumbRadius">10dp</item>
+        <item name="strokeWidth">3dp</item>
         <item name="strokeColor">@color/black</item>
         <item name="trackHeight">1.2dp</item>
         <item name="haloRadius">24dp</item>

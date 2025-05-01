@@ -164,11 +164,11 @@ class FragmentAddHouse : Fragment() {
             openCategorySelector(globalOptions)
         }
 
-        binding.radioGroupPoster.setOnCheckedChangeListener { group, checkedId ->
-            addHouseBody.who = when (checkedId) {
-                R.id.radioBtnOwner -> OWNER
-                R.id.radioBtnRealtor -> REALTOR
-                else -> OWNER
+        binding.toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            addHouseBody.who = when {
+                binding.btnOwner.isChecked -> OWNER
+                binding.btnRealtor.isChecked -> REALTOR
+                else -> null.toString()
             }
         }
 

@@ -39,24 +39,21 @@
     <color name="gray">#EEEEEE</color>
     <color name="selected_color_in_search_fragment">#3A8BCF</color>
     <color name="bg_color_business_search">#EBEAE8</color>
-    <color name="chip_border_color">#DFDFDF</color>
+    <color name="chip_border">#DFDFDF</color>
+    <color name="toggleBtnColor">#353535</color>
+    <color name="chip_color_bg">#E5F6FE</color>
+    <color name="chip_filter_text_color">#3A8BCF</color>
 
 
 
 
 
-    <color name="switch_thumb_color">
-        <item android:color="#FFFFFF" android:state_checked="true"/>
-        <item android:color="#FFFFFF" android:state_checked="false"/>
-    </color>
 
-    <color name="switch_track_color">
-        <item android:color="#4CAF50" android:state_checked="true"/>
-        <item android:color="#CCCCCC" android:state_checked="false"/>
-    </color>
-
-
-
+    <!-- values/colors.xml -->
+    <color name="slider_thumb_color">#2196F3</color>
+    <color name="slider_active_track_color">#2196F3</color>
+    <color name="slider_inactive_track_color">#E3F2FD</color>
+    <color name="slider_halo_color">#332196F3</color>
 
 
 

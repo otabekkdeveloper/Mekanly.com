@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/rent_offices"
+            android:text="@string/room_for_rent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="13sp" />

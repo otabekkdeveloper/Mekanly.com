@@ -18,6 +18,7 @@ import com.mekanly.R
 import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.databinding.FragmentProfileBinding
 import com.mekanly.helpers.PreferencesHelper
+import com.mekanly.ui.fragments.language.LanguageDialogFragment
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
 import com.mekanly.ui.login.LoginActivity
 
@@ -70,7 +71,10 @@ class FragmentProfile : Fragment() {
         }
 
         binding.btnLanguage.setOnClickListener {
-            findNavController().navigate((R.id.action_homeFragment_to_languageFragment))
+
+            val languageDialog = LanguageDialogFragment()
+            languageDialog.show(childFragmentManager, "LanguageDialogFragment")
+
         }
 
         binding.btnAddHouse.setOnClickListener {

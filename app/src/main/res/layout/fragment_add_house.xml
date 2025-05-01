@@ -229,7 +229,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -241,7 +241,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -253,7 +253,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -265,7 +265,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -277,7 +277,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -289,7 +289,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -301,7 +301,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -313,7 +313,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -325,7 +325,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -337,7 +337,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -349,7 +349,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
                 </com.google.android.material.chip.ChipGroup>
@@ -390,10 +390,10 @@
 
 
             <HorizontalScrollView
+                android:layout_marginTop="5dp"
                 android:id="@+id/menuLayoutRooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
                 android:background="@color/color_transparent"
                 android:scrollbars="none">
@@ -416,7 +416,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -428,7 +428,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -440,7 +440,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -452,7 +452,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -464,7 +464,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -476,7 +476,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -488,7 +488,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -500,7 +500,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -512,7 +512,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -524,7 +524,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -536,7 +536,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
                 </com.google.android.material.chip.ChipGroup>
@@ -576,11 +576,12 @@
 
 
             <HorizontalScrollView
-                android:id="@+id/menuLayoutFloor"
                 android:layout_marginTop="5dp"
+                android:id="@+id/menuLayoutFloor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:background="@color/color_transparent"
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
@@ -596,11 +597,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checkable="true"
+                        android:padding="1dp"
                         android:text="1"
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -612,7 +614,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -624,7 +626,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -636,7 +638,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -648,7 +650,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -660,7 +662,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -672,7 +674,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -684,7 +686,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -696,7 +698,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -708,7 +710,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
 
@@ -720,7 +722,7 @@
                         android:textColor="@color/chip_text_color"
                         app:chipBackgroundColor="@color/chip_bg_color"
                         app:chipCornerRadius="20dp"
-                        app:chipStrokeColor="@color/black"
+                        app:chipStrokeColor="@color/chip_border_color"
                         app:chipStrokeWidth="1dp"
                         tools:ignore="HardcodedText" />
                 </com.google.android.material.chip.ChipGroup>
@@ -947,7 +949,6 @@
                 android:textColor="@color/black"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
                 android:maxLines="20"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Doly ady, aýratynlygy, ýagdaýy we ş.m maglumat "
@@ -957,46 +958,35 @@
                 tools:ignore="NestedWeights" />
 
 
-            <RadioGroup
-                android:id="@+id/radioGroupPoster"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                app:singleSelection="true"
+                app:selectionRequired="false">
 
-
-                <RadioButton
-                    android:id="@+id/radioBtnOwner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOwner"
+                    android:backgroundTint="@color/toggle_btn_bg_color"
+                    android:layout_width="0dp"
                     android:layout_marginEnd="3dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@color/color_transparent"
-                    android:checked="true"
-                    android:gravity="center"
-                    android:text="@string/owner"
                     android:textColor="@color/radio_text_color"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/radioBtnRealtor"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@color/color_transparent"
-                    android:checked="false"
-                    android:gravity="center"
-                    android:text="@string/realtor"
+                    android:text="@string/owner"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRealtor"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="3dp"
+                    android:backgroundTint="@color/toggle_btn_bg_color"
                     android:textColor="@color/radio_text_color"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/realtor" />
 
-
-            </RadioGroup>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
             <LinearLayout
@@ -1019,6 +1009,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextArea"
                     android:layout_width="100dp"
+                    style="@style/textStyle14"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:inputType="number"
@@ -1057,6 +1048,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPrice"
                     android:layout_width="100dp"
+                    style="@style/textStyle14"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:inputType="number"

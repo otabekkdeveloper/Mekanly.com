@@ -1,6 +1,7 @@
 package com.mekanly.ui.fragments.filter
 
 import LocationBottomSheet
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -103,15 +104,7 @@ class FilterFragment : Fragment() {
             openCategorySelector(globalOptions)
         }
 
-        binding.radioGroupPoster.setOnCheckedChangeListener { _, checkedId ->
-            viewModel.setOwner(
-                when (checkedId) {
-                    R.id.radioBtnOwner -> OWNER
-                    R.id.radioBtnRealtor -> REALTOR
-                    else -> null
-                }
-            )
-        }
+
 
         binding.popupMenu.setOnClickListener { view ->
             showPopupMenu(view)
@@ -335,7 +328,7 @@ class FilterFragment : Fragment() {
             viewModel.setImage(isChecked)
             if (isChecked) {
                 binding.switchShowOnlyImages.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.black)
+                    ContextCompat.getColorStateList(requireContext(), R.color.chip_filter_text_color)
                 binding.switchShowOnlyImages.trackDecorationTintList =
                     ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
                 binding.switchShowOnlyImages.thumbTintList =
@@ -356,7 +349,7 @@ class FilterFragment : Fragment() {
         binding.switchShowDateDesc.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 binding.switchShowDateDesc.trackTintList =
-                    ContextCompat.getColorStateList(requireContext(), R.color.black)
+                    ContextCompat.getColorStateList(requireContext(), R.color.chip_filter_text_color)
                 binding.switchShowDateDesc.trackDecorationTintList =
                     ContextCompat.getColorStateList(requireContext(), R.color.color_transparent)
                 binding.switchShowDateDesc.thumbTintList =
@@ -442,13 +435,20 @@ class FilterFragment : Fragment() {
 
     private fun activateChip(chip: Chip, isActive: Boolean) {
         chip.isSelected = isActive
+
+        // Цвета фона и текста
         chip.chipBackgroundColor = ContextCompat.getColorStateList(
-            requireContext(), if (isActive) R.color.black else R.color.white
+            requireContext(), if (isActive) R.color.chip_color_bg else R.color.white
         )
         chip.setTextColor(
-            ContextCompat.getColor(requireContext(), if (isActive) R.color.white else R.color.black)
+            ContextCompat.getColor(requireContext(), if (isActive) R.color.chip_filter_text_color else R.color.black)
         )
-        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(), R.color.black)
+
+        // Прямая установка DEFAULT или DEFAULT_BOLD
+        chip.typeface = if (isActive) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
+
+        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(),
+            if (isActive) R.color.color_transparent else R.color.chip_border)
     }
 
 

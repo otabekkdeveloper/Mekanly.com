@@ -194,6 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/all"
+                        android:fontFamily="@font/roboto_bold"
                         android:textColor="@color/black"
                         app:chipBackgroundColor="@color/white"
                         app:chipCornerRadius="30dp"
@@ -670,56 +671,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
-                app:dividerColor="@color/line_divider" />
 
-
-            <RadioGroup
+            <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/radioGroupPoster"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:singleSelection="true"
+                app:selectionRequired="false">
 
-
-                <RadioButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/radioBtnOwner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/toggle_btn_bg_color"
+                    android:layout_width="0dp"
                     android:layout_marginEnd="3dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@color/color_transparent"
-                    android:checked="false"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center"
-                    android:text="@string/owner"
                     android:textColor="@color/radio_text_color"
-                    android:textSize="14sp" />
-
-
-                <RadioButton
-                    android:id="@+id/radioBtnRealtor"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@color/color_transparent"
-                    android:checked="false"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center"
-                    android:text="@string/realtor"
+                    android:text="@string/owner"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/radioBtnRealtor"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="3dp"
+                    android:backgroundTint="@color/toggle_btn_bg_color"
                     android:textColor="@color/radio_text_color"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/realtor" />
 
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
-            </RadioGroup>
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -752,7 +735,7 @@
                     android:layout_height="wrap_content"
                     android:valueFrom="5"
                     android:valueTo="700"
-                    app:thumbColor="@color/white"
+                    app:thumbColor="@color/chip_filter_text_color"
                     app:trackColorActive="@color/bg_app_two"
                     app:trackColorInactive="@color/unchecked_track" />
 
