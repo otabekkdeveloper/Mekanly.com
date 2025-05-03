@@ -39,7 +39,7 @@ class VMHome:ViewModel() {
 
     init {
         getBanners()
-//        getTopHouses()
+        getTopHouses()
     }
 
     private fun getBanners(){
@@ -68,10 +68,9 @@ class VMHome:ViewModel() {
         }
     }
 
-    private fun getTopHouses(){
-
-        useCase.execute {
-            when(it){
+    private fun getTopHouses(offset: Int = 0, limit: Int = 10) {
+        useCase.executeTopHouses(offset, limit) { result ->
+            when (result) {
                 is ResponseBodyState.Error -> {
                     _homeState.value = FragmentHomeState.Error(4)
                 }
@@ -79,10 +78,10 @@ class VMHome:ViewModel() {
                     _homeState.value = FragmentHomeState.Loading
                 }
                 is ResponseBodyState.SuccessList -> {
-                    if (it.dataResponse.isEmpty()){
-                        return@execute
-                    }else{
-                        val list = (it.dataResponse as MutableList<House>).take(50).toMutableList()
+                    if (result.dataResponse.isEmpty()) {
+                        return@executeTopHouses
+                    } else {
+                        val list = (result.dataResponse as MutableList<House>).take(50).toMutableList()
                         _houses.value = list
                         _homeState.value = FragmentHomeState.SuccessTopHouses(list)
                     }
@@ -91,4 +90,5 @@ class VMHome:ViewModel() {
             }
         }
     }
+
 }

@@ -35,10 +35,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("api/v1/houses")
+    @GET("api/v2/houses")
     fun getHouses(): Call<ResponseDataList<House>>
 
-    @GET("api/v1/search")
+    @GET("api/v2/search")
     fun search(
         @Query("search") search:String
     ):Call<ResponseDataList<House>>
@@ -71,8 +71,12 @@ interface ApiService {
         @Path("house_id") houseId:String
     ):Call<ResponseData<HouseDetails>>
 
-    @GET("/api/v2/top")
-    fun getTopHouses():Call<ResponseDataList<House>>
+    @GET("api/v2/top/{offset}/{limit}")
+    fun getTopHouses(
+        @Path("offset") offset: Int,
+        @Path("limit") limit: Int
+    ): Call<ResponseDataList<House>>
+
 
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(

@@ -7,11 +7,12 @@ class GetHousesUseCase {
     private val rep by lazy {
         HousesRepository()
     }
-     fun execute(callback: (ResponseBodyState) -> Unit){
-         rep.getHouses(callback)
-     }
 
-    fun executeTopHouses(callback: (ResponseBodyState) -> Unit){
-        rep.getTopHouses(callback)
+    fun execute(callback: (ResponseBodyState) -> Unit) {
+        rep.getHouses(callback)
+    }
+
+    fun executeTopHouses(offset: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
+        rep.getTopHouses(offset, limit, callback)
     }
 }

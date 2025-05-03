@@ -128,9 +128,9 @@ class HousesRepository {
     }
 
 
-    fun getTopHouses(callback: (ResponseBodyState) -> Unit){
+    fun getTopHouses(offset: Int, limit: Int, callback: (ResponseBodyState) -> Unit){
         callback(ResponseBodyState.Loading)
-        apiService.getTopHouses().enqueue(object : Callback<ResponseDataList<House>> {
+        apiService.getTopHouses(offset, limit).enqueue(object : Callback<ResponseDataList<House>> {
             override fun onResponse(call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>) {
                 if (response.isSuccessful) {
                     val houses = response.body()?.data ?: emptyList()

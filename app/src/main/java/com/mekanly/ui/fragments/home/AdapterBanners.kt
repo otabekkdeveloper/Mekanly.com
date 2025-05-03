@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.home
+package com.mekanly.ui.fragments.home
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,10 +17,6 @@ class AdapterBanners(private val images: List<Banner>) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dataBanner: Banner) {
-//            if(dataBanner.logo.isNotEmpty()){
-//                Glide.with(binding.ivBannerAvatar).load(BASE_URL+ dataBanner.parsedImages()[0])
-//                    .into(binding.ivBannerAvatar)
-//            }
             binding.tvInfoBanner.text = dataBanner.title
             if (dataBanner.image.isNotEmpty()) {
                 Glide.with(binding.rivBanner).load(BASE_URL + dataBanner.parsedImages()[0])

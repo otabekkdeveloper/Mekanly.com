@@ -116,20 +116,6 @@ class AdapterAdvertisements(
         notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
     }
 
-//    fun onAdvClicked(item: DataHouse) {
-//        val action =
-//            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
-//
-//        navController.navigate(action)
-//    }
-
-
-
-
-
-
-
-
 
 
 

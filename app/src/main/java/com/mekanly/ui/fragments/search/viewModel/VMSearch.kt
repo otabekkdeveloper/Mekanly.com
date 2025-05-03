@@ -2,16 +2,15 @@ package com.mekanly.ui.fragments.search.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.House
-import com.mekanly.data.models.Location
-import com.mekanly.data.models.PriceRange
 import com.mekanly.data.models.HouseCategory
+import com.mekanly.data.models.Location
 import com.mekanly.data.models.Option
+import com.mekanly.data.models.PriceRange
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.data.request.FilterBody
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.domain.useCase.GetPaginatedHousesUseCase
 import com.mekanly.domain.useCase.SearchPaginatedHousesUseCase
-import com.mekanly.utils.Constants.Companion.OWNER
 import com.mekanly.utils.Constants.Companion.SORT_BY_CREATED_AT
 import com.mekanly.utils.Constants.Companion.SORT_ORDER_DESC
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -97,6 +97,8 @@ class FragmentSingleHouse : Fragment() {
 
     }
 
+    // Обновите метод setViewPager во фрагменте SingleHouseFragment
+
     private fun setViewPager(house: HouseDetails) {
         val imageSliderAdapter = HouseImagesAdapter(house.images)
         binding.viewPager.adapter = imageSliderAdapter
