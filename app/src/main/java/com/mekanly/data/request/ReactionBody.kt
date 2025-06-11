@@ -8,4 +8,5 @@ class ReactionBody(
     @SerializedName("favoritable_type")
     val type: String,
 
+
 )

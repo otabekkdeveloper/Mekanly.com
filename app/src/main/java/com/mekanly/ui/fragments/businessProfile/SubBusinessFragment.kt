@@ -21,6 +21,7 @@ import com.mekanly.presentation.ui.enums.BusinessType
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.FragmentSubBusinessProfileState
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.VMSubBusinessProfile
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
+import com.mekanly.utils.itemdecorators.GridSpacingItemDecoration
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -36,7 +37,9 @@ class SubBusinessFragment : Fragment() {
         super.onCreate(savedInstanceState)
         currentBusinessType = BusinessType.valueOf(args.businessType)
         title = args.title
-        Log.e("TAG_business_type", "onCreate: test business type $currentBusinessType, title $title")
+        Log.e(
+            "TAG_business_type", "onCreate: test business type $currentBusinessType, title $title"
+        )
     }
 
 
@@ -52,49 +55,75 @@ class SubBusinessFragment : Fragment() {
         return binding.root
     }
 
-    private fun getSubCategories() {
-        viewModel.getSimilarCategories(args.categoryId)
-    }
 
     private fun observeViewModel() {
         lifecycleScope.launch {
-        viewModel.fragmentState.collectLatest {
-            when(it){
-                is FragmentSubBusinessProfileState.Error -> {
-                binding.progressBar.visibility = View.GONE
-                }
-                FragmentSubBusinessProfileState.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-                is FragmentSubBusinessProfileState.SuccessBusinessProfiles ->{
-                    binding.progressBar.visibility = View.GONE
-                    setRecycler(it.dataResponse)
-                }
+            viewModel.fragmentState.collectLatest {
+                when (it) {
+                    is FragmentSubBusinessProfileState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                    }
 
-                is FragmentSubBusinessProfileState.SuccessCategories -> {
-                    binding.progressBar.visibility = View.GONE
-                    setSimilarCategoryRecycler(it.dataResponse)
-                }
+                    FragmentSubBusinessProfileState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
 
-                else -> {}
+                    is FragmentSubBusinessProfileState.SuccessBusinessProfiles -> {
+                        binding.progressBar.visibility = View.GONE
+                        setRecycler(it.dataResponse)
+                    }
+
+                    is FragmentSubBusinessProfileState.SuccessCategories -> {
+                        binding.progressBar.visibility = View.GONE
+                        setSimilarCategoryRecycler(it.dataResponse)
+                    }
+
+
+                    is FragmentSubBusinessProfileState.SuccessSimilarCategories -> {
+                        binding.progressBar.visibility = View.GONE
+                        setSimilarCategoryRecycler(it.dataResponse)
+                    }
+
+
+
+
+
+                    else -> {}
+                }
             }
         }
-        }
+
+
+
+
+
     }
 
     private fun setSimilarCategoryRecycler(dataResponse: List<BusinessCategory>) {
-            val businessCategoryAdapter = AdapterItemBusinessCategories(dataResponse) { selectedItem ->
-                val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(selectedItem.id,title = selectedItem.title ?: "N/A", businessType = selectedItem.type?.name
-                    ?: BusinessType.FURNITURE.name)
+        val businessCategoryAdapter = AdapterItemBusinessCategories(dataResponse) { selectedItem ->
+            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(
+                selectedItem.id, title = selectedItem.title ?: "N/A" ?: BusinessType.FURNITURE.name
+            )
 
-                findNavController().navigate(action)
-            }
-            binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 3)
-            binding.rvCategories.adapter = businessCategoryAdapter
+            findNavController().navigate(action)
+        }
+        binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 3)
+        val itemDecoration = GridSpacingItemDecoration(
+            spanCount = 3,
+            spacingInDp = 6F,
+            includeEdge = true
+        )
+        binding.rvCategories.addItemDecoration(itemDecoration)
+        binding.rvCategories.adapter = businessCategoryAdapter
     }
 
     private fun getSimilarProfiles() {
         viewModel.getSimilarBusinessProfiles(args.categoryId.toLong())
+    }
+
+
+    private fun getSubCategories() {
+        viewModel.getSimilarCategories(args.categoryId.toLong())
     }
 
     private fun setRecycler(items: List<BusinessProfile>) {
@@ -117,16 +146,15 @@ class SubBusinessFragment : Fragment() {
         }
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
 
-        binding.backBtn.setOnClickListener{
+        binding.backBtn.setOnClickListener {
 
             findNavController().popBackStack()
 
         }
 
     }
-
 
 
 }

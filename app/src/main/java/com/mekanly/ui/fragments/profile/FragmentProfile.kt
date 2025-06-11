@@ -43,8 +43,7 @@ class FragmentProfile : Fragment() {
                 tvAccountNumber.text = getString(R.string.press_to_log_in)
                 tvAccountNumber.setTextColor(
                     ContextCompat.getColor(
-                        requireContext(),
-                        R.color.bg_blue_two
+                        requireContext(), R.color.bg_blue_two
                     )
                 )
             }
@@ -56,8 +55,7 @@ class FragmentProfile : Fragment() {
                 tvAccountNumber.text = AppPreferences.getUsername()
                 tvAccountNumber.setTextColor(
                     ContextCompat.getColor(
-                        requireContext(),
-                        R.color.text_color_gray
+                        requireContext(), R.color.text_color_gray
                     )
                 )
             }
@@ -92,40 +90,42 @@ class FragmentProfile : Fragment() {
 
         }
 
-        binding.btnLogout.setOnClickListener{
+        binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
 
         if (!PreferencesHelper.getGlobalOptions()?.locations.isNullOrEmpty()) {
-            val cities = PreferencesHelper.getGlobalOptions()?.locations!!
+            val allLocations = PreferencesHelper.getGlobalOptions()?.locations!!
+            val parentLocations = allLocations.filter { it.parentId == null }
+
             binding.btnLocation.setOnClickListener {
-                val bottomSheet = LocationBottomSheet(cities, onDelete = {
-                    binding.apply { textLocation.text = "" }
-                }) { selectedCity ->
-                    binding.apply { textLocation.text = selectedCity.name }
-                    viewModel.getHouses()
-                }
-                bottomSheet.show(childFragmentManager, "LocationBottomSheet")
+                LocationBottomSheet.showWithoutChildren(
+                    parent = this,
+                    cities = parentLocations,
+                    onDelete = {
+                        binding.textLocation.text = ""
+                    },
+                    onCitySelected = { selectedCity ->
+                        binding.textLocation.text = selectedCity.name
+                        viewModel.getHouses()
+                    })
             }
-
         }
-
     }
 
+
     private fun showLogoutDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.logout))
+        AlertDialog.Builder(requireContext()).setTitle(getString(R.string.logout))
             .setMessage(getString(R.string.logout_question))
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
                 logout()
-            }
-            .setNegativeButton(getString(R.string.cancel), null)
-            .show()
+            }.setNegativeButton(getString(R.string.cancel), null).show()
     }
 
     private fun logout() {
         AppPreferences.clearPreferences()
-        val intent = requireContext().packageManager.getLaunchIntentForPackage(requireContext().packageName)
+        val intent =
+            requireContext().packageManager.getLaunchIntentForPackage(requireContext().packageName)
         intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         intent?.let { startActivity(it) }
         requireActivity().finishAffinity()

@@ -3,7 +3,7 @@
 
     <gradient
         android:angle="180"
-        android:startColor="@color/bg_vip_houses_color_end"
+        android:startColor="@color/white"
         android:endColor="@color/bg_vip_houses_color_start"/>
 
     <corners android:radius="15dp"/>

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mekanly.data.models.Banner
 import com.mekanly.data.models.House
+import com.mekanly.data.models.TopHouses
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.domain.useCase.GetBannersUseCase
 import com.mekanly.domain.useCase.GetHousesUseCase
@@ -13,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 sealed class FragmentHomeState(){
     data class SuccessBanners(val dataResponse:List<Banner>): FragmentHomeState()
-    data class SuccessTopHouses(val dataResponse:List<House>): FragmentHomeState()
+    data class SuccessTopHouses(val dataResponse:List<TopHouses>): FragmentHomeState()
     data object Loading: FragmentHomeState()
     data object Initial: FragmentHomeState()
     data class Error(val error:Any): FragmentHomeState()
@@ -26,8 +27,8 @@ class VMHome:ViewModel() {
     private val _banners= MutableStateFlow(emptyList<Banner>().toMutableList())
     val banners: StateFlow<MutableList<Banner>> = _banners.asStateFlow()
 
-    private val _houses= MutableStateFlow(emptyList<House>().toMutableList())
-    val houses: StateFlow<MutableList<House>> = _houses.asStateFlow()
+    private val _houses= MutableStateFlow(emptyList<TopHouses>().toMutableList())
+    val houses: StateFlow<MutableList<TopHouses>> = _houses.asStateFlow()
 
     private val useCase by lazy {
         GetHousesUseCase()
@@ -42,7 +43,7 @@ class VMHome:ViewModel() {
         getTopHouses()
     }
 
-    private fun getBanners(){
+    fun getBanners(){
         Log.e("BANNERS", "getBanners: now getting banners" )
         useCaseBanners.execute {
            when(it){
@@ -68,8 +69,8 @@ class VMHome:ViewModel() {
         }
     }
 
-    private fun getTopHouses(offset: Int = 0, limit: Int = 10) {
-        useCase.executeTopHouses(offset, limit) { result ->
+    private fun getTopHouses(start: Int = 0, limit: Int = 10) {
+        useCase.executeTopHouses(start, limit) { result ->
             when (result) {
                 is ResponseBodyState.Error -> {
                     _homeState.value = FragmentHomeState.Error(4)
@@ -81,7 +82,7 @@ class VMHome:ViewModel() {
                     if (result.dataResponse.isEmpty()) {
                         return@executeTopHouses
                     } else {
-                        val list = (result.dataResponse as MutableList<House>).take(50).toMutableList()
+                        val list = (result.dataResponse as MutableList<TopHouses>).take(50).toMutableList()
                         _houses.value = list
                         _homeState.value = FragmentHomeState.SuccessTopHouses(list)
                     }

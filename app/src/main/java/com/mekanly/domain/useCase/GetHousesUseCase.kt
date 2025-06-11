@@ -12,7 +12,7 @@ class GetHousesUseCase {
         rep.getHouses(callback)
     }
 
-    fun executeTopHouses(offset: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
-        rep.getTopHouses(offset, limit, callback)
+    fun executeTopHouses(start: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
+        rep.getTopHouses(start, limit, callback)
     }
 }

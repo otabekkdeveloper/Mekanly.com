@@ -27,7 +27,7 @@ data class HouseDetails(
     @SerializedName("star")
     val star: Int?,
     @SerializedName("bron_number")
-    val bronNumber: String,
+    val bronNumber: String?,
     @SerializedName("room_number")
     val roomNumber: Int,
     @SerializedName("floor_number")
@@ -50,6 +50,8 @@ data class HouseDetails(
     val possibilities: List<Option>,
     @SerializedName("comment")
     val comment: Int,
+    @SerializedName("comment_count")
+    val commentCount: Int,
     @SerializedName("comments")
     val comments: List<Comment>,
     @SerializedName("is_comment")

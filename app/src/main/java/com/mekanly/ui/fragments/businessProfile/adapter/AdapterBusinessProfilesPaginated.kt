@@ -1,33 +1,38 @@
 package com.mekanly.presentation.ui.fragments.businessProfile.adapter
 
-import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.data.models.BusinessProfile
-import com.mekanly.data.models.House
-import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemBusinessProfileBinding
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.VMBusinessProfiles
-import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 
 class AdapterBusinessProfilesPaginated(
-    private var businessProfiles: List<BusinessProfile>,
     private val viewModel: VMBusinessProfiles,
     private val navController: NavController
 ) : RecyclerView.Adapter<AdapterBusinessProfilesPaginated.BusinessProfileViewHolder>() {
 
+    private val businessProfiles = mutableListOf<BusinessProfile>()
+
     inner class BusinessProfileViewHolder(private val binding: ItemBusinessProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SetTextI18n")
-        fun bind(property: BusinessProfile) {
+        fun bind(profile: BusinessProfile) {
+            Log.d("AdapterBind", "Binding item: ${profile.brand}")
             binding.apply {
-                tvPropertyType.text = property.brand
-                tvDescription.text = property.description
-                Glide.with(imgProperty.context).load(property.image).into(imgProperty)
+                tvPropertyType.text = profile.brand
+//                tvDescription.text = profile.description
+                Glide.with(imgProperty.context)
+                    .load(profile.image)
+                    .into(imgProperty)
+
+                root.setOnClickListener {
+                    // val action = FragmentFlowDirections.actionToBusinessProfileDetail(profile.id)
+                    // navController.navigate(action)
+                }
             }
         }
     }
@@ -39,28 +44,16 @@ class AdapterBusinessProfilesPaginated(
         return BusinessProfileViewHolder(binding)
     }
 
-    override fun onBindViewHolder(
-        holder: AdapterBusinessProfilesPaginated.BusinessProfileViewHolder, position: Int
-    ) {
-        val property = businessProfiles[position]
-        holder.bind(property)
+    override fun onBindViewHolder(holder: BusinessProfileViewHolder, position: Int) {
+        holder.bind(businessProfiles[position])
     }
 
-    override fun getItemCount() = businessProfiles.size
+    override fun getItemCount(): Int = businessProfiles.size
 
-    fun updateList() {
-        val lastPageCount = if (viewModel.businessProfiles.value.size % LIMIT_REGULAR == 0L) {
-            LIMIT_REGULAR
-        } else {
-            viewModel.businessProfiles.value.size % LIMIT_REGULAR
-        }
-        notifyItemRangeInserted(viewModel.businessProfiles.value.size, lastPageCount.toInt())
-    }
-
-    fun onBusinessProfileClicked(item: House) {
-        val action =
-            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
-
-        navController.navigate(action)
+    fun updateList(newList: List<BusinessProfile>) {
+        val oldSize = businessProfiles.size
+        businessProfiles.clear()
+        businessProfiles.addAll(newList)
+        notifyDataSetChanged() // Попробуем начать с полного обновления
     }
 }

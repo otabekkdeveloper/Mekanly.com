@@ -9,7 +9,7 @@ data class BusinessProfile(
     @SerializedName("logo") val logo: String?,
     @SerializedName("image") val image: String?,
     @SerializedName("status") val status: String,
-    @SerializedName("description") val description: String?,
+//    @SerializedName("description") val description: String?,
     @SerializedName("location_id") val locationId: Int,
     @SerializedName("expire") val expire: String?,
     @SerializedName("views") val views: Int,

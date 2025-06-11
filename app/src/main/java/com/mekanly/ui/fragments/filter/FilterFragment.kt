@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -28,6 +30,7 @@ import com.mekanly.data.models.DataGlobalOptions
 import com.mekanly.data.models.PriceRange
 import com.mekanly.databinding.FragmentFilterBinding
 import com.mekanly.helpers.PreferencesHelper
+import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
 import com.mekanly.ui.dialog.OptionSelectionDialog
 import com.mekanly.ui.dialog.OptionsDialogAdapter.Companion.TYPE_OPPORTUNITY
@@ -65,7 +68,6 @@ class FilterFragment : Fragment() {
         chipGroups()
         switchDesign()
         seekBarLogicTerritory()
-        priceEditText()
         observeViewModel()
 
         binding.backBtn.setOnClickListener {
@@ -74,8 +76,10 @@ class FilterFragment : Fragment() {
         }
 
         binding.searchButton.setOnClickListener {
-            viewModel.getHouses()
-            findNavController().popBackStack()
+            if (updatePriceFilterIfValid()) {
+                viewModel.getHouses()
+                findNavController().popBackStack()
+            }
         }
 
         return binding.root
@@ -104,11 +108,23 @@ class FilterFragment : Fragment() {
             openCategorySelector(globalOptions)
         }
 
-
-
         binding.popupMenu.setOnClickListener { view ->
             showPopupMenu(view)
         }
+
+
+        binding.radioGroupPoster.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.radioBtnOwner -> viewModel.setOwner(OWNER)
+                    R.id.radioBtnRealtor -> viewModel.setOwner(REALTOR)
+                }
+            }
+        }
+
+
+
+
     }
 
     private fun observeViewModel() {
@@ -122,10 +138,39 @@ class FilterFragment : Fragment() {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.selectedLocation.collect { location ->
-                        binding.txtLocation.text =
-                            location?.name ?: getString(R.string.not_selected)
+                        Log.e("LOCATION_TEST", "observeViewModel: "+location.toString() )
+
+                        binding.txtLocation.text = when {
+                            location?.name == "Arkadag şäheri" -> {
+                                location.name
+                            }
+
+                            location?.parentName != null  -> {
+                                "${location.parentName}, ${location.name}"
+                            }
+
+                            else -> {
+                                getString(R.string.not_selected)
+                            }
+                        }
                     }
                 }
+
+
+                launch {
+                    viewModel.owner.collect { owner ->
+                        val selectedId = when (owner) {
+                            OWNER -> R.id.radioBtnOwner
+                            REALTOR -> R.id.radioBtnRealtor
+                            else -> View.NO_ID
+                        }
+
+                        if (selectedId != View.NO_ID && !binding.radioGroupPoster.isPressed) {
+                            binding.radioGroupPoster.check(selectedId)
+                        }
+                    }
+                }
+
                 launch {
                     viewModel.selectedCategory.collect { category ->
                         binding.txtCategory.text =
@@ -134,8 +179,8 @@ class FilterFragment : Fragment() {
                 }
                 launch {
                     viewModel.price.collect { price ->
-                        binding.etMaxPrice.setText((price.max ?: 0).toString())
-                        binding.etMinPrice.setText((price.min ?: 0).toString())
+                        binding.etMaxPrice.setText((price.max ?: "").toString())
+                        binding.etMinPrice.setText((price.min ?: "").toString())
                     }
                 }
                 launch {
@@ -247,7 +292,6 @@ class FilterFragment : Fragment() {
         }
     }
 
-
     private fun openCategorySelector(globalOptions: DataGlobalOptions) {
         val houseCategories = globalOptions.houseCategories
         val bottomSheet = SectionSelectionBottomSheet(
@@ -265,20 +309,43 @@ class FilterFragment : Fragment() {
     }
 
     private fun openLocationSelector(globalOptions: DataGlobalOptions) {
-        if (globalOptions.locations.isNotEmpty()) {
-            val cities = globalOptions.locations
-            val bottomSheet = LocationBottomSheet(
-                cities, onDelete = {
+        // Берем только родительские локации
+        val parentCities = globalOptions.locations.filter { it.parentId == null }
+
+        if (parentCities.isNotEmpty()) {
+            LocationBottomSheet.showWithChildren(
+                parent = this,
+                cities = parentCities,
+                onDelete = {
                     viewModel.setSelectedLocation(null)
                     binding.txtLocation.text = getString(R.string.location)
+                },
+                onCitySelected = { selectedCity ->
+                    //Yadynda sakla
+                    selectedCity.isSelectedByFiler = true
+                    viewModel.setSelectedLocation(selectedCity)
                 }
-            ) { selectedCity ->
-                viewModel.setSelectedLocation(selectedCity)
-            }
-            bottomSheet.show(childFragmentManager, "LocationBottomSheet")
+            )
         }
     }
 
+
+    private fun updatePriceFilterIfValid(): Boolean {
+        val minPrice = binding.etMinPrice.text.toString().toIntOrNull()
+        val maxPrice = binding.etMaxPrice.text.toString().toIntOrNull()
+
+        if (minPrice != null && maxPrice != null && minPrice > maxPrice) {
+            Toast.makeText(
+                requireContext(),
+                "Ýalňyş! Min baha maks bahadan uly bolmaly däl!",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+
+        viewModel.setPrice(PriceRange(minPrice, maxPrice))
+        return true
+    }
 
     private fun showPropertyTypeDialog(globalOptions: DataGlobalOptions) {
         val dialog = OptionSelectionDialog(
@@ -295,6 +362,9 @@ class FilterFragment : Fragment() {
     }
 
     private fun showRepairTypeDialog(globalOptions: DataGlobalOptions) {
+        // Лог для проверки, пришли ли данные
+        Log.d("RepairTypeCheck", "repairType = ${globalOptions.repairType}")
+
         val dialog = OptionSelectionDialog(
             requireContext(),
             TYPE_REPAIR,
@@ -321,7 +391,6 @@ class FilterFragment : Fragment() {
             })
         dialog.show()
     }
-
 
     private fun switchDesign() {
         binding.switchShowOnlyImages.setOnCheckedChangeListener { _, isChecked ->
@@ -393,7 +462,6 @@ class FilterFragment : Fragment() {
             chip.setOnClickListener {
                 if (chip.id == allChipsId) {
                     if (!chip.isSelected) {
-                        // Активируем "Все", деактивируем остальных
                         activateChip(allChip, true)
                         for (j in 0 until chipGroup.childCount) {
                             val otherChip = chipGroup.getChildAt(j) as Chip
@@ -436,7 +504,7 @@ class FilterFragment : Fragment() {
     private fun activateChip(chip: Chip, isActive: Boolean) {
         chip.isSelected = isActive
 
-        // Цвета фона и текста
+        // Цвет фона и текста
         chip.chipBackgroundColor = ContextCompat.getColorStateList(
             requireContext(), if (isActive) R.color.chip_color_bg else R.color.white
         )
@@ -444,11 +512,17 @@ class FilterFragment : Fragment() {
             ContextCompat.getColor(requireContext(), if (isActive) R.color.chip_filter_text_color else R.color.black)
         )
 
-        // Прямая установка DEFAULT или DEFAULT_BOLD
-        chip.typeface = if (isActive) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
+        val customTypeface = ResourcesCompat.getFont(requireContext(), R.font.roboto_regular)
+        if (isActive) {
+            chip.typeface = Typeface.create(customTypeface, Typeface.BOLD)
+        } else {
+            chip.typeface = Typeface.create(customTypeface, Typeface.NORMAL)
+        }
 
-        chip.chipStrokeColor = ContextCompat.getColorStateList(requireContext(),
-            if (isActive) R.color.color_transparent else R.color.chip_border)
+        chip.chipStrokeColor = ContextCompat.getColorStateList(
+            requireContext(),
+            if (isActive) R.color.color_transparent else R.color.chip_border
+        )
     }
 
 
@@ -537,7 +611,6 @@ class FilterFragment : Fragment() {
         }
     }
 
-
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view, Gravity.END or Gravity.BOTTOM)
         popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
@@ -567,7 +640,6 @@ class FilterFragment : Fragment() {
 
         popupMenu.show()
     }
-
 
 }
 

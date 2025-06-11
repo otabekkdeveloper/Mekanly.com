@@ -14,10 +14,11 @@ import com.mekanly.presentation.ui.adapters.BottomSheetAdapter
 
 class SectionSelectionBottomSheet(
     private val categories: List<HouseCategory>,
-    private val onDelete : ()-> Unit
+    private val onDelete : ()-> Unit,
+    private var onCategorySelected: ((HouseCategory) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentBottomSheetBinding
-    private var onCategorySelected: ((HouseCategory) -> Unit)? = null
+
 
     fun setOnCategorySelectedListener(listener: (HouseCategory) -> Unit) {
         onCategorySelected = listener

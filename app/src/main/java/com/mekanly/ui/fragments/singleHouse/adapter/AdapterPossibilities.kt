@@ -55,11 +55,19 @@ class AdapterPossibilities(
 
             val iconResourceId = when (possibilityEnum) {
                 Possibilities.WIFI -> R.drawable.ic_wifi
+                Possibilities.POOL -> R.drawable.ic_swimming_pool
+                Possibilities.BALCONY -> R.drawable.ic_balcony
+                Possibilities.ELEVATOR -> R.drawable.ic_lift
+                Possibilities.KITCHEN_FURNITURE -> R.drawable.ic_kitchen_furniture
                 Possibilities.WASHER -> R.drawable.ic_washing_machine
                 Possibilities.TV -> R.drawable.ic_tv
+                Possibilities.HOT -> R.drawable.ic_heating_system
+                Possibilities.STOVE -> R.drawable.ic_stove
+                Possibilities.WORK_DESK -> R.drawable.ic_table
                 Possibilities.CONDITIONER -> R.drawable.ic_air_conditioner
                 Possibilities.WARDROBE -> R.drawable.ic_wardrobe
                 Possibilities.BED -> R.drawable.ic_bedroom
+                Possibilities.MANGAL -> R.drawable.ic_bbq
                 Possibilities.HOT_WATER -> R.drawable.ic_hot_water
                 Possibilities.FRIDGE -> R.drawable.ic_fridge
                 Possibilities.SHOWER -> R.drawable.ic_bath

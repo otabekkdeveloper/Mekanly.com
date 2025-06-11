@@ -1,26 +1,30 @@
 {
+  "total": 7,
   "data": [
     {
-      "id": 1088,
-      "category_name": "Satlyk ja\u00fdlar",
+      "id": 1384,
+      "category_name": "Kire\u00fdne ja\u00fdlar",
       "location": {
-        "id": 134,
-        "parent_id": 2,
-        "name": "\u00c4hlisi",
-        "created_at": "2025-01-09T09:18:51.000000Z",
-        "updated_at": "2025-01-09T09:18:51.000000Z",
-        "parent_name": "Arkadag \u015f\u00e4heri"
+        "id": 64,
+        "parent_id": 1,
+        "name": "Hitrowka",
+        "created_at": "2024-06-17T05:46:27.000000Z",
+        "updated_at": "2024-06-17T05:46:27.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
       },
-      "user_id": 479,
-      "username": "BTXJVJ8KXZ",
-      "user_phone": "+99371401683",
-      "name": "satlyk ja\u00fd",
-      "description": "hurmant gokje taze gurlan yasalmadyk jay 400kw jayyn 80.90% isi edilen dokument duzuw 12sotuk 6komnat monsarda hakyky alarman adama onsuk  bolar obmen saher ici 2komnat jay yada masyn 2ji etaz pacti dynylan aboy tutulan 80 dup limonam bar howlyda tiplissa edip bolya",
-      "price": "125000.00",
-      "viewed": 4,
+      "user_id": 420,
+      "username": "474SNUXUP5",
+      "user_phone": "+99363527025",
+      "name": "Plan jay",
+      "description": "Hitrofka Planjay 4 komnat  Howly on arenda berlen oye ayratyn howlyn dasyndan girelge bar",
+      "price": "6000.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 11,
       "star": null,
-      "room_number": 6,
-      "floor_number": 0,
+      "comment_count": 0,
+      "room_number": 4,
+      "floor_number": 1,
       "property_type": null,
       "repair_type": null,
       "status": "active",
@@ -29,44 +33,56 @@
       "luxe_expire": null,
       "vip_status": false,
       "vip_expire": null,
-      "bron_number": "+99364509200",
+      "bron_number": "+99365555683",
       "images": [
         {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592860.jpg"
+          "url": "https:\/\/mekanly.com.tm\/storage\/17489321740.jpg"
         },
         {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592861.jpg"
+          "url": "https:\/\/mekanly.com.tm\/storage\/17489321741.jpg"
         },
         {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592862.jpg"
+          "url": "https:\/\/mekanly.com.tm\/storage\/17489321742.jpg"
         },
         {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592863.jpg"
+          "url": "https:\/\/mekanly.com.tm\/storage\/17489321743.jpg"
         },
         {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592864.jpg"
-        },
-        {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592865.jpg"
-        },
-        {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592866.jpg"
-        },
-        {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592867.jpg"
-        },
-        {
-          "url": "https:\/\/mekanly.com.tm\/storage\/17412592868.jpg"
+          "url": "https:\/\/mekanly.com.tm\/storage\/17489321744.jpg"
         }
       ],
       "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
         {
           "id": 2,
           "name": "washer"
         },
         {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
           "id": 8,
           "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
         },
         {
           "id": 10,
@@ -75,20 +91,677 @@
       ],
       "comment": 0,
       "is_comment": null,
+      "write_comment": null,
       "who": null,
       "area": null,
       "exclusisive": 0,
       "hashtag": null,
       "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-06-03T01:29:34.000000Z",
+      "updated_at": "2025-06-09T10:41:25.000000Z",
+      "created_at": "2025-06-03T06:29:34.000000Z",
+      "contact": false
+    },
+    {
+      "id": 1381,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 29,
+        "parent_id": 1,
+        "name": "Howdan \"A\"",
+        "created_at": "2024-06-17T05:46:27.000000Z",
+        "updated_at": "2024-06-17T05:46:27.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
+      },
+      "user_id": 46,
+      "username": "Mercury",
+      "user_phone": "+99361281166",
+      "name": "SATLYK Gowdan A4\/1 etaj 2",
+      "description": "SATLYK Gowdan A\n4\/1 etaj 2 kom\n+ Podwal 65m\u00b2\nKapitalny\u00fd Remont edil\nArassa gowy jay\nGirip \u00fda\u015fa\u00fdmaly \nBaha: 47.000\nSuratdaky jay\nRIELTORLAR bimaza etman \n.........\n\u041f\u0440\u043e\u0434\u0430\u043c \u0413\u0430\u0443\u0434\u0430\u043d \u0410\n4\/1 \u044d\u0442\u0430\u0436 2 \u043a\u043e\u043c\u043d\u0430\u0442 \n+ \u041f\u043e\u0434\u0432\u0430\u043b 65m\u00b2\n\u041a\u0430\u043f\u0438\u0442\u0430\u043b\u044c\u043d\u044b\u0439 \u0440\u0435\u043c\u043e\u043d\u0442 \n\u0426\u0435\u043d\u0430: 47.000\n\u0424\u043e\u0442\u043e \u0441\u0432\u043e\u044f",
+      "price": "46999.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 6,
+      "star": null,
+      "comment_count": 0,
+      "room_number": 2,
+      "floor_number": 1,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99362799898",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915890.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915891.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915892.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915893.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915894.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915895.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915896.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17486915897.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-05-31T06:39:49.000000Z",
+      "updated_at": "2025-06-08T10:53:21.000000Z",
+      "created_at": "2025-05-31T11:39:49.000000Z",
+      "contact": false
+    },
+    {
+      "id": 1380,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 133,
+        "parent_id": 1,
+        "name": "\u00c4hlisi",
+        "created_at": "2025-01-09T09:18:24.000000Z",
+        "updated_at": "2025-01-09T09:18:24.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
+      },
+      "user_id": 46,
+      "username": "Mercury",
+      "user_phone": "+99361281166",
+      "name": "satlyk 11mkr 2kom\/ 11mkr",
+      "description": "ARZAN Satlyk 11 MKR \nKOTOWKIY K\u00d3\u00c7\u00c0 GOLA\u00dd \n2 KOMNAT ARASSAJA 4\/4ETAJY. \nSUPER SKIDKA BAHADAN HOWLYGY\u00d1\nBaha: 32.999\nSuratdaky jay Kartinka \n*******\n\u0421\u0420\u041e\u0427\u041d\u041e 11 \u041c\u041a\u0420 \n\u0411\u041b\u0418\u0416\u0415 \u041a\u041e\u0422\u041e\u0412\u0421\u041a\u041e\u0413\u041e \n\u0422\u0410\u0428\u0410\u0423\u0417.\u0411\u0410\u0417\u0410\u0420. \u041c\u0415\u0421\u0422\u041e \u041e\u0422\u041b\u0418\u0427\u041d\u041e\u0415 \n2\u0425 \u041a\u041e\u041c. 4\/4 \u044d\u0442\u0430\u0436 \n\u0412 \u0427\u0418\u0421\u0422\u041e\u041c \u0421\u041e\u0421\u0422\u041e\u042f\u041d\u0418\u0418 \n\u041f\u041e \u0421\u0423\u041f\u0415\u0420 \u0421\u041a\u0418\u0414\u041e\u0427.\u0426\u0415\u041d\u0415 \ud83d\udc4d\n\u0426\u0435\u043d\u0430: 32.999\n\u0424\u043e\u0442\u043e \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0430",
+      "price": "32999.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 18,
+      "star": null,
+      "comment_count": 0,
+      "room_number": 4,
+      "floor_number": 4,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99362799898",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17485231590.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-05-29T07:52:39.000000Z",
+      "updated_at": "2025-06-07T16:14:31.000000Z",
+      "created_at": "2025-05-29T12:52:39.000000Z",
+      "contact": false
+    },
+    {
+      "id": 1378,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 25,
+        "parent_id": 1,
+        "name": "9 mkr",
+        "created_at": "2024-06-17T05:46:27.000000Z",
+        "updated_at": "2024-06-21T06:19:25.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
+      },
+      "user_id": 531,
+      "username": "X0782SRJAF",
+      "user_phone": "+99365715286",
+      "name": "9 mkr 4 kom",
+      "description": "9 mkr 3\/3 etaj 4 kom remontly goshly. Dokument tayyar. Baha amatly",
+      "price": "48000.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 9,
+      "star": null,
+      "comment_count": 0,
+      "room_number": 4,
+      "floor_number": 3,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99365715286",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17484319360.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-05-28T06:32:16.000000Z",
+      "updated_at": "2025-06-04T06:07:44.000000Z",
+      "created_at": "2025-05-28T11:32:16.000000Z",
+      "contact": false
+    },
+    {
+      "id": 1377,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 35,
+        "parent_id": 1,
+        "name": "15-nji tapgyr",
+        "created_at": "2024-06-17T05:46:27.000000Z",
+        "updated_at": "2024-06-17T05:46:27.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
+      },
+      "user_id": 533,
+      "username": "LQKTGWNOCA",
+      "user_phone": "+99361629923",
+      "name": "15 tapgyr Kottez jay",
+      "description": "Gyssagly satyas 15nji tapgyrda 7 kom 600 kw. Yerlesyan yeri gowy. Swejyy howa. Remont full. Sauna,bilyardnaya zona,sport zal, zona otdyha. Hemme zady lezzetli yasamak un gurnalan. Baha 1.3",
+      "price": "1300.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 16,
+      "star": null,
+      "comment_count": 0,
+      "room_number": 7,
+      "floor_number": 2,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99361629923",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17484228920.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17484228921.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-05-28T04:01:32.000000Z",
+      "updated_at": "2025-06-08T19:25:07.000000Z",
+      "created_at": "2025-05-28T09:01:32.000000Z",
+      "contact": false
+    },
+    {
+      "id": 1342,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 25,
+        "parent_id": 1,
+        "name": "9 mkr",
+        "created_at": "2024-06-17T05:46:27.000000Z",
+        "updated_at": "2024-06-21T06:19:25.000000Z",
+        "parent_name": "A\u015fgabat \u015f\u00e4heri"
+      },
+      "user_id": 46,
+      "username": "Mercury",
+      "user_phone": "+99361281166",
+      "name": "Satlyk 9mkr 2Kom\/9\u043c\u043a\u0440 2\u043a\u043e",
+      "description": "9 \u043c\u043a\u0440 \u0443\u043b.\u0425\u0443\u0434\u0430\u0439\u0431\u0435\u0440\u0434\u0438\n4\/2\u044d\u0442 2\u043a\u043e\u043c \u0421\u043c\u0435\u0436\u043a\u0430 56\u043c\u00b2\n\u0420\u0435\u043c\u043e\u043d\u0442 \u041b\u0430\u043c\u0438\u043d\u0430\u0442, \u043f\u043e\u0431\u0435\u043b\u043a\u0430\n\u041c\u0435\u0431\u0435\u043b\u044c \u043e\u0441\u0442\u0430\u0451\u0442\u0441\u044f,\n\u0422\u0435\u0445\u043d\u0438\u043a\u0443 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442\n\u0426\u0435\u043d\u0430: 35.800\n\u0424\u043e\u0442\u043e \u0441\u0432\u043e\u044f \n.........\n9mkr Hudayberdiyew koce\n4\/2etajy 2komnat sme\u017eka 56m\u00b2\narassa remont \nmebel Gal\u00fda\/ Tehnika gid\u00fda\nDOKUMENT TA\u00ddYN \nPROPISKA BO\u015e \nbaha: 35.800\nSuratdaky jay",
+      "price": "35800.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 27,
+      "star": null,
+      "comment_count": 0,
+      "room_number": 2,
+      "floor_number": 2,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": null,
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99362799898",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375800.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375801.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375802.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375803.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375804.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375805.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375806.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375807.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375808.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17476375809.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 0,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 0,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
+      "liked": false,
+      "shop": null,
+      "type": "house",
+      "date": "2025-05-19T01:53:00.000000Z",
+      "updated_at": "2025-06-04T06:08:07.000000Z",
+      "created_at": "2025-05-19T06:53:00.000000Z",
+      "contact": false
+    },
+    {
+      "id": 457,
+      "category_name": "Satlyk ja\u00fdlar",
+      "location": {
+        "id": 127,
+        "parent_id": 80,
+        "name": "Balkanabat \u015f\u00e4heri",
+        "created_at": "2024-06-17T05:46:28.000000Z",
+        "updated_at": "2024-06-17T05:46:28.000000Z",
+        "parent_name": "Balkan wela\u00fdaty"
+      },
+      "user_id": 384,
+      "username": "IplAL2Fwhq",
+      "user_phone": "+99363067611",
+      "name": "SATLYK JA\u00dd",
+      "description": "SATLYK JA\u00dd BALKANABAT 14 NJI MKRON 2 ETA\u0179 3 KOM RIMONT ARASSA I\u00c7INI\u00d1 \u00c0HLI GO\u015aLARY BLN BAHA 3 MLART 500 O\u00d1U\u015aYK BAR.",
+      "price": "700000.00",
+      "lover_percentage": null,
+      "lover_price": null,
+      "viewed": 46,
+      "star": null,
+      "comment_count": 11,
+      "room_number": 3,
+      "floor_number": 2,
+      "property_type": null,
+      "repair_type": null,
+      "status": "active",
+      "luxe": false,
+      "luxe_status": false,
+      "luxe_expire": "2025-05-08T14:31:00.000000Z",
+      "vip_status": false,
+      "vip_expire": null,
+      "bron_number": "+99361108893",
+      "images": [
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729200.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729201.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729202.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729203.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729204.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729205.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729206.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729207.jpg"
+        },
+        {
+          "url": "https:\/\/mekanly.com.tm\/storage\/17308729208.jpg"
+        }
+      ],
+      "possibilities": [
+        {
+          "id": 1,
+          "name": "wifi"
+        },
+        {
+          "id": 2,
+          "name": "washer"
+        },
+        {
+          "id": 3,
+          "name": "tv"
+        },
+        {
+          "id": 4,
+          "name": "conditioner"
+        },
+        {
+          "id": 5,
+          "name": "wardrobe"
+        },
+        {
+          "id": 6,
+          "name": "bed"
+        },
+        {
+          "id": 7,
+          "name": "hot"
+        },
+        {
+          "id": 8,
+          "name": "fridge"
+        },
+        {
+          "id": 9,
+          "name": "shower"
+        },
+        {
+          "id": 10,
+          "name": "kitchen"
+        }
+      ],
+      "comment": 2,
+      "is_comment": null,
+      "write_comment": null,
+      "who": null,
+      "area": null,
+      "exclusisive": 1,
+      "hashtag": null,
+      "level_number": null,
+      "favorited": true,
       "liked": false,
       "shop": null,
       "type": "house",
       "date": "2025-03-24T16:34:11.000000Z",
-      "updated_at": "2025-03-11T22:07:02.000000Z",
-      "created_at": "2025-03-06T11:08:06.000000Z"
+      "updated_at": "2025-06-04T12:13:42.000000Z",
+      "created_at": "2024-11-06T06:02:00.000000Z",
+      "contact": false
     }
-  ],
-  "total": 1,
-  "limit": 10,
-  "offset": 0
+  ]
 }

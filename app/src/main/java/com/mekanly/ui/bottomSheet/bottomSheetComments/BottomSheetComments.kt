@@ -41,22 +41,33 @@ class BottomSheetComments : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getHouseComments()
+    }
+
+    private fun getHouseComments() {
+        viewModel.getComments(args.houseId, COMMENT_TYPE_HOUSE)
+    }
+
     private fun observeViewModel() {
         lifecycleScope.launch {
             viewModel.commentsState.collectLatest {
-                when(it){
+                when (it) {
                     is ResponseBodyState.Error -> {
                         requireContext().showErrorSnackBar(binding.root, it.error.toString())
                         binding.progressBar.visibility = View.GONE
                     }
+
                     ResponseBodyState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                     }
+
                     is ResponseBodyState.SuccessList -> {
                         binding.progressBar.visibility = View.GONE
                         setCommentsAdapter(it.dataResponse as List<Comment>)
-                        if (it.dataResponse.isEmpty()){
-                            requireContext().showErrorSnackBar( binding.root,"Empty Data")
+                        if (it.dataResponse.isEmpty()) {
+                            requireContext().showErrorSnackBar(binding.root, "Empty Data")
                         }
                     }
 
@@ -66,13 +77,66 @@ class BottomSheetComments : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getHouseComments()
+    private fun initListeners() {
+        binding.sendButton.setOnClickListener {
+            val newCommentText = binding.commentEditText.text.toString().trim()
+            if (newCommentText.isNotEmpty()) {
+                handleCommentAction(newCommentText)
+            }
+        }
     }
 
-    private fun getHouseComments() {
-        viewModel.getComments(args.houseId, COMMENT_TYPE_HOUSE)
+    private fun handleCommentAction(newCommentText: String) {
+        if (AppPreferences.getToken()?.isEmpty() == true) {
+            requireContext().showErrorSnackBar(binding.root, getString(R.string.log_in_to_write_comment))
+        } else {
+            // Создаем новый комментарий для немедленного отображения
+            val newComment = Comment(
+                userName = AppPreferences.getUsername() ?: "Unknown User",
+                date = getCurrentTime(),
+                text = newCommentText,
+                likeCount = 0,
+                dislikeCount = 0
+            )
+
+            // Добавляем комментарий в UI сразу же
+            if (::commentAdapter.isInitialized) {
+                commentAdapter.addItem(newComment)
+            }
+
+            // Очищаем поле ввода
+            binding.commentEditText.text?.clear()
+
+            // Отправляем запрос на сервер
+            viewModel.addComment(
+                addCommentBody = AddCommentBody(
+                    comment = newCommentText,
+                    postId = args.houseId,
+                    type = COMMENT_TYPE_HOUSE,
+                    parentId = null
+                )
+            ) {
+                // Callback выполнится после успешной отправки на сервер
+                // Комментарий уже добавлен в UI, поэтому здесь ничего дополнительного не делаем
+            }
+        }
+    }
+
+    private fun setCommentsAdapter(list: List<Comment>) {
+        if (::commentAdapter.isInitialized) {
+            // Обновляем весь список — очистим и добавим заново
+            commentAdapter.apply {
+                comments.clear()
+                comments.addAll(list)
+                notifyDataSetChanged()
+            }
+        } else {
+            commentAdapter = CommentsAdapter(list.toMutableList())
+            binding.commentsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                adapter = commentAdapter
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -83,32 +147,5 @@ class BottomSheetComments : BottomSheetDialogFragment() {
     private fun getCurrentTime(): String {
         val sdf = SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault())
         return sdf.format(Date())
-    }
-
-    private fun initListeners(){
-        binding.sendButton.setOnClickListener {
-            val newCommentText = binding.commentEditText.text.toString().trim()
-            if (newCommentText.isNotEmpty()) {
-                binding.commentsRecyclerView.scrollToPosition(0)
-                binding.commentEditText.text.clear()
-                handleCommentAction(newCommentText)
-
-            }
-        }
-    }
-
-    private fun handleCommentAction(newCommentText: String) {
-        if (AppPreferences.getToken()==""){
-            requireContext().showErrorSnackBar(binding.root,
-                getString(R.string.log_in_to_write_comment))
-        }else{
-            viewModel.addComment(AddCommentBody(newCommentText, args.houseId,COMMENT_TYPE_HOUSE) )
-        }
-    }
-
-    private fun setCommentsAdapter(list:List<Comment>){
-        binding.commentsRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
-        commentAdapter = CommentsAdapter(list)
-        binding.commentsRecyclerView.adapter = commentAdapter
     }
 }

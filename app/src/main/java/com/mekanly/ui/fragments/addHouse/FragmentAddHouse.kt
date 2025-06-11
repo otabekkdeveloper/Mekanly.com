@@ -189,7 +189,7 @@ class FragmentAddHouse : Fragment() {
 
 
         binding.btnDone.setOnClickListener {
-            var name = binding.edtName.text.toString().trim()
+            val name = binding.edtName.text.toString().trim()
             val category = binding.txtCategory.text.toString()
             val location = binding.txtLocation.text.toString()
             val isAgreeChecked = binding.switchAgree.isChecked
@@ -224,7 +224,7 @@ class FragmentAddHouse : Fragment() {
             if (checkRequiredFields()) {
                 showConfirmationDialog {
                     addHouseBody.apply {
-                        name = binding.edtName.text?.trim().toString()
+                        this@apply.name = binding.edtName.text?.trim().toString()
                         description = binding.edtDescription.text?.trim().toString()
                         area = binding.editTextArea.text?.trim().toString().toIntOrNull()
                         price = binding.editTextPrice.text?.trim().toString().toIntOrNull()
@@ -294,19 +294,25 @@ class FragmentAddHouse : Fragment() {
     }
 
     private fun openLocationSelector(globalOptions: DataGlobalOptions) {
-        if (globalOptions.locations.isNotEmpty()) {
-            val cities = globalOptions.locations
-            val bottomSheet = LocationBottomSheet(cities, onDelete = {
-                addHouseBody.locationId = null
-                binding.txtLocation.text = getString(R.string.not_selected)
-            }) { selectedCity ->
-                addHouseBody.locationId = selectedCity.id
-                binding.txtLocation.text = selectedCity.name
+        val parentCities = globalOptions.locations.filter { it.parentId == null }
 
-            }
-            bottomSheet.show(childFragmentManager, "LocationBottomSheet")
+        if (parentCities.isNotEmpty()) {
+            LocationBottomSheet.showWithChildren(
+                parent = this,
+                cities = parentCities,
+                onDelete = {
+                    addHouseBody.locationId = null
+                    binding.txtLocation.text = getString(R.string.not_selected)
+                },
+                onCitySelected = { selectedCity ->
+                    addHouseBody.locationId = selectedCity.id
+                    binding.txtLocation.text = selectedCity.name
+                }
+            )
         }
     }
+
+
 
 
     private fun showPropertyTypeDialog(globalOptions: DataGlobalOptions) {
@@ -358,6 +364,9 @@ class FragmentAddHouse : Fragment() {
 
                     // ✅ Обновляем список в RecyclerView
                     selectedOptionsAdapter.setOptions(res)
+
+                    // ✅ Добавь эту строку:
+                    addHouseBody.possibilities = res.map { it.id }
 
                 } else {
                     binding.txtPossibilities.text = getString(R.string.not_selected)

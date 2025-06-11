@@ -39,6 +39,7 @@
 
         <TextView
             android:id="@+id/comment_text"
+            android:textColor="@color/black"
             android:layout_marginTop="3dp"
             android:text="Reiltor haky näçe?"
             android:fontFamily="@font/roboto_regular"

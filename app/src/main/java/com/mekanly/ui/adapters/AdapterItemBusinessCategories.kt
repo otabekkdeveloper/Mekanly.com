@@ -27,7 +27,7 @@ class AdapterItemBusinessCategories(
                 item.imageResId?.let {
                     ivCategory.setImageResource(it)
                 }
-                Glide.with(ivCategory.context).load(item.image).placeholder(R.drawable.carpet).into(ivCategory)
+                Glide.with(ivCategory.context).load(item.image).placeholder(R.drawable.bg_section_business_profile).into(ivCategory)
 
                 root.setOnClickListener {
                     onItemClick?.invoke(item)

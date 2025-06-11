@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.home
+package com.mekanly.ui.fragments.home
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,33 +7,35 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mekanly.R
-import com.mekanly.data.models.House
+import com.mekanly.data.models.TopHouses
 import com.mekanly.databinding.ItemAdvSmallBinding
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
 
 class AdapterTopHouses(private val navController: NavController) :
     RecyclerView.Adapter<AdapterTopHouses.PropertyViewHolder>() {
 
-    private val properties = mutableListOf<House>()
+    private val properties = mutableListOf<TopHouses>()
 
     inner class PropertyViewHolder(private val binding: ItemAdvSmallBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(property: House) {
-            binding.item = property
+        fun bind(property: TopHouses) {
             binding.apply {
+                binding.item = property
                 tvMainTitle.text = property.name
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text =
-                    "${property.location?.parentName}, ${property.location?.name}"
+                    "${property.location.parent}, ${property.location.name}"
                 tvDescription.text = property.description
-                if (property.images != null && property.images.isNotEmpty()) {
+                if (property.image.isNotEmpty()) {
                     Glide.with(itemView.context)
-                        .load(property.images[0].url)
+                        .load(property.image)
                         .placeholder(R.drawable.placeholder)
                         .into(propertyImage)
                 }
+
+
 
             }
         }
@@ -56,21 +58,21 @@ class AdapterTopHouses(private val navController: NavController) :
 
     override fun getItemCount() = properties.size
 
-    fun onAdvClicked(item: House) {
+    fun onAdvClicked(item: TopHouses) {
         val action =
-            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.id.toLong())
+            FragmentFlowDirections.actionHomeFragmentToFragmentSingleHouse(item.item_id.toLong())
         navController.navigate(action)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(newItems: List<House>) {
+    fun setItems(newItems: List<TopHouses>) {
         properties.clear()
         properties.addAll(newItems)
         notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyItemRangeInserted")
-    fun addItems(moreItems: List<House>) {
+    fun addItems(moreItems: List<TopHouses>) {
         val startPosition = properties.size
         properties.addAll(moreItems)
         notifyItemRangeInserted(startPosition, moreItems.size)

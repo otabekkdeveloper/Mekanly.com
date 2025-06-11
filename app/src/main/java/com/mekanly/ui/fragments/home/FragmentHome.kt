@@ -16,10 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mekanly.utils.Constants.Companion.UNSUCCESSFUL_RESPONSE
 import com.mekanly.utils.Constants.Companion.getErrorMessageUpToType
 import com.mekanly.data.models.Banner
-import com.mekanly.data.models.House
+import com.mekanly.data.models.TopHouses
 import com.mekanly.databinding.FragmentHomeBinding
 import com.mekanly.presentation.ui.enums.BannerType
 import com.mekanly.ui.fragments.home.AdapterBanners
+import com.mekanly.ui.fragments.home.AdapterTopHouses
 import com.mekanly.ui.fragments.home.FragmentHomeState
 import com.mekanly.ui.fragments.home.VMHome
 import kotlinx.coroutines.flow.collectLatest
@@ -115,8 +116,10 @@ class FragmentHome : Fragment() {
 
                     is FragmentHomeState.SuccessTopHouses->{
                         binding.progressBar.visibility = View.GONE
+                        binding.textTopHouses.visibility = View.VISIBLE
                         if (it.dataResponse.isNotEmpty()){
                             setTopHousesAdapter(it.dataResponse)
+
                         }
                     }
                     else -> {}
@@ -133,7 +136,7 @@ class FragmentHome : Fragment() {
         binding.rvBanner.adapter = adapterBanners
         binding.rvBanner.isNestedScrollingEnabled = true
 
-//        bannerScrollHandler.postDelayed(bannerScrollRunnable, 3000)
+        bannerScrollHandler.postDelayed(bannerScrollRunnable, 3000)
     }
 
 
@@ -150,11 +153,11 @@ class FragmentHome : Fragment() {
         binding.rvBigBanners.isNestedScrollingEnabled = true
 
         // Запускаем автопрокрутку
-//        bigBannerScrollHandler.postDelayed(bigBannerScrollRunnable, 5000)
+        bigBannerScrollHandler.postDelayed(bigBannerScrollRunnable, 5000)
     }
 
 
-    private fun setTopHousesAdapter(dataResponse: List<House>) {
+    private fun setTopHousesAdapter(dataResponse: List<TopHouses>) {
         if (!::propertyAdapter.isInitialized) {
             propertyAdapter = AdapterTopHouses(findNavController())
             binding.rvTopHouses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

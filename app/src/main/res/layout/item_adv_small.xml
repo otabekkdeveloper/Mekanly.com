@@ -6,11 +6,11 @@
     <data>
         <variable
             name="item"
-            type="com.mekanly.data.models.House" />
+            type="com.mekanly.data.models.TopHouses" />
 
         <variable
             name="adapter"
-            type="com.mekanly.presentation.ui.fragments.home.AdapterTopHouses" />
+            type="com.mekanly.ui.fragments.home.AdapterTopHouses" />
     </data>
 
 

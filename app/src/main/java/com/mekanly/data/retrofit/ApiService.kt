@@ -6,15 +6,20 @@ import com.mekanly.data.models.BusinessCategory
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.Comment
 import com.mekanly.data.models.DataGlobalOptions
+import com.mekanly.data.models.FavoritesRequest
+import com.mekanly.data.models.FavoriteHousesResponse
+import com.mekanly.data.models.FavoriteProductsResponse
 import com.mekanly.data.models.House
-import com.mekanly.data.models.ResponseDataList
-import com.mekanly.data.models.User
-import com.mekanly.data.request.AddHouseBody
-import com.mekanly.data.request.ConfirmationBody
-import com.mekanly.data.request.AuthBody
 import com.mekanly.data.models.HouseDetails
+import com.mekanly.data.models.Report
 import com.mekanly.data.models.ResponseData
+import com.mekanly.data.models.ResponseDataList
+import com.mekanly.data.models.TopHouses
+import com.mekanly.data.models.User
 import com.mekanly.data.request.AddCommentBody
+import com.mekanly.data.request.AddHouseBody
+import com.mekanly.data.request.AuthBody
+import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.FilterBody
 import com.mekanly.data.request.ReactionBody
 import com.mekanly.data.request.UpdateCommentBody
@@ -35,77 +40,29 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
+
+
+    // Search Fragment and Single Houses API
     @GET("api/v2/houses")
     fun getHouses(): Call<ResponseDataList<House>>
 
-    @GET("api/v2/search")
+    @POST("api/v2/search/{start}/{limit}")
     fun search(
-        @Query("search") search:String
-    ):Call<ResponseDataList<House>>
-
-    @GET("api/v1/profile")
-    fun getProfileData(
-        @Header("Authorization") token: String
-    ): Call<User>
-
-    @POST("/api/register")
-    fun register(
-        @Body requestBodyRegister: AuthBody
-    ): Call<ResponseRegister>
-
-    @POST("/api/login")
-    fun login(
-        @Body requestBody: AuthBody
-    ): Call<ResponseLogin>
-
-    @POST("/api/checkLogin")
-    fun confirmLogin(
-        @Body requestBody: ConfirmationBody
-    ): Call<ResponseLogin>
-
-    @GET("/api/v2/banners")
-    fun getBanners(): Call<ResponseDataList<Banner>>
+        @Path("start") start: Int,
+        @Path("limit") limit: Int,
+        @Query("search") search: String
+    ): Call<ResponseDataList<House>>
 
     @GET("/api/v2/house/{house_id}")
     fun getHouseDetails(
         @Path("house_id") houseId:String
     ):Call<ResponseData<HouseDetails>>
 
-    @GET("api/v2/top/{offset}/{limit}")
-    fun getTopHouses(
-        @Path("offset") offset: Int,
-        @Path("limit") limit: Int
-    ): Call<ResponseDataList<House>>
-
-
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
         @Path("house_id") houseId:String,
         @Body addHouseBody: AddHouseBody
     ):Call<ResponseBody>
-
-    @GET("/api/v2/globalOptions")
-    fun globalOptions():Call<ResponseData<DataGlobalOptions>>
-
-    @GET("api/v2/business/categories")
-    fun getBusinessProfileCategories():Call<ResponseDataList<BusinessCategory>>
-
-    @GET("api/v2/business/categories/{id}/profiles")
-    fun getSimilarBusinessProfiles(
-        @Path("id") id:Long
-    ):Call<ResponseDataList<BusinessProfile>>
-
-    @GET("api/v2/business/allProfiles/{start}/{limit}")
-    fun getBusinessProfilesWithPagination(
-        @Path("start") start:Long,
-        @Path("limit") limit:Long,
-    ):Call<ResponseDataList<BusinessProfile>>
-
-    @GET("api/v2/business/categories/{id}")
-    fun getSimilarBusinessProfileCategories(
-        @Path("id") id:Long
-    ):Call<ResponseDataList<BusinessCategory>>
-
 
     @POST("api/v2/filter")
     fun getFilteredResult(
@@ -137,14 +94,6 @@ interface ApiService {
         @Part images: List<MultipartBody.Part>
     ):Call<ResponseBody>
 
-    @GET("api/v2/user/favorites/houses")
-    fun getFavoriteHouses(): Call<ResponseDataList<House>>
-
-    @POST("api/v2/user/favorites/toggle")
-    fun toggleFavorite(
-        @Body request: ReactionBody
-    ): Call<ResponseBody>
-
     @GET("/api/v2/comments/{start}/{limit}")
     fun getComments(
         @Path("start") start:Int,
@@ -153,7 +102,7 @@ interface ApiService {
         @Query("type") type:String
     ):Call<ResponseDataList<Comment>>
 
-    @POST("api/v2/houses/add")
+    @POST("api/v2/comment")
     fun addComment(
         @Body request: AddCommentBody
     ):Call<ResponseBody>
@@ -168,6 +117,101 @@ interface ApiService {
     fun deleteComment(
         @Path("id") id:Long,
     ):Call<ResponseBody>
+
+    @GET("api/v2/abuse/list")
+    fun getReports(): Call<List<Report>>
+
+    @POST("api/v2/user/abuse/message")
+    fun sendReport(
+        @Query("abuse_list_id") abuseListId: Int,
+        @Query("item_id") itemId: Int,
+        @Query("message") message: String,
+        @Query("type") type: String
+    ): Call<ResponseBody>
+
+
+    //Login Register API and Authorization
+    @GET("api/v2/profile")
+    fun getProfileData(
+        @Header("Authorization") token: String
+    ): Call<User>
+
+    @POST("/api/register")
+    fun register(
+        @Body requestBodyRegister: AuthBody
+    ): Call<ResponseRegister>
+
+    @POST("/api/login")
+    fun login(
+        @Body requestBody: AuthBody
+    ): Call<ResponseLogin>
+
+    @POST("/api/checkLogin")
+    fun confirmLogin(
+        @Body requestBody: ConfirmationBody
+    ): Call<ResponseLogin>
+
+
+    // Home Fragment
+    @GET("/api/v2/banners")
+    fun getBanners(): Call<ResponseDataList<Banner>>
+
+    @GET("api/v2/top/{start}/{limit}")
+    fun getTopHouses(
+        @Path("start") offset: Int,
+        @Path("limit") limit: Int
+    ): Call<ResponseDataList<TopHouses>>
+
+    @GET("/api/v2/globalOptions")
+    fun globalOptions():Call<ResponseData<DataGlobalOptions>>
+
+
+   // Favourite Fragment
+   @POST("api/v2/user/favorites")
+   fun getFavoriteHouses(
+       @Body request: FavoritesRequest
+   ): Call<FavoriteHousesResponse>
+
+    @POST("api/v2/user/favorites")
+    fun getFavoriteProducts(
+        @Body request: FavoritesRequest
+    ): Call<FavoriteProductsResponse>
+
+
+
+    @POST("api/v2/user/favorites/toggle")
+    fun toggleFavorite(
+        @Body request: ReactionBody
+    ): Call<ResponseBody>
+
+
+    //Business Profiles API
+    @GET("api/v2/business/categories")
+    fun getBusinessProfileCategories():Call<ResponseDataList<BusinessCategory>>
+
+    @GET("api/v2/business/categories/{id}")
+    fun getSimilarBusinessProfileCategories(
+        @Path("id") id:Long
+    ):Call<ResponseDataList<BusinessCategory>>
+
+    @GET("api/v2/business/category/{id}/profiles")
+    fun getSimilarBusinessProfiles(
+        @Path("id") id:Long
+    ):Call<ResponseDataList<BusinessProfile>>
+
+    @GET("api/v2/business/category/{category_id}/products")
+    fun getSimilarBusinessProducts(
+        @Path("id") id: Long
+    ):Call<ResponseDataList<BusinessCategory>>
+
+
+
+    @GET("api/v2/business/allProfiles/{start}/{limit}")
+    fun getBusinessProfilesWithPagination(
+        @Path("start") start:Long,
+        @Path("limit") limit:Long,
+    ):Call<ResponseDataList<BusinessProfile>>
+
 
 }
 

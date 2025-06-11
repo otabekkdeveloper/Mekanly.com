@@ -18,64 +18,15 @@
         android:fontFamily="@font/roboto_regular"
         android:layout_marginBottom="16dp"/>
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layoutDirection="rtl"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reportRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginBottom="16dp" />
 
-        <RadioButton
-            android:id="@+id/option1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textStyle14"
-            android:text="Satylan"
-            android:padding="8dp"/>
-
-        <RadioButton
-            android:id="@+id/option2"
-            android:layout_width="match_parent"
-            style="@style/textStyle14"
-            android:layout_height="wrap_content"
-            android:text="Bildiriş hakyky däl"
-            android:padding="8dp"/>
-
-        <RadioButton
-            android:id="@+id/option3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textStyle14"
-            android:text="Habarlaşyp bolanok"
-            android:padding="8dp"/>
-
-        <RadioButton
-            android:id="@+id/option4"
-            android:layout_width="match_parent"
-            style="@style/textStyle14"
-            android:layout_height="wrap_content"
-            android:text="Suraty ýok"
-            android:padding="8dp"/>
-
-        <RadioButton
-            android:id="@+id/option5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textStyle14"
-            android:text="Hakyky eýesi däl"
-            android:padding="8dp"/>
-
-        <RadioButton
-            android:id="@+id/option6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/textStyle14"
-            android:text="Başga sebäp"
-            android:padding="8dp"/>
-    </RadioGroup>
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/textStyle14"

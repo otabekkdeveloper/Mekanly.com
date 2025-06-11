@@ -1,6 +1,9 @@
 package com.mekanly.data.repository
 
 import android.util.Log
+import com.mekanly.data.models.FavoritesRequest
+import com.mekanly.data.models.FavoriteHousesResponse
+import com.mekanly.data.models.FavoriteProductsResponse
 import com.mekanly.utils.Constants.Companion.NO_CONTENT
 import com.mekanly.utils.Constants.Companion.RESPONSE_FAILURE
 import com.mekanly.utils.Constants.Companion.UNSUCCESSFUL_RESPONSE
@@ -10,12 +13,13 @@ import com.mekanly.data.request.AddHouseBody
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.data.models.HouseDetails
 import com.mekanly.data.models.ResponseData
+import com.mekanly.data.models.TopHouses
 import com.mekanly.data.request.FilterBody
+import com.mekanly.data.request.ReactionBody
 import com.mekanly.data.retrofit.ApiClient
 import com.mekanly.data.retrofit.ApiService
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
@@ -31,7 +35,9 @@ class HousesRepository {
     fun getHouses(callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
         apiService.getHouses().enqueue(object : Callback<ResponseDataList<House>> {
-            override fun onResponse(call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>) {
+            override fun onResponse(
+                call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>
+            ) {
                 if (response.isSuccessful) {
                     val houses = response.body()?.data ?: emptyList()
                     if (houses.isEmpty()) {
@@ -54,8 +60,7 @@ class HousesRepository {
     }
 
     fun getHousesPagination(
-        filterBody: FilterBody,
-        callback: (ResponseBodyState) -> Unit
+        filterBody: FilterBody, callback: (ResponseBodyState) -> Unit
     ) {
         callback(ResponseBodyState.Loading)
         apiService.getFilteredResult(filterBody)
@@ -80,9 +85,9 @@ class HousesRepository {
 
     }
 
-    fun searchHouses(query: String, callback: (ResponseBodyState) -> Unit) {
+    fun searchHouses(query: String, start: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
-        apiService.search(search = query)
+        apiService.search(search = query, start = start, limit = limit)
             .enqueue(object : Callback<ResponseDataList<House>> {
                 override fun onResponse(
                     call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>
@@ -104,12 +109,13 @@ class HousesRepository {
     }
 
 
-    fun getHouseDetails(id:Long,callback: (ResponseBodyState) -> Unit){
+    fun getHouseDetails(id: Long, callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
         apiService.getHouseDetails(houseId = id.toString())
             .enqueue(object : Callback<ResponseData<HouseDetails>> {
                 override fun onResponse(
-                    call: Call<ResponseData<HouseDetails>>, response: Response<ResponseData<HouseDetails>>
+                    call: Call<ResponseData<HouseDetails>>,
+                    response: Response<ResponseData<HouseDetails>>
                 ) {
                     if (response.isSuccessful) {
                         val house = response.body()?.data ?: ""
@@ -128,29 +134,36 @@ class HousesRepository {
     }
 
 
-    fun getTopHouses(offset: Int, limit: Int, callback: (ResponseBodyState) -> Unit){
+    fun getTopHouses(start: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
-        apiService.getTopHouses(offset, limit).enqueue(object : Callback<ResponseDataList<House>> {
-            override fun onResponse(call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>) {
-                if (response.isSuccessful) {
-                    val houses = response.body()?.data ?: emptyList()
-                    if (houses.isEmpty()) {
-                        callback(ResponseBodyState.Error(NO_CONTENT))
+        apiService.getTopHouses(start, limit)
+            .enqueue(object : Callback<ResponseDataList<TopHouses>> {
+                override fun onResponse(
+                    call: Call<ResponseDataList<TopHouses>>,
+                    response: Response<ResponseDataList<TopHouses>>
+                ) {
+                    if (response.isSuccessful) {
+                        val houses = response.body()?.data ?: emptyList()
+                        if (houses.isEmpty()) {
+                            callback(ResponseBodyState.Error(NO_CONTENT))
+                        } else {
+                            callback(ResponseBodyState.SuccessList(houses))
+                        }
                     } else {
-                        callback(ResponseBodyState.SuccessList(houses))
+                        callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
                     }
-                } else {
-                    callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
                 }
-            }
-            override fun onFailure(call: Call<ResponseDataList<House>>, t: Throwable) {
-                Log.e("FlowFragment", "Failure: ${t.message}")
-                callback(ResponseBodyState.Error(RESPONSE_FAILURE))
-            }
-        })
+
+                override fun onFailure(call: Call<ResponseDataList<TopHouses>>, t: Throwable) {
+                    Log.e("FlowFragment", "Failure: ${t.message}")
+                    callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+                }
+            })
     }
 
-    fun addHouse(body: AddHouseBody, imageFiles: List<File>, callback: (ResponseBodyState) -> Unit) {
+    fun addHouse(
+        body: AddHouseBody, imageFiles: List<File>, callback: (ResponseBodyState) -> Unit
+    ) {
         try {
             val mediaTypeText = "text/plain".toMediaTypeOrNull()
             val name = body.name?.toRequestBody(mediaTypeText)
@@ -175,16 +188,31 @@ class HousesRepository {
 
             val imageParts = imageFiles.map { file ->
                 val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-                MultipartBody.Part.createFormData("image", file.name, requestFile)
+                MultipartBody.Part.createFormData("image[]", file.name, requestFile)
             }
 
             apiService.addHouse(
-                name, description, price, locationId, categoryId, who,
-                area, writeComment, floorNumber, roomNumber, exclusive,
-                hashtag, levelNumber, propertyTypeId, repairTypeId,
-                possibilities, imageParts
+                name,
+                description,
+                price,
+                locationId,
+                categoryId,
+                who,
+                area,
+                writeComment,
+                floorNumber,
+                roomNumber,
+                exclusive,
+                hashtag,
+                levelNumber,
+                propertyTypeId,
+                repairTypeId,
+                possibilities,
+                imageParts
             ).enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                override fun onResponse(
+                    call: Call<ResponseBody>, response: Response<ResponseBody>
+                ) {
                     if (response.isSuccessful) {
                         callback(ResponseBodyState.Success("Success"))
                     } else {
@@ -202,10 +230,12 @@ class HousesRepository {
         }
     }
 
-    fun getUserHouses(callback: (ResponseBodyState) -> Unit){
+    fun getUserHouses(callback: (ResponseBodyState) -> Unit) {
         callback(ResponseBodyState.Loading)
         apiService.getUserHouses().enqueue(object : Callback<ResponseDataList<House>> {
-            override fun onResponse(call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>) {
+            override fun onResponse(
+                call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>
+            ) {
                 if (response.isSuccessful) {
                     val houses = response.body()?.data ?: emptyList()
                     if (houses.isEmpty()) {
@@ -217,33 +247,99 @@ class HousesRepository {
                     callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
                 }
             }
+
             override fun onFailure(call: Call<ResponseDataList<House>>, t: Throwable) {
                 Log.e("FlowFragment", "Failure: ${t.message}")
                 callback(ResponseBodyState.Error(RESPONSE_FAILURE))
             }
         })
     }
-    fun getFavoriteHouses(callback: (ResponseBodyState) -> Unit){
+
+    fun getFavoriteHouses(
+        request: FavoritesRequest, callback: (ResponseBodyState) -> Unit
+    ) {
         callback(ResponseBodyState.Loading)
-        apiService.getFavoriteHouses().enqueue(object : Callback<ResponseDataList<House>> {
-            override fun onResponse(call: Call<ResponseDataList<House>>, response: Response<ResponseDataList<House>>) {
+
+        apiService.getFavoriteHouses(request).enqueue(object : Callback<FavoriteHousesResponse> {
+            override fun onResponse(
+                call: Call<FavoriteHousesResponse>, response: Response<FavoriteHousesResponse>
+            ) {
                 if (response.isSuccessful) {
-                    val houses = response.body()?.data ?: emptyList()
-                    if (houses.isEmpty()) {
-                        callback(ResponseBodyState.Error(NO_CONTENT))
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        callback(ResponseBodyState.SuccessList(responseBody.data))
                     } else {
-                        callback(ResponseBodyState.SuccessList(houses))
+                        callback(ResponseBodyState.Error("Empty response body"))
                     }
                 } else {
-                    callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
+                    Log.e("FavoritesRepo", "Error: ${response.code()}")
+                    callback(ResponseBodyState.Error("Unsuccessful response: ${response.code()}"))
                 }
             }
-            override fun onFailure(call: Call<ResponseDataList<House>>, t: Throwable) {
-                Log.e("FlowFragment", "Failure: ${t.message}")
-                callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+
+
+            override fun onFailure(call: Call<FavoriteHousesResponse>, t: Throwable) {
+                Log.e("FavoritesRepo", "Failure: ${t.message}")
+                callback(ResponseBodyState.Error("Failure: ${t.message}"))
             }
         })
     }
+
+
+    fun getFavoriteProducts(
+        request: FavoritesRequest, callback: (ResponseBodyState) -> Unit
+    ) {
+        callback(ResponseBodyState.Loading)
+
+        apiService.getFavoriteProducts(request).enqueue(object : Callback<FavoriteProductsResponse> {
+            override fun onResponse(
+                call: Call<FavoriteProductsResponse>, response: Response<FavoriteProductsResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        callback(ResponseBodyState.SuccessList(responseBody.data))
+                    } else {
+                        callback(ResponseBodyState.Error("Empty response body"))
+                    }
+                } else {
+                    Log.e("FavoritesRepo", "Error: ${response.code()}")
+                    callback(ResponseBodyState.Error("Unsuccessful response: ${response.code()}"))
+                }
+            }
+
+
+            override fun onFailure(call: Call<FavoriteProductsResponse>, t: Throwable) {
+                Log.e("FavoritesRepo", "Failure: ${t.message}")
+                callback(ResponseBodyState.Error("Failure: ${t.message}"))
+            }
+        })
+    }
+
+    fun toggleFavorite(request: ReactionBody, callback: (ResponseBodyState) -> Unit) {
+        callback(ResponseBodyState.Loading)
+        apiService.toggleFavorite(request).enqueue(object : Callback<ResponseBody> {
+
+            override fun onResponse(
+                call: Call<ResponseBody>, response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    callback(ResponseBodyState.Success("Success"))
+                } else {
+                    Log.e("FlowFragment", "Error: ${response.code()}")
+                    callback(ResponseBodyState.Error(UNSUCCESSFUL_RESPONSE))
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("FlowFragment", "Failure: ${t.message}")
+                callback(ResponseBodyState.Error(RESPONSE_FAILURE))
+            }
+
+
+        })
+    }
+
 
     companion object {
         const val LIMIT_REGULAR: Long = 100

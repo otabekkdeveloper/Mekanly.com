@@ -28,8 +28,7 @@
     <color name="unchecked_thumb">#FFFFFF</color>
     <color name="checked_thumb">#FFFFFF</color>
     <color name="number_color">#374151</color>
-    <color name="bg_vip_houses_color_start">#FFE985</color>
-    <color name="bg_vip_houses_color_end">#F8FFD4</color>
+    <color name="bg_vip_houses_color_start">#FEFFA5</color>
     <color name="unchecked_track">#B1B1B1</color>
     <color name="checked_track">#302F2F</color>
     <color name="error">#D90000</color>

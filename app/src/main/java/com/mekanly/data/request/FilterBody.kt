@@ -44,3 +44,6 @@ data class FilterBody(
     var limit: Int? = LIMIT_REGULAR.toInt(),
     var offset: Int? = 0
 )
+
+
+

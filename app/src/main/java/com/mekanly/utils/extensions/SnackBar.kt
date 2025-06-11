@@ -9,28 +9,45 @@ import android.view.View
 import com.mekanly.R
 
 fun Context.showErrorSnackBar(view: View?, message: String) {
-    view?.let {
-        val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
+    val parentView = findSuitableParent(view)
 
-        val snackbarView = snackBar.view
-        val params = snackbarView.layoutParams as ViewGroup.MarginLayoutParams
+    if (parentView != null) {
+        val snackBar = Snackbar.make(parentView, message, Snackbar.LENGTH_SHORT)
+
+        val snackBarView = snackBar.view
+        val params = snackBarView.layoutParams as ViewGroup.MarginLayoutParams
         params.setMargins(24, 0, 24, 50)
-        snackbarView.layoutParams = params
+        snackBarView.layoutParams = params
 
         snackBar.setBackgroundTint(ContextCompat.getColor(this, R.color.error))
         snackBar.setTextColor(ContextCompat.getColor(this, R.color.white))
         snackBar.show()
-    } ?: Log.e("SnackbarError", "Fragment view is null, cannot show Snackbar")
-
+    } else {
+        Log.e("SnackbarError", "No suitable parent found for Snackbar")
+    }
 }
+
+fun findSuitableParent(view: View?): View? {
+    var current = view
+    while (current != null) {
+        if (current is ViewGroup &&
+            (current.id == android.R.id.content || current is androidx.coordinatorlayout.widget.CoordinatorLayout)) {
+            return current
+        }
+        val parent = current.parent
+        current = if (parent is View) parent else null
+    }
+    return null
+}
+
 
 fun Context.showSuccessSnackBar(view: View, message: String) {
     val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
 
-    val snackbarView = snackBar.view
-    val params = snackbarView.layoutParams as ViewGroup.MarginLayoutParams
+    val snackBarView = snackBar.view
+    val params = snackBarView.layoutParams as ViewGroup.MarginLayoutParams
     params.setMargins(24, 0, 24, 50)
-    snackbarView.layoutParams = params
+    snackBarView.layoutParams = params
 
     snackBar.setBackgroundTint(ContextCompat.getColor(this, R.color.bg_app))
     snackBar.setTextColor(ContextCompat.getColor(this, R.color.white))

@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.R
 import com.mekanly.data.models.House
-import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
 import com.mekanly.databinding.ItemAdvBigBinding
 import com.mekanly.presentation.ui.enums.Categories
 import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
@@ -33,6 +35,31 @@ class AdapterAdvertisements(
                 tvPrice.text = "${property.price} TMT"
                 tvAddressTime.text = "${property.location?.parentName}, ${property.location?.name}"
                 tvDescription.text = property.description
+                countComment.text = "(${property.commentCount})"
+                if (property.exclusive == 1){
+                    onlyMekanlyCom.visibility = View.VISIBLE
+                    viewForOnlyMekanlyCom.visibility = View.VISIBLE
+
+                }
+
+
+
+                btnLike.setOnClickListener{
+                    Toast.makeText(root.context, "Like Knopkasy basylandyr jigimjan!", Toast.LENGTH_SHORT).show()
+                }
+
+
+
+                if (property.vipStatus){
+                    bgAdv.setBackgroundResource(R.drawable.bg_vip_houses)
+                    vipLogo.visibility = View.VISIBLE
+                }
+
+                if (property.luxeStatus){
+                    advType.visibility = View.GONE
+                    luxLogo.visibility = View.VISIBLE
+                    bgAdv.setBackgroundResource(R.drawable.bg_lux_houses)
+                }
 
 
                 val categoriesEnum = Categories.entries.find {
@@ -52,8 +79,6 @@ class AdapterAdvertisements(
                     else -> property.categoryName
                 }
 
-
-
                 if (property.images.isNotEmpty()) {
                     val imageUrls = property.images.map { it.url }
                     val adapter = ImageSliderAdapter(imageUrls)
@@ -66,7 +91,6 @@ class AdapterAdvertisements(
                         .actionHomeFragmentToFragmentSingleHouse(property.id.toLong())
                     navController.navigate(action)
                 }
-
 
                 val gestureDetector = GestureDetector(itemView.context, object : GestureDetector.SimpleOnGestureListener() {
                     override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
@@ -82,11 +106,18 @@ class AdapterAdvertisements(
                     // Возвращаем false, чтобы не мешать свайпам ViewPager2
                     false
                 }
-
-
-
             }
+
+            // В методе bind класса PropertyViewHolder:
+            val propertiesList = property.possibilities ?: emptyList()
+            val iconsAdapter = AdapterIconsAdvBig(propertiesList)
+            binding.crProperties.adapter = iconsAdapter
+            binding.crProperties.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false
+            )
+
+
         }
+
 
     }
 
@@ -107,17 +138,27 @@ class AdapterAdvertisements(
 
     override fun getItemCount() = properties.size
 
+    /**
+     * Обновляет список данных и корректно уведомляет адаптер о изменениях
+     */
     fun updateList() {
-        val lastPageCount = if (viewModel.houses.value.size % LIMIT_REGULAR == 0L) {
-            LIMIT_REGULAR
-        } else {
-            viewModel.houses.value.size % LIMIT_REGULAR
+        val oldSize = properties.size
+        val newList = viewModel.houses.value
+        val newSize = newList.size
+
+        if (viewModel.needToReinitialise()) {
+            // Полное обновление списка
+            properties = newList
+            notifyDataSetChanged()
+            viewModel.setReinitialiseFalse()
+        } else if (newSize > oldSize) {
+            // Добавление новых элементов (пагинация)
+            properties = newList
+            notifyItemRangeInserted(oldSize, newSize - oldSize)
+        } else if (newSize != oldSize) {
+            // На случай других изменений в списке
+            properties = newList
+            notifyDataSetChanged()
         }
-        notifyItemRangeInserted(viewModel.houses.value.size, lastPageCount.toInt())
     }
-
-
-
-
-
 }

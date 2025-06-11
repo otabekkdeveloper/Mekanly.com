@@ -46,10 +46,10 @@ class PriceFilterBottomSheet(
                     return@setOnClickListener
                 }
 
-                val minPriceFormatted = formatPrice(minPriceText)
-                val maxPriceFormatted = formatPrice(maxPriceText)
+                val minPriceFormatted = parseFormattedPrice(minPriceText)
+                val maxPriceFormatted = parseFormattedPrice(maxPriceText)
 
-                onPriceSelected(minPriceFormatted, maxPriceFormatted)
+                onPriceSelected(minPriceFormatted.toString(), maxPriceFormatted.toString())
                 dismiss()
             }
 
@@ -57,16 +57,22 @@ class PriceFilterBottomSheet(
     }
 
     @SuppressLint("DefaultLocale")
-    private fun formatPrice(price: String): String {
+    private fun parseFormattedPrice(formattedPrice: String): Int? {
         return try {
-            val value = price.toLong()
             when {
-                value >= 1_000_000 -> String.format("%.1f mln", value / 1_000_000.0)
-                value >= 1_000 -> String.format("%.1f müň", value / 1_000.0)
-                else -> price
+                formattedPrice.isEmpty() -> null
+                formattedPrice.contains("mln") -> {
+                    val value = formattedPrice.replace("mln", "").trim().toDouble()
+                    (value * 1_000_000).toInt()
+                }
+                formattedPrice.contains("müň") -> {
+                    val value = formattedPrice.replace("müň", "").trim().toDouble()
+                    (value * 1_000).toInt()
+                }
+                else -> formattedPrice.toInt()
             }
         } catch (e: NumberFormatException) {
-            price
+            null
         }
     }
 }

@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mekanly.data.models.Comment
 import com.mekanly.databinding.ItemCommentsBinding
 
-class CommentsAdapter(private val comments: List<Comment>) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
+class CommentsAdapter(val comments: MutableList<Comment>) :
+    RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
-    inner class CommentViewHolder(private val binding: ItemCommentsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CommentViewHolder(private val binding: ItemCommentsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(comment: Comment) {
             binding.userName.text = comment.userName
             binding.date.text = comment.date
@@ -28,4 +30,9 @@ class CommentsAdapter(private val comments: List<Comment>) : RecyclerView.Adapte
     }
 
     override fun getItemCount(): Int = comments.size
+
+    fun addItem(comment: Comment) {
+        comments.add(0, comment) // Добавляем в начало списка
+        notifyItemInserted(0)
+    }
 }

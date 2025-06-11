@@ -50,8 +50,7 @@ data class House(
     val images: List<Image>,
     @SerializedName("possibilities")
     val possibilities: List<Option>,
-    @SerializedName("comment")
-    val comment: Int,
+    val commentCount: Long,
     @SerializedName("is_comment")
     val isComment: Boolean?,
     @SerializedName("who")

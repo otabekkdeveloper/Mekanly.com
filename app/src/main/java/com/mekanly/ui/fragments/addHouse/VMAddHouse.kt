@@ -43,10 +43,12 @@ class VMAddHouse : ViewModel() {
 
         for (uri in uris) {
             val fileName = getFileName(context, uri)
-            val inputStream = context.contentResolver.openInputStream(uri)
-            val tempFile = File.createTempFile("upload_", fileName, context.cacheDir)
+            val safeFileName = fileName.replace(Regex("[^a-zA-Z0-9._-]"), "_")
+            val inputStream = context.contentResolver.openInputStream(uri) ?: continue
 
-            inputStream?.use { input ->
+            val tempFile = File.createTempFile("upload_", safeFileName, context.cacheDir)
+
+            inputStream.use { input ->
                 tempFile.outputStream().use { output ->
                     input.copyTo(output)
                 }
@@ -57,6 +59,7 @@ class VMAddHouse : ViewModel() {
 
         return fileList
     }
+
 
     fun getFileName(context: Context, uri: Uri): String {
         var name = "temp_image.jpg"

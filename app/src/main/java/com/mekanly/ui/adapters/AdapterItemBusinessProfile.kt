@@ -22,7 +22,7 @@ class AdapterItemBusinessProfile(
         val item = items[position]
         with(holder.binding) {
             tvPropertyType.text = item.brand
-            tvDescription.text = item.description
+//            tvDescription.text = item.description
             Glide.with(imgProperty.context).load(item.image).into(imgProperty)
         }
     }

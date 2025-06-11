@@ -7,7 +7,7 @@ class SearchPaginatedHousesUseCase {
 
     private val rep by lazy { HousesRepository() }
 
-    fun search(query:String,callback: (ResponseBodyState) -> Unit) {
-        rep.searchHouses(query,callback)
+    fun search(query: String, start: Int, limit: Int, callback: (ResponseBodyState) -> Unit) {
+        rep.searchHouses(query, start, limit, callback)
     }
 }

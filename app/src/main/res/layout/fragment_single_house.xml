@@ -106,156 +106,186 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        tools:text="Amanyn oyi" />
-
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/decorationLinear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_elite" />
-
+                        android:padding="16dp"
+                        android:background="@drawable/vertical_sky_blue_gradient"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv_house_type"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tv_title"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/roboto_regular"
+                            android:fontFamily="@font/roboto_medium"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
-                            tools:text="HouseType" />
+                            android:textSize="18sp"
+                            tools:text="Amanyn oyi" />
 
 
-                        <com.google.android.material.divider.MaterialDivider
-                            android:layout_width="1dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp" />
-
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/ic_calendar" />
-
-
-                        <TextView
-                            android:id="@+id/tv_date"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/roboto_regular"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            tools:text="Date" />
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
 
 
-                        <com.google.android.material.divider.MaterialDivider
-                            android:layout_width="1dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp" />
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/ic_eye" />
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_elite" />
 
 
-                        <TextView
-                            android:id="@+id/tv_view_count"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/tv_house_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                tools:text="HouseType" />
+
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="1dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp" />
+
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/ic_calendar" />
+
+
+                            <TextView
+                                android:id="@+id/tv_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                tools:text="Date" />
+
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="1dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp" />
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/ic_eye" />
+
+
+                            <TextView
+                                android:id="@+id/tv_view_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                tools:text="100" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+
+                            <ImageView
+                                android:id="@+id/vip_logo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:visibility="gone"
+                                android:layout_gravity="center"
+                                android:src="@drawable/vip_logo"/>
+
+
+                            <ImageView
+                                android:id="@+id/lux_logo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:layout_gravity="center"
+                                android:src="@drawable/lux_logo"/>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="18dp"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:background="@drawable/location_icon" />
+
+
+                            <TextView
+                                android:id="@+id/tv_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Aşgabat/mir1" />
+
+
+                        </LinearLayout>
+
+
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_marginTop="15dp"
+                            android:backgroundTint="#EEEEEE"
+                            android:text="Teswirler"
+                            android:textColor="#555555"
+                            android:textSize="14sp"
                             android:fontFamily="@font/roboto_regular"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            tools:text="100" />
+                            app:cornerRadius="8dp"
+                            app:icon="@drawable/ic_comment"
+                            app:iconGravity="textStart"
+                            app:iconTint="#555555" />
 
 
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:background="@drawable/location_icon" />
-
-
-                        <TextView
-                            android:id="@+id/tv_address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/roboto_regular"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Aşgabat/mir1" />
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_tag"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp"
-                        tools:text="" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_comments"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="#EEEEEE"
-                        android:text="@string/comments"
-                        android:textColor="#555555"
-                        android:textSize="14sp"
-                        app:cornerRadius="8dp"
-                        app:icon="@drawable/ic_comments"
-                        app:iconGravity="textStart"
-                        app:iconTint="#555555" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="16dp"
                         android:orientation="horizontal">
 
 
@@ -281,6 +311,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvSingleHouse"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -292,6 +323,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text="@string/opportunity"
+                        android:layout_marginStart="16dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -299,6 +331,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvOpportunity"
                         android:layout_width="match_parent"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:orientation="vertical" />
@@ -307,6 +340,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_big_banners"
                         android:layout_width="match_parent"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -317,6 +351,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="16dp"
                         android:background="@drawable/bg_announcement"
                         android:padding="16dp"
                         android:textColor="@color/black"
@@ -328,6 +363,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:layout_marginStart="16dp"
                         android:orientation="horizontal">
 
 
@@ -456,6 +492,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="16dp"
                         android:text="Biznes profiller"
                         android:textColor="@color/black" />
 
@@ -463,6 +500,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_business_profiles"
                         android:layout_width="match_parent"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -494,7 +532,66 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
 
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSms"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="6dp"
+                    android:backgroundTint="#E9F7F0"
+                    android:text="SMS UGRATMAK"
+                    android:textColor="#009688"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_regular"
+                    app:cornerRadius="7dp"
+                    app:icon="@drawable/ic_message"
+                    app:iconGravity="textStart"
+                    app:iconTint="#009688" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:layout_marginEnd="9dp"
+                    android:backgroundTint="#E9F7F0"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="JAŇ ETMEK"
+                    android:textColor="#006169"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_regular"
+                    app:cornerRadius="7dp"
+                    app:icon="@drawable/ic_phone"
+                    app:iconGravity="textStart"
+                    app:iconTint="#006169" />
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
     </ScrollView>
