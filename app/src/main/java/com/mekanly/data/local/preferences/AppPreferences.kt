@@ -9,6 +9,7 @@ object AppPreferences {
     private lateinit var sharedPreferences: SharedPreferences
 
     private const val PREF_TOKEN = "pref_token"
+    private const val PREF_FIREBASE_TOKEN = "pref_firebase_token"
     private const val PREF_USERNAME = "pref_username"
     private const val TOKEN_ON_WAITLIST = "pref_token_on_waitlist"
 
@@ -25,6 +26,15 @@ object AppPreferences {
     fun setToken(value: String) {
         sharedPreferences.edit().putString(PREF_TOKEN, value).apply()
     }
+
+    fun getFirebaseToken(): String? {
+        return sharedPreferences.getString(PREF_FIREBASE_TOKEN, "")
+    }
+
+    fun setFirebaseToken(value: String) {
+        sharedPreferences.edit().putString(PREF_FIREBASE_TOKEN, value).apply()
+    }
+
 
     fun getTokenOnWaitlist(): String {
         return sharedPreferences.getString(TOKEN_ON_WAITLIST, "") ?: ""

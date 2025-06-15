@@ -4,7 +4,7 @@ plugins {
 //    id("androidx.navigation.safeargs")
     id ("androidx.navigation.safeargs.kotlin")
     kotlin("plugin.serialization") version "2.0.21"
-
+    id("com.google.gms.google-services")
 //    id("kotlin-kapt")
 }
 
@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.firebase.messaging.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -93,5 +94,8 @@ dependencies {
 
     implementation ("androidx.core:core-ktx:1.10.1")
     implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+    implementation("com.google.firebase:firebase-analytics")
 
 }

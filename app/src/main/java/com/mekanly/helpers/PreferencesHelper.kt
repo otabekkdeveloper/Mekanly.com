@@ -20,7 +20,7 @@ object PreferencesHelper {
     }
 
     fun getLanguage(): String {
-        return sharedPreferences.getString("language", "en") ?: "en" // По умолчанию — английский
+        return sharedPreferences.getString("language", "en") ?: "en"
     }
 
     fun saveGlobalOptions(data: DataGlobalOptions) {
