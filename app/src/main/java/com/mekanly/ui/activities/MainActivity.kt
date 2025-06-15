@@ -1,15 +1,17 @@
 package com.mekanly.ui.activities
 
-import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.mekanly.R
+import com.mekanly.data.local.preferences.AppPreferences
+import com.mekanly.data.repository.UserRepository
+import com.mekanly.databinding.ActivityMainBinding
 import com.mekanly.helpers.LanguageManager
 import com.mekanly.helpers.PreferencesHelper
-import com.mekanly.R
-import com.mekanly.databinding.ActivityMainBinding
+import com.mekanly.presentation.ui.adapters.pagerAdapters.AdapterViewPager
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -18,9 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapterViewPager: AdapterViewPager
     private lateinit var preferencesHelper: PreferencesHelper
-
-
-
 
 
     @SuppressLint("ResourceType")
@@ -51,10 +50,16 @@ class MainActivity : AppCompatActivity() {
             finishAffinity()
         }
 
-
+        checkIfFirebaseIdPresent()
     }
 
+    private fun checkIfFirebaseIdPresent() {
+        AppPreferences.initialize(this)
+        if (AppPreferences.getFirebaseToken() != "")
+            UserRepository().updateDeviceInfo(AppPreferences.getToken(), AppPreferences.getFirebaseToken()
+        )
 
+    }
 }
 
 

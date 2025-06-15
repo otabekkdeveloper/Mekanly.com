@@ -94,8 +94,9 @@ dependencies {
 
     implementation ("androidx.core:core-ktx:1.10.1")
     implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
     //Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-analytics:21.5.0")
+    implementation ("com.google.firebase:firebase-core:21.1.1")
 
 }

@@ -19,12 +19,16 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.mekanly.R
 import com.mekanly.data.local.preferences.AppPreferences
+import com.mekanly.data.repository.UserRepository
+import com.mekanly.ui.activities.MainActivity
 
 class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
+
     companion object {
-//        private const val NOTIFICATION_CHANNEL_ID = "Aydym notification"
         private const val NOTIFICATION_REQUEST_CODE = 110
+        private const val NOTIFICATION_CHANNEL_ID = "mekanly_notification"
         private const val IMAGE_LOAD_TIMEOUT = 6000L
     }
 
@@ -36,14 +40,14 @@ class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
         AppPreferences.initialize(this)
         AppPreferences.setFirebaseToken(token)
-        .w(message = "Refreshed token: $token")
+        Log.e("FIREBASE_MANAGER","Refreshed token: $token")
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         notificationShown = false
-        Log.w("FIREBASE_MESSAGES",message ="message getData: ${remoteMessage.data}")
-        Log.w("FIREBASE_MESSAGES",message ="message getNotification: ${remoteMessage.notification}")
+        Log.e("FIREBASE_MANAGER", "message getData: ${remoteMessage.data}")
+        Log.e("FIREBASE_MANAGER", "message getNotification: ${remoteMessage.notification}")
 
         val data: Map<String, String> = remoteMessage.data
         val notification: RemoteMessage.Notification? = remoteMessage.notification
@@ -112,7 +116,7 @@ class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun createNotificationIntent(data: Map<String, String>, title: String? ): Intent {
-        return Intent(applicationContext, ActivityFlow::class.java).apply {
+        return Intent(applicationContext, MainActivity::class.java).apply {
             putExtra("type", data["type"])
             putExtra("id", data["id"])
             putExtra("openUrl", data["openUrl"])
@@ -134,7 +138,7 @@ class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
     private fun createNotificationChannel(notificationManager: NotificationManager) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
-                getString(R.string.notification_channel_id),
+                NOTIFICATION_CHANNEL_ID,
                 "Notification",
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
@@ -157,15 +161,8 @@ class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
         val defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val bigTextStyle = NotificationCompat.BigTextStyle().bigText(body)
 
-        return NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
-            .setSmallIcon(R.mipmap.ic_notification)
-//            .setLargeIcon(
-//                BitmapFactory.decodeResource(
-//                    this.resources, R.mipmap.ic_launcher
-//                )
-//            )
-//            .setColor(getColor(R.color.powder_white))
-//            .setColorized(true)
+        return NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setAutoCancel(true)
             .setSound(defaultSound)
@@ -178,8 +175,6 @@ class MekanlyFirebaseMessagingService : FirebaseMessagingService() {
                     setLargeIcon(bitmap)
                     setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
                 } else {
-//                    setStyle(NotificationCompat.DecoratedCustomViewStyle())
-//
                     setStyle(bigTextStyle)
                 }
             }

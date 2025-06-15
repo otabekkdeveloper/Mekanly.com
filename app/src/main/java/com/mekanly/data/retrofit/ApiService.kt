@@ -23,6 +23,7 @@ import com.mekanly.data.request.ConfirmationBody
 import com.mekanly.data.request.FilterBody
 import com.mekanly.data.request.ReactionBody
 import com.mekanly.data.request.UpdateCommentBody
+import com.mekanly.data.responseBody.RequestBodyDeviceInfo
 import com.mekanly.data.responseBody.ResponseLogin
 import com.mekanly.data.responseBody.ResponseRegister
 import okhttp3.MultipartBody
@@ -211,6 +212,12 @@ interface ApiService {
         @Path("start") start:Long,
         @Path("limit") limit:Long,
     ):Call<ResponseDataList<BusinessProfile>>
+
+
+    @POST("api/v2/update-device-info")
+    fun updateDeviceInfo(
+        @Body requestBody: RequestBodyDeviceInfo,
+    ):Call<ResponseBody>
 
 
 }

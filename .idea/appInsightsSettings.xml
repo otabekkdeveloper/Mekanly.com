@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.mekanly" />
+                  <option name="mobileSdkAppId" value="1:469988090606:android:96ad1f56030ee018bb49ff" />
+                  <option name="projectId" value="mekanlyv2" />
+                  <option name="projectNumber" value="469988090606" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -19,16 +19,16 @@ object AppPreferences {
         sharedPreferences = context.getSharedPreferences(defaultPreferenceName, Context.MODE_PRIVATE)
     }
 
-    fun getToken(): String? {
-        return sharedPreferences.getString(PREF_TOKEN, "")
+    fun getToken(): String {
+        return sharedPreferences.getString(PREF_TOKEN, "") ?: ""
     }
 
     fun setToken(value: String) {
         sharedPreferences.edit().putString(PREF_TOKEN, value).apply()
     }
 
-    fun getFirebaseToken(): String? {
-        return sharedPreferences.getString(PREF_FIREBASE_TOKEN, "")
+    fun getFirebaseToken(): String {
+        return sharedPreferences.getString(PREF_FIREBASE_TOKEN, "")?:""
     }
 
     fun setFirebaseToken(value: String) {
