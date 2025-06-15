@@ -534,59 +534,78 @@
 
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@color/white"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal">
+                android:layout_gravity="bottom">
 
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSms"
-                    android:layout_width="0dp"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/top_shadow"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="12dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginEnd="6dp"
-                    android:backgroundTint="#E9F7F0"
-                    android:text="SMS UGRATMAK"
-                    android:textColor="#009688"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/roboto_regular"
-                    app:cornerRadius="7dp"
-                    app:icon="@drawable/ic_message"
-                    app:iconGravity="textStart"
-                    app:iconTint="#009688" />
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal">
 
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCall"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="12dp"
-                    android:layout_marginEnd="9dp"
-                    android:backgroundTint="#E9F7F0"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    android:text="JAŇ ETMEK"
-                    android:textColor="#006169"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/roboto_regular"
-                    app:cornerRadius="7dp"
-                    app:icon="@drawable/ic_phone"
-                    app:iconGravity="textStart"
-                    app:iconTint="#006169" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="12dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="6dp"
+                        android:backgroundTint="#E9F7F0"
+                        android:text="SMS UGRATMAK"
+                        android:textColor="#009688"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/roboto_regular"
+                        app:cornerRadius="7dp"
+                        app:icon="@drawable/ic_message"
+                        app:iconGravity="textStart"
+                        app:iconTint="#009688" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="12dp"
+                        android:layout_marginEnd="9dp"
+                        android:backgroundTint="#E9F7F0"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:text="JAŇ ETMEK"
+                        android:textColor="#006169"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/roboto_regular"
+                        app:cornerRadius="7dp"
+                        app:icon="@drawable/ic_phone"
+                        app:iconGravity="textStart"
+                        app:iconTint="#006169" />
 
 
 
 
 
 
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
+
 
 
 

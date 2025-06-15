@@ -1,6 +1,8 @@
 package com.mekanly.ui.bottomSheet.bottomSheetComments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -137,6 +139,25 @@ class BottomSheetComments : BottomSheetDialogFragment() {
                 adapter = commentAdapter
             }
         }
+
+
+        binding.commentEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (!s.isNullOrEmpty()) {
+                    binding.sendButton.setImageResource(R.drawable.ic_arrow_to_top) // täze ikonka
+                } else {
+                    binding.sendButton.setImageResource(R.drawable.ic_unselected_arrow_to_top) // öňki ikonka
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+
+
+
     }
 
     override fun onDestroyView() {
@@ -148,4 +169,5 @@ class BottomSheetComments : BottomSheetDialogFragment() {
         val sdf = SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault())
         return sdf.format(Date())
     }
+
 }

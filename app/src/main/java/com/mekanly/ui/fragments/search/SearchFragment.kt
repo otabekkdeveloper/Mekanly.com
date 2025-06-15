@@ -32,6 +32,7 @@ import com.mekanly.helpers.PreferencesHelper
 import com.mekanly.presentation.ui.adapters.AdapterAdvertisements
 import com.mekanly.presentation.ui.bottomSheet.PriceFilterBottomSheet
 import com.mekanly.ui.bottomSheet.SectionSelectionBottomSheet
+import com.mekanly.ui.fragments.favorite.FavoritesViewModel
 import com.mekanly.ui.fragments.search.viewModel.VMSearch
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -172,7 +173,7 @@ class SearchFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.houses.collectLatest {
-                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
+                adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, viewModelFavorite = FavoritesViewModel(),  findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter
@@ -307,14 +308,14 @@ class SearchFragment : Fragment() {
 
     private fun setAdapter() {
         if (adapter == null) {
-            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
+            adapter = AdapterAdvertisements(viewModel.houses.value, viewModel, viewModelFavorite = FavoritesViewModel(),findNavController())
             binding.rvSearch.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.rvSearch.adapter = adapter
         } else {
             if (viewModel.needToReinitialise()) {
                 adapter =
-                    AdapterAdvertisements(viewModel.houses.value, viewModel, findNavController())
+                    AdapterAdvertisements(viewModel.houses.value, viewModel, viewModelFavorite = FavoritesViewModel(),findNavController())
                 binding.rvSearch.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 binding.rvSearch.adapter = adapter

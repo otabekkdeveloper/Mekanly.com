@@ -108,7 +108,7 @@ class UserPropertiesFragment : Fragment() {
     }
 
     private fun toggleFavorite(property: House) {
-        property.liked = !property.liked
+//        property.liked = !property.liked
         propertyAdapter.notifyItemChanged(propertyAdapter.currentList.indexOf(property))
     }
 

@@ -59,12 +59,14 @@ data class House(
     val area: String?,
     @SerializedName("exclusisive")
     val exclusive: Int,
+    @SerializedName("favorited")
+    var favorite: Boolean,
     @SerializedName("hashtag")
     val hashtag: String?,
     @SerializedName("level_number")
     val levelNumber: Int?,
     @SerializedName("liked")
-    var liked: Boolean,
+    val liked: Boolean,
     @SerializedName("shop")
     val shop: BusinessProfile?,
     @SerializedName("type")

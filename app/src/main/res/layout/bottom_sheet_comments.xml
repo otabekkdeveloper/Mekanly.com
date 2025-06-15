@@ -5,6 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/bottom_sheet_bg"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -34,27 +35,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/bg_corner_99"
                 android:layout_marginTop="8dp">
 
                 <EditText
                     android:textColorHint="@color/grey_text_color"
                     android:paddingVertical="14dp"
                     android:paddingHorizontal="14dp"
+                    android:textColor="@color/black"
                     android:background="@drawable/bg_corner_99"
                     android:id="@+id/comment_edit_text"
                     android:layout_width="0dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/enter"
+                    android:hint="Teswir ýazyň..."
                     />
 
-                <com.google.android.material.button.MaterialButton
+                <ImageView
                     android:id="@+id/send_button"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_unselected_arrow_to_top"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/send" />
+                    android:layout_height="40dp"/>
 
             </LinearLayout>
 

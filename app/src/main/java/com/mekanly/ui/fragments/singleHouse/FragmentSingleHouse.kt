@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -37,6 +38,8 @@ import com.mekanly.ui.fragments.home.FragmentHomeState
 import com.mekanly.ui.fragments.home.VMHome
 import com.mekanly.ui.fragments.singleHouse.report.ReportBottomSheetFragment
 import com.mekanly.ui.fragments.singleHouse.report.VMReport
+import com.mekanly.ui.fragments.favorite.FavoritesViewModel
+import com.mekanly.ui.fragments.search.viewModel.VMSearch
 import com.mekanly.utils.extensions.showErrorSnackBar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -53,7 +56,14 @@ class FragmentSingleHouse : Fragment() {
     private lateinit var adapterBigBanners: AdapterBigBanners
     private val viewModelHouse: VMHome by viewModels()
     private val viewModel: VMSingleHouse by viewModels()
+    private val viewModelSearch: VMSearch by activityViewModels()
     private val viewModelReport: VMReport by viewModels()
+    // ✅ ДОБАВЛЕНО: ViewModel для избранного
+    private val viewModelFavorite: FavoritesViewModel by viewModels()
+
+    // ✅ ДОБАВЛЕНО: Переменная для хранения текущего дома
+    private lateinit var currentHouse: HouseDetails
+    private var isFavoriteChanged = false
 
     private var currentBigBannerPosition = 0
     private val bigBannerScrollHandler = Handler(Looper.getMainLooper())
@@ -77,10 +87,6 @@ class FragmentSingleHouse : Fragment() {
         initListeners()
         observeViewModel()
 
-        // Загружаем баннеры
-        viewModelHouse.getBanners() // или как называется метод в VMHome для загрузки баннеров
-        observeBannersViewModel()
-
         // Загружаем список отчетов при создании фрагмента
         viewModelReport.getReports()
         observeReportViewModel()
@@ -89,7 +95,6 @@ class FragmentSingleHouse : Fragment() {
     }
 
     private fun observeViewModel() {
-        /**To observe state changes in the viewModel**/
         lifecycleScope.launch {
             viewModel.singleHouseState.collectLatest {
                 when (it) {
@@ -105,11 +110,24 @@ class FragmentSingleHouse : Fragment() {
                     is ResponseBodyState.Success -> {
                         delay(200)
                         binding.progressBar.visibility = View.GONE
-                        setViewPager(it.dataResponse as HouseDetails)
-                        setHouseDetails(it.dataResponse)
-                        setPossibilityAdapter(it.dataResponse.possibilities)
-                        setHomeDetails(it.dataResponse)
-                        decorationVipAndLuxHouses(it.dataResponse)
+                        val houseDetails = it.dataResponse as HouseDetails
+
+                        // ✅ ИСПРАВЛЕНО: Сохраняем текущий дом
+                        currentHouse = houseDetails
+
+                        setViewPager(houseDetails)
+                        setHouseDetails(houseDetails)
+                        setPossibilityAdapter(houseDetails.possibilities)
+                        setHomeDetails(houseDetails)
+                        decorationVipAndLuxHouses(houseDetails)
+
+                        // ✅ ДОБАВЛЕНО: Обновляем кнопку лайка
+                        updateLikeButton(houseDetails.favorite)
+
+                        // 🔽 Добавь вызов observeBannersViewModel() сюда:
+                        observeBannersViewModel()
+                        // И загрузку баннеров тоже:
+                        viewModelHouse.getBanners()
                     }
 
                     else -> {}
@@ -223,9 +241,6 @@ class FragmentSingleHouse : Fragment() {
                 }
                 startActivity(callIntent)
             }
-
-
-
         }
     }
 
@@ -268,6 +283,7 @@ class FragmentSingleHouse : Fragment() {
     private fun initListeners() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
+//            viewModelSearch.getHouses()
         }
 
         binding.btnComments.setOnClickListener {
@@ -293,11 +309,35 @@ class FragmentSingleHouse : Fragment() {
             }
         }
 
+        // ✅ ИСПРАВЛЕНО: Реализована логика лайков
         binding.btnLike.setOnClickListener {
-            Toast.makeText(requireContext(), "Like knopkasy basyldy jigimjan", Toast.LENGTH_SHORT)
-                .show()
+            currentHouse.let { house ->
+                val currentLikeStatus = house.favorite
+
+                // Оптимистичное обновление UI
+                house.favorite = !currentLikeStatus
+                updateLikeButton(house.favorite)
+
+                // Обновляем через ViewModel
+                viewModelFavorite.toggleLike(house.id, currentLikeStatus, "House")
+
+                val message = if (currentLikeStatus) {
+                    "Удалено из избранного"
+                } else {
+                    "Добавлено в избранное"
+                }
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
+    // ✅ ДОБАВЛЕНО: Функция для обновления кнопки лайка
+    private fun updateLikeButton(isLiked: Boolean) {
+        binding.btnLike.setIconResource(
+            if (isLiked) R.drawable.heart_bold else R.drawable.favourite_three
+        )
+    }
+
 
     private fun showCommentsBottomSheet() {
         val action =

@@ -342,7 +342,7 @@ class HousesRepository {
 
 
     companion object {
-        const val LIMIT_REGULAR: Long = 100
+        const val LIMIT_REGULAR: Long = 25
     }
 
 }

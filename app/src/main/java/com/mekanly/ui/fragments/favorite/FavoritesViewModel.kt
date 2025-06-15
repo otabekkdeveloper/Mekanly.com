@@ -7,8 +7,10 @@ import com.mekanly.data.models.FavoritesRequest
 import com.mekanly.data.models.House
 import com.mekanly.data.models.ShopProduct
 import com.mekanly.data.repository.HousesRepository.Companion.LIMIT_REGULAR
+import com.mekanly.data.request.ReactionBody
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.domain.useCase.GetFavoriteHouseUseCase
+import com.mekanly.domain.useCase.ToggleFavoritesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,8 +27,13 @@ class FavoritesViewModel : ViewModel() {
     private val _products = MutableStateFlow<List<ShopProduct>>(emptyList())
     val products: StateFlow<List<ShopProduct>> = _products.asStateFlow()
 
+    private val toggleFavoritesUseCase by lazy { ToggleFavoritesUseCase() }
     private val getFavoriteHouseUseCase by lazy { GetFavoriteHouseUseCase() }
     private val getFavoriteShopProductUseCase by lazy { GetFavoriteHouseUseCase() }
+
+    // ✅ УБИРАЕМ отдельные списки лайков, используем поле favorite в моделях
+    private var housesLoaded = false
+    private var productsLoaded = false
 
     fun getFavorites() {
         val token = AppPreferences.getToken()
@@ -38,7 +45,9 @@ class FavoritesViewModel : ViewModel() {
 
         _uiState.value = ResponseBodyState.Loading
 
-        // Загружаем оба типа данных параллельно
+        housesLoaded = false
+        productsLoaded = false
+
         loadFavoriteHouses()
         loadFavoriteProducts()
     }
@@ -55,11 +64,19 @@ class FavoritesViewModel : ViewModel() {
             getFavoriteHouseUseCase.execute(houseRequest) { result ->
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
-                        _houses.value = result.dataResponse as? List<House> ?: emptyList()
+                        val housesList = result.dataResponse as? List<House> ?: emptyList()
+                        // ✅ ИСПРАВЛЕНО: Устанавливаем favorite = true для всех загруженных домов
+                        housesList.forEach { it.favorite = true }
+                        _houses.value = housesList
+
+                        housesLoaded = true
                         checkLoadingComplete()
                     }
                     is ResponseBodyState.Error -> {
-                        _uiState.value = result
+                        housesLoaded = true
+                        if (productsLoaded) {
+                            _uiState.value = result
+                        }
                     }
                     else -> {}
                 }
@@ -80,15 +97,25 @@ class FavoritesViewModel : ViewModel() {
                 when (result) {
                     is ResponseBodyState.SuccessList -> {
                         try {
-                            _products.value = result.dataResponse as? List<ShopProduct> ?: emptyList()
+                            val productsList = result.dataResponse as? List<ShopProduct> ?: emptyList()
+                            // ✅ ИСПРАВЛЕНО: Устанавливаем favorite = true для всех загруженных продуктов
+                            productsList.forEach { it.favorite = true }
+                            _products.value = productsList
+
+                            productsLoaded = true
                             checkLoadingComplete()
                         } catch (e: Exception) {
-                            // Обработка ошибки парсинга
+                            productsLoaded = true
                             _uiState.value = ResponseBodyState.Error("Ошибка парсинга данных: ${e.message}")
                         }
                     }
                     is ResponseBodyState.Error -> {
-                        _uiState.value = result
+                        productsLoaded = true
+                        if (housesLoaded) {
+                            _uiState.value = result
+                        } else {
+                            checkLoadingComplete()
+                        }
                     }
                     else -> {}
                 }
@@ -96,18 +123,120 @@ class FavoritesViewModel : ViewModel() {
         }
     }
 
-    private fun checkLoadingComplete() {
-        // Устанавливаем состояние успеха, когда данные загружены
-        // (можно добавить дополнительную логику для отслеживания завершения обеих загрузок)
-        _uiState.value = ResponseBodyState.SuccessList(emptyList<Any>())
+    // ✅ ИСПРАВЛЕНО: Используем поле favorite из модели
+    fun isLiked(itemId: Int, type: String = "House"): Boolean {
+        return when (type) {
+            "House" -> {
+                _houses.value.find { it.id == itemId }?.favorite ?: false
+            }
+            "ShopProduct" -> {
+                _products.value.find { it.id == itemId }?.favorite ?: false
+            }
+            else -> false
+        }
     }
 
-    // Функции для обновления конкретного типа данных
+    // ✅ Для совместимости со старым кодом
+    fun isHouseLiked(houseId: Int): Boolean {
+        return _houses.value.find { it.id == houseId }?.favorite ?: false
+    }
+
+    // ✅ ИСПРАВЛЕНО: Обновляем поле favorite в модели
+    fun toggleLike(itemId: Int, currentLikeStatus: Boolean, type: String = "House") {
+        val token = AppPreferences.getToken()
+        if (token.isNullOrEmpty()) return
+
+        viewModelScope.launch {
+            val request = ReactionBody(
+                id = itemId,
+                type = type
+            )
+
+            // ✅ Оптимистичное обновление - обновляем поле favorite в модели
+            when (type) {
+                "House" -> {
+                    val updatedHouses = _houses.value.map { house ->
+                        if (house.id == itemId) {
+                            house.copy().apply { favorite = !currentLikeStatus }
+                        } else house
+                    }
+                    _houses.value = updatedHouses
+                }
+                "ShopProduct" -> {
+                    val updatedProducts = _products.value.map { product ->
+                        if (product.id == itemId) {
+                            product.copy().apply { favorite = !currentLikeStatus }
+                        } else product
+                    }
+                    _products.value = updatedProducts
+                }
+            }
+
+            toggleFavoritesUseCase.execute(request) { result ->
+                if (result is ResponseBodyState.Error) {
+                    // ✅ Откат на случай ошибки
+                    when (type) {
+                        "House" -> {
+                            val rolledBackHouses = _houses.value.map { house ->
+                                if (house.id == itemId) {
+                                    house.copy().apply { favorite = currentLikeStatus }
+                                } else house
+                            }
+                            _houses.value = rolledBackHouses
+                        }
+                        "ShopProduct" -> {
+                            val rolledBackProducts = _products.value.map { product ->
+                                if (product.id == itemId) {
+                                    product.copy().apply { favorite = currentLikeStatus }
+                                } else product
+                            }
+                            _products.value = rolledBackProducts
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun checkLoadingComplete() {
+        if (housesLoaded && productsLoaded) {
+            _uiState.value = ResponseBodyState.SuccessList(emptyList<Any>())
+        }
+    }
+
     fun refreshHouses() {
+        housesLoaded = false
         loadFavoriteHouses()
     }
 
     fun refreshProducts() {
+        productsLoaded = false
         loadFavoriteProducts()
+    }
+
+    fun isDataLoaded(): Boolean {
+        return housesLoaded && productsLoaded
+    }
+
+    // ✅ ДОБАВЛЕНО: Функция для обновления состояния лайка конкретного элемента (для использования в других адаптерах)
+    fun updateItemLikeStatus(itemId: Int, isLiked: Boolean, type: String = "House") {
+        when (type) {
+            "House" -> {
+                val updatedHouses = _houses.value.map { house ->
+                    if (house.id == itemId) {
+                        house.copy().apply { favorite = isLiked }
+                    } else house
+                }
+                _houses.value = updatedHouses
+            }
+            "ShopProduct" -> {
+                val updatedProducts = _products.value.map { product ->
+                    if (product.id == itemId) {
+                        product.copy().apply { favorite = isLiked }
+                    } else product
+                }
+                _products.value = updatedProducts
+            }
+        }
     }
 }

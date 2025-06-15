@@ -78,9 +78,8 @@ class SubNotificationsFragment : Fragment() {
     }
 
     private fun toggleFavorite(property: House) {
-        // Логика изменения состояния избранного
-        // Обычно это делается через ViewModel
-        property.liked = !property.liked
+
+//        property.liked = !property.liked
         propertyAdapter.notifyItemChanged(propertyAdapter.currentList.indexOf(property))
     }
 

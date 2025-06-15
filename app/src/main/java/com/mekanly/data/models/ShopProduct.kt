@@ -8,7 +8,7 @@ data class ShopProduct(
     val images: List<Image>,
     val user: User,
     val shop: Shop,
-    val favorite: Boolean,
+    var favorite: Boolean,
     val type: String,
     val location: Location,
     val category: Category,
