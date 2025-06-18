@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "469988090606",
+    "project_id": "mekanlyv2",
+    "storage_bucket": "mekanlyv2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469988090606:android:d4d0307c5b0bd95fbb49ff",
+        "android_client_info": {
+          "package_name": "com.gurbanow.mekanly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ-vYn6JClewlGl4GpOnmNC0WfM_wfkrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469988090606:android:96ad1f56030ee018bb49ff",
+        "android_client_info": {
+          "package_name": "com.mekanly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ-vYn6JClewlGl4GpOnmNC0WfM_wfkrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

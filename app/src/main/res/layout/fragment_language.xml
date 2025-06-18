@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_language" />
+
+
+        <TextView
+            style="@style/textStyle16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Dil saýlaň" />
+
+
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:id="@+id/languageRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <RadioButton
+            android:id="@+id/radioTurkmen"
+            style="@style/textStyle14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:buttonTint="@color/black"
+            android:checked="true"
+            android:layoutDirection="rtl"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/turkmen_language"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/radioRussian"
+            style="@style/textStyle14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:buttonTint="@color/black"
+            android:drawablePadding="10dp"
+            android:layoutDirection="rtl"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/russian_language"
+            android:textColor="@color/black" />
+
+    </RadioGroup>
+</LinearLayout>

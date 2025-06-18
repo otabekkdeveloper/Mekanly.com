@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="14dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_close"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingStart="15dp"
+                android:text="Düzediş etmek"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/user_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/user_profile"
+                android:backgroundTint="#7391A2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                android:id="@+id/addPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_add_photo_profile"
+                android:gravity="center"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/user_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_photo">
+
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="9dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_camera" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Surat goş"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Adyňyz ýazyň"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_text_color"
+            android:textSize="14sp" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Profliňize at goyuň"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_text_color"
+            android:textSize="14sp" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Özüňiz barada gysagaça beýan ediň"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_text_color"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Habarlaşmak üçin maglumatlary dolduruň"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="1."
+                android:textColor="@color/text_color_gray"
+                android:textSize="14sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="+993 XX-XX-XX-XX"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_green"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="4dp"
+                android:text="Esasy nomer"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="2."
+                android:textColor="@color/text_color_gray"
+                android:textSize="14sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numberTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="+993 XX-XX-XX-XX"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:text="3."
+                android:textColor="@color/text_color_gray"
+                android:textSize="14sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numberThree"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="+993 XX-XX-XX-XX"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_social_media_in_correct"
+            android:orientation="vertical"
+            android:paddingHorizontal="6dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/gmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_mail"
+                android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Elektron poctaňyz"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/urlTikTok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_tik_tok"
+                android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Tiktok sahypaňyz"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/urlInstagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_instagram"
+                android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Instagram sahypaňyz"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/urlImo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_imo"
+                android:drawablePadding="14dp"
+                android:drawableTint="#B0B0B0"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Imo sahypaňyz"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/background"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Tassyklamak"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="8dp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

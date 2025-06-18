@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_business_filter"
+    app:startDestination="@id/businessFilterFragment">
+
+    <fragment
+        android:id="@+id/businessFilterFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.BusinessFilterFragment"
+        android:label="BusinessCategoriesFragment" >
+
+        <action
+            android:id="@+id/action_businessFilterFragment_to_businessCategoriesFragment"
+            app:destination="@id/businessCategoriesFragment3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_businessCategoriesFragment2_to_businessLocationFragment"
+            app:destination="@id/businessLocationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/businessCategoriesFragment3"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.BusinessCategoriesFragment"
+        android:label="fragment_business_categories"
+        tools:layout="@layout/fragment_business_categories" >
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="businessType"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_businessCategoriesFragment3_self"
+            app:destination="@id/businessCategoriesFragment3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/businessLocationFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.BusinessLocationFragment"
+        android:label="BusinessLocationFragment" />
+</navigation>

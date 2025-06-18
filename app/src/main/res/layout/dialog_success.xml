@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_success_title"
+        style="@style/textStyle16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Habarnama"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_success_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/textStyle14"
+        android:layout_marginTop="16dp"
+        android:text="Bildiriş ýatda saklanyldy. Moderasiýa edilenden soň, bildiriş ähli ulanyjylara görner!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_success_title" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/textStyle16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_transparent"
+        android:text="OK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_success_message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

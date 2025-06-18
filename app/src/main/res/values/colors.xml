@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="black">#222222</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ripple_color">#57A09E9E</color>
+    <color name="white_20">#CCFFFFFF</color>
+    <color name="black_10">#1A000000</color>
+    <color name="bg_app">#00A3FF</color>
+    <color name="background">#3272A8</color>
+    <color name="color_transparent">#00000000</color>
+    <color name="bg_app_two">#208BD4</color>
+    <color name="bg_blue_one">#2669FF</color>
+    <color name="section_business_profile">#F2F1EF</color>
+    <color name="bg_blue_two">#457EFE</color>
+    <color name="bg_blue_three">#8DB0FE</color>
+    <color name="grey_text_color">#6A6A6A</color>
+    <color name="bg_blue_four">#D3E0FE</color>
+    <color name="text_color">#384CFF</color>
+    <color name="ic_gray_search">#6A6A6A</color>
+    <color name="text_color_white">#E4E4E4</color>
+    <color name="text_color_gray">#717171</color>
+    <color name="color_bg_search_fragment">#4D8BBF</color>
+    <color name="line_divider">#DDDDDD</color>
+    <color name="white_bg">#F3F8FF</color>
+    <color name="default_gray">#DDDDDD</color>
+    <color name="selected_solid_color">#F2F2F2</color>
+    <color name="default_stroke_color">#CCCCCC</color>
+    <color name="unchecked_thumb">#FFFFFF</color>
+    <color name="checked_thumb">#FFFFFF</color>
+    <color name="number_color">#374151</color>
+    <color name="bg_vip_houses_color_start">#FEFFA5</color>
+    <color name="unchecked_track">#B1B1B1</color>
+    <color name="checked_track">#302F2F</color>
+    <color name="error">#D90000</color>
+    <color name="success">#32A600</color>
+    <color name="banner_color">#00B4D8</color>
+    <color name="btn_price_color">#5A8FBB</color>
+    <color name="gray">#EEEEEE</color>
+    <color name="selected_color_in_search_fragment">#3A8BCF</color>
+    <color name="bg_color_business_search">#EBEAE8</color>
+    <color name="chip_border">#DFDFDF</color>
+    <color name="toggleBtnColor">#353535</color>
+    <color name="chip_color_bg">#E5F6FE</color>
+    <color name="chip_filter_text_color">#3A8BCF</color>
+
+
+
+
+
+
+    <!-- values/colors.xml -->
+    <color name="slider_thumb_color">#2196F3</color>
+    <color name="slider_active_track_color">#2196F3</color>
+    <color name="slider_inactive_track_color">#E3F2FD</color>
+    <color name="slider_halo_color">#332196F3</color>
+
+
+
+
+
+</resources>
+
+
+
+
+

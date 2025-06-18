@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_notifications"
+    app:startDestination="@id/fragmentHome2">
+
+    <fragment
+        android:id="@+id/fragmentHome2"
+        android:name="com.mekanly.presentation.ui.fragments.home.FragmentHome"
+        android:label="fragment_flow"
+        tools:layout="@layout/fragment_flow" >
+
+        <action
+            android:id="@+id/action_fragmentHome2_to_fragmentNotifications"
+            app:destination="@id/fragmentNotifications"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNotifications"
+        android:name="com.mekanly.presentation.ui.fragments.notifications.FragmentNotifications"
+        android:label="FragmentNotifications" />
+</navigation>
