@@ -20,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.mekanly.R
 import com.mekanly.data.models.Banner
 import com.mekanly.data.models.DataGlobalOptions
@@ -247,6 +248,18 @@ class FragmentSingleHouse : Fragment() {
     private fun setViewPager(house: HouseDetails) {
         val imageSliderAdapter = HouseImagesAdapter(house.images)
         binding.viewPager.adapter = imageSliderAdapter
+
+        val totalCount = house.images.size
+        // Установить начальный текст
+        binding.countImages.text = "1/$totalCount"
+
+        // Обновление текста при смене изображения
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.countImages.text = "${position + 1}/$totalCount"
+            }
+        })
     }
 
     private fun setHomeDetails(dataResponse: HouseDetails) {
@@ -340,8 +353,7 @@ class FragmentSingleHouse : Fragment() {
 
 
     private fun showCommentsBottomSheet() {
-        val action =
-            FragmentSingleHouseDirections.actionFragmentSingleHouseToBottomSheetComments(args.houseId)
+        val action = FragmentSingleHouseDirections.actionFragmentSingleHouseToBottomSheetComments(args.houseId)
         findNavController().navigate(action)
     }
 
