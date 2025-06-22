@@ -24,13 +24,13 @@ class AdapterFavouriteBusinessProfile(
         fun bind(product: ShopProduct) {
             binding.tvMainTitle.text = product.name
             binding.tvPrice.text = "${product.price} TMT"
-            binding.tvAddressTime.text =
-                "${product.location.parentName}, ${product.location.name}"
+            binding.tvAddressTime.text = "${product.locationParent.parentName}, ${product.locationName}"
+
             binding.tvDescription.text = product.description
 
             if (product.images.isNotEmpty()) {
                 Glide.with(itemView.context)
-                    .load(product.images[0].url)
+                    .load(product.images[0].thumbnail)
                     .placeholder(R.drawable.placeholder)
                     .into(binding.propertyImage)
             }
