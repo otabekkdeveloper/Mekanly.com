@@ -1,5 +1,5 @@
 package com.mekanly.data.request
 
-class AuthBody(
+class AuthBody  (
     val phone:String
 )

@@ -13,7 +13,6 @@ import com.mekanly.data.models.User
 import com.mekanly.data.local.preferences.AppPreferences
 import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.databinding.FragmentSignUpBinding
-import com.mekanly.presentation.ui.fragments.register.VMRegister
 import com.mekanly.ui.login.PhoneNumberTextWatcher
 import com.mekanly.utils.extensions.showErrorSnackBar
 import kotlinx.coroutines.flow.collectLatest

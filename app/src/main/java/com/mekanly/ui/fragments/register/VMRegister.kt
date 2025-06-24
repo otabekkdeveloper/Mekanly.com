@@ -1,4 +1,4 @@
-package com.mekanly.presentation.ui.fragments.register
+package com.mekanly.ui.fragments.register
 
 import androidx.lifecycle.ViewModel
 import com.mekanly.domain.model.ResponseBodyState
@@ -11,7 +11,7 @@ class VMRegister : ViewModel() {
 
 
     private val _registerState = MutableStateFlow<ResponseBodyState>(ResponseBodyState.Initial)
-    val registerState: StateFlow<ResponseBodyState> = _registerState.asStateFlow()
+    val registerState get() = _registerState.asStateFlow()
 
     private val useCase by lazy {
         LoginUseCase()
@@ -20,6 +20,7 @@ class VMRegister : ViewModel() {
     fun login(phone: String) {
         useCase.execute(phone) {
             _registerState.value = it
+
         }
     }
 }
