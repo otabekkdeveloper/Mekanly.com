@@ -1,6 +1,7 @@
 package com.mekanly.data.models
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
 data class User(
     @SerializedName("id") val id: Int,

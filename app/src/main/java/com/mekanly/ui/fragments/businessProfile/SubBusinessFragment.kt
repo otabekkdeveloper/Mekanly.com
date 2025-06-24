@@ -12,15 +12,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mekanly.R
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.BusinessCategory
+import com.mekanly.data.models.CategoryProduct
 import com.mekanly.databinding.FragmentSubBusinessBinding
+import com.mekanly.domain.model.ResponseBodyState
 import com.mekanly.presentation.ui.adapters.AdapterItemBusinessProfile
 import com.mekanly.presentation.ui.adapters.AdapterItemBusinessCategories
 import com.mekanly.presentation.ui.enums.BusinessType
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.FragmentSubBusinessProfileState
 import com.mekanly.presentation.ui.fragments.businessProfile.viewModel.VMSubBusinessProfile
-import com.mekanly.presentation.ui.fragments.flow.FragmentFlowDirections
+import com.mekanly.ui.adapters.AdapterCategoryProduct
+import com.mekanly.utils.Constants
+import com.mekanly.utils.extensions.showErrorSnackBar
 import com.mekanly.utils.itemdecorators.GridSpacingItemDecoration
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -32,6 +37,7 @@ class SubBusinessFragment : Fragment() {
     private var currentBusinessType: BusinessType? = null
     private val viewModel by viewModels<VMSubBusinessProfile>()
     private var title: String? = "N/A"
+    private val adapterCategoryProduct: AdapterCategoryProduct by lazy { AdapterCategoryProduct() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +55,58 @@ class SubBusinessFragment : Fragment() {
         binding = FragmentSubBusinessBinding.inflate(inflater, container, false)
         setUI()
         initListeners()
-        getSimilarProfiles()
-        getSubCategories()
-        observeViewModel()
+        if (!args.isSelf) {
+            getSimilarProfiles()
+            getSubCategories()
+            observeViewModel()
+        } else {
+            getSubCategoryProducts()
+            setCategoryProductsRec()
+        }
         return binding.root
+    }
+
+    private fun getSubCategoryProducts() {
+        viewModel.getCategoryProducts(args.categoryId)
+        lifecycleScope.launch {
+            viewModel.categoryProductsState.collectLatest {
+                when (it) {
+                    is ResponseBodyState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        requireContext().showErrorSnackBar(
+                          view =  binding.root,
+                            message = Constants.getErrorMessageUpToType(
+                               context =  requireContext(),
+                               errorType =  (it.error as Int)
+                            )
+                        )
+                    }
+
+                    is ResponseBodyState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+
+                    is ResponseBodyState.SuccessList -> {
+                        binding.progressBar.visibility = View.GONE
+                        adapterCategoryProduct.products = (it.dataResponse as List<CategoryProduct>)
+                    }
+
+                    else -> {
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+            }
+
+        }
+    }
+
+    private fun setCategoryProductsRec() {
+
+        binding.rvCategoryProducts.apply {
+            visibility = View.VISIBLE
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = adapterCategoryProduct
+        }
     }
 
 
@@ -85,24 +139,21 @@ class SubBusinessFragment : Fragment() {
                     }
 
 
-
-
-
                     else -> {}
                 }
             }
         }
 
 
-
-
-
     }
 
     private fun setSimilarCategoryRecycler(dataResponse: List<BusinessCategory>) {
         val businessCategoryAdapter = AdapterItemBusinessCategories(dataResponse) { selectedItem ->
-            val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(
-                selectedItem.id, title = selectedItem.title ?: "N/A" ?: BusinessType.FURNITURE.name
+            val action = SubBusinessFragmentDirections.subBusinessFragmentSelf(
+                categoryId = selectedItem.id,
+                title = selectedItem.title,
+                isSelf = true,
+                businessType = selectedItem.type?.name ?: BusinessType.FURNITURE.name
             )
 
             findNavController().navigate(action)
@@ -110,7 +161,7 @@ class SubBusinessFragment : Fragment() {
         binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 3)
         val itemDecoration = GridSpacingItemDecoration(
             spanCount = 3,
-            spacingInDp = 6F,
+            spacingInDp = 0F,
             includeEdge = true
         )
         binding.rvCategories.addItemDecoration(itemDecoration)

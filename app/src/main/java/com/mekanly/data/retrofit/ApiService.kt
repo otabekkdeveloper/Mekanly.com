@@ -6,6 +6,7 @@ import com.mekanly.data.models.BusinessCategory
 import com.mekanly.data.models.BusinessProfile
 import com.mekanly.data.models.Comment
 import com.mekanly.data.models.DataGlobalOptions
+import com.mekanly.data.models.CategoryProduct
 import com.mekanly.data.models.FavoritesRequest
 import com.mekanly.data.models.FavoriteHousesResponse
 import com.mekanly.data.models.FavoriteProductsResponse
@@ -56,14 +57,14 @@ interface ApiService {
 
     @GET("/api/v2/house/{house_id}")
     fun getHouseDetails(
-        @Path("house_id") houseId:String
-    ):Call<ResponseData<HouseDetails>>
+        @Path("house_id") houseId: String
+    ): Call<ResponseData<HouseDetails>>
 
     @POST("/api/v1/houses/{house_id}/update")
     fun updateHouse(
-        @Path("house_id") houseId:String,
+        @Path("house_id") houseId: String,
         @Body addHouseBody: AddHouseBody
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @POST("api/v2/filter")
     fun getFilteredResult(
@@ -93,31 +94,31 @@ interface ApiService {
         @Part("repair_type_id") repairTypeId: RequestBody?,
         @Part("possibilities") possibilities: RequestBody?,
         @Part images: List<MultipartBody.Part>
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @GET("/api/v2/comments/{start}/{limit}")
     fun getComments(
-        @Path("start") start:Int,
-        @Path("limit") limit:Int,
-        @Query("id") id:Long,
-        @Query("type") type:String
-    ):Call<ResponseDataList<Comment>>
+        @Path("start") start: Int,
+        @Path("limit") limit: Int,
+        @Query("id") id: Long,
+        @Query("type") type: String
+    ): Call<ResponseDataList<Comment>>
 
     @POST("api/v2/comment")
     fun addComment(
         @Body request: AddCommentBody
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @POST("api/v2/comment/{id}/update")
     fun updateComment(
-        @Path("id") id:Long,
+        @Path("id") id: Long,
         @Body request: UpdateCommentBody
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @DELETE("api/v2/comment/{id}/update")
     fun deleteComment(
-        @Path("id") id:Long,
-    ):Call<ResponseBody>
+        @Path("id") id: Long,
+    ): Call<ResponseBody>
 
     @GET("api/v2/abuse/list")
     fun getReports(): Call<List<Report>>
@@ -164,20 +165,19 @@ interface ApiService {
     ): Call<ResponseDataList<TopHouses>>
 
     @GET("/api/v2/globalOptions")
-    fun globalOptions():Call<ResponseData<DataGlobalOptions>>
+    fun globalOptions(): Call<ResponseData<DataGlobalOptions>>
 
 
-   // Favourite Fragment
-   @POST("api/v2/user/favorites")
-   fun getFavoriteHouses(
-       @Body request: FavoritesRequest
-   ): Call<FavoriteHousesResponse>
+    // Favourite Fragment
+    @POST("api/v2/user/favorites")
+    fun getFavoriteHouses(
+        @Body request: FavoritesRequest
+    ): Call<FavoriteHousesResponse>
 
     @POST("api/v2/user/favorites")
     fun getFavoriteProducts(
         @Body request: FavoritesRequest
     ): Call<FavoriteProductsResponse>
-
 
 
     @POST("api/v2/user/favorites/toggle")
@@ -188,37 +188,43 @@ interface ApiService {
 
     //Business Profiles API
     @GET("api/v2/business/categories")
-    fun getBusinessProfileCategories():Call<ResponseDataList<BusinessCategory>>
+    fun getBusinessProfileCategories(): Call<ResponseDataList<BusinessCategory>>
 
     @GET("api/v2/business/categories/{id}")
     fun getSimilarBusinessProfileCategories(
-        @Path("id") id:Long
-    ):Call<ResponseDataList<BusinessCategory>>
+        @Path("id") id: Long
+    ): Call<ResponseDataList<BusinessCategory>>
 
     @GET("api/v2/business/category/{id}/profiles")
     fun getSimilarBusinessProfiles(
-        @Path("id") id:Long
-    ):Call<ResponseDataList<BusinessProfile>>
+        @Path("id") id: Long
+    ): Call<ResponseDataList<BusinessProfile>>
 
     @GET("api/v2/business/category/{category_id}/products")
     fun getSimilarBusinessProducts(
         @Path("id") id: Long
-    ):Call<ResponseDataList<BusinessCategory>>
-
+    ): Call<ResponseDataList<BusinessCategory>>
 
 
     @GET("api/v2/business/allProfiles/{start}/{limit}")
     fun getBusinessProfilesWithPagination(
-        @Path("start") start:Long,
-        @Path("limit") limit:Long,
-    ):Call<ResponseDataList<BusinessProfile>>
+        @Path("start") start: Long,
+        @Path("limit") limit: Long,
+    ): Call<ResponseDataList<BusinessProfile>>
 
 
     @POST("api/v2/update-device-info")
     fun updateDeviceInfo(
         @Body requestBody: RequestBodyDeviceInfo,
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
+
+    @GET("api/v2/business/category/{category_id}/products")
+    fun getSubCategoryProducts(
+        @Path("category_id") categoryId: Int,
+        @Query("offset") offset: Int? = 0,
+        @Query("limit") limit: Int? = 10,
+    ): Call<ResponseDataList<CategoryProduct>>
 
 }
 

@@ -61,7 +61,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoriesRV"
-                android:layout_margin="8dp"
+                android:padding="5dp"
+                android:clipToPadding="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"

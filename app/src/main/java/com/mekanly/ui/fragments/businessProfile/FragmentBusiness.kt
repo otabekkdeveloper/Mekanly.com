@@ -106,7 +106,8 @@ class FragmentBusiness : Fragment() {
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                val isNearBottom = (visibleItemCount + firstVisibleItemPosition) >= totalItemCount - 2
+                val isNearBottom =
+                    (visibleItemCount + firstVisibleItemPosition) >= totalItemCount - 2
 
                 if (isNearBottom && viewModel.canLoadMore() && totalItemCount > 0) {
                     val currentSize = viewModel.businessProfiles.value.size
@@ -169,13 +170,16 @@ class FragmentBusiness : Fragment() {
                         Log.e(TAG, "Exception cause: ${state.error.cause}")
                         state.error.printStackTrace()
                     }
+
                     is String -> {
                         Log.e(TAG, "String error: $state.error")
                     }
+
                     is Int -> {
                         Log.e(TAG, "Integer error code: ${state.error}")
                         Log.e(TAG, "Error meaning: ${getErrorCodeMeaning(state.error)}")
                     }
+
                     else -> {
                         Log.e(TAG, "Unknown error type: ${state.error}")
                     }
@@ -241,6 +245,7 @@ class FragmentBusiness : Fragment() {
                     else -> "Про    изошла ошибка (код: $error)"
                 }
             }
+
             is String -> error
             is Exception -> error.message ?: "Произошла непредвиденная ошибка"
             else -> "Произошла ошибка: $error"
@@ -260,7 +265,7 @@ class FragmentBusiness : Fragment() {
 
         val categoryAdapter = AdapterItemBusinessCategories(list) { selectedItem ->
             val action = FragmentFlowDirections.actionFragmentHomeToSubBusinessFragment(
-                selectedItem.id,
+                categoryId = selectedItem.id,
                 title = selectedItem.title ?: "N/A",
                 businessType = selectedItem.type?.name ?: BusinessType.FURNITURE.name
             )

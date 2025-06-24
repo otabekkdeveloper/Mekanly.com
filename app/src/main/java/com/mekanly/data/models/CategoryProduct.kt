@@ -1,10 +1,9 @@
 package com.mekanly.data.models
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.Serializable
 
 
-data class DtoCategoryProduct(
+data class CategoryProduct(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -20,7 +19,7 @@ data class DtoCategoryProduct(
     @SerializedName("shop")
     val shop: Shop,
     @SerializedName("favorite")
-    val favorite: Boolean,
+    var favorite: Boolean,
     @SerializedName("type")
     val type: String,
     @SerializedName("location")

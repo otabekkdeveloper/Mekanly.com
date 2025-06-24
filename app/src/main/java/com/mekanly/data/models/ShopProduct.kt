@@ -1,5 +1,7 @@
 package com.mekanly.data.models
 
+import kotlinx.serialization.Serializable
+
 data class ShopProduct(
     val id: Int,
     val name: String,

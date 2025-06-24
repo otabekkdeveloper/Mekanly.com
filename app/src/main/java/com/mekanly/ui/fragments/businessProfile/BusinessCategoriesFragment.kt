@@ -52,7 +52,6 @@ class BusinessCategoriesFragment : Fragment() {
 
         binding.apply {
 
-
             backBtn.setOnClickListener{
                 findNavController().popBackStack()
             }

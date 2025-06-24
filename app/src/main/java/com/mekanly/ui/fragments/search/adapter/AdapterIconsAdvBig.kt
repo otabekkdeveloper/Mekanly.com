@@ -9,7 +9,7 @@ import com.mekanly.data.models.Option
 import com.mekanly.databinding.ItemIconsAdvBigBinding
 import com.mekanly.presentation.ui.enums.Possibilities
 
-class AdapterIconsAdvBig(
+class AdapterIconsAdvBig    (
     private val possibilities: List<Option>
 ) : RecyclerView.Adapter<AdapterIconsAdvBig.PropertyIconViewHolder>() {
 
