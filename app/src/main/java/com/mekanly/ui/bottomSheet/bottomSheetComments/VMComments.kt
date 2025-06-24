@@ -33,7 +33,8 @@ class VMComments : ViewModel() {
         getCommentsUseCase.execute(id, type, start, limit) {
             when (it) {
                 is ResponseBodyState.Error -> {
-                    _commentsState.value = ResponseBodyState.Error(4)
+                    // При ошибке 404 тоже возвращаем пустой список
+                    _commentsState.value = ResponseBodyState.SuccessList(mutableListOf())
                 }
 
                 is ResponseBodyState.Loading -> {
@@ -41,17 +42,15 @@ class VMComments : ViewModel() {
                 }
 
                 is ResponseBodyState.SuccessList -> {
-                    if (it.dataResponse.isEmpty()) {
-                        return@execute
-                    } else {
-                        _commentsState.value = ResponseBodyState.SuccessList(it.dataResponse.toMutableList())
-                    }
+                    // Даже если список пустой — устанавливаем как SuccessList
+                    _commentsState.value = ResponseBodyState.SuccessList(it.dataResponse.toMutableList())
                 }
 
                 else -> {}
             }
         }
     }
+
 
     fun addComment(addCommentBody: AddCommentBody, onSuccess: () -> Unit) {
         addCommentUseCase.execute(addCommentBody = addCommentBody) {
