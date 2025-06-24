@@ -99,7 +99,7 @@ class FavoritesViewModel : ViewModel() {
                         try {
                             val productsList = result.dataResponse as? List<ShopProduct> ?: emptyList()
                             // ✅ ИСПРАВЛЕНО: Устанавливаем favorite = true для всех загруженных продуктов
-                            productsList.forEach { it.favorited = true }
+                            productsList.forEach { it.favorite = true }
                             _products.value = productsList
 
                             productsLoaded = true
@@ -130,7 +130,7 @@ class FavoritesViewModel : ViewModel() {
                 _houses.value.find { it.id == itemId }?.favorite ?: false
             }
             "ShopProduct" -> {
-                _products.value.find { it.id == itemId }?.favorited ?: false
+                _products.value.find { it.id == itemId }?.favorite ?: false
             }
             else -> false
         }
@@ -165,7 +165,7 @@ class FavoritesViewModel : ViewModel() {
                 "ShopProduct" -> {
                     val updatedProducts = _products.value.map { product ->
                         if (product.id == itemId) {
-                            product.copy().apply { favorited = !currentLikeStatus }
+                            product.copy().apply { favorite = !currentLikeStatus }
                         } else product
                     }
                     _products.value = updatedProducts
@@ -187,7 +187,7 @@ class FavoritesViewModel : ViewModel() {
                         "ShopProduct" -> {
                             val rolledBackProducts = _products.value.map { product ->
                                 if (product.id == itemId) {
-                                    product.copy().apply { favorited = currentLikeStatus }
+                                    product.copy().apply { favorite = currentLikeStatus }
                                 } else product
                             }
                             _products.value = rolledBackProducts
@@ -232,7 +232,7 @@ class FavoritesViewModel : ViewModel() {
             "ShopProduct" -> {
                 val updatedProducts = _products.value.map { product ->
                     if (product.id == itemId) {
-                        product.copy().apply { favorited = isLiked }
+                        product.copy().apply { favorite = isLiked }
                     } else product
                 }
                 _products.value = updatedProducts
