@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- First rectangle (100dp x 100dp) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
+            <solid android:color="@color/bg_blue_four" />
+        </shape>
+    </item>
+    <item android:bottom="33dp"> <!-- Position it inside the first rectangle -->
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
+            <solid android:color="@color/bg_blue_three" />
+        </shape>
+    </item>
+    <item android:bottom="67dp"> <!-- Position it inside the first rectangle -->
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
+            <solid android:color="@color/bg_blue_two" />
+        </shape>
+    </item>
+
+    <item android:bottom="100dp"> <!-- Position it inside the first rectangle -->
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
+            <solid android:color="@color/bg_blue_one" />
+        </shape>
+    </item>
+
+</layer-list>

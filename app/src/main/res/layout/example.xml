@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.fragments.singleHouse.FragmentSingleHouse">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleMarginEnd="64dp"
+                    app:expandedTitleMarginStart="48dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/background"
+                            android:orientation="horizontal">
+
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/ic_back"
+                                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@color/color_transparent"
+                                app:icon="@drawable/ic_back"
+                                app:iconTint="@color/white" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+
+                            <TextView
+                                android:id="@+id/to_correct"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="5dp"
+                                android:autoLink="all"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:text="Düzediş etmek"
+                                android:textColor="@color/white" />
+
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/ic_share"
+                                style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:icon="@drawable/ic_share"
+                                app:iconTint="@color/white" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/vipProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            app:layout_collapseMode="parallax">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                android:background="@drawable/bg_vip_profile"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/user_profile"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/user_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Atageldi"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/date_register"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="3dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="13.02.2025"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/ic_eye"
+                                            android:backgroundTint="@color/white" />
+
+                                        <TextView
+                                            android:id="@+id/view_number"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="3dp"
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:text="130"
+                                            android:textColor="@color/white"
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="VIP profile galan gün:"
+                                        android:textColor="#4D8BBF"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text=" 30"
+                                        android:textColor="#4D8BBF"
+                                        android:textSize="14sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingHorizontal="20dp"
+                                android:paddingBottom="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Maksat Sapargeldiýew"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Aşgabat"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="rus dili iňlis dili"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Reiltor"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="20dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="2dp"
+                                    android:background="@drawable/bg_sms_btn"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="SMS "
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    app:icon="@drawable/ic_message"
+                                    app:iconPadding="10dp"
+                                    app:iconTint="@color/white" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#4D8BBF"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Jaň etmek"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    app:icon="@drawable/ic_phone"
+                                    app:iconPadding="10dp"
+                                    app:iconTint="@color/white" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:background="@drawable/bg_mail_btn"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="Poçta"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    app:icon="@drawable/ic_mail"
+                                    app:iconPadding="10dp"
+                                    app:iconTint="@color/white" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="65dp"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingBottom="15dp">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="70dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@drawable/bg_btn_social_media"
+                                    app:backgroundTint="#486988"
+                                    app:icon="@drawable/ic_tik_tok"
+                                    app:iconGravity="textStart"
+                                    app:iconPadding="0dp"
+                                    app:iconTint="@color/white" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="70dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/bg_btn_social_media"
+                                    app:backgroundTint="#486988"
+                                    app:icon="@drawable/ic_instagram"
+                                    app:iconGravity="textStart"
+                                    app:iconPadding="0dp"
+                                    app:iconTint="@color/white" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="70dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/bg_btn_social_media"
+                                    app:backgroundTint="#486988"
+                                    app:icon="@drawable/ic_imo"
+                                    app:iconGravity="textStart"
+                                    app:iconPadding="0dp"
+                                    app:iconSize="30dp"
+                                    app:iconTint="@color/white" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabIndicatorColor="@color/black"
+                        app:tabTextAppearance="@style/TabTextAppearanceThree"
+                        app:tabTextColor="@color/black" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </ScrollView>
+
+
+</layout>

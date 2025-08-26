@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="TabTextAppearanceThree" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+    <style name="TabTextAppearanceTwo" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="TextRegular14" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomSwitchStyle" parent="TextAppearance.AppCompat.Widget.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="CustomSwitchStyleTwo" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+    <style name="CustomSwitchStyleThree" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="CustomSwitchStyleFour" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="trackColorInactive">@color/unchecked_track</item>
+        <item name="trackColorActive">@color/black</item>
+        <item name="android:thumb">@color/white</item>
+    </style>
+
+    <style name="bold" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="light" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="medium" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+
+
+
+    <style name="textStyle16Black" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textStyle14Black" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textStyle12Black" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="textStyle16White" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textStyle14White" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textStyle12White" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+
+    <!-- В values/styles.xml создайте стиль для RangeSlider -->
+    <style name="CustomRangeSliderStyle" parent="Widget.MaterialComponents.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Slider</item>
+    </style>
+
+    <!-- Затем создайте тему наложения для слайдера -->
+    <style name="ThemeOverlay.App.Slider" parent="">
+        <item name="colorPrimary">@color/bg_blue_three</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="sliderStyle">@style/Widget.App.Slider</item>
+    </style>
+
+    <!-- И, наконец, определите конкретные стили для виджета -->
+    <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="thumbRadius">10dp</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="trackHeight">1.2dp</item>
+        <item name="haloRadius">24dp</item>
+        <item name="thumbElevation">2dp</item>
+    </style>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Mekanly" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryDark">@color/bg_blue_one</item>
+        <item name="colorAccent">@color/bg_blue_two</item>
+
+    </style>
+
+
+    <style name="AppSplashScreen" parent="Theme.SplashScreen">
+
+        <item name="windowSplashScreenBackground">@color/bg_blue_one</item>
+
+        <item name="postSplashScreenTheme">@style/Base.Theme.Mekanly</item>
+
+
+    </style>>
+
+    <style name="myPopupMenuTextAppearanceSmall" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small">
+        <item name="android:textColor">#545656</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="myPopupMenuTextAppearanceLarge" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Large">
+        <item name="android:textColor">#545656</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+
+    <style name="CustomPopupMenu" parent="Widget.Material3.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_rounded_popup</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="popupMenuStyle">@style/CustomPopupMenu</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

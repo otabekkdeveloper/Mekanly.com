@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_flow"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.mekanly.presentation.ui.fragments.flow.FragmentFlow"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentSingleHouse"
+            app:destination="@id/fragmentSingleHouse"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_fragmentHome_to_addNotificationFragment"
+            app:destination="@id/addNotificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentHomeSeekers"
+            app:destination="@id/fragmentHomeSeekers"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_fragmentHome_to_subBusinessFragment"
+            app:destination="@id/subBusinessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+        <action
+            android:id="@+id/action_fragmentHome_to_subSearchBusinessFragment"
+            app:destination="@id/subSearchBusinessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_fragmentHome_to_hintFragment"
+            app:destination="@id/hintFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.mekanly.ui.fragments.filter.FilterFragment"
+        android:label="FilterFragment">
+
+        <action
+            android:id="@+id/action_filterFragment_to_fragmentLocation"
+            app:destination="@id/fragmentLocation"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_filterFragment_to_homeFragment"
+            app:destination="@id/fragmentHome"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentLocation"
+        android:name="com.mekanly.presentation.ui.fragments.location.FragmentLocation"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" />
+
+    <fragment
+        android:id="@+id/fragmentSingleHouse"
+        android:name="com.mekanly.presentation.ui.fragments.singleHouse.FragmentSingleHouse"
+        android:label="fragment_single_house"
+        tools:layout="@layout/fragment_single_house">
+        <argument
+            android:name="houseId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_fragmentSingleHouse_to_bottomSheetComments"
+            app:destination="@id/bottomSheetComments" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddHouse"
+        android:name="com.mekanly.ui.fragments.addHouse.FragmentAddHouse"
+        android:label="FragmentAddHouse" />
+    <fragment
+        android:id="@+id/addNotificationFragment"
+        android:name="com.mekanly.ui.fragments.properties.UserPropertiesFragment"
+        android:label="fragment_add_notification"
+        tools:layout="@layout/fragment_user_properties">
+        <action
+            android:id="@+id/action_addNotificationFragment_to_fragmentAddHouse"
+            app:destination="@id/fragmentAddHouse"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_addNotificationFragment_to_fragmentAddSearchingHouses"
+            app:destination="@id/fragmentAddSearchingHouses"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottomSheetComments"
+        android:name="com.mekanly.ui.bottomSheet.bottomSheetComments.BottomSheetComments"
+        android:label="BottomSheetComments">
+        <argument
+            android:name="houseId"
+            app:argType="long" />
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentAddSearchingHouses"
+        android:name="com.mekanly.presentation.ui.fragments.profile.addHouse.FragmentAddSearchingHouses"
+        android:label="FragmentAddSearchingHouses" />
+    <fragment
+        android:id="@+id/fragmentHomeSeekers"
+        android:name="com.mekanly.ui.fragments.profile.homeSeekers.FragmentHomeSeekers"
+        android:label="fragment_home_seekers"
+        tools:layout="@layout/fragment_home_seekers" />
+
+
+
+    <fragment
+        android:id="@+id/subBusinessFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.SubBusinessFragment"
+        android:label="fragment_sub_business"
+        tools:layout="@layout/fragment_sub_business" >
+
+
+        <action
+            android:id="@+id/action_subBusinessFragment_to_fragmentDetailsSubBusiness2"
+            app:destination="@id/fragmentDetailsSubBusiness"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/subBusinessFragmentSelf"
+            app:destination="@id/subBusinessFragment" />
+
+
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="N/A" />
+
+        <argument
+            android:name="business_type"
+            app:argType="string"
+            android:defaultValue="N/A" />
+
+        <argument
+            android:name="is_self"
+            app:argType="boolean"
+            android:defaultValue="false" />
+
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsSubBusiness"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.FragmentDetailsSubBusiness"
+        android:label="FragmentDetailsSubBusiness" />
+    <fragment
+        android:id="@+id/subSearchBusinessFragment"
+        android:name="com.mekanly.presentation.ui.fragments.businessProfile.SubSearchBusinessFragment"
+        android:label="fragment_sub_search_business"
+        tools:layout="@layout/fragment_sub_search_business" />
+    <fragment
+        android:id="@+id/hintFragment"
+        android:name="com.mekanly.presentation.ui.fragments.hint.HintFragment"
+        android:label="fragment_hint"
+        tools:layout="@layout/fragment_hint" />
+
+
+</navigation>
